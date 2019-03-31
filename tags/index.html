@@ -10,7 +10,7 @@
     
     
     
-    <title>Github+Hexo搭建个人博客 | Hexo</title>
+    <title>tags | Hexo</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,55 +161,21 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">Github+Hexo搭建个人博客</h1>
+    <h1 class="title">tags</h1>
     
     <div class="cube-article-header">
-        <div class="cube-article-date">
+        <div class="cube-article-date page">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-03-22
+            2019-03-30
         </div>
-        <div class="cube-article-tags">
-    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-    
-</div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>作为一名技术小白，一直秉承着极高的热情向技术大佬们学习，可是学着学着就发现学过的东西很容易忘记，所以打算创建一个个人博客来进行记录总结，一方面可以总结学习过程中遇到的错误和困难，一方面也可以方便其他童鞋进行参考，接下来就和我一起学学怎么搭建一个个人博客吧！</p>
-<h2 id="我们先来看一下大体的搭建步骤："><a href="#我们先来看一下大体的搭建步骤：" class="headerlink" title="我们先来看一下大体的搭建步骤："></a>我们先来看一下大体的搭建步骤：</h2><p>获得个人网站域名<br>GitHub创建个人仓库<br>安装Git和Node.js<br>安装Hexo<br>推送网站<br>绑定域名<br>更换主题</p>
-<p>好啦，接下来就和我一起一步步进行操作吧~</p>
-<hr>
-<h3 id="1-获得个人网站域名"><a href="#1-获得个人网站域名" class="headerlink" title="1. 获得个人网站域名"></a>1. 获得个人网站域名</h3><p>首先进行域名注册的原因是，域名注册也需要审核哦，会耗费时间，所以我们先进行域名注册，在等待的时间里来进行接下来的其他操作，这样就省时省力啦！</p>
-<p>域名是网站的入口，也是网站的第一印象，比如饿了么的官网域名是：<a href="https://www.ele.me/" target="_blank" rel="noopener">https://www.ele.me/</a>，很是巧妙。常见的有com,cn,net,org等后缀，也有小众的xyz,me,io等后缀，根据你自己的喜好，选择不同的后缀，比如我选择就是常见的com后缀。很多小众奇特的后缀在大陆是没办法备案的，网站也就无法上线。然而使用GitHub托管我们的网站，完全不需要备案，因为托管我们的网站内容的服务器在美国，而且在国内备案流程也比较繁杂，时间需要一周左右。</p>
-<p>申请域名的地方有很多，这里推荐阿里云：<a href="https://www.aliyun.com/" target="_blank" rel="noopener">阿里云-为了无法计算的价值</a> ，申请入口：<a href="https://wanwang.aliyun.com/domain/" target="_blank" rel="noopener">域名注册</a> 购买域名这也是我们整个搭建过程中惟一一个需要花钱的地方。如果你已经有了空闲域名就无需购买，直接使用就好啦。</p>
-<h3 id="2-安装Git和Node-js"><a href="#2-安装Git和Node-js" class="headerlink" title="2. 安装Git和Node.js"></a>2. 安装Git和Node.js</h3><h4 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1) 安装Git"></a>1) 安装Git</h4><p>什么是Git?简单来说Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。我们网站在本地搭建好了，需要使用Git同步到GitHub上。<br>Git下载地址：<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">https://git-scm.com/download/win</a></p>
-<p>现在大部分机子是64位的，选择64位的安装包下载安装，在命令行里输入<code>git --version</code>是否安装成功，若安装失败，参看其他详细的Git安装教程。如果想要了解Git的细节，参看廖雪峰老师的Git教程：<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程</a> </p>
-<h4 id="2-安装Node-js"><a href="#2-安装Node-js" class="headerlink" title="2) 安装Node.js"></a>2) 安装Node.js</h4><p>Hexo基于Node.js，Node.js下载地址：<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a>下载安装包，注意安装Node.js会包含环境变量及npm的安装<br>安装后，检测Node.js是否安装成功，在命令行中输入<code>node -v</code> ,检测npm是否安装成功，在命令行中输入<code>npm -v</code> :</p>
-<p>到这了，安装Hexo的环境已经全部搭建完成。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-
+        
     </div>
 </div>
-
-<div class="cube-article-nav">
-    <ul>
-        
-        
-        <li class="next">
-            <a href="/2019/03/22/Github+Hexo搭建个人博客/Github+Hexo搭建个人博客/">
-                Github+Hexo搭建个人博客
-                <i class="cube-icon cube-next" aria-hidden="true"></i>
-            </a>
-        </li>
-        
-    </ul>
-</div>
-
-
-<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
 
 
