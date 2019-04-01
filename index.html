@@ -181,11 +181,7 @@
         
         
            <p>今天我们来学习一下排序算法，排序算法是《数据结构与算法》中最基本的算法之一，虽说学过这门课，但几种排序总是讲述不清，今天来做一个系统的学习归纳，跟着我一起来学习吧~</p>
-<p>排序算法可以分为内部排序和外部排序，<strong>内部排序</strong>是数据记录在内存中进行排序，<strong>外部排序</strong>是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的十大内部排序算法：<code>冒泡排序</code>、<code>选择排序</code>、<code>插入排序</code>、<code>希尔排序</code>、<code>归并排序</code>、<code>快速排序</code>、<code>堆排序</code>、<code>计数排序</code>、<code>桶排序</code>、<code>基数排序</code>。用一张图概括：<br><img src="//lililich.work/2019/04/01/十大排序算法/十大排序算法.png" alt></p>
-<p><strong> 关于时间复杂度： </strong></p>
-<p><code>O(n2)</code> 平方阶排序: 插入排序、选择排序和冒泡排序；<br><code>O(nlog2n)</code> 线性对数阶排序: 快速排序、堆排序和归并排序；<br><code>O(n1+§)</code> 排序(§ 是介于 0 和 1 之间的常数): 希尔排序；<br><code>O(n)</code> 线性阶排序: 基数排序、桶、箱排序。</p>
-<p><strong> 关于稳定性： </strong><br>排序算法的稳定性:若待排序的序列中，存在多个具有相同关键字的记录，经过排序， 这些记录的相对次序保持不变，则称该算法是稳定的；若经排序后，记录的相对 次序发生了改变，则称该算法是不稳定的。 </p>
-<p><code>稳定</code>的排序算法：冒泡排序、插入排序、归并排序和基数排序。<br><code>不稳定</code>的排序算法：选择排序、快速排序、希尔排序、堆排序。<br></p>
+<p>排序算法可以分为内部排序和外部排序，<strong>内部排序</strong>是数据记录在内存中进行排序，<strong>外部排序</strong>是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的十大内部排序算法：<code>冒泡排序</code>、<code>选择排序</code>、<code>插入排序</code>、<code>希尔排序</code>、<code>归并排序</code>、<code>快速排序</code>、<code>堆排序</code>、<code>计数排序</code>、<code>桶排序</code>、<code>基数排序</code>。用一张图概括：<br><img src="//lililich.work/2019/04/01/十大排序算法/十大排序算法.png" alt><br></p>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -240,9 +236,9 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
-                
                 <a href="/tags/Github/" class="cube-excerpt-tag-link">#Github</a>
+                
+                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
                 
             </div>
         </div>
@@ -279,16 +275,10 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+           <p>让我们来学习下 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! 的基本语法。你也可以进入 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> 来进行系统的学习。 如果在运用Hexo的时候出现疑问，你可以去 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> 上进行提问或者你可以上 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a> 上寻求帮助。</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span>     //新建文章</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server               //启动服务预览</span><br></pre></td></tr></table></figure>
         
     </article>
     <footer class="cube-excerpt-footer">
@@ -457,12 +447,12 @@
         
         
         <div class="cube-box ">
-            <a href="/categories/语法/">#语法</a>
+            <a href="/categories/工程/">#工程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/工程/">#工程</a>
+            <a href="/categories/语法/">#语法</a>
         </div>
         
         
@@ -483,21 +473,21 @@
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Hexo/">#Hexo</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
         <div class="cube-box-bg ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
