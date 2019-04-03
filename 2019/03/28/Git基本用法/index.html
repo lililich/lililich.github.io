@@ -185,7 +185,7 @@
 <p><strong> 什么是Git命令？ </strong></p>
 <p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。<br>Git有什么特点？简单来说就是：高端大气上档次！</p>
 <p><strong> 集中式版本控制系统(如CVS和SVN) </strong>：版本库是集中存放在中央服务器的，工作时从版本库下载，修改后重新上传版本库，完整的版本库保存在中央服务器，集中式版本控制系统最大的毛病就是必须联网才能工作。<br><strong> 分布式管理系统(如Git) </strong>：每个人电脑里都会有完整的版本库，只推送修改即可，不必联网。<br>Git的优势不单是不必联网这么简单，Git极其强大的分支管理，把SVN等远远抛在了后面。<br><a id="more"></a><br>Git的工作描述图如下：<br><img src="//lililich.work/2019/03/28/Git基本用法/Git工作描述图.jpg" alt></p>
-<h3 id="1-版本管理"><a href="#1-版本管理" class="headerlink" title="1.版本管理"></a>1.版本管理</h3><h4 id="1）git-init创建版本库-初始化本地仓库"><a href="#1）git-init创建版本库-初始化本地仓库" class="headerlink" title="1）git init创建版本库,初始化本地仓库"></a>1）<code>git init</code>创建版本库,初始化本地仓库</h4><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：</p>
+<h3 id="一-版本管理"><a href="#一-版本管理" class="headerlink" title="一.版本管理"></a>一.版本管理</h3><h4 id="1）git-init创建版本库-初始化本地仓库"><a href="#1）git-init创建版本库-初始化本地仓库" class="headerlink" title="1）git init创建版本库,初始化本地仓库"></a>1）<code>git init</code>创建版本库,初始化本地仓库</h4><p>什么是版本库呢？版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。通过<code>git init</code>命令把这个目录变成Git可以管理的仓库：</p>
 <pre><code>$ git init
 Initialized empty Git repository in /Users/michael/learngit/.git/
 </code></pre><h4 id="2）git-add-将修改好的文件上传到版本库"><a href="#2）git-add-将修改好的文件上传到版本库" class="headerlink" title="2）git add 将修改好的文件上传到版本库"></a>2）<code>git add</code> 将修改好的文件上传到版本库</h4><pre><code>$ git add readme.txt
@@ -263,7 +263,7 @@ Cloning into &apos;gitskills&apos;...
 remote: Counting objects: 3, done.
 remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 3
 Receiving objects: 100% (3/3), done.
-</code></pre><h3 id="2-分支管理"><a href="#2-分支管理" class="headerlink" title="2.分支管理"></a>2.分支管理</h3><h4 id="1）git-checkout命令用来创建并切换分支"><a href="#1）git-checkout命令用来创建并切换分支" class="headerlink" title="1）git checkout命令用来创建并切换分支"></a>1）<code>git checkout</code>命令用来创建并切换分支</h4><pre><code>$ git checkout -b dev           //用来创建并切换分支，相当于以下两条命令
+</code></pre><h3 id="二-分支管理"><a href="#二-分支管理" class="headerlink" title="二.分支管理"></a>二.分支管理</h3><h4 id="1）git-checkout命令用来创建并切换分支"><a href="#1）git-checkout命令用来创建并切换分支" class="headerlink" title="1）git checkout命令用来创建并切换分支"></a>1）<code>git checkout</code>命令用来创建并切换分支</h4><pre><code>$ git checkout -b dev           //用来创建并切换分支，相当于以下两条命令
 Switched to a new branch &apos;dev&apos;
 $ git branch dev                //创建分支
 $ git checkout dev              //切换分支
@@ -313,7 +313,7 @@ Auto-merging env.txt
 CONFLICT (add/add): Merge conflict in env.txt
 Automatic merge failed; fix conflicts and then commit the result.
 </code></pre><h4 id="9）git-rebase命令用于解决历史记录分叉的问题"><a href="#9）git-rebase命令用于解决历史记录分叉的问题" class="headerlink" title="9）git rebase命令用于解决历史记录分叉的问题"></a>9）<code>git rebase</code>命令用于解决历史记录分叉的问题</h4><pre><code>$ git rebase
-</code></pre><h3 id="3-标签管理"><a href="#3-标签管理" class="headerlink" title="3.标签管理"></a>3.标签管理</h3><h4 id="1）git-tag命令用来创建和删除标签"><a href="#1）git-tag命令用来创建和删除标签" class="headerlink" title="1）git tag命令用来创建和删除标签"></a>1）<code>git tag</code>命令用来创建和删除标签</h4><pre><code>$ git tag v1.0         //创建标签
+</code></pre><h3 id="三-标签管理"><a href="#三-标签管理" class="headerlink" title="三.标签管理"></a>三.标签管理</h3><h4 id="1）git-tag命令用来创建和删除标签"><a href="#1）git-tag命令用来创建和删除标签" class="headerlink" title="1）git tag命令用来创建和删除标签"></a>1）<code>git tag</code>命令用来创建和删除标签</h4><pre><code>$ git tag v1.0         //创建标签
 $ git tag              //查看标签
 v1.0
 $ git tag v0.9 f52c633        //给commit id已知的提交创建标签
@@ -520,12 +520,12 @@ To github.com:michaelliao/learngit.git
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -546,22 +546,22 @@ To github.com:michaelliao/learngit.git
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
