@@ -10,7 +10,7 @@
     
     
     
-    <title>about-me | Lililich&#39;s Blog</title>
+    <title>自定义构建Echarts问题描述 | Lililich&#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,27 +161,75 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">about-me</h1>
+    <h1 class="title">自定义构建Echarts问题描述</h1>
     
     <div class="cube-article-header">
-        <div class="cube-article-date page">
+        <div class="cube-article-date">
             <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
             <!-- moment.js对象 -->
-            2019-03-20
+            2019-06-08
         </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+</div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><p>本人小姑娘，小硕一枚，年龄成谜。技术平平，可相貌上还过得去，人品上更是棒棒的；但是吧，由于大木桶原理，不能让技术成为自己的短板吧，于是奋发图强，从此小小的博客页面产生了，我会勤奋刻苦的。<br>在我自己眼里，也许我就是一个小渣渣，但是，记住是在自己眼里，绝对不允许别人这么说哈哈哈。 马上就要开始找暑期实习了，最好是找一个可以爱上的工作，然后沉迷技术，无法自拔。加油，小姑凉！</p>
-<h2 id="座右铭"><a href="#座右铭" class="headerlink" title="座右铭"></a>座右铭</h2><p>一天要做三件事：第一要笑，第二要微笑，第三要哈哈大笑</p>
-<h2 id="个人爱好"><a href="#个人爱好" class="headerlink" title="个人爱好"></a>个人爱好</h2><p>喜欢听音乐，看书，运动，练瑜伽，十字绣也很厉害哦<br>顺便提一句，如果去了KTV，那KTV麦霸就是我hhh</p>
-<h2 id="自我描述"><a href="#自我描述" class="headerlink" title="自我描述"></a>自我描述</h2><p>• 我是一个踏实认真，责任心强，敢于吃苦，从以前的工作经历中总结到，一个好的团队要有较强的团队精神，不能自己单打独斗，要知道一个团队的重要性；<br>• 有较强的沟通和理解能力，思维活跃敢于创新，可以提出自己的看法，多交流才能多进步；<br>• 热情开朗，自信大方，擅长与人交流，会成为团队的开心果，有较强的动手能力和学习能力。</p>
-<h2 id="联系我"><a href="#联系我" class="headerlink" title="联系我"></a>联系我</h2><p>Weibo：莪叫_小畅<br>Github：lililich<br>Email：<a href="mailto:lililich94.@163.com" target="_blank" rel="noopener">lililich94.@163.com</a><br>Blog：<a href="https://lililich.work">https://lililich.work</a></p>
-<h2 id="搭建博客的初衷"><a href="#搭建博客的初衷" class="headerlink" title="搭建博客的初衷"></a>搭建博客的初衷</h2><p>作为一名技术小白，一直秉承着极高的热情向技术大佬们学习，可是学着学着就发现学过的东西很容易忘记，所以打算创建一个个人博客来进行记录总结，一方面可以总结学习过程中遇到的错误和困难，一方面也可以方便其他童鞋进行参考，让我们一起加油吧。</p>
+        <p>今天我们来学习一下<code>Echarts</code>，本文主要是总结自定义构建Echarts遇到的问题，跟着我一起来学习吧~</p>
+<h5 id="1-使用命令行，创建自己的工程："><a href="#1-使用命令行，创建自己的工程：" class="headerlink" title="1.使用命令行，创建自己的工程："></a>1.使用命令行，创建自己的工程：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir myProject</span><br><span class="line"><span class="built_in">cd</span> myProject</span><br></pre></td></tr></table></figure>
+<h5 id="2-在-myProject-目录下使用命令行，初始化工程的-npm-环境并安装-echarts（这里前提是您已经安装了-npm）："><a href="#2-在-myProject-目录下使用命令行，初始化工程的-npm-环境并安装-echarts（这里前提是您已经安装了-npm）：" class="headerlink" title="2.在 myProject 目录下使用命令行，初始化工程的 npm 环境并安装 echarts（这里前提是您已经安装了 npm）："></a>2.在 myProject 目录下使用命令行，初始化工程的 npm 环境并安装 echarts（这里前提是您已经安装了 npm）：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
+<p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image1.png" alt="Image1.png"><br><a id="more"></a></p>
+<h5 id="3-使用-echarts-提供的构建脚本自定义构建"><a href="#3-使用-echarts-提供的构建脚本自定义构建" class="headerlink" title="3.使用 echarts 提供的构建脚本自定义构建"></a>3.使用 echarts 提供的构建脚本自定义构建</h5><p>在这个例子中，我们要创建一个饼图，并且想自定义构建一个只含有饼图的 echarts 文件，从而能使 echarts 文件的大小比较小一些。<br>echarts 已经提供了构建脚本 echarts/build/build.js，基于 Node.js 运行。我们可以在 myProject 目录下使用命令行，看到它的使用方式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node node_modules/echarts/build/build.js --<span class="built_in">help</span></span><br></pre></td></tr></table></figure></p>
+<p>注意：这里会出现报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: Cannot find module <span class="string">'XXX'</span></span><br></pre></td></tr></table></figure></p>
+<p>翻译出来就是找不到 ‘XXX’ 组件，我也是通过查找的方法，进行实践，缺啥就安装啥，可能会有很多的模块找不到，就一个一个进行安装就行，执行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install XXX --save</span><br><span class="line">//这里的 XXX 指的是报错中缺少的模块名</span><br></pre></td></tr></table></figure></p>
+<p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image2.png" alt="Image2.png"><br><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image3.png" alt="Image3.png"><br>以上几个模块安装成功就会显示如下，你可以输入–help指令查看参数的含义：<br><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image4.png" alt="Image4.png"><br>其中我们在这个例子里会用到的参数有：</p>
+<ul>
+<li>-i：代码入口文件，可以是绝对路径或者基于当前命令行路径的相对路径。</li>
+<li>-o：生成的 bundle 文件，可以是绝对路径或者基于当前命令行路径的相对路径。</li>
+<li>–min：是否压缩文件（默认不压缩），并且去多余的打印错误信息的代码，形成生产环境可用的文件。</li>
+<li>–lang <language shortcut or file path>：是否使用其他语言版本，默认是中文。例如：–lang en 表示使用英文，–lang my/langXX.js 表示构建时使用 <cwd>/my/langXX.js 替代 echarts/lib/lang.js 文件。</cwd></language></li>
+<li>–sourcemap：是否输出 source map，以便于调试。</li>
+<li>–format：输出的格式，可选 ‘umb’（默认）、’amd’、’iife’、’cjs’、’es’。<h5 id="4-既然我们想自定义构建一个只含有饼图的-echarts-文件，我们需要创建一个入口文件，可以命名为-myProject-echarts-custom-js，文件里会引用所需要的-echarts-模块："><a href="#4-既然我们想自定义构建一个只含有饼图的-echarts-文件，我们需要创建一个入口文件，可以命名为-myProject-echarts-custom-js，文件里会引用所需要的-echarts-模块：" class="headerlink" title="4.既然我们想自定义构建一个只含有饼图的 echarts 文件，我们需要创建一个入口文件，可以命名为 myProject/echarts.custom.js，文件里会引用所需要的 echarts 模块："></a>4.既然我们想自定义构建一个只含有饼图的 echarts 文件，我们需要创建一个入口文件，可以命名为 myProject/echarts.custom.js，文件里会引用所需要的 echarts 模块：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 引入 echarts 主模块。</span><br><span class="line"><span class="built_in">export</span> * from <span class="string">'echarts/src/echarts'</span>;</span><br><span class="line">// 引入饼图。</span><br><span class="line">import <span class="string">'echarts/src/chart/pie'</span>;</span><br><span class="line">// 在这个场景下，可以引用 `echarts/src` 或者 `echarts/lib` 下的文件（但是不可混用），</span><br><span class="line">// 参见下方的解释：“引用 `echarts/lib/**` 还是 `echarts/src/**`”。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-然后我们可以在-myProject-目录下使用命令行，这样开始构建："><a href="#5-然后我们可以在-myProject-目录下使用命令行，这样开始构建：" class="headerlink" title="5.然后我们可以在 myProject 目录下使用命令行，这样开始构建："></a>5.然后我们可以在 myProject 目录下使用命令行，这样开始构建：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node node_modules/echarts/build/build.js --min -i echarts.custom.js -o lib/echarts.custom.min.js</span><br></pre></td></tr></table></figure>
+<p>注意：这里会出现报错<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TypeError: uglifyPlugin is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image5.png" alt="Image5.png"><br>出错原因是依赖插件rollup-plugin-uglify版本过高，查看当前版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm view rollup-plugin-uglify versions</span><br></pre></td></tr></table></figure></p>
+<p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image6.png" alt="Image6.png"><br>重新npm install特定的版本：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install rollup-plugin-uglify@3.0.0 --save</span><br></pre></td></tr></table></figure></p>
+<p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image7.png" alt="Image7.png"><br>这回就能构建成功了这样，myProject/lib/echarts.custom.min.js 就生成了。<br><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image8.png" alt="Image8.png"></p>
+<h5 id="6-我们可以创建-myProject-pie-html-来使用它："><a href="#6-我们可以创建-myProject-pie-html-来使用它：" class="headerlink" title="6.我们可以创建 myProject/pie.html 来使用它："></a>6.我们可以创建 myProject/pie.html 来使用它：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;&lt;html&gt;&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;myProject&lt;/title&gt;</span><br><span class="line">    &lt;!-- 引入 lib/echarts.custom.min.js --&gt;</span><br><span class="line">    &lt;script src=<span class="string">"lib/echarts.custom.min.js"</span>&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;</span><br><span class="line">    &lt;div id=<span class="string">"main"</span> style=<span class="string">"width: 600px;height:400px;"</span>&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        // 绘制图表。</span><br><span class="line">        echarts.init(document.getElementById(<span class="string">'main'</span>)).setOption(&#123;</span><br><span class="line">            series: &#123;</span><br><span class="line">                <span class="built_in">type</span>: <span class="string">'pie'</span>,</span><br><span class="line">                data: [</span><br><span class="line">                    &#123;name: <span class="string">'A'</span>, value: 1212&#125;,</span><br><span class="line">                    &#123;name: <span class="string">'B'</span>, value: 2323&#125;,</span><br><span class="line">                    &#123;name: <span class="string">'C'</span>, value: 1919&#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &lt;/script&gt;&lt;/body&gt;&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="7-运行程序，这样一个饼图就出来啦"><a href="#7-运行程序，这样一个饼图就出来啦" class="headerlink" title="7.运行程序，这样一个饼图就出来啦"></a>7.运行程序，这样一个饼图就出来啦</h5><p><img src="//lililich.work/2019/06/08/自定义构建Echarts问题描述/Image9.png" alt="Image9.png"></p>
 
     </div>
 </div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/06/21/Echarts的学习与使用/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Echarts的学习与使用
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/04/01/十大排序算法/">
+                十大排序算法
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
 
 
@@ -337,7 +385,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
@@ -378,12 +426,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
