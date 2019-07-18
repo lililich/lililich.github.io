@@ -233,7 +233,7 @@
 </li>
 <li><p>然后终端会出现下图“一问一答”模式，如图：<br><img src="//lililich.work/2019/07/18/Vue-CLI脚手架学习与搭建/Image19.png" alt="Image19.png"></p>
 </li>
-<li>这里有几个需要说明一下，没说明的直接回车选择默认就好，对项目没多大影响，很傻瓜式：<br>“Project name”：这个是项目名称，默认是输入时的那个名称，想改的话直接输入修改，也可以直接回车<br>“Install vue-router”:是否需要vue-router，默认选择使用，这样生成好的项目就会有相关的路由配置文件<br>“Use ESLint to lint your code”:是否使用ESLint，刚才说了我们这个项目需要使用所以也是直接回车，默认使用，这样会生成相关的ESLint配置<br>“Setup unit tests with Karma + Moch?”: 是否安装单元测试。由于我们现在还没有单元测试，所以这里选择的是”N”，而不是直接回车哦<br>“Setup e2e tests with Nightwatch”：是否安装e2e测试，这里我也同样选择的是“N”<br>这几个配置选择yes 或者 no 对于我们项目最大的影响就是，如果选择了yes 则生成的项目会自动有相关的配置，有一些loader我们就要配套下载。所以如果我们确定不用的话最好不要yes，要么下一步要下很多没有用的loader</li>
+<li>这里有几个需要说明一下，没说明的直接回车选择默认就好，对项目没多大影响，很傻瓜式：<br><code>Project name</code>：这个是项目名称，默认是输入时的那个名称，想改的话直接输入修改，也可以直接回车<br><code>Install vue-router</code>:是否需要vue-router，默认选择使用，这样生成好的项目就会有相关的路由配置文件<br><code>Use ESLint to lint your code</code>:是否使用ESLint，刚才说了我们这个项目需要使用所以也是直接回车，默认使用，这样会生成相关的ESLint配置<br><code>Setup unit tests with Karma + Moch?</code>: 是否安装单元测试。由于我们现在还没有单元测试，所以这里选择的是”N”，而不是直接回车哦<br><code>Setup e2e tests with Nightwatch</code>：是否安装e2e测试，这里我也同样选择的是“N”<br>这几个配置选择yes 或者 no 对于我们项目最大的影响就是，如果选择了yes 则生成的项目会自动有相关的配置，有一些loader我们就要配套下载。所以如果我们确定不用的话最好不要yes，要么下一步要下很多没有用的loader</li>
 <li><p>全部选择好回车就进行了生成项目，现在打开之前说过的<code>package.json</code>文件，找到<code>devDependencies</code> 和 <code>dependencies</code> ，在这里面可以删掉我们不需要的，其他就则都需要使用 <code>npm install</code> 下载安装，例如vue： <code>npm install vue –save-dev</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 依赖包</span><br></pre></td></tr></table></figure>
 </li>
@@ -249,10 +249,8 @@
 <h5 id="2-3项目目录结构"><a href="#2-3项目目录结构" class="headerlink" title="2.3项目目录结构"></a>2.3项目目录结构</h5></li>
 <li>通过vue-cli搭建一个vue项目，会自动生成一系列文件，而这些文件具体是怎样的结构、文件对应起什么作用，可以参考网上的解释，有了这个框架，接下来就可以根据自己的喜好来重新制定网站了<br><img src="//lililich.work/2019/07/18/Vue-CLI脚手架学习与搭建/Image21.png" alt="Image21.png"><h5 id="2-4修改端口号"><a href="#2-4修改端口号" class="headerlink" title="2.4修改端口号"></a>2.4修改端口号</h5></li>
 <li>vue-cli构建的项目，在控制台npm run dev启动后，默认的调试地址是8080端口的。但是大部分时候，我们都要并行几个项目开发，很有可能已经占用了8080端口，所以就涉及到如何去更改调试地址的端口号了</li>
-<li>修改路径：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2.x：config --&gt; index.js</span><br><span class="line">3.0+：node_modules--&gt;@vue--&gt;cli-service--&gt;lib--&gt;commands--&gt;build--&gt;serve.j</span><br></pre></td></tr></table></figure>
-</li>
+<li>修改路径：<br><code>2.x：config --&gt; index.js</code><br><code>3.0+：node_modules--&gt;@vue--&gt;cli-service--&gt;lib--&gt;commands--&gt;build--&gt;serve.j</code><br><img src="//lililich.work/2019/07/18/Vue-CLI脚手架学习与搭建/Image22.png" alt="Image22.png"></li>
 </ul>
-<p><img src="//lililich.work/2019/07/18/Vue-CLI脚手架学习与搭建/Image22.png" alt="Image22.png"></p>
 
     </div>
 </div>
@@ -423,7 +421,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -433,7 +431,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -464,12 +462,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
