@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>Vue_CLI脚手架学习与搭建 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Vue_CLI脚手架学习与搭建</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-06-18
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>今天我们来学习一下<a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">Vue CLI脚手架</a>，本文主要是总结<code>Vue CLI脚手架</code>搭建过程及总结遇到的问题，跟着我一起来学习吧~</p>
+<h4 id="1-node-js安装与环境配置"><a href="#1-node-js安装与环境配置" class="headerlink" title="1.node.js安装与环境配置"></a>1.node.js安装与环境配置</h4><h5 id="1-1-node-js安装"><a href="#1-1-node-js安装" class="headerlink" title="1.1 node.js安装"></a>1.1 node.js安装</h5><ul>
+<li>安装包下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
+<li><p>下载完成后，双击<code>node-v10.16.0-x64.msi</code>，开始安装Node.js，全程默认一直点击下一步（注意：安装地址最后不要默认选择C盘，选择D盘），安装完毕后点击finish结束安装进程，然后在VS code终端，依次输入命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果正确输出版本号，说明我们的<code>NodeJS</code>和<code>NPM</code>就安装好了，如下图所示：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image1.png" alt="Image1.png"></p>
+</li>
+<li>此处说明下：新版的Node.js已自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西<a id="more"></a>
+<h5 id="1-2-node-js环境配置"><a href="#1-2-node-js环境配置" class="headerlink" title="1.2 node.js环境配置"></a>1.2 node.js环境配置</h5></li>
+<li>说明：这里的环境配置主要配置的是npm安装的全局模块所在的路径，以及缓存cache的路径，之所以要配置，是因为以后在执行类似：<code>npm install express [-g]</code> （后面的可选参数-g，g代表global全局安装的意思）的安装语句时，会将安装的模块安装到<code>C:\Users\用户名\AppData\Roaming\npm</code>路径中，占C盘空间。</li>
+<li>例如：我希望将全模块所在路径和缓存路径放在我node.js安装的文件夹中，则在我安装的文件夹<code>D:\software\nodejs</code>下创建两个文件夹<code>node_global</code>及<code>node_cache</code>如下图：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image2.png" alt="Image2.png"></li>
+<li>创建完两个空文件夹之后，打开终端窗口，输入<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\software\nodejs\node_global"</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\software\nodejs\node_cache"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image3.png" alt="Image3.png"></p>
+<ul>
+<li>接下来设置环境变量，<code>控制面板</code>-<code>系统和安全</code>-<code>系统</code>-<code>高级系统设置</code>-<code>高级</code>-<code>环境变量</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image4.png" alt="Image4.png"></li>
+<li>进入环境变量对话框，在<code>系统变量</code>下新建<code>NODE_PATH</code>，输入<code>D:\software\nodejs\node_global\node_modules</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image5.png" alt="Image5.png"></li>
+<li>将<code>用户变量</code>下的<code>Path</code>修改为<code>D:\software\nodejs\node_global</code><br>修改前:<img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image6.png" alt="Image6.png"><br>修改后:<img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image7.png" alt="Image7.png"></li>
+<li>配置完后，安装个module测试下，我们就安装最常用的express模块，打开终端窗口，</li>
+<li>输入如下命令进行模块的全局安装：<code>npm install express -</code>     # -g是全局安装的意思<br>修改后<img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image8.png" alt="Image8.png"></li>
+<li>可以看到express被安装到我们刚刚设置的路径下，就说明配置成功<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image9.png" alt="Image9.png"></li>
+</ul>
+<h4 id="2-Vue-CLI安装与配置"><a href="#2-Vue-CLI安装与配置" class="headerlink" title="2.Vue CLI安装与配置"></a>2.Vue CLI安装与配置</h4><h5 id="2-1-Vue-CLI安装"><a href="#2-1-Vue-CLI安装" class="headerlink" title="2.1 Vue CLI安装"></a>2.1 Vue CLI安装</h5><ul>
+<li><p>可以使用下列任一命令安装这个新的包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你还可以用这个命令来检查其版本是否正确 (3.x)：<code>vue --version</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image10.png" alt="Image10.png"></p>
+<h5 id="2-2Vue-CLI项目搭建"><a href="#2-2Vue-CLI项目搭建" class="headerlink" title="2.2Vue CLI项目搭建"></a>2.2Vue CLI项目搭建</h5><h6 id="2-2-1Vue-CLI-gt-3时进行项目构建"><a href="#2-2-1Vue-CLI-gt-3时进行项目构建" class="headerlink" title="2.2.1Vue CLI &gt;= 3时进行项目构建"></a>2.2.1Vue CLI &gt;= 3时进行项目构建</h6></li>
+<li><p>我们安装的Vue CLI &gt;= 3，所以直接运行以下命令来创建一个新项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create hello-world</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>你会被提示选取一个 preset。你可以选默认的包含了基本的 Babel + ESLint 设置的 preset，也可以选“手动选择特性”来选取需要的特性，这个默认的设置非常适合快速创建一个新项目的原型，而手动设置则提供了更多的选项，它们是面向生产的项目更加需要的。<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image11.png" alt="Image11.png"></p>
+</li>
+<li>在项目创建的过程中，你也会被提示选择喜欢的包管理器或使用淘宝 npm 镜像源以更快地安装依赖。这些选择也将会存入 <code>~/.vuerc</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image12.png" alt="Image12.png"></li>
+<li>直接选取默认的设置就可以快速进行创建，就可以看到在安装各种插件，我们的项目正在下载搭建中：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image13.png" alt="Image13.png"></li>
+<li>再来试一个自定义安装的项目搭建，方向键上下移动，空格选中，Enter确定<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image14.png" alt="Image14.png"></li>
+<li><p>再根据刚刚的选择会弹出来以下选框，按照自己需求进行选择<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image15.png" alt="Image15.png"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">? Use <span class="built_in">history</span> mode <span class="keyword">for</span> router?      //是否使用<span class="built_in">history</span>模式的路由</span><br><span class="line">? Pick a CSS pre-processor      //CSS预处理器选择</span><br><span class="line">? Pick a linter / formatter config: (Use arrow keys)   //选择哪个ESLint自动化代码格式化检测</span><br><span class="line">? Pick additional lint features      //选择语法检查的时期</span><br><span class="line">? Where <span class="keyword">do</span> you prefer placing config <span class="keyword">for</span> Babel, PostCSS, ESLint, etc.?   //配置文件的存放位置</span><br><span class="line">? Save this as a preset <span class="keyword">for</span> future projects? (y/N)   //是否保存此预设(选择yes的话下次就可以不用进行配置)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出现以下界面说明项目搭建成功<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image16.png" alt="Image16.png"></p>
+</li>
+<li>安装后移动到目录 并启动，启动完毕后会提示我们浏览器访问地址<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> mydemo  </span><br><span class="line">npm run serve  // 这里和版本2不一样了。2是npm run dev 而版本3 是npm run serve</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image17.png" alt="Image17.png"></p>
+<ul>
+<li>浏览器访问：<code>http://localhost:8080/</code>，效果如下：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image18.png" alt="Image18.png"><h6 id="2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建"><a href="#2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建" class="headerlink" title="2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建"></a>2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建</h6></li>
+<li><p>Vue CLI &gt;= 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 <code>vue init</code> 功能，你可以全局安装一个桥接工具：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli-init    <span class="comment"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span></span><br><span class="line">vue init webpack mydemo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后终端会出现下图“一问一答”模式，如图：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image19.png" alt="Image19.png"></p>
+</li>
+<li>这里有几个需要说明一下，没说明的直接回车选择默认就好，对项目没多大影响，很傻瓜式：<br><code>Project name</code>：这个是项目名称，默认是输入时的那个名称，想改的话直接输入修改，也可以直接回车<br><code>Install vue-router</code>:是否需要vue-router，默认选择使用，这样生成好的项目就会有相关的路由配置文件<br><code>Use ESLint to lint your code</code>:是否使用ESLint，刚才说了我们这个项目需要使用所以也是直接回车，默认使用，这样会生成相关的ESLint配置<br><code>Setup unit tests with Karma + Moch?</code>: 是否安装单元测试。由于我们现在还没有单元测试，所以这里选择的是”N”，而不是直接回车哦<br><code>Setup e2e tests with Nightwatch</code>：是否安装e2e测试，这里我也同样选择的是“N”<br>这几个配置选择yes 或者 no 对于我们项目最大的影响就是，如果选择了yes 则生成的项目会自动有相关的配置，有一些loader我们就要配套下载。所以如果我们确定不用的话最好不要yes，要么下一步要下很多没有用的loader</li>
+<li><p>全部选择好回车就进行了生成项目，现在打开之前说过的<code>package.json</code>文件，找到<code>devDependencies</code> 和 <code>dependencies</code> ，在这里面可以删掉我们不需要的，其他就则都需要使用 <code>npm install</code> 下载安装，例如vue： <code>npm install vue –save-dev</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install 依赖包</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行mydemo，输入命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在浏览器输入地址<code>http://localhost:8080</code>，看到页面，说明大功告成，一个Vue项目已经初始化完成</p>
+<h6 id="2-2-3使用图形化界面进行项目构建"><a href="#2-2-3使用图形化界面进行项目构建" class="headerlink" title="2.2.3使用图形化界面进行项目构建"></a>2.2.3使用图形化界面进行项目构建</h6></li>
+<li><p>你也可以通过 vue ui 命令以图形化界面创建和管理项目：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue ui</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>上述命令会打开一个浏览器窗口，并以图形化界面将你引导至项目创建的流程。<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image20.png" alt="Image20.png"></p>
+<h5 id="2-3项目目录结构"><a href="#2-3项目目录结构" class="headerlink" title="2.3项目目录结构"></a>2.3项目目录结构</h5></li>
+<li>通过vue-cli搭建一个vue项目，会自动生成一系列文件，而这些文件具体是怎样的结构、文件对应起什么作用，可以参考网上的解释，有了这个框架，接下来就可以根据自己的喜好来重新制定网站了<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image21.png" alt="Image21.png"><h5 id="2-4修改端口号"><a href="#2-4修改端口号" class="headerlink" title="2.4修改端口号"></a>2.4修改端口号</h5></li>
+<li>vue-cli构建的项目，在控制台npm run dev启动后，默认的调试地址是8080端口的。但是大部分时候，我们都要并行几个项目开发，很有可能已经占用了8080端口，所以就涉及到如何去更改调试地址的端口号了</li>
+<li>修改路径：<br><code>2.x：config --&gt; index.js</code><br><code>3.0+：node_modules--&gt;@vue--&gt;cli-service--&gt;lib--&gt;commands--&gt;build--&gt;serve.j</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image22.png" alt="Image22.png"></li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/06/15/自定义构建Echarts问题描述/">
+                自定义构建Echarts问题描述
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>8</span>Article</a>
+        <a class="count tags"><span>6</span>Tags</a>
+        <a class="count categories"><span>4</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/18/Vue-CLI脚手架学习与搭建/" title="Vue_CLI脚手架学习与搭建">Vue_CLI脚手架学习与搭建</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/15/自定义构建Echarts问题描述/" title="自定义构建Echarts问题描述">自定义构建Echarts问题描述</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/08/Echarts的学习与使用/" title="Echarts的学习与使用">Echarts的学习与使用</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/04/01/十大排序算法/" title="十大排序算法">十大排序算法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/03/31/Markdown基本语法/" title="Markdown基本语法">Markdown基本语法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
