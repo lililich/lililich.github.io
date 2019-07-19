@@ -204,8 +204,8 @@
 </li>
 <li><p>nowrap（默认）：不换行 <img src="//lililich.work/2019/04/25/flex布局排布/Image3.png" alt="Image3.png"></p>
 </li>
-<li>wrap：换行，第一行在上方 <img src="//lililich.work/2019/04/25/flex布局排布/Image4.png" alt="Image4.png"></li>
-<li>wrap-reverse：换行，第一行在下方  <img src="//lililich.work/2019/04/25/flex布局排布/Image5.png" alt="Image5.png"><h6 id="3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap"><a href="#3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap" class="headerlink" title="3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap"></a>3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">flex-flow: &amp;lt;flex-direction&amp;gt; &amp;lt;flex-wrap&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>wrap：换行，第一行在上方 <img src="//lililich.work/2019/04/25/flex布局排布/Image4.jpg" alt="Image4.jpg"></li>
+<li>wrap-reverse：换行，第一行在下方  <img src="//lililich.work/2019/04/25/flex布局排布/Image5.jpg" alt="Image5.jpg"><h6 id="3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap"><a href="#3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap" class="headerlink" title="3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap"></a>3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">flex-flow: &amp;lt;flex-direction&amp;gt; &amp;lt;flex-wrap&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h6 id="3-4-justify-content属性定义了项目在主轴上的对齐方式"><a href="#3-4-justify-content属性定义了项目在主轴上的对齐方式" class="headerlink" title="3.4 justify-content属性定义了项目在主轴上的对齐方式"></a>3.4 justify-content属性定义了项目在主轴上的对齐方式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;   </span><br><span class="line">justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -250,7 +250,7 @@
 <li>元素1放大为：<code>50px + 3 * 10 = 80px</code><br>所以如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。当弹性容器的宽度正好等于元素宽度总和，无多余宽度，此时无论flex-grow是什么值都不会生效<h6 id="4-3-flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。"><a href="#4-3-flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。" class="headerlink" title="4.3 flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。"></a>4.3 flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    flex-shrink: &amp;lt;number&amp;gt;; /* default 1 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p><img src="//lililich.work/2019/04/25/flex布局排布/Image15.png" alt="Image15.png"></p>
+<p><img src="//lililich.work/2019/04/25/flex布局排布/Image15.jpg" alt="Image15.jpg"></p>
 <h6 id="元素收缩的计算方法"><a href="#元素收缩的计算方法" class="headerlink" title="元素收缩的计算方法"></a>元素收缩的计算方法</h6><p>来看下以下场景，弹性容器<code>#container</code>宽度是200px，一共有三个弹性元素，宽度分别是50px、100px、120px。 真的是等比缩小(每个元素各减去70/3的宽度)吗？</p>
 <ul>
 <li>弹性元素1：50px→37.03px</li>
@@ -269,14 +269,14 @@
 <h6 id="4-4-flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main-size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。"><a href="#4-4-flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main-size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。" class="headerlink" title="4.4 flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。"></a>4.4 flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex-basis: &amp;lt;length&amp;gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
 <h6 id="与width-height的区别："><a href="#与width-height的区别：" class="headerlink" title="与width/height的区别："></a>与width/height的区别：</h6><ul>
-<li>(1)两者都为0：width: 0 —— 完全没显示；flex-basis: 0 —— 根据内容撑开宽度<br><img src="//lililich.work/2019/04/25/flex布局排布/Image16.png" alt="Image16.png"></li>
-<li>(2) 两者非0： 数值相同时两者等效； 同时设置，flex-basis优先级高<br><img src="//lililich.work/2019/04/25/flex布局排布/Image17.png" alt="Image17.png"></li>
-<li>(3) flex-basis为auto：flex-basis为auto时，如设置了width则元素尺寸由width决定；没有设置则由内容决定<br><img src="//lililich.work/2019/04/25/flex布局排布/Image18.png" alt="Image18.png"></li>
-<li>(4) flex-basis == 主轴上的尺寸 != width：将主轴方向改为：上→下，此时主轴上的尺寸是元素的height，flex-basis == height<br><img src="//lililich.work/2019/04/25/flex布局排布/Image19.png" alt="Image19.png"><h6 id="4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。"><a href="#4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。" class="headerlink" title="4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。"></a>4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex: none | [ &amp;lt;&apos;flex-grow&apos;&amp;gt; &amp;lt;&apos;flex-shrink&apos;&amp;gt;? || &amp;lt;&apos;flex-basis&apos;&amp;gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<li>(1)两者都为0：width: 0 —— 完全没显示；flex-basis: 0 —— 根据内容撑开宽度<br><img src="//lililich.work/2019/04/25/flex布局排布/Image16.jpg" alt="Image16.jpg"></li>
+<li>(2) 两者非0： 数值相同时两者等效； 同时设置，flex-basis优先级高<br><img src="//lililich.work/2019/04/25/flex布局排布/Image17.jpg" alt="Image17.jpg"></li>
+<li>(3) flex-basis为auto：flex-basis为auto时，如设置了width则元素尺寸由width决定；没有设置则由内容决定<br><img src="//lililich.work/2019/04/25/flex布局排布/Image18.jpg" alt="Image18.jpg"></li>
+<li>(4) flex-basis == 主轴上的尺寸 != width：将主轴方向改为：上→下，此时主轴上的尺寸是元素的height，flex-basis == height<br><img src="//lililich.work/2019/04/25/flex布局排布/Image19.jpg" alt="Image19.jpg"><h6 id="4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。"><a href="#4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。" class="headerlink" title="4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。"></a>4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex: none | [ &amp;lt;&apos;flex-grow&apos;&amp;gt; &amp;lt;&apos;flex-shrink&apos;&amp;gt;? || &amp;lt;&apos;flex-basis&apos;&amp;gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h6 id="一些简写："><a href="#一些简写：" class="headerlink" title="一些简写："></a>一些简写：</h6><p><code>flex: 1</code> = <code>flex: 1 1 0%</code><br><code>flex: 2</code> = <code>flex: 2 1 0%</code><br><code>flex: auto</code> = <code>flex: 1 1 auto;</code><br><code>flex: none</code> = <code>flex: 0 0 auto;</code> // 常用于固定尺寸 不伸缩</p>
-<h6 id="flex-1-和-flex-auto-的区别"><a href="#flex-1-和-flex-auto-的区别" class="headerlink" title="flex:1 和 flex:auto 的区别"></a>flex:1 和 flex:auto 的区别</h6><p>其实可以归结于<code>flex-basis:0</code>和<code>flex-basis:auto</code>的区别。<br><code>flex-basis</code>是指定初始尺寸，当设置为0时（绝对弹性元素），此时相当于告诉<code>flex-grow</code>和<code>flex-shrink</code>在伸缩的时候不需要考虑我的尺寸；相反当设置为<code>auto</code>时（相对弹性元素），此时则需要在伸缩时将元素尺寸纳入考虑。因此从下图（转自W3C）可以看到绝对弹性元素如果<code>flex-grow</code>值是一样的话，那么他们的尺寸一定是一样的。<img src="//lililich.work/2019/04/25/flex布局排布/Image20.png" alt="Image20.png"><br>两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h6 id="flex-1-和-flex-auto-的区别"><a href="#flex-1-和-flex-auto-的区别" class="headerlink" title="flex:1 和 flex:auto 的区别"></a>flex:1 和 flex:auto 的区别</h6><p>其实可以归结于<code>flex-basis:0</code>和<code>flex-basis:auto</code>的区别。<br><code>flex-basis</code>是指定初始尺寸，当设置为0时（绝对弹性元素），此时相当于告诉<code>flex-grow</code>和<code>flex-shrink</code>在伸缩的时候不需要考虑我的尺寸；相反当设置为<code>auto</code>时（相对弹性元素），此时则需要在伸缩时将元素尺寸纳入考虑。因此从下图（转自W3C）可以看到绝对弹性元素如果<code>flex-grow</code>值是一样的话，那么他们的尺寸一定是一样的。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image20.jpg" alt="Image20.jpg"><br>两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
 <h6 id="4-6-align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。"><a href="#4-6-align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。" class="headerlink" title="4.6 align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。"></a>4.6 align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。<br>更多内容参考：<br><a href="https://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/flex-grammar.html</a><br><a href="https://www.cnblogs.com/qcloud1001/p/9848619.html" target="_blank" rel="noopener">https://www.cnblogs.com/qcloud1001/p/9848619.html</a><br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a></p>
 
@@ -456,7 +456,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -471,7 +471,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -502,7 +502,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
