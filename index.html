@@ -161,6 +161,35 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-使用flex布局来搭建基本的页面布局">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/06/19/使用flex布局来搭建基本的页面布局/">使用flex布局来搭建基本的页面布局</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-06-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;h-page-container&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;div class=&quot;main&quot;&gt;</span><br><span class="line">                &lt;div class=&quot;header&quot;&gt;</span><br><span class="line">                    &lt;p&gt;标题栏&lt;/p&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div class=&quot;content&quot;&gt;</span><br><span class="line">                    &lt;div class=&quot;left&quot;&gt;</span><br><span class="line">                        &lt;p&gt;左侧栏&lt;/p&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                    &lt;div class=&quot;box&quot;&gt;</span><br><span class="line">                        &lt;div class=&quot;column&quot;&gt;</span><br><span class="line">                            &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">                                &lt;p&gt;内容一&lt;/p&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                            &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">                                &lt;p&gt;内容二&lt;/p&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                        &lt;div class=&quot;column&quot;&gt;</span><br><span class="line">                            &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">                                &lt;p&gt;内容三&lt;/p&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                            &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">                                &lt;p&gt;内容四&lt;/p&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">            &lt;div class=&quot;right&quot;&gt;</span><br><span class="line">                &lt;p&gt;右侧栏&lt;/p&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/h-page-container&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot; scoped&gt;</span><br><span class="line">.container &#123;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex; /* Safari */</span><br><span class="line">    height: 600px;</span><br><span class="line">    flex: 1</span><br><span class="line">&#125;</span><br><span class="line">.main &#123;</span><br><span class="line">    flex: 6;</span><br><span class="line">    border: 2px solid red;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex; /* Safari */</span><br><span class="line">    flex-direction: column</span><br><span class="line">&#125;</span><br><span class="line">.right &#123;</span><br><span class="line">    flex: 2;</span><br><span class="line">    border: 2px solid red</span><br><span class="line">&#125;</span><br><span class="line">.header &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    border: 2px solid red</span><br><span class="line">&#125;</span><br><span class="line">.content &#123;</span><br><span class="line">    flex: 9;</span><br><span class="line">    border: 2px solid red;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex /* Safari */</span><br><span class="line">&#125;</span><br><span class="line">.left &#123;</span><br><span class="line">    flex: 2;</span><br><span class="line">    border: 2px solid red</span><br><span class="line">&#125;</span><br><span class="line">.box &#123;</span><br><span class="line">    flex: 8;</span><br><span class="line">    border: 2px solid red;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex /* Safari */</span><br><span class="line">&#125;</span><br><span class="line">.column &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    border: 2px solid red;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex; /* Safari */</span><br><span class="line">    flex-direction: column</span><br><span class="line">&#125;</span><br><span class="line">.item &#123;</span><br><span class="line">    flex: 1;</span><br><span class="line">    border: 2px solid red;</span><br><span class="line">    display: flex;</span><br><span class="line">    display: -webkit-flex /* Safari */</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import EchartsPie from &apos;@/components/EchartsPie.vue&apos;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &apos;Recognition&apos;,</span><br><span class="line">    props: &#123;</span><br><span class="line">        breadcrumbObj: &#123;</span><br><span class="line">            type: Object,</span><br><span class="line">            default: () =&gt; null</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    components: &#123;</span><br><span class="line">        EchartsPie</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h5 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h5><p><img src="//lililich.work/2019/06/19/使用flex布局来搭建基本的页面布局/image1.png" alt="Image1.png"><br>接下来就可以插入各种组件来填充我们的页面了！<br><img src="//lililich.work/2019/06/19/使用flex布局来搭建基本的页面布局/image2.png" alt="Image2.png"></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/06/19/使用flex布局来搭建基本的页面布局/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Vue_CLI脚手架学习与搭建">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/06/18/Vue-CLI脚手架学习与搭建/">Vue_CLI脚手架学习与搭建</a></h1>
@@ -297,6 +326,132 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-flex布局排布">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/25/flex布局排布/">flex布局排布</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-25
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>作为前端必备知识点，flex为我们页面布局提供了灵活性，今天我们来学一下flex布局吧~</p>
+<h5 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h5><p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局，行内元素也可以使用Flex布局， Webkit内核的浏览器，必须加上-webkit前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;    </span><br><span class="line">display: -webkit-flex; /* Safari */    </span><br><span class="line">display: flex;&#125;注意：设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</span><br></pre></td></tr></table></figure></p>
+<h5 id="二、Flex布局基本概念"><a href="#二、Flex布局基本概念" class="headerlink" title="二、Flex布局基本概念"></a>二、Flex布局基本概念</h5><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image1.png" alt="Image1.png"></p>
+<ul>
+<li>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。</li>
+<li>主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；</li>
+<li>交叉轴的开始位置叫做cross start，结束位置叫做cross end。</li>
+<li>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。<h5 id="三、容器的属性以下6个属性设置在容器上："><a href="#三、容器的属性以下6个属性设置在容器上：" class="headerlink" title="三、容器的属性以下6个属性设置在容器上："></a>三、容器的属性以下6个属性设置在容器上：</h5></li>
+<li>flex-direction：决定主轴的方向</li>
+<li>flex-wrap：定义如果一条轴线排不下，如何换行</li>
+<li>flex-flow：是flex-direction属性和flex-wrap属性的简写形式</li>
+<li>justify-content：定义了项目在主轴上的对齐方式</li>
+<li>align-items：定义项目在交叉轴上如何对齐</li>
+<li><p>align-content：定义了多根轴线的对齐方式。</p>
+<h6 id="3-1-flex-direction属性决定主轴的方向（即项目的排列方向）"><a href="#3-1-flex-direction属性决定主轴的方向（即项目的排列方向）" class="headerlink" title="3.1 flex-direction属性决定主轴的方向（即项目的排列方向）"></a>3.1 flex-direction属性决定主轴的方向（即项目的排列方向）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;    </span><br><span class="line">flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>column：主轴为垂直方向，起点在上沿。</p>
+</li>
+<li>column-reverse：主轴为垂直方向，起点在下沿。</li>
+<li><p>row（默认值）：主轴为水平方向，起点在左端。row-reverse：主轴为水平方向，起点在右端。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image2.png" alt="Image2.png"></p>
+<h6 id="3-2-flex-wrap属性决定如何换行"><a href="#3-2-flex-wrap属性决定如何换行" class="headerlink" title="3.2 flex-wrap属性决定如何换行"></a>3.2 flex-wrap属性决定如何换行</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;    </span><br><span class="line">flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>nowrap（默认）：不换行 <img src="//lililich.work/2019/04/25/flex布局排布/Image3.png" alt="Image3.png"></p>
+</li>
+<li>wrap：换行，第一行在上方 <img src="//lililich.work/2019/04/25/flex布局排布/Image4.png" alt="Image4.png"></li>
+<li>wrap-reverse：换行，第一行在下方  <img src="//lililich.work/2019/04/25/flex布局排布/Image5.png" alt="Image5.png"><h6 id="3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap"><a href="#3-3-flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row-nowrap" class="headerlink" title="3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap"></a>3.3 flex-flow属性是flex-direction和flex-wrap的简写形式，默认值为row nowrap</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;</span><br><span class="line">flex-flow: &amp;lt;flex-direction&amp;gt; &amp;lt;flex-wrap&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="3-4-justify-content属性定义了项目在主轴上的对齐方式"><a href="#3-4-justify-content属性定义了项目在主轴上的对齐方式" class="headerlink" title="3.4 justify-content属性定义了项目在主轴上的对齐方式"></a>3.4 justify-content属性定义了项目在主轴上的对齐方式</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;   </span><br><span class="line">justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>flex-start（默认值）：左对齐        <img src="//lililich.work/2019/04/25/flex布局排布/Image6.png" alt="Image6.png"></li>
+<li>flex-end：右对齐        <img src="//lililich.work/2019/04/25/flex布局排布/Image7.png" alt="Image7.png"></li>
+<li>center： 居中        <img src="//lililich.work/2019/04/25/flex布局排布/Image8.png" alt="Image8.png"></li>
+<li>space-between：两端对齐，项目之间的间隔都相等。        <img src="//lililich.work/2019/04/25/flex布局排布/Image9.png" alt="Image9.png"></li>
+<li><p>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image10.png" alt="Image10.png"></p>
+<h6 id="3-5-align-items属性定义项目在交叉轴上如何对齐"><a href="#3-5-align-items属性定义项目在交叉轴上如何对齐" class="headerlink" title="3.5 align-items属性定义项目在交叉轴上如何对齐"></a>3.5 align-items属性定义项目在交叉轴上如何对齐</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flex-start：交叉轴的起点对齐。</p>
+</li>
+<li>flex-end：交叉轴的终点对齐。</li>
+<li>center：交叉轴的中点对齐。</li>
+<li>baseline: 项目的第一行文字的基线对齐。</li>
+<li><p>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image11.png" alt="Image11.png"></p>
+<h6 id="3-6-align-content属性定义了多根轴线的对齐方式，会以多行作为整体进行对齐，容器必须开启换行，若项目只有一根轴线，该属性不起作用"><a href="#3-6-align-content属性定义了多根轴线的对齐方式，会以多行作为整体进行对齐，容器必须开启换行，若项目只有一根轴线，该属性不起作用" class="headerlink" title="3.6 align-content属性定义了多根轴线的对齐方式，会以多行作为整体进行对齐，容器必须开启换行，若项目只有一根轴线，该属性不起作用"></a>3.6 align-content属性定义了多根轴线的对齐方式，会以多行作为整体进行对齐，容器必须开启换行，若项目只有一根轴线，该属性不起作用</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.box &#123;    align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>flex-start：与交叉轴的起点对齐。</p>
+</li>
+<li>flex-end：与交叉轴的终点对齐。</li>
+<li>center：与交叉轴的中点对齐。</li>
+<li>space-between：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
+<li>space-around：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
+<li>stretch（默认值）：轴线占满整个交叉轴。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image12.png" alt="Image12.png"><h5 id="四、项目的属性"><a href="#四、项目的属性" class="headerlink" title="四、项目的属性"></a>四、项目的属性</h5>以下6个属性设置在项目上：</li>
+<li>order：定义项目的排列顺序</li>
+<li>flex-grow：定义项目的放大比例</li>
+<li>flex-shrink：定义了项目的缩小比例</li>
+<li>flex-basis：定义了在分配多余空间之前，项目占据的主轴空间（main size）</li>
+<li>flex：是flex-grow, flex-shrink 和 flex-basis的简写</li>
+<li>align-self：允许单个项目有与其他项目不一样的对齐方式<h6 id="4-1-order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0；值相同时，以dom中元素排列为准"><a href="#4-1-order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0；值相同时，以dom中元素排列为准" class="headerlink" title="4.1 order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0；值相同时，以dom中元素排列为准"></a>4.1 order属性定义项目的排列顺序。数值越小，排列越靠前，默认为0；值相同时，以dom中元素排列为准</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">order: &amp;lt;integer&amp;gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="//lililich.work/2019/04/25/flex布局排布/Image13.png" alt="Image13.png"></p>
+<h6 id="4-2-flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。"><a href="#4-2-flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。" class="headerlink" title="4.2 flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。"></a>4.2 flex-grow属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex-grow: &amp;lt;number&amp;gt;; /* default 0 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="//lililich.work/2019/04/25/flex布局排布/Image14.png" alt="Image14.png"></p>
+<h6 id="元素放大的计算"><a href="#元素放大的计算" class="headerlink" title="元素放大的计算"></a>元素放大的计算</h6><p>方法放大的计算方法将元素大小纳入考虑。<br>仅仅按<code>flex-grow</code>声明的份数算出每个需分配多少，叠加到原来的尺寸上。</p>
+<ul>
+<li>容器剩余宽度：<code>50px</code></li>
+<li>分成每份：<code>50px / (3+2) = 10px</code></li>
+<li>元素1放大为：<code>50px + 3 * 10 = 80px</code><br>所以如果所有项目的flex-grow属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的flex-grow属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。当弹性容器的宽度正好等于元素宽度总和，无多余宽度，此时无论flex-grow是什么值都不会生效<h6 id="4-3-flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。"><a href="#4-3-flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。" class="headerlink" title="4.3 flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。"></a>4.3 flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    flex-shrink: &amp;lt;number&amp;gt;; /* default 1 */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="//lililich.work/2019/04/25/flex布局排布/Image15.png" alt="Image15.png"></p>
+<h6 id="元素收缩的计算方法"><a href="#元素收缩的计算方法" class="headerlink" title="元素收缩的计算方法"></a>元素收缩的计算方法</h6><p>来看下以下场景，弹性容器<code>#container</code>宽度是200px，一共有三个弹性元素，宽度分别是50px、100px、120px。 真的是等比缩小(每个元素各减去70/3的宽度)吗？</p>
+<ul>
+<li>弹性元素1：50px→37.03px</li>
+<li>弹性元素2：100px→74.08px</li>
+<li>弹性元素3：120px→88.89px</li>
+</ul>
+<p>先抛结论：<code>flex-shrink: 1</code>并非严格等比缩小，它还会考虑弹性元素本身的大小。</p>
+<ul>
+<li>容器剩余宽度：<code>-70px</code></li>
+<li>缩小因子的分母：<code>1*50 + 1*100 + 1*120 = 270</code> (1为各元素flex-shrink的值)</li>
+<li>元素1的缩小因子：<code>1*50/270</code></li>
+<li>元素1的缩小宽度为缩小因子乘于容器剩余宽度：<code>1*50/270 * (-70)</code></li>
+<li>元素1最后则缩小为：<code>50px + (1*50/270 *(-70)) = 37.03px</code></li>
+</ul>
+<p>加入弹性元素本身大小作为计算方法的考虑因素，主要是为了避免将一些本身宽度较小的元素在收缩之后宽度变为0的情况出现。所以如果所有项目的flex-shrink属性都为1，当空间不足时，都将等比例缩小。如果一个项目的flex-shrink属性为0，其他项目都为1，则空间不足时，前者不缩小。负值对该属性无效。</p>
+<h6 id="4-4-flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main-size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。"><a href="#4-4-flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main-size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。" class="headerlink" title="4.4 flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。"></a>4.4 flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex-basis: &amp;lt;length&amp;gt; | auto; /* default auto */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。</p>
+<h6 id="与width-height的区别："><a href="#与width-height的区别：" class="headerlink" title="与width/height的区别："></a>与width/height的区别：</h6><ul>
+<li>(1)两者都为0：width: 0 —— 完全没显示；flex-basis: 0 —— 根据内容撑开宽度<br><img src="//lililich.work/2019/04/25/flex布局排布/Image16.png" alt="Image16.png"></li>
+<li>(2) 两者非0： 数值相同时两者等效； 同时设置，flex-basis优先级高<br><img src="//lililich.work/2019/04/25/flex布局排布/Image17.png" alt="Image17.png"></li>
+<li>(3) flex-basis为auto：flex-basis为auto时，如设置了width则元素尺寸由width决定；没有设置则由内容决定<br><img src="//lililich.work/2019/04/25/flex布局排布/Image18.png" alt="Image18.png"></li>
+<li>(4) flex-basis == 主轴上的尺寸 != width：将主轴方向改为：上→下，此时主轴上的尺寸是元素的height，flex-basis == height<br><img src="//lililich.work/2019/04/25/flex布局排布/Image19.png" alt="Image19.png"><h6 id="4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。"><a href="#4-5-flex属性是flex-grow-flex-shrink-和-flex-basis的简写，默认值为0-1-auto。后两个属性可选。" class="headerlink" title="4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。"></a>4.5 flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">flex: none | [ &amp;lt;&apos;flex-grow&apos;&amp;gt; &amp;lt;&apos;flex-shrink&apos;&amp;gt;? || &amp;lt;&apos;flex-basis&apos;&amp;gt; ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h6 id="一些简写："><a href="#一些简写：" class="headerlink" title="一些简写："></a>一些简写：</h6><p><code>flex: 1</code> = <code>flex: 1 1 0%</code><br><code>flex: 2</code> = <code>flex: 2 1 0%</code><br><code>flex: auto</code> = <code>flex: 1 1 auto;</code><br><code>flex: none</code> = <code>flex: 0 0 auto;</code> // 常用于固定尺寸 不伸缩</p>
+<h6 id="flex-1-和-flex-auto-的区别"><a href="#flex-1-和-flex-auto-的区别" class="headerlink" title="flex:1 和 flex:auto 的区别"></a>flex:1 和 flex:auto 的区别</h6><p>其实可以归结于<code>flex-basis:0</code>和<code>flex-basis:auto</code>的区别。<br><code>flex-basis</code>是指定初始尺寸，当设置为0时（绝对弹性元素），此时相当于告诉<code>flex-grow</code>和<code>flex-shrink</code>在伸缩的时候不需要考虑我的尺寸；相反当设置为<code>auto</code>时（相对弹性元素），此时则需要在伸缩时将元素尺寸纳入考虑。因此从下图（转自W3C）可以看到绝对弹性元素如果<code>flex-grow</code>值是一样的话，那么他们的尺寸一定是一样的。<img src="//lililich.work/2019/04/25/flex布局排布/Image20.png" alt="Image20.png"><br>两个快捷值：auto (1 1 auto) 和 none (0 0 auto)。<br>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
+<h6 id="4-6-align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。"><a href="#4-6-align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。" class="headerlink" title="4.6 align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。"></a>4.6 align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.item &#123;    </span><br><span class="line">align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。<br>更多内容参考：<br><a href="https://www.runoob.com/w3cnote/flex-grammar.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/flex-grammar.html</a><br><a href="https://www.cnblogs.com/qcloud1001/p/9848619.html" target="_blank" rel="noopener">https://www.cnblogs.com/qcloud1001/p/9848619.html</a><br><a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2015/07/flex-examples.html</a></p>
+
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/25/flex布局排布/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-十大排序算法">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/04/01/十大排序算法/">十大排序算法</a></h1>
@@ -424,36 +579,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Hexo基本语法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/20/hello-world/">Hexo基本语法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-20
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>让我们来学习下 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 的基本语法。你也可以进入 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> 来进行系统的学习。 如果在运用Hexo的时候出现疑问，你可以去 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> 上进行提问或者你可以上 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a> 上寻求帮助。</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span>     //新建文章</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server               //启动服务预览</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/20/hello-world/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -470,11 +595,17 @@
             </li>
             
         
+            
+            <li class="cube-pagination-index">
+                <a href="/page/2">2</a>
+            </li>
+            
+        
     
 
     
-    <li class="cube-pagination-next disabled">
-        <span>Next »</span>
+    <li class="cube-pagination-next">
+        <a href="/page/2/">Next »</a>
     </li>
     
 </ul>
@@ -517,7 +648,7 @@
     
     
     <div class="count">
-        <a class="count articles"><span>9</span>Article</a>
+        <a class="count articles"><span>11</span>Article</a>
         <a class="count tags"><span>6</span>Tags</a>
         <a class="count categories"><span>4</span>Categories</a>
     </div>
@@ -556,7 +687,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/18/Vue-CLI脚手架学习与搭建/" title="Vue_CLI脚手架学习与搭建">Vue_CLI脚手架学习与搭建</a>
+                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
                 </p>
             </div>
             
@@ -570,7 +701,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/15/自定义构建Echarts问题描述/" title="自定义构建Echarts问题描述">自定义构建Echarts问题描述</a>
+                    <a href="/2019/06/18/Vue-CLI脚手架学习与搭建/" title="Vue_CLI脚手架学习与搭建">Vue_CLI脚手架学习与搭建</a>
                 </p>
             </div>
         </li>
@@ -583,7 +714,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/08/Echarts的学习与使用/" title="Echarts的学习与使用">Echarts的学习与使用</a>
+                    <a href="/2019/06/15/自定义构建Echarts问题描述/" title="自定义构建Echarts问题描述">自定义构建Echarts问题描述</a>
                 </p>
             </div>
         </li>
@@ -596,7 +727,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/05/31/VScode快捷键及常用插件/" title="VScode快捷键及常用插件">VScode快捷键及常用插件</a>
+                    <a href="/2019/06/08/Echarts的学习与使用/" title="Echarts的学习与使用">Echarts的学习与使用</a>
                 </p>
             </div>
         </li>
@@ -609,7 +740,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/04/01/十大排序算法/" title="十大排序算法">十大排序算法</a>
+                    <a href="/2019/05/31/VScode快捷键及常用插件/" title="VScode快捷键及常用插件">VScode快捷键及常用插件</a>
                 </p>
             </div>
         </li>
@@ -637,7 +768,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -683,7 +814,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
