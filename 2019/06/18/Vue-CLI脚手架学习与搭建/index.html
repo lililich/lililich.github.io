@@ -188,7 +188,9 @@
 <li><p>如果正确输出版本号，说明我们的<code>NodeJS</code>和<code>NPM</code>就安装好了，如下图所示：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image1.png" alt="Image1.png"></p>
 </li>
 <li>此处说明下：新版的Node.js已自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西<a id="more"></a>
-<h5 id="1-2-node-js环境配置"><a href="#1-2-node-js环境配置" class="headerlink" title="1.2 node.js环境配置"></a>1.2 node.js环境配置</h5></li>
+</li>
+</ul>
+<h5 id="1-2-node-js环境配置"><a href="#1-2-node-js环境配置" class="headerlink" title="1.2 node.js环境配置"></a>1.2 node.js环境配置</h5><ul>
 <li>说明：这里的环境配置主要配置的是npm安装的全局模块所在的路径，以及缓存cache的路径，之所以要配置，是因为以后在执行类似：<code>npm install express [-g]</code> （后面的可选参数-g，g代表global全局安装的意思）的安装语句时，会将安装的模块安装到<code>C:\Users\用户名\AppData\Roaming\npm</code>路径中，占C盘空间。</li>
 <li>例如：我希望将全模块所在路径和缓存路径放在我node.js安装的文件夹中，则在我安装的文件夹<code>D:\software\nodejs</code>下创建两个文件夹<code>node_global</code>及<code>node_cache</code>如下图：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image2.png" alt="Image2.png"></li>
 <li>创建完两个空文件夹之后，打开终端窗口，输入<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config <span class="built_in">set</span> prefix <span class="string">"D:\software\nodejs\node_global"</span></span><br><span class="line">npm config <span class="built_in">set</span> cache <span class="string">"D:\software\nodejs\node_cache"</span></span><br></pre></td></tr></table></figure>
@@ -208,7 +210,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line">yarn global add @vue/cli</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>你还可以用这个命令来检查其版本是否正确 (3.x)：<code>vue --version</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image10.png" alt="Image10.png"></p>
-<h5 id="2-2Vue-CLI项目搭建"><a href="#2-2Vue-CLI项目搭建" class="headerlink" title="2.2Vue CLI项目搭建"></a>2.2Vue CLI项目搭建</h5><h6 id="2-2-1Vue-CLI-gt-3时进行项目构建"><a href="#2-2-1Vue-CLI-gt-3时进行项目构建" class="headerlink" title="2.2.1Vue CLI &gt;= 3时进行项目构建"></a>2.2.1Vue CLI &gt;= 3时进行项目构建</h6></li>
+</li>
+</ul>
+<h5 id="2-2Vue-CLI项目搭建"><a href="#2-2Vue-CLI项目搭建" class="headerlink" title="2.2Vue CLI项目搭建"></a>2.2Vue CLI项目搭建</h5><h6 id="2-2-1Vue-CLI-gt-3时进行项目构建"><a href="#2-2-1Vue-CLI-gt-3时进行项目构建" class="headerlink" title="2.2.1Vue CLI &gt;= 3时进行项目构建"></a>2.2.1Vue CLI &gt;= 3时进行项目构建</h6><ul>
 <li><p>我们安装的Vue CLI &gt;= 3，所以直接运行以下命令来创建一个新项目：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create hello-world</span><br></pre></td></tr></table></figure>
 </li>
@@ -227,7 +231,9 @@
 </ul>
 <p><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image17.png" alt="Image17.png"></p>
 <ul>
-<li>浏览器访问：<code>http://localhost:8080/</code>，效果如下：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image18.png" alt="Image18.png"><h6 id="2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建"><a href="#2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建" class="headerlink" title="2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建"></a>2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建</h6></li>
+<li>浏览器访问：<code>http://localhost:8080/</code>，效果如下：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image18.png" alt="Image18.png"></li>
+</ul>
+<h6 id="2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建"><a href="#2-2-2Vue-CLI-lt-3时，拉取-2-x-模板-旧版本-进行项目构建" class="headerlink" title="2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建"></a>2.2.2Vue CLI &lt; 3时，拉取 2.x 模板 (旧版本)进行项目构建</h6><ul>
 <li><p>Vue CLI &gt;= 3 和旧版使用了相同的 vue 命令，所以 Vue CLI 2 (vue-cli) 被覆盖了。如果你仍然需要使用旧版本的 <code>vue init</code> 功能，你可以全局安装一个桥接工具：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli-init    <span class="comment"># `vue init` 的运行效果将会跟 `vue-cli@2.x` 相同</span></span><br><span class="line">vue init webpack mydemo</span><br></pre></td></tr></table></figure>
 </li>
@@ -241,13 +247,19 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在浏览器输入地址<code>http://localhost:8080</code>，看到页面，说明大功告成，一个Vue项目已经初始化完成</p>
-<h6 id="2-2-3使用图形化界面进行项目构建"><a href="#2-2-3使用图形化界面进行项目构建" class="headerlink" title="2.2.3使用图形化界面进行项目构建"></a>2.2.3使用图形化界面进行项目构建</h6></li>
+</li>
+</ul>
+<h6 id="2-2-3使用图形化界面进行项目构建"><a href="#2-2-3使用图形化界面进行项目构建" class="headerlink" title="2.2.3使用图形化界面进行项目构建"></a>2.2.3使用图形化界面进行项目构建</h6><ul>
 <li><p>你也可以通过 vue ui 命令以图形化界面创建和管理项目：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue ui</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>上述命令会打开一个浏览器窗口，并以图形化界面将你引导至项目创建的流程。<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image20.png" alt="Image20.png"></p>
-<h5 id="2-3项目目录结构"><a href="#2-3项目目录结构" class="headerlink" title="2.3项目目录结构"></a>2.3项目目录结构</h5></li>
-<li>通过vue-cli搭建一个vue项目，会自动生成一系列文件，而这些文件具体是怎样的结构、文件对应起什么作用，可以参考网上的解释，有了这个框架，接下来就可以根据自己的喜好来重新制定网站了<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image21.png" alt="Image21.png"><h5 id="2-4修改端口号"><a href="#2-4修改端口号" class="headerlink" title="2.4修改端口号"></a>2.4修改端口号</h5></li>
+</li>
+</ul>
+<h5 id="2-3项目目录结构"><a href="#2-3项目目录结构" class="headerlink" title="2.3项目目录结构"></a>2.3项目目录结构</h5><ul>
+<li>通过vue-cli搭建一个vue项目，会自动生成一系列文件，而这些文件具体是怎样的结构、文件对应起什么作用，可以参考网上的解释，有了这个框架，接下来就可以根据自己的喜好来重新制定网站了<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image21.png" alt="Image21.png"></li>
+</ul>
+<h5 id="2-4修改端口号"><a href="#2-4修改端口号" class="headerlink" title="2.4修改端口号"></a>2.4修改端口号</h5><ul>
 <li>vue-cli构建的项目，在控制台npm run dev启动后，默认的调试地址是8080端口的。但是大部分时候，我们都要并行几个项目开发，很有可能已经占用了8080端口，所以就涉及到如何去更改调试地址的端口号了</li>
 <li>修改路径：<br><code>2.x：config --&gt; index.js</code><br><code>3.0+：node_modules--&gt;@vue--&gt;cli-service--&gt;lib--&gt;commands--&gt;build--&gt;serve.j</code><br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image22.png" alt="Image22.png"></li>
 </ul>
@@ -428,7 +440,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -438,7 +450,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -459,12 +471,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -474,17 +486,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
