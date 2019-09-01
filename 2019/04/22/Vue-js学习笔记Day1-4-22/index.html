@@ -10,7 +10,7 @@
     
     
     
-    <title>Lililich&#39;s Blog</title>
+    <title>Vue.js学习笔记Day1-4.22 | Lililich&#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -160,226 +160,28 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            
-<div class="cube-excerpt" id="cube-excerpt-使用flex布局来搭建基本的页面布局">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/19/使用flex布局来搭建基本的页面布局/">使用flex布局来搭建基本的页面布局</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-19
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
+            <div class="cube-article">
+    <h1 class="title">Vue.js学习笔记Day1-4.22</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-04-22
         </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>我们的目的是为了实现这样的布局：<br><img src="//lililich.work/2019/06/19/使用flex布局来搭建基本的页面布局/Image1.png" alt="Image1.png"><br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/19/使用flex布局来搭建基本的页面布局/">Read More</a>
-    </footer>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+    <a href="/tags/Vue/">#Vue</a>
+    
 </div>
-
-<div class="cube-excerpt" id="cube-excerpt-Vue_CLI脚手架学习与搭建">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/18/Vue-CLI脚手架学习与搭建/">Vue_CLI脚手架学习与搭建</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-18
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
         
-        
-           <p>今天我们来学习一下<a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">Vue CLI脚手架</a>，本文主要是总结<code>Vue CLI脚手架</code>搭建过程及总结遇到的问题，跟着我一起来学习吧~</p>
-<h4 id="1-node-js安装与环境配置"><a href="#1-node-js安装与环境配置" class="headerlink" title="1.node.js安装与环境配置"></a>1.node.js安装与环境配置</h4><h5 id="1-1-node-js安装"><a href="#1-1-node-js安装" class="headerlink" title="1.1 node.js安装"></a>1.1 node.js安装</h5><ul>
-<li>安装包下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
-<li><p>下载完成后，双击<code>node-v10.16.0-x64.msi</code>，开始安装Node.js，全程默认一直点击下一步（注意：安装地址最后不要默认选择C盘，选择D盘），安装完毕后点击finish结束安装进程，然后在VS code终端，依次输入命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果正确输出版本号，说明我们的<code>NodeJS</code>和<code>NPM</code>就安装好了，如下图所示：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image1.png" alt="Image1.png"></p>
-</li>
-<li>此处说明下：新版的Node.js已自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/18/Vue-CLI脚手架学习与搭建/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-自定义构建Echarts问题描述">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/15/自定义构建Echarts问题描述/">自定义构建Echarts问题描述</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>今天我们来学习一下<code>Echarts</code>，本文主要是总结自定义构建Echarts遇到的问题，跟着我一起来学习吧~</p>
-<h5 id="1-使用命令行，创建自己的工程："><a href="#1-使用命令行，创建自己的工程：" class="headerlink" title="1.使用命令行，创建自己的工程："></a>1.使用命令行，创建自己的工程：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir myProject</span><br><span class="line"><span class="built_in">cd</span> myProject</span><br></pre></td></tr></table></figure>
-<h5 id="2-在-myProject-目录下使用命令行，初始化工程的-npm-环境并安装-echarts（这里前提是您已经安装了-npm）："><a href="#2-在-myProject-目录下使用命令行，初始化工程的-npm-环境并安装-echarts（这里前提是您已经安装了-npm）：" class="headerlink" title="2.在 myProject 目录下使用命令行，初始化工程的 npm 环境并安装 echarts（这里前提是您已经安装了 npm）："></a>2.在 myProject 目录下使用命令行，初始化工程的 npm 环境并安装 echarts（这里前提是您已经安装了 npm）：</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
-<p><img src="//lililich.work/2019/06/15/自定义构建Echarts问题描述/Image1.png" alt="Image1.png"><br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/15/自定义构建Echarts问题描述/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Echarts的学习与使用">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/08/Echarts的学习与使用/">Echarts的学习与使用</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-08
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>今天我们来学习一下<code>Echarts</code>，ECharts是一个纯JavaScript图表库，底层依赖于轻量级的Canvas类库ZRender，基于BSD开原协议，是一款非常优秀的<code>可视化前端框架</code>，本文基于<code>Vue CLI脚手架</code>，来实现Echarts的引用，跟着我一起来学习吧~</p>
-<h4 id="一-引入一个简单的图表"><a href="#一-引入一个简单的图表" class="headerlink" title="一.引入一个简单的图表"></a>一.引入一个简单的图表</h4><h5 id="首先npm安装Echarts"><a href="#首先npm安装Echarts" class="headerlink" title="首先npm安装Echarts"></a>首先npm安装Echarts</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
-<h5 id="接下来打开public-gt-src-gt-main-js来引入echarts"><a href="#接下来打开public-gt-src-gt-main-js来引入echarts" class="headerlink" title="接下来打开public-&gt;src-&gt;main.js来引入echarts"></a>接下来打开<code>public</code>-&gt;<code>src</code>-&gt;<code>main.js</code>来引入echarts</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import myCharts from <span class="string">'./comm/js/myCharts.js'</span></span><br><span class="line">Vue.use(myCharts)</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/08/Echarts的学习与使用/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-VScode快捷键及常用插件">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/05/31/VScode快捷键及常用插件/">VScode快捷键及常用插件</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-05-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h5 id="VScode快捷键："><a href="#VScode快捷键：" class="headerlink" title="VScode快捷键："></a>VScode快捷键：</h5><p><a href="https://blog.csdn.net/hypon2016/article/details/80831266" target="_blank" rel="noopener">https://blog.csdn.net/hypon2016/article/details/80831266</a></p>
-<h5 id="VScode快捷键：-1"><a href="#VScode快捷键：-1" class="headerlink" title="VScode快捷键："></a>VScode快捷键：</h5><ul>
-<li>Auto Close Tag ：自动闭合 HTML/XML 标签</li>
-<li>Auto Rename Tag ：自动重命名成对的 HTML/XML 标签</li>
-<li>Babel ES6/ES7 ： 添加 ES6/ES7 语法的颜色提醒</li>
-<li>Canvas Snippets ：Canvas 代码片段提示</li>
-<li>Bracket Pair Colorizer ：多层括号颜色匹配</li>
-<li>CSS peek ：可直接在 HTML 中查看 class、id 对应的 CSS 样式，并可以直接跳转</li>
-<li>Document This ： JSDoc comments for both TypeScript and JavaScript</li>
-<li>filesize ：编辑器左下角显示文件大小</li>
-<li>git history、gitlens ： git 使用必备，能够图形化显示 git 历史、编辑人物等</li>
-<li>HTML CSS support ： HTML、CSS 快捷操作</li>
-<li>HTML Snippets ： HTML 代码片段</li>
-<li>Htmltagwrap ： 选中代码快速增加 html 标签 - alt + w</li>
-<li>Image Preview ： 代码中直接显示图片缩略图</li>
-<li>Import Cost ：显示 import、require 引用的包的大小</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/05/31/VScode快捷键及常用插件/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-flex布局排布">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/04/25/flex布局排布/">flex布局排布</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-04-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>作为前端必备知识点，flex为我们页面布局提供了灵活性，今天我们来学一下flex布局吧~</p>
-<h5 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h5><p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局，行内元素也可以使用Flex布局， Webkit内核的浏览器，必须加上-webkit前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;    </span><br><span class="line">display: -webkit-flex; /* Safari */    </span><br><span class="line">display: flex;&#125;注意：设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</span><br></pre></td></tr></table></figure></p>
-<h5 id="二、Flex布局基本概念"><a href="#二、Flex布局基本概念" class="headerlink" title="二、Flex布局基本概念"></a>二、Flex布局基本概念</h5><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br><img src="//lililich.work/2019/04/25/flex布局排布/Image1.png" alt="Image1.png"></p>
-<ul>
-<li>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。</li>
-<li>主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；</li>
-<li>交叉轴的开始位置叫做cross start，结束位置叫做cross end。</li>
-<li>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/04/25/flex布局排布/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day1-4.22">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/04/22/Vue-js学习笔记Day1-4-22/">Vue.js学习笔记Day1-4.22</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-04-22
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="Vue-js学习笔记Day1-4-22"><a href="#Vue-js学习笔记Day1-4-22" class="headerlink" title="Vue.js学习笔记Day1-4.22"></a>Vue.js学习笔记Day1-4.22</h3><p>今天开始Vue框架的学习吧～</p>
+        <h3 id="Vue-js学习笔记Day1-4-22"><a href="#Vue-js学习笔记Day1-4-22" class="headerlink" title="Vue.js学习笔记Day1-4.22"></a>Vue.js学习笔记Day1-4.22</h3><p>今天开始Vue框架的学习吧～</p>
 <h4 id="一、三大主流框架："><a href="#一、三大主流框架：" class="headerlink" title="一、三大主流框架："></a>一、三大主流框架：</h4><ul>
 <li><code>Vue是目前最火的前端框架</code>，用来构建用户界面，只关注与视图层，容易上手且方便与与第三方库整合，它由前谷歌员工Evan You创建，被阿里巴巴，GitLab，百度使用，并受到全球开发人员和设计师的赞赏。</li>
 <li><code>React是最流行的前端框架</code>，React由facebook维护，React被Facebook，Uber，Netflix，Twitter，Udemy，Paypal，Reddit，Tumblr，Walmart 等使用。（React除了开发网页还可以开发App，vue借助于weex也可以开发手机App）</li>
@@ -511,141 +313,35 @@
 </li>
 </ul>
 
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/04/22/Vue-js学习笔记Day1-4-22/">Read More</a>
-    </footer>
+    </div>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-十大排序算法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/04/01/十大排序算法/">十大排序算法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-04-01
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/排序/" class="cube-excerpt-tag-link">#排序</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/04/25/flex布局排布/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                flex布局排布
+            </a>
+        </li>
         
         
-           <p>今天我们来学习一下排序算法，排序算法是《数据结构与算法》中最基本的算法之一，虽说学过这门课，但几种排序总是讲述不清，今天来做一个系统的学习归纳，跟着我一起来学习吧~</p>
-<p>排序算法可以分为内部排序和外部排序，<strong>内部排序</strong>是数据记录在内存中进行排序，<strong>外部排序</strong>是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的十大内部排序算法：<code>冒泡排序</code>、<code>选择排序</code>、<code>插入排序</code>、<code>希尔排序</code>、<code>归并排序</code>、<code>快速排序</code>、<code>堆排序</code>、<code>计数排序</code>、<code>桶排序</code>、<code>基数排序</code>。用一张图概括：<br><img src="//lililich.work/2019/04/01/十大排序算法/十大排序算法.png" alt><br></p>
+        <li class="next">
+            <a href="/2019/04/01/十大排序算法/">
+                十大排序算法
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
         
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/04/01/十大排序算法/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Markdown基本语法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/31/Markdown基本语法/">Markdown基本语法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
-                
-                <a href="/tags/Markdown/" class="cube-excerpt-tag-link">#Markdown</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>进行完博客搭建，让我们来学习一下怎么写博客吧，学习一下Markdown的基本语法~<br>本站只是对Markdown语法进行简要叙述，如果想要加深一步学习，可以去<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown</a>官网上进行学习哦~</p>
-<p><strong> 什么是Markdown？ </strong></p>
-<p>Markdown 的目标是实现<strong>「易读易写」</strong>。<br>Markdown 语法的目标是：<strong>成为一种适用于网络的书写语言</strong>。<br>Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<em>强调</em>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
-<p><strong> markdown的优点： </strong></p>
-<ul>
-<li>语法简单</li>
-<li>更专注内容而非排版，排版只是为了更清楚的展现内容</li>
-<li>md轻松转换html及pdf，网络友好</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/31/Markdown基本语法/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Git基本用法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/28/Git基本用法/">Git基本用法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-28
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Github/" class="cube-excerpt-tag-link">#Github</a>
-                
-                <a href="/tags/Git/" class="cube-excerpt-tag-link">#Git</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>Github是一个远程仓库，上传下载文件都需要运用到Git命令，让我们学习一下怎么运用Git吧~<br>本站只是对Github进行简要概括，方便运用时查找，如果想要加深一步学习，可以去<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰Git教学网站</a>上进行学习哦~</p>
-<p><strong> 什么是Git命令？ </strong></p>
-<p>Git是目前世界上最先进的分布式版本控制系统（没有之一）。<br>Git有什么特点？简单来说就是：高端大气上档次！</p>
-<p><strong> 集中式版本控制系统(如CVS和SVN) </strong>：版本库是集中存放在中央服务器的，工作时从版本库下载，修改后重新上传版本库，完整的版本库保存在中央服务器，集中式版本控制系统最大的毛病就是必须联网才能工作。<br><strong> 分布式管理系统(如Git) </strong>：每个人电脑里都会有完整的版本库，只推送修改即可，不必联网。<br>Git的优势不单是不必联网这么简单，Git极其强大的分支管理，把SVN等远远抛在了后面。<br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/28/Git基本用法/">Read More</a>
-    </footer>
+    </ul>
 </div>
 
 
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
 
-<ul class="cube-pagination cube-pagination-6">
-    
-    <li class="cube-pagination-prev disabled">
-        <span>« Prev</span>
-    </li>
-    
-    
-        
-            
-            <li class="cube-pagination-index disabled">
-                <span>1</span>
-            </li>
-            
-        
-            
-            <li class="cube-pagination-index">
-                <a href="/page/2">2</a>
-            </li>
-            
-        
-    
 
-    
-    <li class="cube-pagination-next">
-        <a href="/page/2/">Next »</a>
-    </li>
-    
-</ul>
 
-<!--其他组件后续添加-->
         </div>
         <div class="cube-right">
             
@@ -798,7 +494,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
@@ -808,7 +504,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -824,12 +520,12 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -839,12 +535,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -854,7 +550,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
