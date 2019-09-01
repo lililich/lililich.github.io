@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>Vue.js学习笔记Day2-4.24 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Vue.js学习笔记Day2-4.24</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-04-24
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+    <a href="/tags/Vue/">#Vue</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="Vue-js学习笔记Day2-4-24"><a href="#Vue-js学习笔记Day2-4-24" class="headerlink" title="Vue.js学习笔记Day2-4.24"></a>Vue.js学习笔记Day2-4.24</h3><p>今日主要学习内容：</p>
+<ul>
+<li>品牌列表案例；</li>
+<li>全局过滤器和私有过滤器；</li>
+<li>自定义按键修饰符；</li>
+<li>自定义指令；</li>
+<li>Vue实例的生命周期；</li>
+<li>vue-resource 实现 get, post, jsonp请求；</li>
+<li>配置本地数据库和数据接口API；<br>今天开始Vue框架的学习吧～<a id="more"></a>
+</li>
+</ul>
+<h4 id="一、品牌列表案例"><a href="#一、品牌列表案例" class="headerlink" title="一、品牌列表案例"></a>一、品牌列表案例</h4><ol>
+<li><p>1.x 版本中的filterBy指令，在2.x中已经被废除：<br><a href="https://v1-cn.vuejs.org/api/#filterBy" target="_blank" rel="noopener">filterBy - 指令</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr v-<span class="keyword">for</span>=<span class="string">"item in list | filterBy searchName in 'name'"</span>&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.id &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;&#123;&#123; item.name &#125;&#125;&lt;/</span>td&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.ctime &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;</span></span><br><span class="line"><span class="regexp">&lt;a href="#" @click.prevent="del(item.id)"&gt;删除&lt;/</span>a&gt;</span><br><span class="line">&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>tr&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在2.x版本中<a href="https://cn.vuejs.org/v2/guide/list.html#显示过滤-排序结果" target="_blank" rel="noopener">手动实现筛选的方式</a>：</p>
+</li>
+</ol>
+<ul>
+<li><p>筛选框绑定到 VM 实例中的 <code>searchName</code> 属性：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;hr&gt; 输入筛选名称：</span><br><span class="line">&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"searchName"</span>&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在使用 <code>v-for</code> 指令循环每一行数据的时候，不再直接 <code>item in list</code>，而是 <code>in</code> 一个 过滤的methods 方法，同时，把过滤条件<code>searchName</code>传递进去：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;tbody&gt;</span><br><span class="line">&lt;tr v-<span class="keyword">for</span>=<span class="string">"item in search(searchName)"</span>&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.id &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;&#123;&#123; item.name &#125;&#125;&lt;/</span>td&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.ctime &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;</span></span><br><span class="line"><span class="regexp">&lt;a href="#" @click.prevent="del(item.id)"&gt;删除&lt;/</span>a&gt;</span><br><span class="line">&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>tr&gt;</span><br><span class="line">&lt;<span class="regexp">/tbody&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>search</code> 过滤方法中，使用 数组的 <code>filter</code> 方法进行过滤：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search(name) &#123;</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">this</span>.list.filter(<span class="function"><span class="params">x</span> =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> x.name.indexOf(name) != <span class="number">-1</span>;</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="二、过滤器"><a href="#二、过滤器" class="headerlink" title="二、过滤器"></a>二、过滤器</h4><p><code>概念</code>：Vue.js 允许你自定义过滤器，可被用作一些常见的文本格式化。过滤器可以用在两个地方：mustache 插值和 v-bind 表达式。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符指示；</p>
+<h5 id="1-私有过滤器HTML元素："><a href="#1-私有过滤器HTML元素：" class="headerlink" title="1.私有过滤器HTML元素："></a><code>1.私有过滤器HTML元素：</code></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;&#123;&#123;item.ctime | dataFormat()&#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br></pre></td></tr></table></figure>
+<p>私有 filters 定义方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">filters:&#123; </span><br><span class="line">    <span class="comment">//定义私有过滤器，过滤器有两个条件，【过滤器名称和处理函数】</span></span><br><span class="line">    <span class="comment">//注意：当有局部和全局两个名称相同的过滤器时候，会以就近原则进行调用，即：局部过滤器优先于全局过滤器被调用！</span></span><br><span class="line">    dateFormat:<span class="function"><span class="keyword">function</span>(<span class="params">dateStr,pattern = <span class="string">''</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="built_in">Date</span>(dateStr);</span><br><span class="line">        <span class="comment">// yy-mm-dd</span></span><br><span class="line">        <span class="keyword">var</span> y = dt.getFullYear();</span><br><span class="line">        <span class="keyword">var</span> m = (dt.getMonth()+<span class="number">1</span>).toString().padStart(<span class="number">2</span>,<span class="string">'0'</span>);</span><br><span class="line">        <span class="keyword">var</span> d = dt.getDate().toString().padStart(<span class="number">2</span>,<span class="string">'0'</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (pattern &amp;&amp; pattern.toLowerCase() === <span class="string">'yyyy-mm-dd'</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;y&#125;</span>-<span class="subst">$&#123;m&#125;</span>-<span class="subst">$&#123;d&#125;</span>`</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日</span></span><br><span class="line">        <span class="comment">// 否则，就返回 年-月-日 时：分：秒</span></span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> hh = dt.getHours().toString().padStart(<span class="number">2</span>,<span class="string">'0'</span>);</span><br><span class="line">            <span class="keyword">var</span> mm = dt.getMinutes().toString().padStart(<span class="number">2</span>,<span class="string">'0'</span>);</span><br><span class="line">            <span class="keyword">var</span> ss = dt.getSeconds().toString().padStart(<span class="number">2</span>,<span class="string">'0'</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;y&#125;</span>-<span class="subst">$&#123;m&#125;</span>-<span class="subst">$&#123;d&#125;</span> <span class="subst">$&#123;hh&#125;</span>:<span class="subst">$&#123;mm&#125;</span>:<span class="subst">$&#123;ss&#125;</span>~~~`</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用ES6中的字符串新方法 String.prototype.padStart(maxLength, fillString=’’) 或 String.prototype.padEnd(maxLength, fillString=’’)来填充字符串,例如.toString().padStart(2,’0’)用于不满两位数字则向前补零。</p>
+<h5 id="2-全局过滤器HTML元素："><a href="#2-全局过滤器HTML元素：" class="headerlink" title="2.全局过滤器HTML元素："></a><code>2.全局过滤器HTML元素：</code></h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span>&gt;</span>&#123;&#123;item.ctime | dateFormat()&#125;&#125;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>全局 filters 定义方式：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建一个全局的过滤器，进行事件的格式化</span></span><br><span class="line">Vue.filter(<span class="string">'dateFormat'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">dateStr,pattern</span>)</span>&#123;</span><br><span class="line"><span class="comment">// 根据给定的字符串得到特定时间</span></span><br><span class="line">    <span class="keyword">var</span> dt = <span class="keyword">new</span> <span class="built_in">Date</span>(dateStr);</span><br><span class="line">    <span class="comment">// yy-mm-dd</span></span><br><span class="line">    <span class="keyword">var</span> y = dt.getFullYear();</span><br><span class="line">    <span class="keyword">var</span> m = dt.getMonth()+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">var</span> d = dt.getDate();</span><br><span class="line">    <span class="comment">// return y + '-' + m + '-' + d;</span></span><br><span class="line">    <span class="comment">// return `$&#123;y&#125;-$&#123;m&#125;-$&#123;d&#125;`;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pattern &amp;&amp; pattern.toLowerCase() === <span class="string">'yyyy-mm-dd'</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;y&#125;</span>-<span class="subst">$&#123;m&#125;</span>-<span class="subst">$&#123;d&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 如果 传递进来的字符串类型，转为小写之后，等于 yyyy-mm-dd，那么就返回 年-月-日</span></span><br><span class="line">    <span class="comment">// 否则，就返回 年-月-日 时：分：秒</span></span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> hh = dt.getHours();</span><br><span class="line">        <span class="keyword">var</span> mm = dt.getMinutes();</span><br><span class="line">        <span class="keyword">var</span> ss = dt.getSeconds();</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;y&#125;</span>-<span class="subst">$&#123;m&#125;</span>-<span class="subst">$&#123;d&#125;</span> <span class="subst">$&#123;hh&#125;</span>:<span class="subst">$&#123;mm&#125;</span>:<span class="subst">$&#123;ss&#125;</span>`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>注意：当有局部和全局两个名称相同的过滤器时候，会以就近原则进行调用，即：局部过滤器优先于全局过滤器被调用！</p>
+<h5 id="Vue调试工具vue-devtools的安装步骤和使用"><a href="#Vue调试工具vue-devtools的安装步骤和使用" class="headerlink" title="Vue调试工具vue-devtools的安装步骤和使用"></a>Vue调试工具<code>vue-devtools</code>的安装步骤和使用</h5><p><a href="https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd?hl=zh-CN" target="_blank" rel="noopener">Vue.js devtools - 翻墙安装方式 - 推荐</a></p>
+<h4 id="三、自定义按键修饰符"><a href="#三、自定义按键修饰符" class="headerlink" title="三、自定义按键修饰符"></a>三、自定义按键修饰符</h4><p><strong><code>1.直接使用按键码的别名</code></strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"name"</span> @<span class="attr">keyup.enter</span>=<span class="string">"add"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><img src="//lililich.work/2019/04/24/Vue-js学习笔记Day2-4-24/Image1.png" alt="Image1.png"></p>
+<p><strong><code>2.使用js里面的键盘事件对应的键码</code></strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"name"</span> @<span class="attr">keyup.13</span>=<span class="string">"add"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>js里面的键盘事件对应的键码：<a href>http://www.cnblogs.com/wuhua1/p/6686237.html</a></p>
+<p><strong><code>3.通过Vue.config.keyCodes.名称 = 按键值来自定义案件修饰符的别名：</code></strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"name"</span> @<span class="attr">keyup.f2</span>=<span class="string">"add"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>自定义键盘修饰符<br>Vue.config.keyCodes.f2 = 113;</p>
+<h5 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h5><ol>
+<li><a href="https://v1-cn.vuejs.org/" target="_blank" rel="noopener">vue.js 1.x 文档</a></li>
+<li><a href="https://cn.vuejs.org/" target="_blank" rel="noopener">vue.js 2.x 文档</a></li>
+<li><a href="http://www.css88.com/archives/7715" target="_blank" rel="noopener">String.prototype.padStart(maxLength, fillString)</a></li>
+<li><a href="http://www.cnblogs.com/wuhua1/p/6686237.html" target="_blank" rel="noopener">js 里面的键盘事件对应的键码</a></li>
+<li><a href="http://www.cnblogs.com/kidney/p/6052935.html" target="_blank" rel="noopener">Vue.js双向绑定的实现原理</a></li>
+</ol>
+<h4 id="四、自定义指令"><a href="#四、自定义指令" class="headerlink" title="四、自定义指令"></a>四、自定义指令</h4><p><strong><code>1.传统使用DOM方法进行定义指令</code></strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"keywords"</span> <span class="attr">id</span>=<span class="string">"search"</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>在<script></script>中使用DOM方法进行定义<br>document.getElementById(‘search’).focus();</p>
+<p><strong><code>2.使用 vue.directive()定义全局的指令 ，其中参数一是指令的名称</code></strong><br>使用 vue.directive()定义全局的指令注意：<br>在定义的时候，指令的名称前面，不需要加v-前缀，但在调用的时候，必须在指令名称前加上v-前缀进行调用<br>参数二是一个对象，在这个对象身上，有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作<br><img src="//lililich.work/2019/04/24/Vue-js学习笔记Day2-4-24/Image2.png" alt="Image2.png"></p>
+<p><strong><code>1. 和JS行为有关的操作，最好在inserted中去执行，防止JS行为不生效，如v-focus</code></strong><br>在每一个函数中，第一个参数永远是el，表示被绑定了指令的那个元素，这个el参数，是一个原生的JS对象（DOM对象）<br>在元素刚绑定指令的时候，还没有插入到DOM中去，这时候调用focus方法没有作用<br>因为一个元素只有插入DOM之后，才能获得焦点，所以要用inserted</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"keywords"</span> <span class="attr">id</span>=<span class="string">"search"</span> <span class="attr">v-focus</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Vue.directive(<span class="string">'focus'</span>,&#123;</span><br><span class="line">    bind:<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123; <span class="comment">//每当指令绑定到元素上时，会立即执行这个bind指令，只执行一次</span></span><br><span class="line">    <span class="comment">//el.focus()</span></span><br><span class="line">    &#125;,</span><br><span class="line">    inserted: <span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123; <span class="comment">//表示元素插入到DOM中的时候，会执行inserted函数，只触发一次</span></span><br><span class="line">        el.focus() ;</span><br><span class="line">    &#125;,</span><br><span class="line">    updated: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">//当vnode更新的时候会执行updated，可能会触发多次</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong><code>2. 和样式相关的操作，可以放在bind中去执行，如v-color</code></strong><br>样式：只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有了一个内联的样式<br>将来元素肯定会显示到页面中，这时候浏览器的渲染引擎必然会解析样式，应用给这个元素<br><img src="//lililich.work/2019/04/24/Vue-js学习笔记Day2-4-24/Image3.png" alt="Image3.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">v-model</span>=<span class="string">"keywords"</span> <span class="attr">id</span>=<span class="string">"search"</span> <span class="attr">v-focus</span> <span class="attr">v-color</span>=<span class="string">"'blue'"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置一个定义字体颜色的指令</span></span><br><span class="line">Vue.directive(<span class="string">'color'</span> ,&#123;</span><br><span class="line">    bind:<span class="function"><span class="keyword">function</span>(<span class="params">el,binding</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//el.style.color='red';</span></span><br><span class="line">        <span class="built_in">console</span>.log(binding.name); <span class="comment">//输出的是样式名color</span></span><br><span class="line">        <span class="built_in">console</span>.log(binding.value); <span class="comment">//输出的是计算后的参数blue</span></span><br><span class="line">        <span class="built_in">console</span>.log(binding.expression); <span class="comment">//输出的是原本的参数'blue'</span></span><br><span class="line">        el.style.color = binding.value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong><code>3. 函数简写</code></strong><br>在很多时候，你可能想在 bind 和 update 时触发相同行为，而不关心其它的钩子。比如这样写:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">v-color</span>=<span class="string">"'pink'"</span> <span class="attr">v-fontweight</span>=<span class="string">"900"</span> <span class="attr">v-fontsize</span>=<span class="string">"'30px'"</span>&gt;</span>&#123;&#123; dt |dateFormat() &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">directives:&#123; <span class="comment">//定义私有过滤器，定义在vm2实例中</span></span><br><span class="line">    <span class="string">'fontweight'</span>:&#123;</span><br><span class="line">        bind: <span class="function"><span class="keyword">function</span>(<span class="params">el,binding</span>)</span>&#123;</span><br><span class="line">        el.style.fontWeight = binding.value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">'fontsize'</span>:<span class="function"><span class="keyword">function</span>(<span class="params">el,binding</span>)</span>&#123;</span><br><span class="line">        el.style.fontSize= <span class="built_in">parseInt</span>(binding.value) + <span class="string">'px'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">parseInt</span>(binding.value) + <span class="string">'px'</span>;用于解析输入的字符串，将<span class="string">'30px'</span>解析成数字<span class="number">30</span>，增强代码的健壮性</span><br></pre></td></tr></table></figure>
+<h4 id="五、Vue实例的生命周期"><a href="#五、Vue实例的生命周期" class="headerlink" title="五、Vue实例的生命周期"></a>五、Vue实例的生命周期</h4><p><code>什么是生命周期</code>：从Vue实例创建、运行、到销毁期间，总是伴随着各种各样的事件，这些事件，统称为生命周期！<br><code>生命周期钩子</code>：就是生命周期事件的别名而已；<br><code>生命周期钩子 = 生命周期函数 = 生命周期事件</code><br><img src="//lililich.work/2019/04/24/Vue-js学习笔记Day2-4-24/Image4.png" alt="Image4.png"></p>
+<p><strong><code>主要的生命周期函数分类：</code></strong></p>
+<ul>
+<li><code>创建期间的生命周期函数：</code><ul>
+<li><strong>beforeCreate</strong>：实例刚在内存中被创建出来，此时，还没有初始化好 data 和 methods 属性</li>
+<li><strong>created</strong>：实例已经在内存中创建OK，此时 data 和 methods 已经创建OK，此时还没有开始 编译模板</li>
+<li><strong>beforeMount</strong>：此时已经完成了模板的编译，但是还没有挂载到页面中</li>
+<li><strong>mounted</strong>：此时，已经将编译好的模板，挂载到了页面指定的容器中显示</li>
+</ul>
+</li>
+<li><code>运行期间的生命周期函数：</code><ul>
+<li><strong>beforeUpdate</strong>：状态更新之前执行此函数， 此时 data 中的状态值是最新的，但是界面上显示的 数据还是旧的，因为此时还没有开始重新渲染DOM节点</li>
+<li><strong>updated</strong>：实例更新完毕之后调用此函数，此时 data 中的状态值 和 界面上显示的数据，都已经完成了更新，界面已经被重新渲染好了！</li>
+</ul>
+</li>
+<li><code>销毁期间的生命周期函数：</code><ul>
+<li><strong>beforeDestroy</strong>：实例销毁之前调用。在这一步，实例仍然完全可用。</li>
+<li><strong>destroyed</strong>：Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。</li>
+</ul>
+</li>
+</ul>
+<h4 id="六、vue-resource-实现-get-post-jsonp请求"><a href="#六、vue-resource-实现-get-post-jsonp请求" class="headerlink" title="六、vue-resource 实现 get, post, jsonp请求"></a>六、vue-resource 实现 get, post, jsonp请求</h4><ul>
+<li>除了 vue-resource 之外，还可以使用 axios 的第三方包实现数据的请求</li>
+<li>之前的学习中，如何发起数据请求？</li>
+<li><strong>常见的数据请求类型？ get post jsonp</strong></li>
+<li><p>测试的URL请求资源地址：<br>get请求地址： <a href="http://vue.studyit.io/api/getlunbo" target="_blank" rel="noopener">http://vue.studyit.io/api/getlunbo</a><br>post请求地址：<a href="http://vue.studyit.io/api/post" target="_blank" rel="noopener">http://vue.studyit.io/api/post</a><br>jsonp请求地址：<a href="http://vue.studyit.io/api/jsonp" target="_blank" rel="noopener">http://vue.studyit.io/api/jsonp</a></p>
+</li>
+<li><p><code>JSONP的实现原理</code><br>由于浏览器的安全性限制，不允许AJAX访问 协议不同、域名不同、端口号不同的 数据接口，浏览器认为这种访问不安全；<br>可以通过动态创建script标签的形式，把script标签的src属性，指向数据接口的地址，因为script标签不存在跨域限制，这种数据获取方式，称作JSONP（注意：根据JSONP的实现原理，知晓，JSONP只支持Get请求）；<br><strong>具体实现过程：</strong></p>
+<ul>
+<li>先在客户端定义一个回调方法，预定义对数据的操作；</li>
+<li>再把这个回调方法的名称，通过URL传参的形式，提交到服务器的数据接口；</li>
+<li>服务器数据接口组织好要发送给客户端的数据，再拿着客户端传递过来的回调方法名称，拼接出一个调用这个方法的字符串，发送给客户端去解析执行；</li>
+<li>客户端拿到服务器返回的字符串之后，当作Script脚本去解析执行，这样就能够拿到JSONP的数据了；<br>带大家通过 Node.js ，来手动实现一个JSONP的请求例子；</li>
+</ul>
+</li>
+<li><p><code>vue-resource 的配置步骤：</code><br>直接在页面中，通过script标签，引入 vue-resource 的脚本文件；<br>注意：引用的先后顺序是：先引用 Vue 的脚本文件，再引用 vue-resource 的脚本文件；</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./lib/vue-2.4.0.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./lib/vue-resource-1.3.4.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="七、配置本地数据库和数据接口API"><a href="#七、配置本地数据库和数据接口API" class="headerlink" title="七、配置本地数据库和数据接口API"></a>七、配置本地数据库和数据接口API</h4><ul>
+<li>先解压安装 PHPStudy;</li>
+<li>解压安装 Navicat 这个数据库可视化工具，并激活；</li>
+<li>打开 Navicat 工具，新建空白数据库，名为 dtcmsdb4;</li>
+<li>双击新建的数据库，连接上这个空白数据库，在新建的数据库上右键 -&gt; 运行SQL文件，选择并执行 dtcmsdb4.sql 这个数据库脚本文件；如果执行不报错，则数据库导入完成；</li>
+<li>进入文件夹 vuecms3_nodejsapi 内部，执行 npm i 安装所有的依赖项；</li>
+<li>先确保本机安装了 nodemon, 没有安装，则运行 npm i nodemon -g 进行全局安装，安装完毕后，进入到 vuecms3_nodejsapi目录 -&gt; src目录 -&gt; 双击运行 start.bat</li>
+<li>如果API启动失败，请检查 PHPStudy 是否正常开启，同时，检查 app.js 中第 14行 中数据库连接配置字符串是否正确；PHPStudy 中默认的 用户名是root，默认的密码也是root</li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/04/25/flex布局排布/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                flex布局排布
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/04/22/Vue-js学习笔记Day1-4-22/">
+                Vue.js学习笔记Day1-4.22
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>13</span>Article</a>
+        <a class="count tags"><span>7</span>Tags</a>
+        <a class="count categories"><span>4</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/18/Vue-CLI脚手架学习与搭建/" title="Vue_CLI脚手架学习与搭建">Vue_CLI脚手架学习与搭建</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/15/自定义构建Echarts问题描述/" title="自定义构建Echarts问题描述">自定义构建Echarts问题描述</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/08/Echarts的学习与使用/" title="Echarts的学习与使用">Echarts的学习与使用</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/05/31/VScode快捷键及常用插件/" title="VScode快捷键及常用插件">VScode快捷键及常用插件</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
