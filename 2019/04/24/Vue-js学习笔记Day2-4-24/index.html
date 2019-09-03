@@ -189,9 +189,9 @@
 <li>自定义指令；</li>
 <li>Vue实例的生命周期；</li>
 <li>vue-resource 实现 get, post, jsonp请求；</li>
-<li>配置本地数据库和数据接口API；<br>今天开始Vue框架的学习吧～<a id="more"></a>
-</li>
+<li>配置本地数据库和数据接口API；</li>
 </ul>
+<p>开始Vue框架的学习吧～<br><a id="more"></a></p>
 <h4 id="一、品牌列表案例"><a href="#一、品牌列表案例" class="headerlink" title="一、品牌列表案例"></a>一、品牌列表案例</h4><ol>
 <li><p>1.x 版本中的filterBy指令，在2.x中已经被废除：<br><a href="https://v1-cn.vuejs.org/api/#filterBy" target="_blank" rel="noopener">filterBy - 指令</a></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;tr v-<span class="keyword">for</span>=<span class="string">"item in list | filterBy searchName in 'name'"</span>&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.id &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;&#123;&#123; item.name &#125;&#125;&lt;/</span>td&gt;</span><br><span class="line">&lt;td&gt;&#123;&#123; item.ctime &#125;&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;td&gt;</span></span><br><span class="line"><span class="regexp">&lt;a href="#" @click.prevent="del(item.id)"&gt;删除&lt;/</span>a&gt;</span><br><span class="line">&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>tr&gt;</span><br></pre></td></tr></table></figure>
@@ -358,9 +358,9 @@
     
     
     <div class="count">
-        <a class="count articles"><span>13</span>Article</a>
-        <a class="count tags"><span>7</span>Tags</a>
-        <a class="count categories"><span>4</span>Categories</a>
+        <a class="count articles"><span>18</span>Article</a>
+        <a class="count tags"><span>8</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
     </div>
 </div>
 
@@ -397,7 +397,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
+                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
                 </p>
             </div>
             
@@ -411,7 +411,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/18/Vue-CLI脚手架学习与搭建/" title="Vue_CLI脚手架学习与搭建">Vue_CLI脚手架学习与搭建</a>
+                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
                 </p>
             </div>
         </li>
@@ -424,7 +424,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/15/自定义构建Echarts问题描述/" title="自定义构建Echarts问题描述">自定义构建Echarts问题描述</a>
+                    <a href="/2019/08/03/CSS面经/" title="CSS面经">CSS面经</a>
                 </p>
             </div>
         </li>
@@ -437,7 +437,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/06/08/Echarts的学习与使用/" title="Echarts的学习与使用">Echarts的学习与使用</a>
+                    <a href="/2019/07/23/HTML面经/" title="HTML面经">HTML面经</a>
                 </p>
             </div>
         </li>
@@ -450,7 +450,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/05/31/VScode快捷键及常用插件/" title="VScode快捷键及常用插件">VScode快捷键及常用插件</a>
+                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
                 </p>
             </div>
         </li>
@@ -473,7 +473,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
@@ -484,6 +484,11 @@
         
         
         <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -504,7 +509,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -515,22 +520,27 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
+            <a href="/tags/面经/">#面经</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/排序/">#排序</a>
+            <a href="/tags/Github/">#Github</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
         </div>
         
     </div>

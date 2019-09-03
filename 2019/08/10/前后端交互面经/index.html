@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>前后端交互面经 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">前后端交互面经</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-08-10
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+    <a href="/tags/面经/">#面经</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>秋招季，总结一下前后端交互部分面经~</p>
+<h3 id="一-跨域问题："><a href="#一-跨域问题：" class="headerlink" title="一. 跨域问题："></a>一. 跨域问题：</h3><h4 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h4><p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。<br>所谓同源是指，协议，域名，端口均相同。<br>注意：<br>如果是协议和端口造成的跨域问题“前台”是无能为力的；<br>在跨域问题上，域仅仅是通过“URL的首部”来识别</p>
+<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p><strong>特别注意两点：</strong><br>第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，<br>第二：在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。<br><strong>1. JSONP方式解决跨域问题</strong><br>script标签src属性中的链接却可以访问跨域的js脚本，利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。<br><strong>2. CORS解决跨域问题</strong><br>对后台进行配置，例如：PHP端修改header，然后配置Apache web服务器跨域<br><strong>3. 代理请求方式解决接口跨域问题</strong><br>前端对接口进行代理：（前端ajax请求的是本地接口；本地接口接收到请求后向实际的接口请求数据，然后再将信息返回给前端；一般用node.js即可代理；）<br>详情参考<a href>https://segmentfault.com/a/1190000012469713</a><br><a id="more"></a></p>
+<h3 id="二-Jsonp实现原理"><a href="#二-Jsonp实现原理" class="headerlink" title="二. Jsonp实现原理"></a>二. Jsonp实现原理</h3><ol>
+<li>拥有”src”这个属性的标签都拥有跨域的能力，比如&lt;\script&gt;、&lt;\img&gt;、&lt;\iframe&gt;<br>当需要通讯时，本站脚本创建一个script元素，地址指向第三方的API网址，形如：</li>
+</ol>
+<pre><code>&lt;script src=&quot;http://www.example.net/api?param1=1¶m2=2&quot;&gt;&lt;/script&gt;
+</code></pre><p>并提供一个回调函数localHandler来接收数据（函数名可约定，或通过地址参数传递）。</p>
+<pre><code>&lt;script src=&quot;http://www.example.net/api?param1=1&amp;callback=localHandler&quot; type=&quot;text/javascript&quot;&gt;
+var localHandler = function(data){
+    alert(&apos;我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：&apos; + data.result);
+};
+&lt;/script&gt;
+</code></pre><ol start="2">
+<li>第三方产生的响应为json数据的包装（故称之为jsonp，即json padding），形如：</li>
+</ol>
+<pre><code>localHandler(
+    {
+        &quot;result&quot;:&quot;hax&quot;,
+        &quot;gender&quot;:&quot;Male&quot;
+    }
+)
+</code></pre><ol start="3">
+<li>这样浏览器会调用localHandler函数，并传递解析后json对象作为参数。</li>
+</ol>
+<h3 id="三-从输入一个URL到页面加载完成的过程中都发生了什么事情？"><a href="#三-从输入一个URL到页面加载完成的过程中都发生了什么事情？" class="headerlink" title="三. 从输入一个URL到页面加载完成的过程中都发生了什么事情？"></a>三. 从输入一个URL到页面加载完成的过程中都发生了什么事情？</h3><p>  主要分为6步：</p>
+<ol>
+<li>DNS域名解析</li>
+<li>浏览器与服务器建立TCP连接（3次握手过程）</li>
+<li>浏览器向服务器发起HTTP请求</li>
+<li>服务器接受请求，进行响应结果，将生成的html返回给客户端</li>
+<li>浏览器解析HTML,并请求html代码中的资源</li>
+<li>浏览器对页面进行渲染呈现给用户</li>
+</ol>
+<h4 id="网络通信的整个流程："><a href="#网络通信的整个流程：" class="headerlink" title="网络通信的整个流程："></a>网络通信的整个流程：</h4><p>流程描述：<br>        第一步：打开浏览器，想要请求访问京东，在地址栏输入了网址：<a href="http://www.jd.com。（www.jd.com是域名就是一个IP地址的名称，IP地址不好记，所有有了域名。）" target="_blank" rel="noopener">www.jd.com。（www.jd.com是域名就是一个IP地址的名称，IP地址不好记，所有有了域名。）</a><br>        第二步：先将请求信息发给了交换机，然后交给了路由器，路由发给DNS服务器，通过DNS协议去找我们要访问的京东的IP地址：<br>　　第三步：查到的京东服务器对应的IP地址之后，路由器通过路由协议找到一个路由转发的最优路径，将你的请求信息还送给这个IP地址的京东的路由器<br>　　第四步：京东的路由器发给了京东网站的服务器上<br>　　第五步：京东网站服务器按照来的时候的路径，在返回给你他自己的网站<br>　　第六步：当你打开浏览器的时候，你的电脑给你的浏览器这个运行起来的程序给了一个编号，叫做端口号，当你的电脑收到京东发送过来的消息的时候，你的电脑通过端口号找到你的浏览器，你的浏览器拿到了京东的网站信息，然后将网站呈现在了自己的浏览器上</p>
+<h3 id="四-进程和线程的区别"><a href="#四-进程和线程的区别" class="headerlink" title="四. 进程和线程的区别"></a>四. 进程和线程的区别</h3><ul>
+<li><code>进程</code>：是<strong>并发执行的程序</strong>在执行过程中分配和管理资源的基本单位，是一个动态概念，竞争计算机系统资源的基本单位。</li>
+<li><p><code>线程</code>：是进程的一个<strong>执行单元</strong>，是进程内科调度实体。比进程更小的独立运行的基本单位。线程也被称为轻量级进程。<br><strong>一个程序至少一个进程，一个进程至少一个线程。</strong></p>
+</li>
+<li><p>对资源的管理和保护要求高，不限制开销和效率时，使用<code>多进程</code>。<br>要求效率高，频繁切换时，资源的保护管理要求不是很高时，使用<code>多线程</code>。</p>
+</li>
+<li><p><code>线程共享进程资源，进程之间的资源独立</code><br>一个进程崩溃后，在保护模式下不会对其他进程产生影响，但是一个线程崩溃整个进程都死掉。所以多进程要比多线程健壮。进程切换时，消耗的资源大，效率高</p>
+</li>
+<li><p><code>线程与进程的区别：</code><br>a. 一个程序至少有一个进程，一个进程至少有一个线程<br>b. 线程的划分尺度小于进程，使得多线程程序的并发性高<br>c. 进程在执行过程中拥有独立的内存单元，而多个线程共享内存，从而极大地提高了程序的运行效率<br>d. 每个独立的线程有一个程序运行的入口、顺序执行序列和程序的出口。但是线程不能够独立执行，必须依存在应用程序中，由应用程序提供多个线程执行控制<br>e. 多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配</p>
+</li>
+</ul>
+<h3 id="五-队列和栈介绍"><a href="#五-队列和栈介绍" class="headerlink" title="五. 队列和栈介绍"></a>五. 队列和栈介绍</h3><ul>
+<li><code>队列</code>：先进先出，表尾插入，表头删除<br><code>栈</code>：先进后出，表尾删除插入</li>
+<li><strong>栈与队列的相同点：</strong><br>  1.都是线性结构。<br>  2.插入操作都是限定在表尾进行。<br>  3.都可以通过顺序结构和链式结构实现。<br>  4.插入与删除的时间复杂度都是O(1)，在空间复杂度上两者也一样。<br>  5.多链栈和多链队列的管理模式可以相同。</li>
+</ul>
+<h3 id="六-Post和get区别"><a href="#六-Post和get区别" class="headerlink" title="六. Post和get区别"></a>六. Post和get区别</h3><ul>
+<li>Http定义了与服务器交互的不同方法，最基本的方法有4种，分别是GET，POST，PUT，DELETE，对URL地址（网络上的资源）的查，改，增，删4个操作。5、HEAD；6、TRACE；7、OPTIONS；方法<br><img src="//lililich.work/2019/08/10/前后端交互面经/Image1.png" alt="Image1.png"></li>
+<li><code>Post和put区别</code><br>PUT请求：如果两个请求相同，后一个请求会把第一个请求覆盖掉。（所以PUT用来改资源）<br>Post请求：后一个请求不会把第一个请求覆盖掉。（所以Post用来增资源）</li>
+</ul>
+<h3 id="七-计算机网络的七层OSI"><a href="#七-计算机网络的七层OSI" class="headerlink" title="七. 计算机网络的七层OSI"></a>七. 计算机网络的七层OSI</h3><p>应用层、表示层、会话层、传输层、网络层、数据链路层、物理层<br><img src="//lililich.work/2019/08/10/前后端交互面经/Image2.png" alt="Image2.png"></p>
+<h3 id="八-TCP-IP五层模型的协议"><a href="#八-TCP-IP五层模型的协议" class="headerlink" title="八. TCP/IP五层模型的协议"></a>八. TCP/IP五层模型的协议</h3><p>应用层、传输层、网络层、数据链路层、物理层</p>
+<h3 id="九-TCP和UDP的区别是什么"><a href="#九-TCP和UDP的区别是什么" class="headerlink" title="九. TCP和UDP的区别是什么"></a>九. TCP和UDP的区别是什么</h3><p><img src="//lililich.work/2019/08/10/前后端交互面经/Image3.png" alt="Image3.png"></p>
+<h3 id="十-TCP与HTTP的不同，HTTP是什么，HTTPS是什么"><a href="#十-TCP与HTTP的不同，HTTP是什么，HTTPS是什么" class="headerlink" title="十. TCP与HTTP的不同，HTTP是什么，HTTPS是什么"></a>十. TCP与HTTP的不同，HTTP是什么，HTTPS是什么</h3><ul>
+<li><code>HTTP协议即超文本传送协议</code>(Hypertext Transfer Protocol )，是Web联网的基础，也是手机联网常用的协议之一，HTTP协议是建立在TCP协议之上的一种应用。</li>
+<li><code>HTTPS即加密的HTTP</code>，HTTPS并不是一个新协议，而是HTTP+SSL（TLS）。原本HTTP先和TCP（假定传输层是TCP协议）直接通信，而加了SSL后，就变成HTTP先和SSL通信，再由SSL和TCP通信，相当于SSL被嵌在了HTTP和TCP之间。</li>
+<li><code>TCP是传输层，而http是应用层，http是要基于TCP连接基础上的</code>。<br>TCP就是单纯建立连接，不涉及任何我们需要请求的实际数据，简单的传输。<br>http是用来收发数据，即实际应用上来的。</li>
+</ul>
+<h3 id="十一-TCP的三次握手-为什么不是两次？"><a href="#十一-TCP的三次握手-为什么不是两次？" class="headerlink" title="十一. TCP的三次握手,为什么不是两次？"></a>十一. TCP的三次握手,为什么不是两次？</h3><ul>
+<li>三次握手：请求，确认，建立连接<br>第一次：客户端C发送一个请求连接的位码SYN(1)和一个随机产生的序列号Seq(x)给服务器S，C进入SYN_SEND状等待服务器确认。<br>第二次：S收到了这个请求连接的位码SYN(1)，实现确认一下，发送了一个确认码ACK（x+1)+SYN(1)+Seq（y）给进入SYN_RECV状态。<br>第三次：C收到了SYN＋ACK，一比较一样，于是他又发送了一个ACK(y+1)+Seq(z)给S，S收到以后就确定建立连接，C和S进入ESTABLISHED状态，TCP连接建立完成。</li>
+<li><strong>为什么不是两次？</strong><br>三次是①C能和S通信②S能和C通信③S和C建立连接，<br>两次的话，不能确定S和C是否能通信，会产生问题<br><img src="//lililich.work/2019/08/10/前后端交互面经/Image4.png" alt="Image4.png"></li>
+</ul>
+<h3 id="十二-四次挥手：确保数据能够完整传输。"><a href="#十二-四次挥手：确保数据能够完整传输。" class="headerlink" title="十二. 四次挥手：确保数据能够完整传输。"></a>十二. 四次挥手：确保数据能够完整传输。</h3><ol>
+<li>第一次挥手：Client发送一个FIN，用来关闭Client到Server的数据传送，Client进入FIN_WAIT_1状态。C没数据传输了</li>
+<li>第二次挥手：Server收到FIN后，发送一个ACK给Client，确认序号为收到序号+1（与SYN相同，一个FIN占用一个序号），Server进入CLOSE_WAIT状态。S说我也没了</li>
+<li>第三次挥手：Server发送一个FIN，用来关闭Server到Client的数据传送，Server进入LAST_ACK状态。C请求关闭</li>
+<li>第四次挥手：Client收到FIN后，Client进入TIME_WAIT状态，接着发送一个ACK给Server，确认序号为收到序号+1，Server进入CLOSED状态，完成四次挥手。S同意并关闭</li>
+</ol>
+<h3 id="十三-Ajax工作原理"><a href="#十三-Ajax工作原理" class="headerlink" title="十三. Ajax工作原理"></a>十三. Ajax工作原理</h3><ol>
+<li>创建XMLHttpRequest对象,也就是创建一个异步调用对象.</li>
+<li>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</li>
+<li>设置响应HTTP请求状态变化的函数.</li>
+<li>发送HTTP请求.</li>
+<li>获取异步调用返回的数据.</li>
+<li>使用JavaScript和DOM实现局部刷新.</li>
+</ol>
+<h3 id="十四-HTTP状态码及常见举例"><a href="#十四-HTTP状态码及常见举例" class="headerlink" title="十四. HTTP状态码及常见举例"></a>十四. HTTP状态码及常见举例</h3><p><code>1** ：信息，服务器收到请求，需要请求者继续执行操作</code><br><code>2** ：成功，操作被成功接收并处理</code><br><code>3** ：重定向，需要进一步的操作以完成请求</code><br><code>4** ：客户端错误，请求包含语法错误或无法完成请求</code><br><code>5** ：服务器错误，服务器在处理请求的过程中发生了错误</code><br>100 ：继续。客户端应继续其请求。<br>101 ：切换协议，服务器根据客户端的请求切换协议。只能切换到更高级的协议，例如，切换到HTTP的新版本协议<br><code>200 ：OK。请求成功，一般用于Get和post请求。</code><br>201 ：已创建。成功请求并创建了新的资源。<br>202 ：已接受。已经接受请求，但未处理完成<br>203 ：非授权信息。请求成功。但返回的meta信息不在原始的服务器，而是一个副本。<br>204：无内容。服务器成功处理，但未返回内容。在未更新网页的情况下，可确保浏览器继续显示当前文档。<br>300：多种选择。请求的资源可包括多个位置，相应可返回一个资源特征与地址的列表用于用户终端（例如：浏览器）选择。<br>301 ：永久移动。请求的资源已被永久的移动到新URI，返回信息会包括新的URI，浏览器会自动定向到新URI。今后任何新的请求都应使用新的URI代替。<br>302：临时移动。与301类似。但资源只是临时被移动。客户端应继续使用原有URI。<br><code>304：服务端资源无变化，可使用缓存资源</code><br>307：临时重定向。与302类似。使用GET请求重定向。<br><code>400：客户端请求的语法错误，服务器无法理解</code><br><code>401：请求要求用户的身份认证</code><br><code>403：服务端禁止访问该资源</code><br><code>404：服务器无法根据客户端的请求找到资源（网页）。</code><br>408：服务器等待客户端发送的请求时间过长，超时。<br>410：客户端请求的资源已经不存在。410不同于404，如果资源以前有现在被永久删除了可使用410代码，网站设计人员可通过301代码指定资源的新位置。<br>411：服务器无法处理客户端发送的不带Content-Length的请求信息<br>414：请求的URI过长（URI通常为网址），服务器无法处理<br>417：服务器无法满足Expect的请求头信息。<br><code>500：服务器内部错误，无法完成请求。</code><br>501：服务器不支持请求的功能，无法完成请求。<br>502：充当网关或代理的服务器，从远端服务器接收到了一个无效的请求<br>503：由于超载或系统维护，服务器暂时的无法处理客户端的请求。延时的长度可包含在服务器的Retry-After头信息中。<br>504：充当网关或代理的服务器，未及时从远端服务器获取请求。<br>505：服务器不支持请求的HTTP协议的版本，无法完成处理。</p>
+<h3 id="十五-死锁是什么"><a href="#十五-死锁是什么" class="headerlink" title="十五. 死锁是什么"></a>十五. 死锁是什么</h3><p>死锁是指两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，双方都在等待对方停止运行，以获取系统资源，但是没有一方提前退出时，就称为死锁。永远在互相等待的进程称为死锁进程。</p>
+<h3 id="十六-自适应和响应式区别"><a href="#十六-自适应和响应式区别" class="headerlink" title="十六. 自适应和响应式区别"></a>十六. 自适应和响应式区别</h3><p>两者都是优化适应互联网中越来越分化的视口.<br>应该说响应式的范畴更广一些。<br><strong>响应式可以自动适应不同尺寸的屏幕，无论你的设备尺寸多么奇葩。</strong>响应式使用CSS media queries的方法，根据目标设备自动改变风格如显示类型,宽度、高度等，这能很好解决不同屏幕尺寸的显示问题。<br>是一个网站能够兼容多个终端而不是为每个终端做一个特定的版本，这个概念是为移动互联网浏览而诞生。<br><strong>自适应设计是基于断点使用静态布局，一旦页面被加载就无法再进行自动适应，自适应会自动检测屏幕的大小来加载适当的工作布局</strong>，也就是说，当你要采用自适应设计网站时，你得一个一个设计6种常见的屏幕布局。[自适应设计要求为每一个布局单独开发和维护HTML和CSS代码]<br>1、320   2、480  3、760  4、960  5、1200   6、1600<br>自适应设计需要做更多的工作，你必须至少设计6种常见的布局。而响应式设计可以更好地适应复杂的媒体设备要求，能很好地解决显示和性能问题，修改相当麻烦。修改相当麻烦。</p>
+<h3 id="十七-谈谈你对前端性能优化的理解"><a href="#十七-谈谈你对前端性能优化的理解" class="headerlink" title="十七. 谈谈你对前端性能优化的理解"></a>十七. 谈谈你对前端性能优化的理解</h3><ol>
+<li><code>请求数量</code>：合并脚本和样式表，CSS Sprites，拆分初始化负载，划分主域</li>
+<li><code>请求带宽</code>：开启GZip，精简JavaScript，移除重复脚本，图像优化，将icon做成字体</li>
+<li><code>缓存利用</code>：使用CDN，使用外部JavaScript和CSS，添加Expires头，减少DNS查找，配置ETag，使AjaX可缓存</li>
+<li><code>页面结构</code>：将样式表放在顶部，将脚本放在底部，尽早刷新文档的输出</li>
+<li><code>代码校验</code>：避免CSS表达式，避免重定向</li>
+</ol>
+<h3 id="十八-请说出三种减少页面加载时间的方法"><a href="#十八-请说出三种减少页面加载时间的方法" class="headerlink" title="十八. 请说出三种减少页面加载时间的方法"></a>十八. 请说出三种减少页面加载时间的方法</h3><ol>
+<li>尽量减少页面中重复的HTTP请求数量</li>
+<li>服务器开启gzip压缩</li>
+<li>css样式的定义放置在文件头部</li>
+<li>Javascript脚本放在文件末尾</li>
+<li>压缩合并Javascript、CSS代码</li>
+<li>使用多域名负载网页内的多个文件、图片</li>
+</ol>
+<h3 id="十九-什么叫优雅降级和渐进增强？"><a href="#十九-什么叫优雅降级和渐进增强？" class="headerlink" title="十九. 什么叫优雅降级和渐进增强？"></a>十九. 什么叫优雅降级和渐进增强？</h3><ul>
+<li><code>渐进增强 progressive enhancement：</code><br>针对低版本浏览器进行构建页面，保证最基本的功能，然后再针对高级浏览器进行效果、交互等改进和追加功能达到更好的用户体验。</li>
+<li><code>优雅降级 graceful degradation：</code><br>一开始就构建完整的功能，然后再针对低版本浏览器进行兼容。<h4 id="渐进增强和优雅降级的区别："><a href="#渐进增强和优雅降级的区别：" class="headerlink" title="渐进增强和优雅降级的区别："></a>渐进增强和优雅降级的区别：</h4></li>
+</ul>
+<ol>
+<li>优雅降级是从复杂的现状开始，并试图减少用户体验的供给</li>
+<li>渐进增强则是从一个非常基础的，能够起作用的版本开始，并不断扩充，以适应未来环境的需要</li>
+<li>降级（功能衰减）意味着往回看；而渐进增强则意味着朝前看，同时保证其根基处于安全地带</li>
+</ol>
+<h3 id="二十-一次js请求一般情况下有哪些地方会有缓存处理？"><a href="#二十-一次js请求一般情况下有哪些地方会有缓存处理？" class="headerlink" title="二十. 一次js请求一般情况下有哪些地方会有缓存处理？"></a>二十. 一次js请求一般情况下有哪些地方会有缓存处理？</h3><ol>
+<li>浏览器端存储</li>
+<li>浏览器端文件缓存</li>
+<li>HTTP缓存304</li>
+<li>服务器端文件类型缓存</li>
+<li>表现层&amp;DOM缓存</li>
+</ol>
+<h3 id="二十一-一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验-性能优化-。"><a href="#二十一-一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验-性能优化-。" class="headerlink" title="二十一. 一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验[性能优化]。"></a>二十一. 一个页面上有大量的图片（大型电商网站），加载很慢，你有哪些方法优化这些图片的加载，给用户更好的体验[性能优化]。</h3><ol>
+<li>图片懒加载，滚动到相应位置才加载图片。</li>
+<li>图片预加载，如果为幻灯片、相册等，将当前展示图片的前一张和后一张优先下载。</li>
+<li>使用CSSsprite，SVGsprite，Iconfont、Base64等技术，如果图片为css图片的话。</li>
+<li>如果图片过大，可以使用特殊编码的图片，加载时会先加载一张压缩的特别厉害的缩略图，以提高用户体验。</li>
+</ol>
+<h3 id="二十二-网站重构的理解"><a href="#二十二-网站重构的理解" class="headerlink" title="二十二. 网站重构的理解"></a>二十二. 网站重构的理解</h3><p>重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。</p>
+<ol>
+<li>使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)</li>
+<li>对于移动平台的优化，针对于SEO进行优化</li>
+<li>减少代码间的耦合，让代码保持弹性</li>
+<li>压缩或合并JS、CSS、image等前端资源</li>
+</ol>
+<h3 id="二十三-谈谈以前端角度出发做好SEO需要考虑什么？"><a href="#二十三-谈谈以前端角度出发做好SEO需要考虑什么？" class="headerlink" title="二十三. 谈谈以前端角度出发做好SEO需要考虑什么？"></a>二十三. 谈谈以前端角度出发做好SEO需要考虑什么？</h3><ol>
+<li>了解搜索引擎如何抓取网页和如何索引网页</li>
+<li>meta标签优化</li>
+<li>关键词分析</li>
+<li>付费给搜索引擎</li>
+<li>链接交换和链接广泛度（Link Popularity）</li>
+<li>合理的标签使用</li>
+</ol>
+<h3 id="二十四-前端页面有哪三层构成，分别是什么？作用是什么？"><a href="#二十四-前端页面有哪三层构成，分别是什么？作用是什么？" class="headerlink" title="二十四. 前端页面有哪三层构成，分别是什么？作用是什么？"></a>二十四. 前端页面有哪三层构成，分别是什么？作用是什么？</h3><ol>
+<li>结构层：由 HTML 或 XHTML 之类的标记语言负责创建，仅负责语义的表达。解决了页面“内容是什么”的问题。</li>
+<li>表示层：由CSS负责创建，解决了页面“如何显示内容”的问题。</li>
+<li>行为层：由脚本负责。解决了页面上“内容应该如何对事件作出反应”的问题。</li>
+</ol>
+<h3 id="二十五-系统访问量变高了，速度变慢了怎么办？"><a href="#二十五-系统访问量变高了，速度变慢了怎么办？" class="headerlink" title="二十五. 系统访问量变高了，速度变慢了怎么办？"></a>二十五. 系统访问量变高了，速度变慢了怎么办？</h3><p>优化。<br>优化方式很多，如：读写分离、负载均衡<br>资源服务器和应用服务器分离，即应用部署在应用服务器上，资源部署在资源服务器上。这时候，js和css的引用就需要更改为绝对URL，指向对应的资源服务器。</p>
+<h3 id="二十六-WEB应用从服务器主动推送Data到客户端有那些方式？"><a href="#二十六-WEB应用从服务器主动推送Data到客户端有那些方式？" class="headerlink" title="二十六. WEB应用从服务器主动推送Data到客户端有那些方式？"></a>二十六. WEB应用从服务器主动推送Data到客户端有那些方式？</h3><ol>
+<li>html5 websoket</li>
+<li>WebSocket 通过 Flash</li>
+<li>XHR长时间连接</li>
+<li>XHR Multipart Streaming</li>
+<li>不可见的Iframe</li>
+<li>标签的长时间连接(可跨域)</li>
+</ol>
+<h3 id="二十七-知道的网页制作会用到的图片格式有哪些？"><a href="#二十七-知道的网页制作会用到的图片格式有哪些？" class="headerlink" title="二十七. 知道的网页制作会用到的图片格式有哪些？"></a>二十七. 知道的网页制作会用到的图片格式有哪些？</h3><p>png-8，png-24，jpeg，gif，svg<br>Webp：谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。<br>Apng：全称是“Animated Portable Network Graphics”, 是PNG的位图动画扩展，可以实现png格式的动态图片效果。04年诞生，但一直得不到各大浏览器厂商的支持，直到日前得到 iOS safari 8的支持，有望代替GIF成为下一代动态图标准。</p>
+<h3 id="二十八-AMD和CMD-规范的区别？"><a href="#二十八-AMD和CMD-规范的区别？" class="headerlink" title="二十八. AMD和CMD 规范的区别？"></a>二十八. AMD和CMD 规范的区别？</h3><p>AMD 提前执行依赖 - 尽早执行，requireJS 是它的实现<br>CMD 按需执行依赖 - 懒执行，seaJS 是它的实现</p>
+<h3 id="二十九-CDN（内容分发网络，Content-Distribute-Network）的概念以及使用CDN加速的优点。"><a href="#二十九-CDN（内容分发网络，Content-Distribute-Network）的概念以及使用CDN加速的优点。" class="headerlink" title="二十九. CDN（内容分发网络，Content Distribute Network）的概念以及使用CDN加速的优点。"></a>二十九. CDN（内容分发网络，Content Distribute Network）的概念以及使用CDN加速的优点。</h3><p>CDN解决的是如何将数据快速可靠从源站传递到用户的问题。用户获取数据时，不需要直接从源站获取，通过CDN对于数据的分发，用户可以从一个较优的服务器获取数据，从而达到快速访问，并减少源站负载压力的目的。</p>
+<h3 id="三十-前端-MV-框架的意义"><a href="#三十-前端-MV-框架的意义" class="headerlink" title="三十. 前端 MV*框架的意义"></a>三十. 前端 MV*框架的意义</h3><ul>
+<li>早期前端都是比较简单，基本以页面为工作单元，内容以浏览型为主，也偶尔有简单的表单操作，基本不太需要框架。</li>
+<li>随着 AJAX 的出现，Web2.0的兴起，人们可以在页面上可以做比较复杂的事情了，然后前端框架才真正出现了。</li>
+<li>如果是页面型产品，多数确实不太需要它，因为页面中的 JavaScript代码，处理交互的绝对远远超过处理模型的，但是如果是应用软件类产品，这就太需要了。</li>
+<li>长期做某个行业软件的公司，一般都会沉淀下来一些业务组件，主要体现在数据模型、业务规则和业务流程，这些组件基本都存在于后端，在前端很少有相应的组织。</li>
+<li>从协作关系上讲，很多前端开发团队每个成员的职责不是很清晰，有了前端的 MV框架，这个状况会大有改观。</li>
+<li>之所以感受不到 MV*框架的重要性，是因为Model部分代码较少，View的相对多一些。如果主要在操作View和Controller，那当然 jQuery 这类库比较好用了。</li>
+</ul>
+<h3 id="三十一-对前端工程师这个职位是怎么看的？"><a href="#三十一-对前端工程师这个职位是怎么看的？" class="headerlink" title="三十一. 对前端工程师这个职位是怎么看的？"></a>三十一. 对前端工程师这个职位是怎么看的？</h3><p><strong>前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。</strong></p>
+<ol>
+<li>实现界面交互</li>
+<li>提升用户体验</li>
+<li>有了Node.js，前端可以实现服务端的一些事情</li>
+</ol>
+<p><strong>前景：</strong></p>
+<ol>
+<li>前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更??</li>
+<li>参与项目，快速高质量完成实现效果图，精确到1px；</li>
+<li>与团队成员，UI设计，产品经理的沟通；</li>
+<li>做好的页面结构，页面重构和用户体验；</li>
+<li>处理hack，兼容、写出优美的代码格式；</li>
+<li>针对服务器的优化、拥抱最新前端技术。</li>
+</ol>
+<h3 id="三十二-平时如何管理你的项目？"><a href="#三十二-平时如何管理你的项目？" class="headerlink" title="三十二. 平时如何管理你的项目？"></a>三十二. 平时如何管理你的项目？</h3><ol>
+<li>先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；</li>
+<li>编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；</li>
+<li>标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；</li>
+<li>页面进行标注（例如 页面 模块 开始和结束）；</li>
+<li>CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）；</li>
+<li>JS 分文件夹存放 命名以该JS功能为准的英文翻译。</li>
+<li>图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理</li>
+</ol>
+<h3 id="三十三-说说最近最流行的一些东西吧？常去哪些网站？"><a href="#三十三-说说最近最流行的一些东西吧？常去哪些网站？" class="headerlink" title="三十三. 说说最近最流行的一些东西吧？常去哪些网站？"></a>三十三. 说说最近最流行的一些东西吧？常去哪些网站？</h3><p>CSDN、SegmentFault、php.net、MDN、css参考手册、iconfont、underscore、github、Bootstrap、W3Shool、W3Cplus、caniuse</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/08/08/Javascript面经/">
+                Javascript面经
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>18</span>Article</a>
+        <a class="count tags"><span>8</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/03/CSS面经/" title="CSS面经">CSS面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/07/23/HTML面经/" title="HTML面经">HTML面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

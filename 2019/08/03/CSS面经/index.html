@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>CSS面经 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">CSS面经</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-08-03
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+    <a href="/tags/面经/">#面经</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>秋招季，总结一下CSS部分面经~</p>
+<h3 id="一-CSS3盒子模型"><a href="#一-CSS3盒子模型" class="headerlink" title="一. CSS3盒子模型"></a>一. CSS3盒子模型</h3><ul>
+<li><strong>盒子模型</strong><br><code>IE 盒子模型和标准 W3C 盒子模型</code>的范围包括 margin、border、padding、content<br>使用“标准 W3C 盒子模型”：在网页顶部加上Doctype声明。</li>
+<li><strong>在不同标准里width的区别</strong><br><code>在标准 W3C 盒子模型</code>中，width指content部分的宽度<br><code>在 IE 盒子模型中</code>，width表示（content+padding+border）这三个部分的宽度</li>
+<li><p><strong>box-sizing</strong><br><code>box-sizing: content-box</code> 是 W3C 盒子模型;content-box动态大小 | 受 “边框” “边距” 等属性影响<br><code>box-sizing: border-box</code> 是 IE 盒子模型;border-box固定大小 | 不受 “边框” “边距” 等属性影响</p>
+<a id="more"></a>
+<p><img src="//lililich.work/2019/08/03/CSS面经/Image1.png" alt="Image1.png"></p>
+</li>
+<li><p><strong>margin和padding可以为负么？</strong><br>margin可以为负，而且经常用于布局。<br>padding不能为负，即使为负，也会调整为0.</p>
+</li>
+<li><p><strong>margin塌陷解决办法</strong>:<br><a href>https://www.cnblogs.com/syp172654682/p/7671830.html</a></p>
+</li>
+</ul>
+<h3 id="二-块级元素、行内元素、块级行内元素"><a href="#二-块级元素、行内元素、块级行内元素" class="headerlink" title="二. 块级元素、行内元素、块级行内元素"></a>二. 块级元素、行内元素、块级行内元素</h3><p>列举display的值：<br><img src="//lililich.work/2019/08/03/CSS面经/Image2.png" alt="Image2.png"></p>
+<h4 id="1-行内元素：display-inline"><a href="#1-行内元素：display-inline" class="headerlink" title="1. 行内元素：display:inline"></a>1. <strong>行内元素：display:inline</strong></h4><ul>
+<li><strong>行内元素</strong>：a、b、span、img、input、strong、select、label、em、button、textarea（字体、input类、span）等；</li>
+<li><strong>特性</strong>：<br>  (1) 设置宽高无效；<br>  (2) margin仅设置左右方向有效，上下无效；padding设置上下左右都有效，即会撑大空间；<br>  (3) 不会自动进行换行；</li>
+<li><strong>水平居中</strong>：通过给父元素设置 text-align:center</li>
+<li><strong>垂直居中</strong>：<br>  (1) 子元素line-height:父元素的height；<br>  (2) 父元素display 为 table-cell（设置为表格单元显示）， vertical-align：middle属性</li>
+</ul>
+<h4 id="2-块状元素：display-block"><a href="#2-块状元素：display-block" class="headerlink" title="2. 块状元素：display:block"></a>2. <strong>块状元素：display:block</strong></h4><ul>
+<li><strong>块状元素</strong>：div、p、nav、aside、header、footer、section、article、ul-li、address、h1-h6、blockquote、dl、dt、dd；</li>
+<li><strong>特性</strong> ：<br>  (1) 能够识别宽高；<br>  (2) margin和padding的上下左右均对其有效；<br>  (3) 可以自动换行；<br>  (4) 多个块状元素标签写在一起，默认排列方式为从上至下；</li>
+<li><strong>水平居中</strong>：<br>  (1) margin:0 auto；<br>  (2) 使用position:relative或absolute 和 left:50%</li>
+<li><strong>垂直居中</strong>：<br>  (1) 父元素添加display设为flex，再通过align-items:center;<br>  (2) 父元素：position：relative; 子元素：position: absolute; top: 50%; margin-top=-height（子）/2;<br>  (3) 父元素：position:relative 子元素：position:absolute; top:0; bottom:0;margin:auto;</li>
+<li><strong>水平垂直居中</strong>：<br>  (1)父元素：position：relative; 子元素：position: absolute;  top: 50%; left: 50%; margin-top=-height（子）/2; margin-right=-width/2;(已知块级元素的宽和高)<br>  (2)父元素：position:relative 子元素：position:absolute;  top:0; left:0; bottom:0; right:0; margin:auto;<br>  (3)父元素样式属性display:flex; 子元素使用margin:auto;</li>
+<li><strong>溢出处理：当内容大于容器</strong><br>  overflow: hidden;隐藏溢出内容<br>  overflow: auto;当内容溢出时，显示滚动条<br>  overflow-y: auto; 只显示上下滚动条<br>  overflow: scroll;无论是否溢出，都显示滚动条占位：隐藏了元素内容，但空间仍然保持<br>  visibility: hidden;<br>  width&amp;height：(min-width max-width用于响应式布局、width:auto与父容器等宽)</li>
+</ul>
+<h4 id="3-行内块状元素：display-inline-block"><a href="#3-行内块状元素：display-inline-block" class="headerlink" title="3. 行内块状元素：display:inline-block"></a>3. <strong>行内块状元素：display:inline-block</strong></h4><ul>
+<li><strong>特征</strong>：<br>(1) 不自动换行<br>(2) 能够识别宽高<br>(3) 默认排列方式为从左到右；(行内元素和块状元素都使用)</li>
+</ul>
+<h4 id="4-垂直水平居中方法"><a href="#4-垂直水平居中方法" class="headerlink" title="4. 垂直水平居中方法"></a>4. 垂直水平居中方法</h4><ul>
+<li>已知宽高（4种方法）<div class="wrapper"><div class="content"></div></div><br><img src="//lililich.work/2019/08/03/CSS面经/Image3.png" alt="Image3.png"><img src="//lililich.work/2019/08/03/CSS面经/Image4.png" alt="Image4.png"><img src="//lililich.work/2019/08/03/CSS面经/Image5.png" alt="Image5.png"><img src="//lililich.work/2019/08/03/CSS面经/Image6.png" alt="Image6.png"></li>
+<li>未知宽高(考虑flex布局和transform)</li>
+</ul>
+<h3 id="三-css相对定位、绝对定位"><a href="#三-css相对定位、绝对定位" class="headerlink" title="三. css相对定位、绝对定位"></a>三. css相对定位、绝对定位</h3><ul>
+<li><p><code>静态定位</code>(position：static)不脱离标准文档流<br>这个是元素的默认定位方式，元素出现在正常的文档流中，会占用页面空间。不能使用top?bottom??left??right??z-index???</p>
+</li>
+<li><p><code>相对定位</code>(position: relative)不脱离标准文档流<br>相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动.</p>
+</li>
+<li><p><code>绝对定位</code>(position: absolute)脱离标准文档流<br>这条语句的作用将元素从文档流中拖出来，然后使用left、right、top、bottom属性相对于其最接近的一个具有定位属性的父包含块进行绝对定位。如果不存在这样的包含块，则相对于body元素，即相对于浏览器窗口。</p>
+</li>
+<li><p><code>固定定位</code>(position: fixed)脱离标准文档流<br>绝对定位方式，直接以浏览器窗口作为参考进行定位。其它特性同absolute定位。</p>
+</li>
+<li><p><code>inherit</code> 规定从父元素继承 position 属性的值。</p>
+</li>
+<li><p><code>嵌套使用</code>：子容器在父容器底部居中：<br>父容器：position：relative；子容器：position：absolute；bottom：0；left：0；right：0；margin: auto</p>
+</li>
+</ul>
+<h3 id="四-Flex布局"><a href="#四-Flex布局" class="headerlink" title="四. Flex布局"></a>四. Flex布局</h3><p><code>容器的属性</code>以下6个属性设置在容器上：</p>
+<ul>
+<li>flex-direction：决定主轴的方向</li>
+<li>flex-wrap：定义如果一条轴线排不下，如何换行</li>
+<li>flex-flow：是flex-direction属性和flex-wrap属性的简写形式</li>
+<li>justify-content：定义了项目在主轴上的对齐方式</li>
+<li>align-items：定义项目在交叉轴上如何对齐</li>
+<li>align-content：定义了多根轴线的对齐方式。</li>
+</ul>
+<p><code>项目的属性</code>以下6个属性设置在项目上：</p>
+<ul>
+<li>order：定义项目的排列顺序</li>
+<li>flex-grow：定义项目的放大比例</li>
+<li>flex-shrink：定义了项目的缩小比例</li>
+<li>flex-basis：定义了在分配多余空间之前，项目占据的主轴空间（main size）</li>
+<li>flex：是flex-grow, flex-shrink 和 flex-basis的简写</li>
+<li>align-self：允许单个项目有与其他项目不一样的对齐方式</li>
+</ul>
+<p><strong>设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</strong></p>
+<h3 id="五-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？"><a href="#五-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？" class="headerlink" title="五. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？"></a>五. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？</h3><p><code>CSS 选择符：</code></p>
+<ol>
+<li>id选择器(# myid)</li>
+<li>类选择器(.myclassname)</li>
+<li>标签选择器(div, h1, p)</li>
+<li>相邻选择器(h1 + p)</li>
+<li>子选择器(ul &gt; li)</li>
+<li>后代选择器(li a)</li>
+<li>通配符选择器( * )</li>
+<li>属性选择器(a[rel = “external”])</li>
+<li>伪类选择器(a: hover, li:nth-child)</li>
+</ol>
+<p><code>可继承的样式：</code></p>
+<ol>
+<li>font-size </li>
+<li>font-family </li>
+<li>color </li>
+<li>text-indent</li>
+</ol>
+<p><code>不可继承的样式：</code></p>
+<ol>
+<li>border </li>
+<li>padding </li>
+<li>margin </li>
+<li>width </li>
+<li>height</li>
+</ol>
+<p><code>优先级算法：</code></p>
+<ol>
+<li>优先级就近原则，同权重情况下样式定义最近者为准;</li>
+<li>载入样式以最后载入的定位为准;</li>
+<li>!important &gt; 内联&gt; id &gt; class &gt; tag  </li>
+</ol>
+<p><code>权值：</code></p>
+<ol>
+<li>内联样式表的权值最高 1000；</li>
+<li>ID 选择器的权值为 100</li>
+<li>Class 类选择器的权值为 10</li>
+<li>HTML 标签选择器的权值为 1</li>
+<li>多个进行累加，比较总和</li>
+</ol>
+<h3 id="六-CSS伪类"><a href="#六-CSS伪类" class="headerlink" title="六. CSS伪类"></a>六. CSS伪类</h3><h4 id="1-CSS-伪类用于向某些选择器添加特殊的效果。"><a href="#1-CSS-伪类用于向某些选择器添加特殊的效果。" class="headerlink" title="1. CSS 伪类用于向某些选择器添加特殊的效果。"></a>1. CSS 伪类用于向某些选择器添加特殊的效果。</h4><p><strong>伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性</strong>，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。<br><img src="//lililich.work/2019/08/03/CSS面经/Image11.png" alt="Image11.png"><br><strong>注意：first-child和last-child都得用于子元素，而不是父元素。</strong></p>
+<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><pre><code>selector : pseudo-class {property: value}
+selector.class : pseudo-class {property: value}
+</code></pre><h4 id="3-锚伪类"><a href="#3-锚伪类" class="headerlink" title="3. 锚伪类"></a>3. 锚伪类</h4><p><code>a:hover {color: #FF00FF}</code> /<em> 必须被置于 a:link 和 a:visited 之后，才是有效的</em>/<br><code>a:active {color: #0000FF}</code> /<em> 选定的链接 必须被置于 a:hover 之后，才是有效的</em>/</p>
+<h4 id="4-CSS3新增伪类举例："><a href="#4-CSS3新增伪类举例：" class="headerlink" title="4. CSS3新增伪类举例："></a>4. CSS3新增伪类举例：</h4><p><code>p:first-of-type</code> 选择属于其父元素的首个p元素的每个p元素。<br><code>p:last-of-type</code>  选择属于其父元素的最后p元素的每个p元素。<br><code>p:only-of-type</code>  选择属于其父元素唯一的p元素的每个p元素。<br><code>p:only-child</code>    选择属于其父元素的唯一子元素的每个p元素。<br><code>p:nth-child(2)</code>  选择属于其父元素的第二个子元素的每个p元素。</p>
+<p><strong>:first-child与:first-of-type的不同</strong><br><code>:first-child</code> 匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。<br><code>:first-of-type</code> 匹配的是该类型的第一个<br><code>:enabled / :disabled</code> 控制表单控件的禁用状态。<br><code>:checked</code>  单选框或复选框被选中。</p>
+<h3 id="七-CSS伪元素"><a href="#七-CSS伪元素" class="headerlink" title="七. CSS伪元素"></a>七. CSS伪元素</h3><h4 id="1-CSS-伪元素用于向某些选择器设置特殊效果。"><a href="#1-CSS-伪元素用于向某些选择器设置特殊效果。" class="headerlink" title="1. CSS 伪元素用于向某些选择器设置特殊效果。"></a>1. CSS 伪元素用于向某些选择器设置特殊效果。</h4><p>与伪类针对特殊状态的元素不同的是，<strong>伪元素是对元素中的特定内容进行操作</strong>，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。<br><img src="//lililich.work/2019/08/03/CSS面经/Image12.png" alt="Image12.png"><br><strong>注意：:first-line和:first-letter伪元素只能用于块级元素。</strong></p>
+<h4 id="2-语法："><a href="#2-语法：" class="headerlink" title="2. 语法："></a>2. 语法：</h4><pre><code>selector:pseudo-element {property:value;}
+selector.class:pseudo-element {property:value;}
+</code></pre><h3 id="八-css3动画"><a href="#八-css3动画" class="headerlink" title="八. css3动画"></a>八. css3动画</h3><ul>
+<li><strong>先创建动画：</strong><br>@keyframes规则是创建动画。 @keyframes规则内指定一个CSS样式和动画将逐步从目前的样式更改为新的样式。</li>
+</ul>
+<pre><code>@keyframes myfirst
+{ 
+from {background: red;}
+to {background: yellow;}
+}
+</code></pre><ul>
+<li><strong>绑定选择器：</strong><br>当在 @keyframes 创建动画，把它绑定到一个选择器，否则动画不会有任何效果。<br>指定至少这两个CSS3的动画属性绑定向一个选择器：<br><code>规定动画的名称</code><br><code>规定动画的时长</code></li>
+</ul>
+<pre><code>div
+{
+animation: myfirst 5s;
+-webkit-animation: myfirst 5s; /* Safari 与 Chrome */
+}
+</code></pre><h3 id="九-CSS3新增内容"><a href="#九-CSS3新增内容" class="headerlink" title="九. CSS3新增内容"></a>九. CSS3新增内容</h3><ul>
+<li>边框border-radius（圆角边框）box-shadow（边框阴影）border-image</li>
+<li>背景background-size:宽高   background-origin(content-box,padding-box,border-box)</li>
+<li>文本效果 text-shadow  word-wrap(break-word)text-wrap?s</li>
+<li>字体 @font-face {font-family:ddd;src:url(‘.ttf’)}定义自己的字体</li>
+<li>字体描述符：font-family，src，font-sketch，font-style…</li>
+<li>2D转换  translate(向左移动距离，向下移动)\ratate(度数)</li>
+<li>3D转换ratateX()  ratateY()</li>
+<li>过渡  transition</li>
+<li>动画   @keyframes{from,to}   animation</li>
+<li>多列  column-count:数字创建多列文本</li>
+<li>用户界面resize（用户可改变大小），box-sizing（border-box，content-box）</li>
+</ul>
+<h3 id="十-什么是CSS-Hack"><a href="#十-什么是CSS-Hack" class="headerlink" title="十. 什么是CSS Hack?"></a>十. 什么是CSS Hack?</h3><p>CSS hack是通过在CSS样式中加入一些特殊的符号，让不同的浏览器识别不同的符号，以达到应用不同的CSS样式的目的。(不同浏览器识别不同css样式)<br>比如IE6能识别下划线“<em>”和星号“<em>”，IE7能识别星号“</em>”，但不能识别下划线”</em> ”，而firefox两个都不能认识。<a href="https://blog.csdn.net/qq_31635733/article/details/81660897" target="_blank" rel="noopener">https://blog.csdn.net/qq_31635733/article/details/81660897</a></p>
+<h3 id="十一-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？"><a href="#十一-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？" class="headerlink" title="十一. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？"></a>十一. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</h3><p>IE浏览器的内核Trident、Mozilla的Gecko、google的WebKit、Opera内核Presto；</p>
+<h4 id="浏览器的兼容性："><a href="#浏览器的兼容性：" class="headerlink" title="浏览器的兼容性："></a>浏览器的兼容性：</h4><ol>
+<li>png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8位.</li>
+<li>浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。</li>
+<li>IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。…<br><a href="https://blog.csdn.net/qq_38892819/article/details/75426133" target="_blank" rel="noopener">https://blog.csdn.net/qq_38892819/article/details/75426133</a></li>
+</ol>
+<h3 id="十二-display-none、visibility-hidden、visibility-collapse和opacity-0的区别"><a href="#十二-display-none、visibility-hidden、visibility-collapse和opacity-0的区别" class="headerlink" title="十二. display:none、visibility:hidden、visibility:collapse和opacity:0的区别"></a>十二. display:none、visibility:hidden、visibility:collapse和opacity:0的区别</h3><p><img src="//lililich.work/2019/08/03/CSS面经/Image7.png" alt="Image7.png"><br><code>Collapse</code>:是否折叠（即是否不占据文档流位置）；<br><code>event</code>：是否还能触发事件；<br><code>taborder</code>：是否还可以通过tab键选择到。其中，visibility:collapse在表格元素中yes，即不占据文档流位置，在其他元素占据位置</p>
+<p><strong>行内元素display:inline对应不显示为display:none<br>块状元素display:block对应不显示为visibility: hidden</strong></p>
+<ul>
+<li><code>display：none</code>设置该样式的元素（对象）的宽度、高度等各种属性值都将“丢失”，其元素不占据文档空间。不会触发事件</li>
+<li><code>visibility: hidden</code>设置该样式的元素（对象）仅仅是视觉上看不见（完全透明），而它所占据的空间位置仍然存在，也就是它仍具有高度、宽度等属性值。不会触发事件</li>
+<li><code>opacity:0</code>opacity是CSS3的属性，0（完全透明），1（完全不透明），inherit设置此样式的元素（对象）仍然占据空间，并且能触发事件。</li>
+<li><code>visibility:collapse</code>在表格元素的tr中使用时，会删除一行或者一列，但是不会影响表格布局。若在td上使用，仅隐藏此单元格内容，仍然占据位置。应用与除表格外的其他元素，则仍然会为其保留位置，不会触发事件，也不会通过tab键选择到。</li>
+</ul>
+<h4 id="十三-visibility的值"><a href="#十三-visibility的值" class="headerlink" title="十三. visibility的值"></a>十三. visibility的值</h4><p><img src="//lililich.work/2019/08/03/CSS面经/Image8.png" alt="Image8.png"></p>
+<h3 id="十四-Float影响，清除浮动几种方法"><a href="#十四-Float影响，清除浮动几种方法" class="headerlink" title="十四. Float影响，清除浮动几种方法"></a>十四. Float影响，清除浮动几种方法</h3><ul>
+<li>浮动影响的主要是设置浮动元素之后的元素，对之前没有浮动的元素不产生影响。<br>不管是设置浮动还是未设置浮动，其垂直位置不变，紧紧跟在未设置浮动元素之后，上边距与上一个元素的下边距对齐。</li>
+<li>如果父元素没有设置高度，在子块没有浮动的情况下，父块会被撑开，但是内部子块浮动的话，就会产生以下影响：<ol>
+<li>父元素的背景不能显示</li>
+<li>父元素的边框不能撑开，导致父元素之后的兄弟元素布局乱掉。</li>
+<li>margin、padding值不能正确显示</li>
+</ol>
+</li>
+</ul>
+<h3 id="十五-清除浮动的几种方法："><a href="#十五-清除浮动的几种方法：" class="headerlink" title="十五. 清除浮动的几种方法："></a>十五. 清除浮动的几种方法：</h3><ol>
+<li>设置父元素的高度为子元素的最高高度加上父元素的上下边框宽度。</li>
+<li>给父元素结束标签之前添加一个div标签，将此标签的css设置为：<code>clear:both</code>或者是<code>clear:left;</code>(clear规定哪一侧不允许有浮动元素)</li>
+<li>给父元素添加<code>overflow：hidden</code>。</li>
+<li>:after作用于浮动元素的父元素将其设置为<code>display:block</code></li>
+</ol>
+<p>其中:<br>clear:both;指清除所有浮动；<br>content: ‘.’; display:block;对于FF/chrome/opera/IE8不能缺少，其中content（）可以取值也可以为空。visibility:hidden;的作用是允许浏览器渲染它，但是不显示出来，这样才能实现清除浮动。</p>
+<h3 id="十六-为什么要初始化CSS样式。"><a href="#十六-为什么要初始化CSS样式。" class="headerlink" title="十六. 为什么要初始化CSS样式。"></a>十六. 为什么要初始化CSS样式。</h3><p>因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。</p>
+<p>当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。</p>
+<p>最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）</p>
+<h3 id="十七-link-和-import-的区别是？"><a href="#十七-link-和-import-的区别是？" class="headerlink" title="十七. link 和@import 的区别是？"></a>十七. link 和@import 的区别是？</h3><ol>
+<li>link属于HTML标签，而@import是CSS提供的; </li>
+<li>页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;</li>
+<li>import只在IE5以上才能识别，而link是HTML标签，无兼容问题; </li>
+<li>link方式的样式的权重 高于@import的权重.</li>
+</ol>
+<h3 id="十八-对BFC规范的理解？"><a href="#十八-对BFC规范的理解？" class="headerlink" title="十八. 对BFC规范的理解？"></a>十八. 对BFC规范的理解？</h3><p>BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。<br>（W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。）</p>
+<h3 id="十九-解释下-CSS-sprites，以及你要如何在页面或网站中使用它。"><a href="#十九-解释下-CSS-sprites，以及你要如何在页面或网站中使用它。" class="headerlink" title="十九. 解释下 CSS sprites，以及你要如何在页面或网站中使用它。"></a>十九. 解释下 CSS sprites，以及你要如何在页面或网站中使用它。</h3><p>CSS Sprites其实就是把网页中一些背景图片整合到一张图片文件中，再利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字能精确的定位出背景图片的位置。这样可以减少很多图片请求的开销，因为请求耗时比较长；请求虽然可以并发，但是也有限制，一般浏览器都是6个。对于未来而言，就不需要这样做了，因为有了<code>http2</code>。</p>
+<h3 id="二十-圣杯布局、双飞翼布局"><a href="#二十-圣杯布局、双飞翼布局" class="headerlink" title="二十. 圣杯布局、双飞翼布局"></a>二十. 圣杯布局、双飞翼布局</h3><p>两边固定，中间自适应。<br><img src="//lililich.work/2019/08/03/CSS面经/Image9.png" alt="Image9.png"><img src="//lililich.work/2019/08/03/CSS面经/Image10.png" alt="Image10.png"></p>
+<ul>
+<li>与圣杯布局相比，双飞翼HTML中为main添加了一个子元素main-wrap,这个小小的改动是为了之后处理main中内容被遮盖的问题，这也是两者实现方式最大的不同点。</li>
+<li>与圣杯布局一样，一开始三个col都设置float: left,为了把left和right定位到左右部分，采用负边距，left部分margin-left: -100%，right部分margin-right: -190px。之后就是处理main中内容的遮盖问题，只需设置main-wrap的左右外边距即可解决。</li>
+<li>相比圣杯布局，双飞翼不必设置左右栏的position: relative，也不必设置左右left、right值，只需多添加一个子元素包含，相应的padding换成margin。总的说来简单不少。</li>
+<li><code>双飞翼布局的好处</code>：主要的内容先加载的优化；兼容目前所有的主流浏览器，包括IE6在内；<br>衍生布局：<a href="http://www.cnblogs.com/lyzg/p/5160570.html" target="_blank" rel="noopener">http://www.cnblogs.com/lyzg/p/5160570.html</a><br>CSS布局面试：<a href="http://developer.51cto.com/art/201504/473284.htm" target="_blank" rel="noopener">http://developer.51cto.com/art/201504/473284.htm</a></li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/08/08/Javascript面经/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                Javascript面经
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/07/23/HTML面经/">
+                HTML面经
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>18</span>Article</a>
+        <a class="count tags"><span>8</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/03/CSS面经/" title="CSS面经">CSS面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/07/23/HTML面经/" title="HTML面经">HTML面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/06/19/使用flex布局来搭建基本的页面布局/" title="使用flex布局来搭建基本的页面布局">使用flex布局来搭建基本的页面布局</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
