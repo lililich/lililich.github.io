@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>Vue.js学习笔记Day5-5.08 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">Vue.js学习笔记Day5-5.08</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-05-08
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/前端/">#前端</a>
+    
+    <a href="/tags/Vue/">#Vue</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="Vue-js学习笔记Day5-5-08"><a href="#Vue-js学习笔记Day5-5-08" class="headerlink" title="Vue.js学习笔记Day5-5.08"></a>Vue.js学习笔记Day5-5.08</h3><p>今日主要学习内容：</p>
+<ul>
+<li>复习父子组件传值问题；</li>
+<li>watch、computed和methods之间的对比；</li>
+<li>nrm的安装使用；</li>
+<li>Webpack的概念；</li>
+<li>使用vue实例的render方法渲染组件；</li>
+<li>在普通页面中使用render函数渲染组件；</li>
+<li>export default 和 export 使用方式；</li>
+<li>在vue组件页面中，集成vue-router路由模块；</li>
+<li>组件中css作用域问题（scoped属性）</li>
+</ul>
+<p>开始Vue框架的学习吧～<br><a id="more"></a></p>
+<h4 id="一、复习父子组件传值问题"><a href="#一、复习父子组件传值问题" class="headerlink" title="一、复习父子组件传值问题"></a>一、复习父子组件传值问题</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;com1 v-bind:parentmsg=&quot;msg&quot; @func=&quot;getMsgFromSon&quot;&gt;&lt;/com1&gt;
+    &lt;/div&gt;
+    &lt;template id=&quot;tmp1&quot;&gt;
+        &lt;div&gt;
+            &lt;h1&gt;这是子元素---{{parentmsg}}&lt;/h1&gt;
+            &lt;input type=&quot;button&quot; value=&quot;向父组件传递消息&quot; @click=&quot;sendMsg&quot;&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+&lt;script&gt;
+    var com1 = {
+        template: &apos;#tmp1&apos;,
+        data(){
+            return {
+                msg:&apos;孝顺的孩子&apos;
+            }
+        },
+        props: [&apos;parentmsg&apos;],
+        methods:{
+            sendMsg(){
+                this.$emit(&apos;func&apos;,this.msg)
+            }
+        }
+    }
+    //创建Vue实例，得到ViewModel
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data:{
+            msg: &apos;父组件中的数据&apos;,
+            msgFromSon: &apos;&apos;
+        },
+        methods:{
+            getMsgFromSon(data){
+                this.msgFromSon = data
+                console.log(this.msgFromSon)
+            }
+        },
+        components:{
+            com1
+        }
+    })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="二、名称案例"><a href="#二、名称案例" class="headerlink" title="二、名称案例"></a>二、名称案例</h3><h4 id="2-1使用keyup事件实现"><a href="#2-1使用keyup事件实现" class="headerlink" title="2.1使用keyup事件实现"></a>2.1使用keyup事件实现</h4><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;script src=&quot;./lib/vue-2.4.0.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+    &lt;!-- 分析 --&gt;
+    &lt;!-- 1.我们要监听到文本框数据的改变，这样才知道什么时候去拼接出一个fullname --&gt;
+    &lt;!-- 2.如何监听到文本框的数据改变 --&gt;
+        &lt;input type=&quot;text&quot; v-model=&quot;firstname&quot; @keyup=&quot;getFullName&quot;&gt; +
+        &lt;input type=&quot;text&quot; v-model=&quot;lastname&quot; @keyup=&quot;getFullName&quot;&gt; =
+        &lt;input type=&quot;text&quot; v-model=&quot;fullname&quot;&gt;
+    &lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            firstname:&apos;&apos;,
+            lastname:&apos;&apos;,
+            fullname:&apos;&apos;
+        },
+        methods: {
+            getFullName(){
+                this.fullname = this.firstname + &apos;-&apos; + this.lastname
+            }
+        }
+    })
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="2-2、watch属性的使用"><a href="#2-2、watch属性的使用" class="headerlink" title="2.2、watch属性的使用"></a>2.2、watch属性的使用</h4><p>考虑一个问题：想要实现 名 和 姓 两个文本框的内容改变，则全名的文本框中的值也跟着改变；（用以前的知识如何实现？？？）</p>
+<ol>
+<li>监听data中属性的改变：</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;firstname&quot;&gt; +
+    &lt;input type=&quot;text&quot; v-model=&quot;lastname&quot;&gt; =
+    &lt;input type=&quot;text&quot; v-model=&quot;fullname&quot;&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            firstname:&apos;&apos;,
+            lastname:&apos;&apos;,
+            fullname:&apos;&apos;
+        },
+        methods: {},
+        watch: { // 使用这个属性，可以监视data中指定数据的变化，然后触发这个watch中对应的function处理函数
+            &apos;firstname&apos;:function(newVal,oldVal){
+                this.fullname = newVal + &apos;-&apos; + this.lastname
+            },
+            &apos;lastname&apos;:function(newVal,oldVal){
+                this.fullname = this.firstname + &apos;-&apos; + newVal
+            }
+        },
+    });
+&lt;/script&gt;
+</code></pre><ol start="2">
+<li>监听路由对象的改变：</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;router-link to=&quot;/login&quot;&gt;登陆&lt;/router-link&gt;
+    &lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;
+    &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    // 2.创建子组件
+    var login = {
+        template:&apos;&lt;h3&gt;登陆子组件&lt;/h3&gt;&apos;
+    }
+    var register = {
+        template:&apos;&lt;h3&gt;注册子组件&lt;/h3&gt;&apos;
+    }
+    // 3.创建一个路由对象
+    var router = new VueRouter({
+        routes:[ //路由规则数组
+        {path:&apos;/&apos;,redirect:&apos;/login&apos;},
+        {path:&apos;/login&apos;,component: login},
+        {path:&apos;/register&apos;,component: register},
+        ],
+        linkActiveClass:&apos;myactive&apos; // 激活相关的类
+    })
+    var vm = new Vue({
+        el:&apos;#app&apos;,
+        data:{},
+        methods:{},
+        // router: router
+        router,
+        watch:{
+            &apos;$route.path&apos;:function(newVal,oldVal){
+                console.log(newVal + &apos;---&apos; + oldVal)
+                if (newVal === &apos;/login&apos;) {
+                    console.log(&apos;欢迎进入登陆界面&apos;);
+                } else if (newVal === &apos;/register&apos;) {
+                    console.log(&apos;欢迎进入注册界面&apos;);
+                }
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre><h4 id="2-3、computed计算属性的使用"><a href="#2-3、computed计算属性的使用" class="headerlink" title="2.3、computed计算属性的使用"></a>2.3、computed计算属性的使用</h4><ol>
+<li>默认只有getter的计算属性：</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;input type=&quot;text&quot; v-model=&quot;firstname&quot;&gt; +
+    &lt;input type=&quot;text&quot; v-model=&quot;lastname&quot;&gt; =
+    &lt;input type=&quot;text&quot; v-model=&quot;fullname&quot;&gt;
+    &lt;p&gt;{{ fullname }}&lt;/p&gt;
+    &lt;p&gt;{{ fullname }}&lt;/p&gt;
+    &lt;p&gt;{{ fullname }}&lt;/p&gt;
+&lt;/div&gt;
+&lt;script&gt;
+    var vm = new Vue({
+        el: &apos;#app&apos;,
+        data: {
+            firstname:&apos;&apos;,
+            lastname:&apos;&apos;
+        },
+        methods: {},
+        computed: { 
+            &apos;fullname&apos;:function(){
+                console.log(&apos;ok&apos;);
+                return this.firstname + &apos;-&apos; + this.lastname
+            }
+        }
+    });
+&lt;/script&gt;
+</code></pre><ul>
+<li>注意：在computed中可以定义一些计算属性，计算属性的本质就是一个方法，只不过我们在使用这些计算属性的时候，是把他们的名称直接当作属性来使用的，并不会把计算属性当作方法来调用<ul>
+<li>计算属性再引用的时候，不要加()去调用，直接把它当普通属性去调用</li>
+<li>只要计算属性function内部所用到的任何data中的数据发生变化，就会重新计算这个计算属性的值</li>
+<li>计算属性的求职结果，会被缓存起来，方便下次直接使用，如果计算属性方法中，所有来的任何数据，都没有发生过变化，则不会对计算属性求值，如上例，虽然引用了三次fullname，但只输出一次‘ok’</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>定义有getter和setter的计算属性：</li>
+</ol>
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+  &lt;input type=&quot;text&quot; v-model=&quot;firstName&quot;&gt;
+  &lt;input type=&quot;text&quot; v-model=&quot;lastName&quot;&gt;
+  &lt;!-- 点击按钮重新为 计算属性 fullName 赋值 --&gt;
+  &lt;input type=&quot;button&quot; value=&quot;修改fullName&quot; @click=&quot;changeName&quot;&gt;
+  &lt;span&gt;{{fullName}}&lt;/span&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  // 创建 Vue 实例，得到 ViewModel
+  var vm = new Vue({
+    el: &apos;#app&apos;,
+    data: {
+      firstName: &apos;jack&apos;,
+      lastName: &apos;chen&apos;
+    },
+    methods: {
+      changeName() {
+        this.fullName = &apos;TOM - chen2&apos;;
+      }
+    },
+    computed: {
+      fullName: {
+        get: function () {
+          return this.firstName + &apos; - &apos; + this.lastName;
+        },
+        set: function (newVal) {
+          var parts = newVal.split(&apos; - &apos;);
+          this.firstName = parts[0];
+          this.lastName = parts[1];
+        }
+      }
+    }
+  });
+&lt;/script&gt;
+</code></pre><h4 id="2-4、watch、computed和methods之间的对比"><a href="#2-4、watch、computed和methods之间的对比" class="headerlink" title="2.4、watch、computed和methods之间的对比"></a>2.4、watch、computed和methods之间的对比</h4><ul>
+<li>computed属性的结果会被缓存，除非依赖的响应式属性变化才会重新计算。主要当作属性来使用；</li>
+<li>methods方法表示一个具体的操作，主要书写业务逻辑；</li>
+<li>watch一个对象，键是需要观察的表达式，值是对应回调函数。主要用来监听某些特定数据的变化，从而进行某些具体的业务逻辑操作；可以看作是computed和methods的结合体；</li>
+</ul>
+<h3 id="三、nrm的安装使用"><a href="#三、nrm的安装使用" class="headerlink" title="三、nrm的安装使用"></a>三、nrm的安装使用</h3><ul>
+<li>作用：提供了一些最常用的NPM包镜像地址，能够让我们快速的切换安装包时候的服务器地址；</li>
+<li>什么是镜像：原来包刚一开始是只存在于国外的NPM服务器，但是由于网络原因，经常访问不到，这时候，我们可以在国内，创建一个和官网完全一样的NPM服务器，只不过，数据都是从人家那里拿过来的，除此之外，使用方式完全一样；</li>
+</ul>
+<ol>
+<li>运行npm i nrm -g全局安装nrm包；</li>
+<li>使用nrm ls查看当前所有可用的镜像源地址以及当前所使用的镜像源地址；</li>
+<li>使用nrm use npm或nrm use taobao切换不同的镜像源地址；</li>
+<li>注意：nrm只是提供了几个常用的下载包的URL，并能够让我们在这几个地址间很方便地进行切换，但是我们每次装包的时候，使用的工具都是npm</li>
+</ol>
+<h3 id="四、Webpack的概念"><a href="#四、Webpack的概念" class="headerlink" title="四、Webpack的概念"></a>四、Webpack的概念</h3><h4 id="4-1-Webpack引入原因"><a href="#4-1-Webpack引入原因" class="headerlink" title="4.1 Webpack引入原因"></a>4.1 Webpack引入原因</h4><p><strong>1. 在网页中会引用哪些常见的静态资源？</strong></p>
+<ul>
+<li>JS<br>.js .jsx .coffee .ts（TypeScript 类 C# 语言）</li>
+<li>CSS<br>.css .less .sass .scss</li>
+<li>Images<br>.jpg .png .gif .bmp .svg</li>
+<li>字体文件（Fonts）<br>.svg .ttf .eot .woff .woff2</li>
+<li>模板文件<br>.ejs .jade .vue【这是在webpack中定义组件的方式，推荐这么用】</li>
+</ul>
+<p><strong>2. 网页中引入的静态资源多了以后有什么问题？？？</strong></p>
+<ul>
+<li>网页加载速度慢， 因为 我们要发起很多的二次请求；</li>
+<li>要处理错综复杂的依赖关系（比如bootstrap依赖于jQuery）</li>
+</ul>
+<p><strong>3. 如何解决上述两个问题</strong><br>合并、压缩、精灵图、图片的Base64编码<br>可以使用之前学过的requireJS、也可以使用webpack可以解决各个包之间的复杂依赖关系；</p>
+<h4 id="4-2-什么是webpack"><a href="#4-2-什么是webpack" class="headerlink" title="4.2 什么是webpack?"></a>4.2 什么是webpack?</h4><p>webpack 是前端的一个项目构建工具，它是基于 Node.js 开发出来的一个前端工具；<br>如何完美实现上述的2种解决方案</p>
+<ul>
+<li>使用Gulp， 是基于 task 任务的；</li>
+<li>使用Webpack， 是基于整个项目进行构建的；</li>
+<li>借助于webpack这个前端自动化构建工具，可以完美实现资源的合并、打包、压缩、混淆等诸多功能。</li>
+<li>根据官网的图片介绍webpack打包的过程<br><a href="https://webpack.js.org/" target="_blank" rel="noopener">webpack官网</a><br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image1.png" alt="Image1.png"></li>
+</ul>
+<h4 id="webpack安装的两种方式"><a href="#webpack安装的两种方式" class="headerlink" title="webpack安装的两种方式"></a>webpack安装的两种方式</h4><ul>
+<li>运行<code>cnpm i webpack -g</code>全局安装webpack，这样就能在全局使用webpack的命令</li>
+<li>在项目根目录中运行<code>cnpm i webpack --save-dev</code>安装到项目依赖中</li>
+</ul>
+<h4 id="4-3-初步使用webpack打包构建列表隔行变色案例"><a href="#4-3-初步使用webpack打包构建列表隔行变色案例" class="headerlink" title="4.3 初步使用webpack打包构建列表隔行变色案例"></a>4.3 初步使用webpack打包构建列表隔行变色案例</h4><ol>
+<li>创建项目基本的目录结构</li>
+<li>运行<code>cnpm init</code>初始化项目，使用npm管理项目中的依赖包</li>
+<li>使用<code>cnpm i jquery --save</code>安装jquery类库</li>
+<li>创建main.js并书写各行变色的代码逻辑：</li>
+</ol>
+<pre><code>// 1.导入Jquery
+import $ from &apos;jquery&apos;
+const $ = require(&apos;jquery&apos;)
+$(function(){
+    $(&apos;li:odd&apos;).css(&apos;backgroundColor&apos;,&apos;lightblue&apos;)
+    $(&apos;li:even&apos;).css(&apos;backgroundColor&apos;,function(){
+        return&apos;#&apos; + &apos;FF6900&apos;
+    })
+})
+</code></pre><p>直接在页面上引用main.js会报错，因为浏览器不认识import这种高级的JS语法，需要使用webpack进行处理，webpack默认会把这种高级的语法转换为低级的浏览器能识别的语法；<br>运行webpack 入口文件路径 输出文件路径对main.js进行处理：</p>
+<pre><code>webpack .\src\main.js .\dist\bundle.js
+</code></pre><p><strong>问题处理：</strong><br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image2.png" alt="Image2.png"></p>
+<ol>
+<li>警告</li>
+</ol>
+<pre><code>警告：WARNING in configuration
+The &apos;mode&apos; option has not been set, webpack will fallback to &apos;production&apos; for this value. Set &apos;mode&apos; option to &apos;development&apos; or &apos;production&apos; to enable defaults for each environment.
+You can also set it to &apos;none&apos; to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
+</code></pre><p>原因是：没有设置webpack的模式，是生产还是开发（production or development）</p>
+<ul>
+<li>执行命令：webpack –mode=production 或者 webpack –mode=development</li>
+<li>也可以在package.json中进行修改</li>
+</ul>
+<pre><code>&quot;scripts&quot;: {
+&quot;dev&quot;: &quot;webpack –mode development&quot;,
+&quot;build&quot;: &quot;webpack –mode production&quot;
+}
+</code></pre><ol start="2">
+<li>错误</li>
+</ol>
+<pre><code>错误：ERROR in multi ./src/main.js ./dist/bundle.js
+Module not found: Error: Can&apos;t resolve &apos;.\dist\bundle.js&apos; in &apos;D:\lichang\Vue_CLI\Vue\Day5\webpack-study&apos;
+@ multi ./src/main.js ./dist/bundle.js main[1]
+</code></pre><p>原因：目前使用的的webpack版本过高,原来的命令已经不适用了，换成指令</p>
+<pre><code>webpack .\src\main.js -o .\dist\bundle.js --mode development
+</code></pre><p><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image3.png" alt="Image3.png"></p>
+<p>总结：经过演示，webpack可以做哪些事情</p>
+<ul>
+<li>webpack能够处理js间互相依赖关系</li>
+<li>webpack能够处理js兼容问题，把高级的浏览器不识别的语法转为低级的浏览器能识别的语法</li>
+<li>刚才运行的命令格式：webpack 要打包的文件路径 打包好要输出的文件路径</li>
+</ul>
+<h4 id="4-4-使用webpack的配置文件简化打包时候的命令"><a href="#4-4-使用webpack的配置文件简化打包时候的命令" class="headerlink" title="4.4 使用webpack的配置文件简化打包时候的命令"></a>4.4 使用webpack的配置文件简化打包时候的命令</h4><ol>
+<li>在项目根目录中创建webpack.config.js</li>
+<li>由于运行webpack命令的时候，webpack需要指定入口文件和输出文件的路径，所以，我们需要在webpack.config.js中配置这两个路径：</li>
+<li>经过配置文件设置、直接使用命令webpack即可进行打包</li>
+</ol>
+<pre><code>// 导入处理路径的模块
+const path = require(&apos;path&apos;)
+// 导出一个配置对象，将来webpack在启动的时候，会默认来查找webpack.config.js，并读取这个文件中导出的配置对象，来进行打包处理
+module.exports = {
+    entry: path.join(__dirname, &apos;./src/main.js&apos;), // 项目入口文件
+    output: { // 配置输出选项
+        path: path.join(__dirname, &apos;./dist&apos;), // 配置输出的路径
+        filename: &apos;bundle.js&apos; // 配置输出的文件名
+    }
+}
+</code></pre><p>总结：当我们在控制台执行webpack命令时，webpack做了以下几步：</p>
+<ul>
+<li>首先，我们并没有通过命令的形式，给它指定入口和出口</li>
+<li>webpack就回去项目的根目录中，查找一个叫做webpack.config.js的配置文件</li>
+<li>当找到配置文件后，webpack会去执行解析这个配置文件，当解析完这个配置文件后，就得到了配置文件中导出的配置对象</li>
+<li>当webpack拿到配置对象后，就拿到了配置对象中指定的入口和出口，然后进行打包构建</li>
+</ul>
+<h4 id="4-5-使用webpack-dev-serve实时打包构建"><a href="#4-5-使用webpack-dev-serve实时打包构建" class="headerlink" title="4.5 使用webpack-dev-serve实时打包构建"></a>4.5 使用webpack-dev-serve实时打包构建</h4><ol>
+<li>由于每次重新修改代码之后，都需要手动运行webpack打包的命令，比较麻烦，所以使用webpack-dev-server来实现代码实时打包编译，当修改代码之后，会自动进行打包构建。</li>
+<li>运行<code>cnpm i webpack-dev-server -D</code>安装到开发依赖</li>
+<li><p>安装完成之后，在命令行直接运行<code>webpack-dev-server</code>来进行打包，发现报错<br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image4.png" alt="Image4.png"><br>此时需要借助于package.json文件中的指令，来进行运行<code>webpack-dev-server</code>命令，在package.json文件的scripts节点下新增<code>&quot;dev&quot;: &quot;webpack-dev-server&quot;</code>指令<br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image5.png" alt="Image5.png"></p>
+</li>
+<li><p>接下来运行<code>npm run dev</code>即可进行实时打包，但是dist目录下并没有生成bundle.js文件，这是因为webpack-dev-server将打包好的文件放在了内存中<br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image6.png" alt="Image6.png"></p>
+</li>
+</ol>
+<ul>
+<li>此时在<a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a> 网站是无法看到bundle.js文件的，说明webpack-dev-server并没有将打包好的bundle.js存放到实际的物理磁盘上，而是托管到电脑的内存中，所以我们在项目根目录中，根本找不到打包好的bundle.js<br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image7.png" alt="Image7.png"></li>
+<li>把bundle.js放在内存中的好处是：<strong>由于需要实时打包编译，所以放在内存中速度会非常快</strong></li>
+<li>这个时候访问webpack-dev-server启动的<a href="http://localhost:8080/网站，发现是一个文件夹的面板，需要点击到src目录下，才能打开我们的index首页，此时引用不到bundle.js文件，需要修改index.html中script的src属性为" target="_blank" rel="noopener">http://localhost:8080/网站，发现是一个文件夹的面板，需要点击到src目录下，才能打开我们的index首页，此时引用不到bundle.js文件，需要修改index.html中script的src属性为</a>:<script src="/bundle.js"></script></li>
+</ul>
+<h4 id="4-6-webpack-dev-serve常用命令参数"><a href="#4-6-webpack-dev-serve常用命令参数" class="headerlink" title="4.6 webpack-dev-serve常用命令参数"></a>4.6 webpack-dev-serve常用命令参数</h4><h5 id="方式1："><a href="#方式1：" class="headerlink" title="方式1："></a>方式1：</h5><ul>
+<li>修改package.json的script节点如下，其中</li>
+<li>–open表示自动打开浏览器</li>
+<li>–port 4321表示打开的端口号为4321</li>
+<li>–hot表示启用浏览器热更新</li>
+<li>–contentBase src指定启动的根目录</li>
+</ul>
+<pre><code>&quot;dev&quot;: &quot;webpack-dev-server --contentBase src --hot --port 4321 --open&quot;
+</code></pre><p>注意：热更新用来进行减少不必要的代码更新，每次重新编译只会更新修改过的文件（相当于打补丁）热更新在JS中表现的不明显，可以从一会儿要讲到的CSS身上进行介绍说明<br><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image8.png" alt="Image8.png"></p>
+<h5 id="方式2："><a href="#方式2：" class="headerlink" title="方式2："></a>方式2：</h5><ol>
+<li>修改webpack.config.js文件，新增devServer节点如下：</li>
+</ol>
+<pre><code>devServer:{  //相对来说方法2麻烦一些，了解即可
+    hot:true,   //启用热更新第一步
+    open:true,
+    port:4321,
+    contentBase:&apos;src&apos;
+}
+</code></pre><ol start="2">
+<li>在头部引入webpack模块：</li>
+</ol>
+<pre><code>var webpack = require(&apos;webpack&apos;);   // 启用热更新第二步
+</code></pre><ol start="3">
+<li>在plugins节点下新增：</li>
+</ol>
+<pre><code>plugins:[   //配置插件的节点
+    new webpack.HotModuleReplacementPlugin() //启用热更新第三步
+]
+</code></pre><h4 id="4-7使用html-webpack-plugin插件配置启动页面"><a href="#4-7使用html-webpack-plugin插件配置启动页面" class="headerlink" title="4.7使用html-webpack-plugin插件配置启动页面"></a>4.7使用html-webpack-plugin插件配置启动页面</h4><p>由于使用–contentBase指令的过程比较繁琐，需要指定启动的目录，同时还需要修改index.html中script标签的src属性，所以推荐大家使用html-webpack-plugin插件配置启动页面.</p>
+<ol>
+<li>运行<code>cnpm i html-webpack-plugin -D</code>安装到开发依赖</li>
+<li>修改webpack.config.js配置文件如下：</li>
+</ol>
+<pre><code>// 导入处理路径的模块
+var path = require(&apos;path&apos;);
+// 导入自动生成HTMl文件的插件
+var htmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);
+module.exports = {
+    entry: path.resolve(__dirname, &apos;src/js/main.js&apos;), // 项目入口文件
+    output: { // 配置输出选项
+        path: path.resolve(__dirname, &apos;dist&apos;), // 配置输出的路径
+        filename: &apos;bundle.js&apos; // 配置输出的文件名
+    },
+    plugins:[ // 添加plugins节点配置插件
+        new htmlWebpackPlugin({
+            template:path.resolve(__dirname, &apos;src/index.html&apos;),//模板路径
+            filename:&apos;index.html&apos;//自动生成的HTML文件的名称
+        })
+    ]
+}
+</code></pre><ol start="3">
+<li>修改package.json中script节点中的dev指令如下：</li>
+</ol>
+<pre><code>&quot;dev&quot;: &quot;webpack-dev-server&quot;
+</code></pre><h5 id="html-webpack-plugin插件两个作用："><a href="#html-webpack-plugin插件两个作用：" class="headerlink" title="html-webpack-plugin插件两个作用："></a>html-webpack-plugin插件两个作用：</h5><ul>
+<li>自动在内存中根据指定页面生成一个内存的页面</li>
+<li>自动把打包好的bundle.js文件追加到页面中去，我们不再需要手动处理bundle.js的引用路径了，所以可以将index.html中script标签注释掉！</li>
+</ul>
+<h4 id="4-8使用webpack处理第三方类型"><a href="#4-8使用webpack处理第三方类型" class="headerlink" title="4.8使用webpack处理第三方类型"></a>4.8使用webpack处理第三方类型</h4><p>webpack默认只能处理js类型的文件，无法处理其他的非js类型的文件，如果需要非JS类型的文件，我们需要手动安装一些合适的第三方loader加载器</p>
+<h5 id="webpack处理第三方文件类型的过程："><a href="#webpack处理第三方文件类型的过程：" class="headerlink" title="webpack处理第三方文件类型的过程："></a>webpack处理第三方文件类型的过程：</h5><ol>
+<li>发现这个要处理的文件不是js文件，然后就去配置文件中，查找有没有对应的第三方loader规则</li>
+<li>如果能找到对应的规则，就会调用相应的loader处理这种文件类型</li>
+<li>在调用loader的时候，是从后往前调用的</li>
+<li>当最后一个loader调用完毕，会把处理结果，交给webpack进行打包合并，最终输出到bundle.js中去</li>
+</ol>
+<h5 id="4-8-1使用webpack打包css文件"><a href="#4-8-1使用webpack打包css文件" class="headerlink" title="4.8.1使用webpack打包css文件"></a>4.8.1使用webpack打包css文件</h5><ol>
+<li>新建index.css文件</li>
+<li>在main.js引入index.css</li>
+</ol>
+<pre><code>import &apos;./css/index.css&apos;
+</code></pre><ol start="3">
+<li>如果要打包处理css文件，需要安装<code>cnpm i style-loader css-loader -D</code></li>
+<li>打开webpack.config.js这个配置文件，在里面新增一个配置节点叫module，它是一个对象，在这个module对象上有一个rules属性，是个数组，这个数组中存放了所有第三方文件的匹配和处理规则</li>
+</ol>
+<pre><code>module: { // 用来配置第三方loader模块的
+    rules: [ // 文件的匹配规则
+    { test: /\.css$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;] }//处理css文件的规则
+    ]
+}
+</code></pre><p>注意：use表示使用哪些模块来处理test所匹配到的文件；use中相关loader模块的调用顺序是从后向前调用的</p>
+<h5 id="4-8-2使用webpack打包less文件"><a href="#4-8-2使用webpack打包less文件" class="headerlink" title="4.8.2使用webpack打包less文件"></a>4.8.2使用webpack打包less文件</h5><ol>
+<li>新建index.less文件</li>
+<li>在main.js引入index.less</li>
+</ol>
+<pre><code>import &apos;./css/index.less&apos;
+</code></pre><ol start="3">
+<li>运行<code>cnpm i less-loader less -D</code></li>
+<li>修改webpack.config.js这个配置文件的module节点：</li>
+</ol>
+<pre><code>{ test: /\.less$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;less-loader&apos;] },
+</code></pre><h5 id="4-8-3使用webpack打包sass文件"><a href="#4-8-3使用webpack打包sass文件" class="headerlink" title="4.8.3使用webpack打包sass文件"></a>4.8.3使用webpack打包sass文件</h5><ol>
+<li>新建index.scss文件</li>
+<li>在main.js引入index.scss</li>
+</ol>
+<pre><code>import &apos;./css/index.scss&apos;
+</code></pre><ol start="3">
+<li>运行<code>cnpm i sass-loader node-sass -D</code></li>
+<li>在webpack.config.js中添加处理sass文件的loader模块：</li>
+</ol>
+<pre><code>{ test: /\.scss$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;, &apos;sass-loader&apos;] }
+</code></pre><h5 id="4-8-4使用webpack处理css中的路径"><a href="#4-8-4使用webpack处理css中的路径" class="headerlink" title="4.8.4使用webpack处理css中的路径"></a>4.8.4使用webpack处理css中的路径</h5><ol>
+<li>运行<code>cnpm i url-loader file-loader -D</code></li>
+<li>在webpack.config.js中添加处理url路径的loader模块：</li>
+</ol>
+<pre><code>{ test: /\.(png|jpg|gif|bmp|jpeg)$/, use: &apos;url-loader&apos; }
+</code></pre><ul>
+<li>可以通过limit指定进行base64编码的图片大小；只有小于指定字节（byte）的图片才会进行base64编码；通过[hash:8]来设置留八位hash编码，[name]用来保留原来的照片名，[ext]用来保留原来的后缀名</li>
+</ul>
+<pre><code>{ test: /\.(png|jpg|gif|bmp|jpeg)$/, use: &apos;url-loader?limit=43960&amp;name=[hash:8]-[name].[ext]&apos; },
+</code></pre><h5 id="4-8-5使用webpack处理字体文件"><a href="#4-8-5使用webpack处理字体文件" class="headerlink" title="4.8.5使用webpack处理字体文件"></a>4.8.5使用webpack处理字体文件</h5><ol>
+<li>在main.js引入bootstrap.css</li>
+</ol>
+<pre><code>import &apos;bootstrap/dist/css/bootstrap.css&apos;
+</code></pre><ol start="2">
+<li>运行安装<code>cnpm i bootstrap -S</code></li>
+<li>在webpack.config.js中添加处理字体文件的loader模块：</li>
+</ol>
+<pre><code>{ test: /\.(svg|ttf|eot|woff|woff2)$/, use: &apos;url-loader&apos; } 
+</code></pre><p>注意：遇到安装完bootstrap无法显示字体的现象，原因是版本问题，默认安装最新版本4.3.1，手动改为3.4.1版本即可 <code>cnpm i bootstrap@3.4.1-D</code></p>
+<h5 id="4-8-6使用babel处理高级JS语法"><a href="#4-8-6使用babel处理高级JS语法" class="headerlink" title="4.8.6使用babel处理高级JS语法"></a>4.8.6使用babel处理高级JS语法</h5><ul>
+<li>在 webpack 中，默认只能处理 一部分 ES6 的新语法，一些更高级的ES6语法或者 ES7 语法，webpack 是处理不了的；这时候，就需要 借助于第三方的 loader，来帮助webpack 处理这些高级的语法，当第三方loader 把 高级语法转为 低级的语法之后，会把结果交给 webpack 去打包到 bundle.js 中，通过 Babel ，可以帮我们将 高级的语法转换为低级的语法</li>
+<li>运行<code>cnpm i babel-core babel-loader babel-plugin-transform-runtime -D</code>安装babel的相关loader包</li>
+<li>运行<code>cnpm i babel-preset-env babel-preset-stage-0 -D</code>安装babel转换的语法</li>
+<li>在webpack.config.js中添加相关loader模块，其中需要注意的是，一定要把node_modules文件夹添加到排除项：</li>
+</ul>
+<pre><code>{ test: /\.js$/, use: &apos;babel-loader&apos;, exclude: /node_modules/ }
+</code></pre><ul>
+<li>注意： 在配置 babel 的 loader规则的时候，必须 把 node_modules 目录，通过 exclude 选项排除掉：原因有俩：</li>
+</ul>
+<ol>
+<li>如果 不排除 node_modules， 则Babel 会把 node_modules 中所有的 第三方 JS 文件，都打包编译，这样，会非常消耗CPU，同时，打包速度非常慢；</li>
+<li>哪怕，最终，Babel 把 所有 node_modules 中的JS转换完毕了，但是，项目也无法正常运行！</li>
+</ol>
+<ul>
+<li>在项目根目录中添加.babelrc文件，并修改这个配置文件如下：</li>
+</ul>
+<pre><code>{
+    &quot;presets&quot;:[&quot;env&quot;, &quot;stage-0&quot;],
+    &quot;plugins&quot;:[&quot;transform-runtime&quot;]
+}
+</code></pre><ul>
+<li>了解： 目前，我们安装的 babel-preset-env, 是比较新的ES语法， 之前， 我们安装的是 babel-preset-es2015, 现在，出了一个更新的 语法插件，叫做 babel-preset-env ，它包含了 所有的 和 es***相关的语法</li>
+</ul>
+<p><strong>问题描述：</strong></p>
+<pre><code>Error: Cannot find module &apos;@babel/core&apos;  babel-loader@8 requires Babel 7.x (the package &apos;@babel/core&apos;). If you&apos;d like to use Babel 6.x (&apos;babel-core&apos;), you should install &apos;babel-loader@7&apos;.
+</code></pre><p>最初以为是babel-core没有安装上。重装了好几遍babel-core还是不行。对照以前的项目,发现babel-loader的版本不一样,之前的是@7.1.5版本,而现在是@8.0.0版本。</p>
+<pre><code>cnpm install babel-loader@7.1.5 -D
+</code></pre><h3 id="五、使用vue实例的render方法渲染组件"><a href="#五、使用vue实例的render方法渲染组件" class="headerlink" title="五、使用vue实例的render方法渲染组件"></a>五、使用vue实例的render方法渲染组件</h3><ol>
+<li>在页面中渲染基本的组件</li>
+</ol>
+<pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p&gt;33333&lt;/p&gt;
+        &lt;login&gt;&lt;/login&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var login = {
+            template: &apos;&lt;h1&gt;这是登录组件&lt;/h1&gt;&apos;
+        }
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {},
+            methods: {},
+            components: {
+                login
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre><ol start="2">
+<li>在页面中使用render函数渲染组件</li>
+</ol>
+<pre><code>&lt;body&gt;
+    &lt;div id=&quot;app&quot;&gt;
+        &lt;p&gt;444444&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;script&gt;
+        var login = {
+            template: &apos;&lt;h1&gt;这是登录组件&lt;/h1&gt;&apos;
+        }
+        // 创建 Vue 实例，得到 ViewModel
+        var vm = new Vue({
+            el: &apos;#app&apos;,
+            data: {},
+            methods: {},
+            render: function (createElements) { // createElements 是一个 方法，调用它，能够把 指定的 组件模板，渲染为 html 结构
+                return createElements(login)
+                // 注意：这里 return 的结果，会 替换页面中 el 指定的那个 容器
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p><strong>两者区别</strong>：使用render函数渲染的组件直接替换整个div模块，所以不会再显示p标签444444，而在页面中直接导入组件则不会替换掉div整个模块的内容，两者区别相当于v-text和差值表达式的区别</p>
+<h3 id="六、在普通页面中使用render函数渲染组件"><a href="#六、在普通页面中使用render函数渲染组件" class="headerlink" title="六、在普通页面中使用render函数渲染组件"></a>六、在普通页面中使用render函数渲染组件</h3><h4 id="在webpack中配置-vue组件页面的解析"><a href="#在webpack中配置-vue组件页面的解析" class="headerlink" title="在webpack中配置.vue组件页面的解析"></a>在webpack中配置.vue组件页面的解析</h4><ul>
+<li>运行<code>cnpm i vue -S</code>将vue安装为运行依赖；</li>
+<li>注意： 在 webpack 中， 使用 <code>import Vue from &#39;vue&#39;</code>导入的 Vue 构造函数，功能不完整，只提供了 runtime-only 的方式，并没有提供 像网页中那样的使用方式；</li>
+<li>在使用webpack构建的Vue项目中使用模板对象解决方法：</li>
+</ul>
+<ol>
+<li>在main.js中引入<code>import Vue from &#39;vue&#39;</code>，查看node_modules-vue-package.json文件，可以看到我们目前引入的是vue.runtime.common.js，把这个路径换成指向vue.js文件（不提倡）</li>
+</ol>
+<p><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image9.png" alt="Image9.png"></p>
+<ol start="2">
+<li>直接在main.js引入import Vue from ‘../node_modules/vue/dist/vue.js’（不提倡）</li>
+<li>在main.js中引入import Vue from ‘vue’，<code>在webpack.config.js中添加resolve属性</code></li>
+</ol>
+<p><img src="//lililich.work/2019/05/08/Vue-js学习笔记Day5-5-08/Image10.png" alt="Image10.png"></p>
+<ul>
+<li>默认，webpack 无法打包 .vue 文件，需要安装 相关的loader，运行<code>cnpm i vue-loader vue-template-compiler -D</code>将解析转换vue的包安装为开发依赖；</li>
+<li>运行<code>cnpm i style-loader css-loader -D</code>将解析转换CSS的包安装为开发依赖，因为.vue文件中会写CSS样式；</li>
+<li>在webpack.config.js配置文件中，添加如下module规则：</li>
+</ul>
+<pre><code>module: {
+    rules: [
+        { test: /\.css$/, use: [&apos;style-loader&apos;, &apos;css-loader&apos;] },
+        { test: /\.vue$/, use: &apos;vue-loader&apos; }
+    ]
+}
+</code></pre><ul>
+<li>创建App.js组件页面：</li>
+</ul>
+<pre><code>&lt;template&gt;
+&lt;!-- 注意：在 .vue 的组件中，template 中必须有且只有唯一的根元素进行包裹，一般都用 div 当作唯一的根元素 --&gt;
+    &lt;div&gt;
+        &lt;h1&gt;这是APP组件 - {{msg}}&lt;/h1&gt;
+        &lt;h3&gt;我是h3&lt;/h3&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+// 注意：在 .vue 的组件中，通过 script 标签来定义组件的行为，需要使用 ES6 中提供的 export default 方式，导出一个vue实例对象
+export default {
+    data() {
+        return {
+            msg: &apos;OK&apos;
+        }
+    }
+}
+&lt;/script&gt;
+&lt;style scoped&gt;
+h1 {
+    color: red;
+}
+&lt;/style&gt;
+</code></pre><ul>
+<li>创建main.js入口文件：</li>
+</ul>
+<pre><code>// 导入 Vue 组件
+import Vue from &apos;vue&apos;
+// 导入 App组件
+import App from &apos;./components/App.vue&apos;
+// 创建一个 Vue 实例，使用 render 函数，渲染指定的组件
+var vm = new Vue({
+    el: &apos;#app&apos;,
+    render: c =&gt; c(App)
+});
+</code></pre><p>注意：render: c =&gt; c(App)是下式的缩写</p>
+<pre><code>render: function (createElements) {
+    return createElements(App)
+}
+</code></pre><h5 id="复习-在普通网页中如何使用vue："><a href="#复习-在普通网页中如何使用vue：" class="headerlink" title="复习 在普通网页中如何使用vue："></a>复习 在普通网页中如何使用vue：</h5><pre><code>1. 使用 script 标签 ，引入 vue 的包
+2. 在 index 页面中，创建 一个 id 为 app div 容器
+3. 通过 new Vue 得到一个 vm 的实例
+</code></pre><h5 id="回顾-包的查找规则："><a href="#回顾-包的查找规则：" class="headerlink" title="回顾 包的查找规则："></a>回顾 包的查找规则：</h5><pre><code>1. 找 项目根目录中有没有 node_modules 的文件夹
+2. 在 node_modules 中 根据包名，找对应的 vue 文件夹
+3. 在 vue 文件夹中，找 一个叫做 package.json 的包配置文件
+4. 在 package.json 文件中，查找 一个 main 属性【main属性指定了这个包在被加载时候，的入口文件】
+</code></pre><h3 id="七、export-default-和-export-使用方式"><a href="#七、export-default-和-export-使用方式" class="headerlink" title="七、export default 和 export 使用方式"></a>七、export default 和 export 使用方式</h3><ul>
+<li>ES6中导入模块，使用 import 模块名称 from ‘模块标识符’ import ‘表示路径’，使用 export default 和 export 向外暴露成员；在Node中 使用 var 名称 = require(‘模块标识符’)，module.exports 和 exports 来暴露成员，两套方法不可混用</li>
+<li><strong>export default 和 export的区别</strong>：</li>
+</ul>
+<pre><code>var info = {
+    name: &apos;zs&apos;,
+    age: 20
+}
+export default info
+/* export default {
+    address: &apos;北京&apos;
+} */
+// 注意： export default 向外暴露的成员，可以使用任意的变量来接收
+// 注意： 在一个模块中，export default 只允许向外暴露1次
+// 注意： 在一个模块中，可以同时使用 export default 和 export 向外暴露成员
+</code></pre><ul>
+<li>export的引用方式：</li>
+</ul>
+<pre><code>export var title = &apos;小星星&apos;
+export var content = &apos;哈哈哈&apos;
+// 注意： 使用 export 向外暴露的成员，只能使用 { } 的形式来接收，这种形式，叫做 【按需导出】
+// 注意： export 可以向外暴露多个成员， 同时，如果某些成员，我们在 import 的时候，不需要，则可以 不在 {} 中定义
+// 注意： 使用 export 导出的成员，必须严格按照 导出时候的名称，来使用 {} 按需接收；
+// 注意： 使用 export 导出的成员，如果 就想 换个 名称来接收，可以使用 as 来起别名；
+</code></pre><ul>
+<li>使用 import <strong> from </strong> 和 import ‘路径’ 还有 import {a, b} from ‘模块标识’ 导入其他模块</li>
+</ul>
+<pre><code>import m222, { title as title123, content } from &apos;./test.js&apos;
+console.log(m222)
+console.log(title123 + &apos; --- &apos; + content)
+</code></pre><h3 id="八、在vue组件页面中，集成vue-router路由模块"><a href="#八、在vue组件页面中，集成vue-router路由模块" class="headerlink" title="八、在vue组件页面中，集成vue-router路由模块"></a>八、在vue组件页面中，集成vue-router路由模块</h3><p><a href="https://router.vuejs.org/" target="_blank" rel="noopener">vue-router官网</a></p>
+<p><code>cnpm install vue-router</code></p>
+<ol>
+<li>导入路由模块：</li>
+</ol>
+<pre><code>import Vue from &apos;vue&apos;
+import VueRouter from &apos;vue-router&apos;
+</code></pre><ol start="2">
+<li>安装路由模块：</li>
+</ol>
+<pre><code>Vue.use(VueRouter);
+</code></pre><ol start="3">
+<li>导入需要展示的组件:</li>
+</ol>
+<pre><code>import login from &apos;./components/account/login.vue&apos;
+import register from &apos;./components/account/register.vue&apos;
+</code></pre><ol start="4">
+<li>创建路由对象:</li>
+</ol>
+<pre><code>var router = new VueRouter({
+routes: [
+{ path: &apos;/&apos;, redirect: &apos;/login&apos; },
+{ path: &apos;/login&apos;, component: login },
+{ path: &apos;/register&apos;, component: register }
+]
+});
+</code></pre><ol start="5">
+<li>将路由对象，挂载到 Vue 实例上:</li>
+</ol>
+<pre><code>var vm = new Vue({
+el: &apos;#app&apos;,
+// render: c =&gt; { return c(App) }
+render(c) {
+return c(App);
+},
+router // 将路由对象，挂载到 Vue 实例上
+});
+</code></pre><ol start="6">
+<li>改造App.vue组件，在 template 中，添加router-link和router-view：</li>
+</ol>
+<pre><code>&lt;router-link to=&quot;/login&quot;&gt;登录&lt;/router-link&gt;
+&lt;router-link to=&quot;/register&quot;&gt;注册&lt;/router-link&gt;
+&lt;router-view&gt;&lt;/router-view&gt;
+</code></pre><h3 id="九、组件中css作用域问题（scoped属性）"><a href="#九、组件中css作用域问题（scoped属性）" class="headerlink" title="九、组件中css作用域问题（scoped属性）"></a>九、组件中css作用域问题（scoped属性）</h3><ol>
+<li>普通的style标签，只支持普通的样式，如果想要启用scss或者less，需要为style元素设置lang属性</li>
+</ol>
+<pre><code>&lt;style lang=&quot;scss&quot; scoped&gt;
+</code></pre><ol start="2">
+<li>只要是style标签，是在.vue组件中定义的，那么推荐都为style开启scoped属性，可以防止组件间样式相互干扰，样式的scoped属性是通过css的属性选择器实现的</li>
+</ol>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/05/21/VScode快捷键及常用插件/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                VScode快捷键及常用插件
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/05/06/Vue-js学习笔记Day4-5-06/">
+                Vue.js学习笔记Day4-5.06
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>21</span>Article</a>
+        <a class="count tags"><span>12</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/18/算法编程题/" title="算法编程题">算法编程题</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/03/CSS面经/" title="CSS面经">CSS面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/07/23/HTML面经/" title="HTML面经">HTML面经</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>
