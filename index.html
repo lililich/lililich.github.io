@@ -161,6 +161,79 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-js数组操作">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/08/19/js数组操作/">js数组操作</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-08-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
+                
+                <a href="/tags/编程/" class="cube-excerpt-tag-link">#编程</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <ul>
+<li>传统的js数组方法: concat(),push(),pop(),shift(),unshift(),splice(),slice(),join(),sort(),reverse();</li>
+<li>ES5新增数组方法: indexOf(),lastIndexOf(),map(),filter(),forEach(),some(),every(),reduce(),reduceRight();</li>
+</ul>
+<h3 id="Array-map"><a href="#Array-map" class="headerlink" title="Array.map()"></a>Array.map()</h3><p>此方法是将数组中的每个元素调用一个提供的函数，结果作为一个新的数组返回，并没有改变原来的数组</p>
+<pre><code>let arr = [1, 2, 3, 4, 5]
+    let newArr = arr.map(x =&gt; x*2)
+    //arr= [1, 2, 3, 4, 5]   原数组保持不变
+    //newArr = [2, 4, 6, 8, 10] 返回新数组
+</code></pre><h3 id="Array-forEach"><a href="#Array-forEach" class="headerlink" title="Array.forEach()"></a>Array.forEach()</h3><p>此方法是将数组中的每个元素执行传进提供的函数，没有返回值，直接改变原数组，注意和map方法区分</p>
+<pre><code>let arr = [1, 2, 3, 4, 5]
+   num.forEach(x =&gt; x*2)
+   // arr = [2, 4, 6, 8, 10]  数组改变,注意和map区分
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/08/19/js数组操作/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-08-19
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/编程/" class="cube-excerpt-tag-link">#编程</a>
+                
+                <a href="/tags/二叉树/" class="cube-excerpt-tag-link">#二叉树</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>（1）前序遍历<br>      a、访问根节点；b、前序遍历左子树；c、前序遍历右子树。</p>
+<p>（2）中序遍历<br>      a、中序遍历左子树；b、访问根节点；c、中序遍历右子树。</p>
+<p>（3）后序遍历<br>      a、后序遍历左子树；b、后续遍历右子树；c、访问根节点。<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-算法编程题">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/08/18/算法编程题/">算法编程题</a></h1>
@@ -449,73 +522,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Echarts的学习与使用">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/08/Echarts的学习与使用/">Echarts的学习与使用</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-08
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/Echarts/" class="cube-excerpt-tag-link">#Echarts</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>今天我们来学习一下<code>Echarts</code>，ECharts是一个纯JavaScript图表库，底层依赖于轻量级的Canvas类库ZRender，基于BSD开原协议，是一款非常优秀的<code>可视化前端框架</code>，本文基于<code>Vue CLI脚手架</code>，来实现Echarts的引用，跟着我一起来学习吧~</p>
-<h4 id="一-引入一个简单的图表"><a href="#一-引入一个简单的图表" class="headerlink" title="一.引入一个简单的图表"></a>一.引入一个简单的图表</h4><h5 id="首先npm安装Echarts"><a href="#首先npm安装Echarts" class="headerlink" title="首先npm安装Echarts"></a>首先npm安装Echarts</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts --save</span><br></pre></td></tr></table></figure>
-<h5 id="接下来打开public-gt-src-gt-main-js来引入echarts"><a href="#接下来打开public-gt-src-gt-main-js来引入echarts" class="headerlink" title="接下来打开public-&gt;src-&gt;main.js来引入echarts"></a>接下来打开<code>public</code>-&gt;<code>src</code>-&gt;<code>main.js</code>来引入echarts</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import myCharts from <span class="string">'./comm/js/myCharts.js'</span></span><br><span class="line">Vue.use(myCharts)</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/08/Echarts的学习与使用/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-flex布局排布">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/05/25/flex布局排布/">flex布局排布</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-05-25
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/flex/" class="cube-excerpt-tag-link">#flex</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>作为前端必备知识点，flex为我们页面布局提供了灵活性，今天我们来学一下flex布局吧~</p>
-<h5 id="一、Flex布局是什么？"><a href="#一、Flex布局是什么？" class="headerlink" title="一、Flex布局是什么？"></a>一、Flex布局是什么？</h5><p>Flex是Flexible Box的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。任何一个容器都可以指定为Flex布局，行内元素也可以使用Flex布局， Webkit内核的浏览器，必须加上-webkit前缀。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.box&#123;    </span><br><span class="line">display: -webkit-flex; /* Safari */    </span><br><span class="line">display: flex;&#125;注意：设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</span><br></pre></td></tr></table></figure></p>
-<h5 id="二、Flex布局基本概念"><a href="#二、Flex布局基本概念" class="headerlink" title="二、Flex布局基本概念"></a>二、Flex布局基本概念</h5><p>采用Flex布局的元素，称为Flex容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。<br><img src="//lililich.work/2019/05/25/flex布局排布/Image1.png" alt="Image1.png"></p>
-<ul>
-<li>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。</li>
-<li>主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；</li>
-<li>交叉轴的开始位置叫做cross start，结束位置叫做cross end。</li>
-<li>项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/05/25/flex布局排布/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -591,8 +597,8 @@
     
     
     <div class="count">
-        <a class="count articles"><span>21</span>Article</a>
-        <a class="count tags"><span>12</span>Tags</a>
+        <a class="count articles"><span>23</span>Article</a>
+        <a class="count tags"><span>13</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
 </div>
@@ -630,7 +636,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/18/算法编程题/" title="算法编程题">算法编程题</a>
+                    <a href="/2019/08/19/js数组操作/" title="js数组操作">js数组操作</a>
                 </p>
             </div>
             
@@ -644,7 +650,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
+                    <a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/" title="二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树">二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树</a>
                 </p>
             </div>
         </li>
@@ -657,7 +663,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
+                    <a href="/2019/08/18/算法编程题/" title="算法编程题">算法编程题</a>
                 </p>
             </div>
         </li>
@@ -670,7 +676,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/03/CSS面经/" title="CSS面经">CSS面经</a>
+                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
                 </p>
             </div>
         </li>
@@ -683,7 +689,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/07/23/HTML面经/" title="HTML面经">HTML面经</a>
+                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
                 </p>
             </div>
         </li>
@@ -706,23 +712,23 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/categories/面经/">#面经</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/算法/">#算法</a>
         </div>
         
     </div>
@@ -743,6 +749,11 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -753,31 +764,6 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/Vue/">#Vue</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面经/">#面经</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/排序/">#排序</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/js/">#js</a>
         </div>
         
@@ -787,13 +773,38 @@
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/二叉树/">#二叉树</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Echarts/">#Echarts</a>
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
         </div>
         
     </div>
