@@ -236,7 +236,7 @@
 </code></pre><h3 id="Array-unshift"><a href="#Array-unshift" class="headerlink" title="Array.unshift()"></a>Array.unshift()</h3><p>此方法是将一个或多个元素添加到数组的开头，并返回新数组的长度：</p>
 <pre><code>let arr = [1, 2, 3, 4, 5]
     arr.unshift(6, 7)
-    console.log(arr) //[6, 7, 2, 3, 4, 5]
+    console.log(arr) //[6, 7, 1, 2, 3, 4, 5]
     console.log(arr.length) //7 
 </code></pre><h3 id="Array-isArray"><a href="#Array-isArray" class="headerlink" title="Array.isArray()"></a>Array.isArray()</h3><p>判断一个对象是不是数组，返回的是布尔值</p>
 <pre><code>let arr = [1, 2, 3]
@@ -252,9 +252,9 @@
    console.log(str)// 1,2,3,4,5
 </code></pre><h3 id="Array-join"><a href="#Array-join" class="headerlink" title="Array.join()"></a>Array.join()</h3><p>此方法也是将数组转化为字符串：</p>
 <pre><code>let arr = [1, 2, 3, 4, 5];
-   let str1 = arr.toString()
-   let str2 = arr.toString(&apos;,&apos;)
-   let str3 = arr.toString(&apos;##&apos;)
+   let str1 = arr.join()
+   let str2 = arr.join(&apos;,&apos;)
+   let str3 = arr.join(&apos;##&apos;)
    console.log(str1)// 12345
    console.log(str2)// 1,2,3,4,5
    console.log(str3)// 1##2##3##4##5
@@ -437,7 +437,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -452,7 +452,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -478,12 +478,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Echarts/">#Echarts</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -498,7 +498,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
@@ -513,13 +513,8 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/跨域/">#跨域</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/Github/">#Github</a>
         </div>
         
         
@@ -528,7 +523,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/面经/">#面经</a>
         </div>
         
@@ -538,7 +538,7 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
