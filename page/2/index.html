@@ -270,6 +270,48 @@
     </footer>
 </div>
 
+<div class="cube-excerpt" id="cube-excerpt-如何禁止chrome浏览器http自动转成https【转】">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/05/21/如何禁止chrome浏览器http自动转成https【转】/">如何禁止chrome浏览器http自动转成https【转】</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-05-21
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/跨域/" class="cube-excerpt-tag-link">#跨域</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Chrome浏览器阻止跨域配置："><a href="#Chrome浏览器阻止跨域配置：" class="headerlink" title="Chrome浏览器阻止跨域配置："></a>Chrome浏览器阻止跨域配置：</h3><p>–disable-web-security –user-data-dir=C:\ChromeDebug</p>
+<h3 id="自动跳转原因"><a href="#自动跳转原因" class="headerlink" title="自动跳转原因"></a>自动跳转原因</h3><p>将HTTP请求自动转为HTTPS请求是浏览器的默认策略。当浏览器访问过某个HTTPS的网站后，再访问该网站时，一切HTTP请求会自动转为HTTPS请求。<br>HTTP转为HTTPS的主要原因是为了安全。</p>
+<h3 id="Chrome-浏览器"><a href="#Chrome-浏览器" class="headerlink" title="Chrome 浏览器"></a>Chrome 浏览器</h3><pre><code>1. 地址栏中输入 chrome://net-internals/#hsts
+2. 在 Delete domain security policies 中输入项目的域名，并 Delete 删除
+3. 可以在 Query domain 测试是否删除成功
+</code></pre><p>这里如果还是不行， 请清除浏览器缓存！<br> 参考文章  :<a href="https://www.cnblogs.com/nayu/p/6896469.html" target="_blank" rel="noopener">如何关闭浏览器的HSTS功能</a></p>
+<h3 id="Safari-浏览器"><a href="#Safari-浏览器" class="headerlink" title="Safari 浏览器"></a>Safari 浏览器</h3><pre><code>1. 完全关闭 Safari
+2. 删除 ~/Library/Cookies/HSTS.plist 这个文件
+3. 重新打开 Safari 即可
+4. 极少数情况下，需要重启系统
+</code></pre><h3 id="Opera-浏览器"><a href="#Opera-浏览器" class="headerlink" title="Opera 浏览器"></a>Opera 浏览器</h3><p>和 Chrome 方法一样Firefox 浏览器</p>
+<pre><code>1. 关闭所有已打开的页面
+2. 清空历史记录和缓存
+3. 地址栏输入 about:permissions
+4. 搜索项目域名，并点击 Forget About This Site
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/05/21/如何禁止chrome浏览器http自动转成https【转】/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day5-5.08">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/05/08/Vue-js学习笔记Day5-5-08/">Vue.js学习笔记Day5-5.08</a></h1>
@@ -511,42 +553,6 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Markdown基本语法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/31/Markdown基本语法/">Markdown基本语法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-31
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
-                
-                <a href="/tags/Markdown/" class="cube-excerpt-tag-link">#Markdown</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>进行完博客搭建，让我们来学习一下怎么写博客吧，学习一下Markdown的基本语法~<br>本站只是对Markdown语法进行简要叙述，如果想要加深一步学习，可以去<a href="https://www.appinn.com/markdown/" target="_blank" rel="noopener">Markdown</a>官网上进行学习哦~</p>
-<p><strong> 什么是Markdown？ </strong></p>
-<p>Markdown 的目标是实现<strong>「易读易写」</strong>。<br>Markdown 语法的目标是：<strong>成为一种适用于网络的书写语言</strong>。<br>Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像<em>强调</em>。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
-<p><strong> markdown的优点： </strong></p>
-<ul>
-<li>语法简单</li>
-<li>更专注内容而非排版，排版只是为了更清楚的展现内容</li>
-<li>md轻松转换html及pdf，网络友好</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/31/Markdown基本语法/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-6">
@@ -622,8 +628,8 @@
     
     
     <div class="count">
-        <a class="count articles"><span>23</span>Article</a>
-        <a class="count tags"><span>13</span>Tags</a>
+        <a class="count articles"><span>24</span>Article</a>
+        <a class="count tags"><span>14</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
 </div>
@@ -752,7 +758,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/面经/">#面经</a>
         </div>
         
@@ -768,7 +774,7 @@
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
@@ -803,17 +809,17 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/面经/">#面经</a>
+            <a href="/tags/跨域/">#跨域</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
@@ -824,11 +830,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Vue/">#Vue</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
