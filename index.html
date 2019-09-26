@@ -161,6 +161,38 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-EventLoop详解">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/09/20/EventLoop详解/">EventLoop详解</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-09-20
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="EventLoop详解"><a href="#EventLoop详解" class="headerlink" title="EventLoop详解"></a>EventLoop详解</h3><h4 id="什么是进程与线程？"><a href="#什么是进程与线程？" class="headerlink" title="什么是进程与线程？"></a>什么是进程与线程？</h4><p>相信大家经常会听到 JS 是单线程执行的，但是你是否疑惑过什么是线程？<br>讲到线程，那么肯定也得说一下进程。本质上来说，两个名词都是 CPU 工作时间片的一个描述。</p>
+<ul>
+<li><code>进程</code>描述了 CPU 在运行指令及加载和保存上下文所需的时间，放在应用上来说就代表了一个程序。</li>
+<li><code>线程</code>是进程中的更小单位，描述了执行一段指令所需的时间。</li>
+</ul>
+<p>把这些概念拿到浏览器中来说，当你打开一个 Tab 页时，其实就是创建了一个进程，一个进程中可以有多个线程，比如渲染线程、JS 引擎线程、HTTP 请求线程等等。当你发起一个请求时，其实就是创建了一个线程，当请求结束后，该线程可能就会被销毁。<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/09/20/EventLoop详解/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-webpack基本原理">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/09/18/webpack基本原理/">webpack基本原理</a></h1>
@@ -522,37 +554,6 @@ console.log(typeof fn); //function
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-HTML5语义化标签的理解">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/16/HTML5语义化标签的理解/">HTML5语义化标签的理解</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-16
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/html/" class="cube-excerpt-tag-link">#html</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>语义化标签的好处要从HTML 全局属性说起，即有的标签有默认的HTML全局属性，所以最好用语义化标签。<br>1：以下元素支持 tabindex 属性：</p>
-<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt; 以及 &lt;textarea&gt;。
-</code></pre><p>用法：<element tabindex="number">number规定元素的 tab 键控制次序（1 是第一个）。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br>2：以下元素支持 accesskey 属性：</element></p>
-<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;legend&gt; 以及 &lt;textarea&gt;。
-</code></pre><p>用法：<element accesskey="character">character规定激活（使元素获得焦点）元素的便捷按键。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br></element></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/16/HTML5语义化标签的理解/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-7">
@@ -634,7 +635,7 @@ console.log(typeof fn); //function
     
     
     <div class="count">
-        <a class="count articles"><span>31</span>Article</a>
+        <a class="count articles"><span>32</span>Article</a>
         <a class="count tags"><span>18</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
@@ -673,7 +674,7 @@ console.log(typeof fn); //function
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                    <a href="/2019/09/20/EventLoop详解/" title="EventLoop详解">EventLoop详解</a>
                 </p>
             </div>
             
@@ -687,7 +688,7 @@ console.log(typeof fn); //function
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
                 </p>
             </div>
         </li>
@@ -700,7 +701,7 @@ console.log(typeof fn); //function
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
+                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
                 </p>
             </div>
         </li>
@@ -713,7 +714,7 @@ console.log(typeof fn); //function
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/26/跨域常用解决方案/" title="跨域常用解决方案">跨域常用解决方案</a>
+                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
                 </p>
             </div>
         </li>
@@ -726,7 +727,7 @@ console.log(typeof fn); //function
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/23/js如何判断数组是Array类型/" title="js如何判断数组是Array类型">js如何判断数组是Array类型</a>
+                    <a href="/2019/08/26/跨域常用解决方案/" title="跨域常用解决方案">跨域常用解决方案</a>
                 </p>
             </div>
         </li>
@@ -754,7 +755,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -780,7 +781,7 @@ console.log(typeof fn); //function
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
@@ -790,12 +791,17 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/html/">#html</a>
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -805,23 +811,18 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/js/">#js</a>
-        </div>
-        
-        
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/二叉树/">#二叉树</a>
+            <a href="/tags/flex/">#flex</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/flex/">#flex</a>
+            <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
         
@@ -830,12 +831,12 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
@@ -865,7 +866,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
