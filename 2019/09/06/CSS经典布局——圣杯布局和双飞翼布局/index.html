@@ -10,7 +10,7 @@
     
     
     
-    <title>js实现继承 | Lililich&#39;s Blog</title>
+    <title>CSS经典布局——圣杯布局和双飞翼布局 | Lililich&#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,7 +161,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">js实现继承</h1>
+    <h1 class="title">CSS经典布局——圣杯布局和双飞翼布局</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -172,69 +172,315 @@
         <div class="cube-article-tags">
     <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
     
-    <a href="/tags/js/">#js</a>
+    <a href="/tags/CSS/">#CSS</a>
+    
+    <a href="/tags/布局/">#布局</a>
     
 </div>
     </div>
     
     <div class="cube-article-content cube-markdown">
         
-        <p>实现两个类 A 和 B, 且B类继承自A类，B类的实例可以调用A类的方法</p>
-<h5 id="1-借用构造函数继承："><a href="#1-借用构造函数继承：" class="headerlink" title="1. 借用构造函数继承："></a>1. 借用构造函数继承：</h5><p>用.call()和.apply()将父类构造函数引入子类函数；<br>call() 方法：<code>B.call(A, args1,args2);</code>即A对象调用B对象的方法；<br>apply() 方法：用作 this 的对象和要传递给函数的参数的数组 <code>B.apply(A, arguments);</code>即A对象应用B对象的方法</p>
-<pre><code>function A(propertyA){
-    this.propertyA=propertyA;
-    this.fn1 = function(){
+        <h4 id="圣杯布局和双飞翼布局"><a href="#圣杯布局和双飞翼布局" class="headerlink" title="圣杯布局和双飞翼布局"></a>圣杯布局和双飞翼布局</h4><p>圣杯布局和双飞翼布局一直是前端面试的高频考点，圣杯布局的出现是来自由 Matthew Levine 在 2006 年写的一篇文章 《In Search of the Holy Grail》。 比起双飞翼布局，它的起源不是源于对页面的形象表达。在西方，圣杯是表达“渴求之物”的意思。而双飞翼布局则是源于淘宝的UED，可以说是灵感来自于页面渲染。</p>
+<p>圣杯布局和双飞翼布局达到的效果基本相同，都是侧边两栏宽度固定，中间栏宽度自适应。 主要的不同之处就是在解决中间部分被挡住的问题时，采取的解决办法不一样：</p>
+<ul>
+<li><strong>圣杯布局</strong>是在父元素上设置了padding-left和padding-right，在给左右两边的内容设置position为relative，通过左移和右移来使得左右两边的内容得以很好的展现，</li>
+<li><strong>双飞翼</strong>则是在center这个div中再加了一个div来放置内容，在给这个新的div设置margin-left和margin-right 。<a id="more"></a>
+效果图如下：<br><img src="//lililich.work/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/Image1.png" alt="Image1.png"></li>
+</ul>
+<h4 id="1-圣杯布局"><a href="#1-圣杯布局" class="headerlink" title="1.圣杯布局"></a>1.圣杯布局</h4><h5 id="圣杯布局要求："><a href="#圣杯布局要求：" class="headerlink" title="圣杯布局要求："></a>圣杯布局要求：</h5><ul>
+<li>header和footer各自占领屏幕所有宽度，高度固定。</li>
+<li>中间的container是一个三栏布局。</li>
+<li>三栏布局两侧宽度固定不变，中间部分自动填充整个区域。</li>
+<li>中间部分的高度是三栏中最高的区域的高度。</li>
+</ul>
+<h5 id="圣杯布局的三种实现"><a href="#圣杯布局的三种实现" class="headerlink" title="圣杯布局的三种实现"></a>圣杯布局的三种实现</h5><h6 id="1-浮动"><a href="#1-浮动" class="headerlink" title="1. 浮动"></a>1. 浮动</h6><ul>
+<li>先定义好header和footer的样式，使之横向撑满。</li>
+<li>在container中的三列设为浮动和相对定位(后面会用到)，center要放在最前面，footer清除浮动。</li>
+<li>三列的左右两列分别定宽200px和150px，中间部分center设置100%撑满</li>
+<li>这样因为浮动的关系，center会占据整个container，左右两块区域被挤下去了</li>
+<li>接下来设置left的 margin-left: -100%;，让left回到上一行最左侧</li>
+<li>但这会把center给遮住了，所以这时给外层的container设置 padding-left: 200px;padding-right: 150px;，给left和right空出位置</li>
+<li>这时left并没有在最左侧，因为之前已经设置过相对定位，所以通过 left: -200px; 把left拉回最左侧</li>
+<li>同样的，对于right区域，设置 margin-right: -150px; 把right拉回第一行</li>
+<li>这时右侧空出了150px的空间，所以最后设置 right: -150px;把right区域拉到最右侧就行了。</li>
+</ul>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 
-    };
-}
-function B(propertyB){
-    A.call(this,args1,args2);//A.apply(this,[])
-    this.propertyB = propertyB;
-}
-var b1 = new B(&quot;大毛&quot;);　　
-b.fn1();
-</code></pre><a id="more"></a>
-<h5 id="2-原型链继承"><a href="#2-原型链继承" class="headerlink" title="2. 原型链继承"></a>2. 原型链继承</h5><pre><code>function A(propertyA){
-    this,propertyA = propertyA;
-    this.fn = function(){}
-}
-function B(propertyB){
-    this.propertyB = propertyB;
-}
-B.prototype = new A(&quot;&quot;);
-var b1 = new B(&quot;&quot;);
-b1.fn();
-</code></pre><h5 id="3-混合方式：组合继承（组合原型链继承和借用构造函数继承）"><a href="#3-混合方式：组合继承（组合原型链继承和借用构造函数继承）" class="headerlink" title="3. 混合方式：组合继承（组合原型链继承和借用构造函数继承）"></a>3. 混合方式：组合继承（组合原型链继承和借用构造函数继承）</h5><pre><code>function A(propertyA){
-    this,propertyA = propertyA;
-    this.fn = function(){}
-}
-function B(propertyB){
-    A.call(this,args1,args2);//A.apply(this,[])
-    this.propertyB = propertyB;
-}
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;script src=&quot;http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  body {
+    min-width: 550px;  /* 2x leftContent width + rightContent width */
+    font-weight: bold;
+    font-size: 20px;
+  }
 
-B.prototype = Object.create(A.prototype);//创建一个父类的原型对象，并返回这个新对象
-B.prototype.constructor = B;
+  #header, #footer {
+    background: rgba(29, 27, 27, 0.726);
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+  }
+  #footer {
+    clear: both;
+  }
 
-var B=new B(&quot;张&quot;);  
-b1.fn();
-console.log(B instanceof A) //true
-</code></pre><h5 id="4-对象冒充"><a href="#4-对象冒充" class="headerlink" title="4. 对象冒充"></a>4. 对象冒充</h5><pre><code>function A(){
-this.name = &quot;name&quot;;
-this.sayName = function(){
-    console.log(this.name);
-    }
-}
-function B(){
-    this.temp = A;//创建对象
-    this.temp();//调用方法
-    delete this.temp;//删除对象，以免覆盖父类
+  #container {
+    padding-left: 200px;   /* leftContent width */
+    padding-right: 150px;  /* rightContent width */
+    overflow: hidden;
+  }
 
-    this.id = &quot;1&quot;;
-}
-var b = new B();
-b.sayName();
-</code></pre>
+  #container .column {
+    position: relative;
+    float: left;
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+  }
+
+  #center {
+    width: 100%;
+    background: rgb(206, 201, 201);
+  }
+
+  #left {
+    width: 200px;           /* leftContent width */
+    right: 200px;           /* leftContent width */
+    margin-left: -100%;
+    background: rgba(95, 179, 235, 0.972);
+  }
+
+  #right {
+    width: 150px;           /* rightContent width */
+    margin-right: -150px;   /* rightContent width */
+    background: rgb(231, 105, 2);
+  }
+
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;div id=&quot;header&quot;&gt;#header&lt;/div&gt;
+  &lt;div id=&quot;container&quot;&gt;
+    &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;#center&lt;/div&gt;
+    &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;#left&lt;/div&gt;
+    &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;#right&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;footer&quot;&gt;#footer&lt;/div&gt;
+
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><h6 id="2-flex弹性盒子"><a href="#2-flex弹性盒子" class="headerlink" title="2. flex弹性盒子"></a>2. flex弹性盒子</h6><ul>
+<li>header和footer设置样式，横向撑满。</li>
+<li>container中的left、center、right依次排布即可</li>
+<li>给container设置弹性布局 display: flex;</li>
+<li>left和right区域定宽，center设置 flex: 1; 即可</li>
+</ul>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;script src=&quot;http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  body {
+    min-width: 550px;  
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #header, #footer {
+    background: rgba(29, 27, 27, 0.726);
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+  }
+  #container {
+   display: flex;
+  }
+  #container .column {
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+  }
+  #center {
+    flex: 1;
+    background: rgb(206, 201, 201);
+  }
+  #left {
+    width: 200px;        
+    background: rgba(95, 179, 235, 0.972);
+  }
+  #right {
+    width: 150px;           
+    background: rgb(231, 105, 2);
+  }
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;div id=&quot;header&quot;&gt;#header&lt;/div&gt;
+  &lt;div id=&quot;container&quot;&gt;
+    &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;#left&lt;/div&gt;
+    &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;#center&lt;/div&gt;
+    &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;#right&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;footer&quot;&gt;#footer&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><h6 id="3-grid布局"><a href="#3-grid布局" class="headerlink" title="3. grid布局"></a>3. grid布局</h6><p><img src="//lililich.work/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/Image2.png" alt="Image2.png"><br>如上图所示，我们把body划分成三行四列的网格，其中有5条列网格线</p>
+<ul>
+<li>给body元素添加display: grid;属性变成一个grid(网格)</li>
+<li>给header元素设置grid-row: 1; 和 grid-column: 1/5; 意思是占据第一行网格的从第一条列网格线开始到第五条列网格线结束</li>
+<li>给footer元素设置grid-row: 1; 和 grid-column: 1/5; 意思是占据第三行网格的从第一条列网格线开始到第五条列网格线结束</li>
+<li>给left元素设置grid-row: 2; 和 grid-column: 1/2; 意思是占据第二行网格的从第一条列网格线开始到第二条列网格线结束</li>
+<li>给center元素设置grid-row: 2; 和 grid-column: 2/4; 意思是占据第二行网格的从第二条列网格线开始到第四条列网格线结束</li>
+<li>给right元素设置grid-row: 2; 和 grid-column: 4/5; 意思是占据第二行网格的从第四条列网格线开始到第五条列网格线结束</li>
+</ul>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;script src=&quot;http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  body {
+    min-width: 550px;
+    font-weight: bold;
+    font-size: 20px;
+    display: grid;
+  }
+  #header,
+  #footer {
+    background: rgba(29, 27, 27, 0.726);
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+  }
+  #header {
+    grid-row: 1;
+    grid-column: 1/5;
+  }
+  #footer {
+    grid-row: 3;
+    grid-column: 1/5;
+  }
+  .column {
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+  }
+  #left {
+    grid-row: 2;
+    grid-column: 1/2;
+    background: rgba(95, 179, 235, 0.972);
+  }
+  #center {
+    grid-row: 2;
+    grid-column: 2/4;
+    background: rgb(206, 201, 201);
+  }
+  #right {
+    grid-row: 2;
+    grid-column: 4/5;
+    background: rgb(231, 105, 2);
+  }
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;div id=&quot;header&quot;&gt;#header&lt;/div&gt;
+  &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;#left&lt;/div&gt;
+  &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;#center&lt;/div&gt;
+  &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;#right&lt;/div&gt;
+  &lt;div id=&quot;footer&quot;&gt;#footer&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><h4 id="双飞翼布局"><a href="#双飞翼布局" class="headerlink" title="双飞翼布局"></a>双飞翼布局</h4><h5 id="双飞翼布局要求"><a href="#双飞翼布局要求" class="headerlink" title="双飞翼布局要求"></a>双飞翼布局要求</h5><ul>
+<li>header和footer各自占领屏幕所有宽度，高度固定。</li>
+<li>中间的container是一个三栏布局。</li>
+<li>三栏布局两侧宽度固定不变，中间部分自动填充整个区域。</li>
+<li>中间部分的高度是三栏中最高的区域的高度。</li>
+<li><h5 id="双飞翼布局的实现"><a href="#双飞翼布局的实现" class="headerlink" title="双飞翼布局的实现"></a>双飞翼布局的实现</h5></li>
+<li>left、center、right三种都设置左浮动</li>
+<li>设置center宽度为100%</li>
+<li>设置负边距，left设置负边距为100%，right设置负边距为自身宽度</li>
+<li>设置content的margin值为左右两个侧栏留出空间，margin值大小为left和right宽度</li>
+</ul>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot;&gt;
+  &lt;script src=&quot;http://lib.sinaapp.com/js/jquery/2.0.2/jquery-2.0.2.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  body {
+    min-width: 550px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  #header,
+  #footer {
+    background: rgba(29, 27, 27, 0.726);
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+  }
+  #container {
+    overflow: hidden;
+  }
+  .column {
+    text-align: center;
+    height: 300px;
+    line-height: 300px;
+  }
+  #left, #right, #center {
+    float: left;
+  }
+  #center {
+    width: 100%;
+    background: rgb(206, 201, 201);
+  }
+  #left {
+    width: 200px;
+    margin-left: -100%;
+    background: rgba(95, 179, 235, 0.972);
+  }
+  #right {
+    width: 150px;
+    margin-left: -150px;
+    background: rgb(231, 105, 2);
+  }
+  .content {
+    margin: 0 150px 0 200px;
+  }
+&lt;/style&gt;
+
+&lt;body&gt;
+  &lt;div id=&quot;header&quot;&gt;#header&lt;/div&gt;
+
+  &lt;div id=&quot;container&quot;&gt;
+    &lt;div id=&quot;center&quot; class=&quot;column&quot;&gt;
+      &lt;div class=&quot;content&quot;&gt;#center&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id=&quot;left&quot; class=&quot;column&quot;&gt;#left&lt;/div&gt;
+    &lt;div id=&quot;right&quot; class=&quot;column&quot;&gt;#right&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div id=&quot;footer&quot;&gt;#footer&lt;/div&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre><p>原文链接：<br><a href>https://blog.csdn.net/qq_38128179/article/details/86533976</a><br><a href>https://blog.csdn.net/qq_38128179/article/details/86542447</a></p>
+
     </div>
 </div>
 
@@ -242,16 +488,16 @@ b.sayName();
     <ul>
         
         <li class="prev">
-            <a href="/2019/09/18/webpack基本原理/">
+            <a href="/2019/09/06/js实现继承/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                webpack基本原理
+                js实现继承
             </a>
         </li>
         
         
         <li class="next">
-            <a href="/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/">
-                CSS经典布局——圣杯布局和双飞翼布局
+            <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/">
+                七种实现左侧固定，右侧自适应两栏布局的方法
                 <i class="cube-icon cube-next" aria-hidden="true"></i>
             </a>
         </li>
@@ -421,12 +667,12 @@ b.sayName();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -472,7 +718,7 @@ b.sayName();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
@@ -482,7 +728,7 @@ b.sayName();
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
@@ -517,12 +763,12 @@ b.sayName();
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/面经/">#面经</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Vue/">#Vue</a>
         </div>
         
