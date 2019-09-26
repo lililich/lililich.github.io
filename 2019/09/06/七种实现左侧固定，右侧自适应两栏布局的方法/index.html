@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>七种实现左侧固定，右侧自适应两栏布局的方法 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">七种实现左侧固定，右侧自适应两栏布局的方法</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-09-06
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/CSS/">#CSS</a>
+    
+    <a href="/tags/布局/">#布局</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>总结一下左边固定，右边自适应的两栏布局的七种方法。其中有老生常谈的float方法,BFC方法，也有CSS3的flex布局与grid布局。并非所有的布局都会在开发中使用，但是其中也会涉及一些知识点。<br>常用的宽度自适应的方法通常是利用了block水平的元素宽度能随父容器调节的流动特性。另外一种思路是利用CSS中的calc()方法来动态设定宽度。还有一种思路是，利用CSS中的新型布局flex layout与grid layout。</p>
+<p>首先创建基本的HTML布局和最基本的样式。</p>
+<pre><code>&lt;div class=&quot;wrapper&quot; id=&quot;wrapper&quot;&gt;
+  &lt;div class=&quot;left&quot;&gt;
+    左边固定宽度，高度不固定 &lt;/br&gt; &lt;/br&gt;&lt;/br&gt;&lt;/br&gt;高度有可能会很小，也可能很大。
+  &lt;/div&gt;
+  &lt;div class=&quot;right&quot;&gt;
+    这里的内容可能比左侧高，也可能比左侧低。宽度需要自适应。&lt;/br&gt;
+    基本的样式是，两个div相距20px, 左侧div宽 120px
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><a id="more"></a>
+<p>基本的样式是，两个盒子相距20px, 左侧盒子宽 120px，右侧盒子宽度自适应。基本的CSS样式如下:</p>
+<pre><code>.wrapper {
+    padding: 15px 20px;
+    border: 1px dashed #ff6c60;
+}
+.left {
+    width: 120px;
+    border: 5px solid #ddd;
+}
+.right {
+    margin-left: 20px;
+    border: 5px solid #ddd;
+}
+</code></pre><p>下面的代码都是基于这套基本代码做覆盖，通过给容器添加不同的类来实现效果。</p>
+<h4 id="1-双inline-block方案"><a href="#1-双inline-block方案" class="headerlink" title="1.双inline-block方案"></a>1.双inline-block方案</h4><pre><code>.wrapper-inline-block {
+    box-sizing: content-box;
+    font-size: 0;    // 消除空格的影响
+}
+
+.wrapper-inline-block .left,
+.wrapper-inline-block .right {
+    display: inline-block;
+    vertical-align: top;    // 顶端对齐
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.wrapper-inline-block .right {
+    width: calc(100% - 140px);
+}
+</code></pre><ul>
+<li>这种方法是通过width: calc(100% - 140px)来动态计算右侧盒子的宽度。需要知道右侧盒子距离左边的距离，以及左侧盒子具体的宽度(content+padding+border)，以此计算父容器宽度的100%需要减去的数值。同时，还需要知道右侧盒子的宽度是否包含border的宽度。</li>
+<li>在这里，为了简单的计算右侧盒子准确的宽度，设置了子元素的box-sizing:border-box;以及父元素的box-sizing: content-box;。</li>
+<li>同时，作为两个inline-block的盒子，必须设置vertical-align来使其顶端对齐。</li>
+<li>另外，为了准确地应用计算出来的宽度，需要消除div之间的空格，需要通过设置父容器的font-size: 0;,或者用注释消除html中的空格等方法。</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>需要知道左侧盒子的宽度，两个盒子的距离，还要设置各个元素的box-sizing</li>
+<li>需要消除空格字符的影响</li>
+<li>需要设置vertical-align: top满足顶端对齐。</li>
+</ul>
+<h4 id="2-双float方案"><a href="#2-双float方案" class="headerlink" title="2.双float方案"></a>2.双float方案</h4><pre><code>.wrapper-double-float {
+    overflow: auto;        // 清除浮动
+    box-sizing: content-box;
+}
+
+.wrapper-double-float .left,
+.wrapper-double-float .right {
+    float: left;
+    box-sizing: border-box;
+}
+
+.wrapper-double-float .right {
+    width: calc(100% - 140px);
+}
+</code></pre><ul>
+<li>本方案和双float方案原理相同，都是通过动态计算宽度来实现自适应。但是，由于浮动的block元素在有空间的情况下会依次紧贴，排列在一行，所以无需设置display: inline-block;，自然也就少了顶端对齐，空格字符占空间等问题。</li>
+<li>不过由于应用了浮动，父元素需要清除浮动。</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>需要知道左侧盒子的宽度，两个盒子的距离，还要设置各个元素的box-sizing。</li>
+<li>父元素需要清除浮动。</li>
+</ul>
+<h4 id="3-float-margin-left方案"><a href="#3-float-margin-left方案" class="headerlink" title="3.float+margin-left方案"></a>3.float+margin-left方案</h4><pre><code>.wrapper-float {
+    overflow: hidden;        // 清除浮动
+}
+
+.wrapper-float .left {
+    float: left;
+}
+
+.wrapper-float .right {
+    margin-left: 150px;
+}
+</code></pre><ul>
+<li>上面两种方案都是利用了CSS的calc()函数来计算宽度值。下面两种方案则是利用了block级别的元素盒子的宽度具有填满父容器，并随着父容器的宽度自适应的流动特性。</li>
+<li>但是block级别的元素都是独占一行的，所以要想办法让两个block排列到一起。</li>
+<li>我们知道，block级别的元素会认为浮动的元素不存在，但是inline级别的元素能识别到浮动的元素。这样，block级别的元素就可以和浮动的元素同处一行了。</li>
+<li>为了让右侧盒子和左侧盒子保持距离，需要为左侧盒子留出足够的距离。这个距离的大小为左侧盒子的宽度以及两个盒子之间的距离之和。然后将该值设置为右侧盒子的margin-left。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>需要清除浮动</li>
+<li>需要计算右侧盒子的margin-left</li>
+</ul>
+<h4 id="4-使用absolute-margin-left方法"><a href="#4-使用absolute-margin-left方法" class="headerlink" title="4.使用absolute+margin-left方法"></a>4.使用absolute+margin-left方法</h4><p>另外一种让两个block排列到一起的方法是对左侧盒子使用position: absolute的绝对定位。这样，右侧盒子也能无视掉它。</p>
+<pre><code>.wrapper-absolute .left {
+    position: absolute;
+}
+
+.wrapper-absolute .right {
+    margin-left: 150px;
+}
+</code></pre><p>缺点:</p>
+<ul>
+<li>使用了绝对定位，若是用在某个div中，需要更改父容器的position。</li>
+<li>没有清除浮动的方法，若左侧盒子高于右侧盒子，就会超出父容器的高度。因此只能通过设置父容器的min-height来放置这种情况。</li>
+</ul>
+<h4 id="5-使用float-BFC方法"><a href="#5-使用float-BFC方法" class="headerlink" title="5.使用float+BFC方法"></a>5.使用float+BFC方法</h4><p>上面的方法都需要通过左侧盒子的宽度，计算某个值，下面三种方法都是不需要计算的。只需要设置两个盒子之间的间隔。</p>
+<pre><code>.wrapper-float-bfc {
+    overflow: auto;
+}
+
+.wrapper-float-bfc .left {
+    float: left;
+    margin-right: 20px;
+}
+
+.wrapper-float-bfc .right {
+    margin-left: 0;
+    overflow: auto;
+}
+</code></pre><ul>
+<li>这个方案同样是利用了左侧浮动，但是右侧盒子通过overflow: auto;形成了BFC，因此右侧盒子不会与浮动的元素重叠。</li>
+<li>这种情况下，只需要为左侧的浮动盒子设置margin-right，就可以实现两个盒子的距离了。而右侧盒子是block级别的，所以宽度能实现自适应。</li>
+<li>缺点:父元素需要清除浮动</li>
+</ul>
+<h4 id="6-flex方案"><a href="#6-flex方案" class="headerlink" title="6.flex方案"></a>6.flex方案</h4><pre><code>.wrapper-flex {
+    display: flex;
+    align-items: flex-start;
+}
+
+.wrapper-flex .left {
+    flex: 0 0 auto;
+}
+
+.wrapper-flex .right {
+    flex: 1 1 auto;
+}
+</code></pre><ul>
+<li>flex可以说是最好的方案了，代码少，使用简单。有朝一日，大家都改用现代浏览器，就可以使用了。</li>
+<li>需要注意的是，flex容器的一个默认属性值:align-items: stretch;。这个属性导致了列等高的效果。</li>
+<li>为了让两个盒子高度自动，需要设置: align-items: flex-start;</li>
+</ul>
+<h4 id="7-grid方案"><a href="#7-grid方案" class="headerlink" title="7.grid方案"></a>7.grid方案</h4><p>又一个新型的布局方式。可以满足需求，但这并不是它发挥用处的真正地方。</p>
+<pre><code>.wrapper-grid {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    align-items: start;
+}
+
+.wrapper-grid .left,
+.wrapper-grid .right {
+    box-sizing: border-box;
+}
+
+.wrapper-grid .left {
+    grid-column: 1;
+}
+
+.wrapper-grid .right {
+    grid-column: 2;
+}
+</code></pre><p>注意:</p>
+<ul>
+<li>grid布局也有列等高的默认效果。需要设置: align-items: start;。</li>
+<li>grid布局还有一个值得注意的小地方和flex不同:在使用margin-left的时候，grid布局默认是box-sizing设置的盒宽度之间的位置。而flex则是使用两个div的border或者padding外侧之间的距离。</li>
+</ul>
+<h4 id="极限情况"><a href="#极限情况" class="headerlink" title="极限情况"></a>极限情况</h4><p>最后可以再看一下在父容器极限小的情况下，不同方案的表现。主要分成四种情况：</p>
+<ul>
+<li>动态计算宽度的情况<br>两种方案: 双inline-block方案和双float方案。宽度极限小时，右侧的div宽度会非常小，由于遵循流动布局，所以右侧div会移动到下一行。</li>
+<li>动态计算右侧margin-left的情况两种方案:<br>float+margin-left方案和absolute+margin-left方案。宽度极限小时，由于右侧的div忽略了文档流中左侧div的存在，所以其依旧会存在于这一行，并被隐藏。</li>
+<li>float+BFC方案的情况<br>这种情况下，由于BFC与float的特殊关系，右侧div在宽度减小到最小后，也会掉落到下一行。</li>
+<li>flex和grid的情况<br>这种情况下，默认两种布局方式都不会放不下的div移动到下一行。不过 flex布局可以通过 flex-flow: wrap;来设置多余的div移动到下一行。 grid布局暂不支持。如果感觉写的有问题，恳请指出。</li>
+</ul>
+<p>详情参考：<a href="https://segmentfault.com/a/1190000010698609" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010698609</a></p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/09/06/js实现继承/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                js实现继承
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/08/26/跨域常用解决方案/">
+                跨域常用解决方案
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>31</span>Article</a>
+        <a class="count tags"><span>18</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/26/跨域常用解决方案/" title="跨域常用解决方案">跨域常用解决方案</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/23/js如何判断数组是Array类型/" title="js如何判断数组是Array类型">js如何判断数组是Array类型</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/二叉树/">#二叉树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>HTML5语义化标签的理解 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">HTML5语义化标签的理解</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-08-16
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/html/">#html</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>语义化标签的好处要从HTML 全局属性说起，即有的标签有默认的HTML全局属性，所以最好用语义化标签。<br>1：以下元素支持 tabindex 属性：</p>
+<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt; 以及 &lt;textarea&gt;。
+</code></pre><p>用法：<element tabindex="number">number规定元素的 tab 键控制次序（1 是第一个）。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br>2：以下元素支持 accesskey 属性：</element></p>
+<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;legend&gt; 以及 &lt;textarea&gt;。
+</code></pre><p>用法：<element accesskey="character">character规定激活（使元素获得焦点）元素的便捷按键。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br><a id="more"></a><br>3：contextmenu 属性的值是要打开的 menu 元素的 id。目前只有火狐支持</element></p>
+<p>4：spellcheck 属性规定是否对元素进行拼写和语法检查。可以对以下内容进行拼写检查：    </p>
+<pre><code>input 元素中的文本值（非密码）       
+&lt;textarea&gt; 元素中的文本       
+可编辑元素中的文本
+</code></pre><p>5：lang 属性在以下标签中无效：</p>
+<pre><code>&lt;base&gt;, &lt;br&gt;, &lt;frame&gt;, &lt;frameset&gt;, &lt;hr&gt;, &lt;iframe&gt;, &lt;param&gt; 以及 &lt;script&gt;。
+</code></pre><p><strong>对外的意义：有利于SEO的！！有利于解析代码！！可读性可维护性增强！！</strong></p>
+<p>1：定义上的：</p>
+<pre><code>&lt;!--...--&gt;   定义注释。
+&lt;!DOCTYPE&gt;  定义文档类型。
+&lt;html&gt;      定义 HTML 文档。
+&lt;body&gt;     定义文档的主体。
+&lt;script&gt;     定义客户端脚本。
+&lt;frame&gt;     定义框架集的窗口或框架。
+&lt;frameset&gt;     定义框架集。
+&lt;head&gt;     定义关于文档的信息。
+&lt;iframe&gt;     定义内联框架。
+&lt;meta&gt;      定义关于 HTML 文档的元信息。
+&lt;link&gt;      定义文档与外部资源的关系。
+&lt;noframes&gt;    定义针对不支持框架的用户的替代内容。
+&lt;noscript&gt;    定义针对不支持客户端脚本的用户的替代内容。
+</code></pre><p>2：功能上的（js或者css上的作用比较有特色的语义化标签）：</p>
+<pre><code>&lt;a&gt;           定义锚。
+&lt;abbr&gt;      定义缩写。
+&lt;address&gt;   定义文档作者或拥有者的联系信息。
+&lt;area&gt;       定义图像映射内部的区域。
+&lt;audio&gt;     定义声音内容。
+&lt;base&gt;      定义页面中所有链接的默认地址或默认目标。
+&lt;br&gt;         定义简单的折行。
+&lt;button&gt;    定义按钮 (push button)。
+&lt;col&gt;       定义表格中一个或多个列的属性值。
+&lt;colgroup&gt;   定义表格中供格式化的列组。
+&lt;dfn&gt;        定义一个定义项目。
+&lt;code&gt;     定义计算机代码文本。
+&lt;samp&gt;     定义样本文本。
+&lt;kbd&gt;       定义键盘文本。它表示文本是从键盘上键入的。它经常用在与计算机相关的文档或手册中。
+&lt;var&gt;       定义变量。您可以将此标签与 &lt;pre&gt; 及 &lt;code&gt; 标签配合使用。
+&lt;cite&gt;       定义引用。可使用该标签对参考文献的引用进行定义，比如书籍或杂志的标题。
+&lt;datalist&gt;  定义下拉列表。 
+&lt;wbr&gt;      定义长单词在哪里换号；元素来添加 Word Break Opportunity（单词换行时机）
+&lt;video&gt;     定义视频。
+&lt;track&gt;      标签为诸如 video 元素之类的媒介规定外部文本轨道。
+&lt;title&gt;       定义文档的标题。
+&lt;time&gt;        定义日期/时间。
+&lt;textarea&gt;    定义多行的文本输入控件。
+&lt;strong&gt;    定义强调文本。
+&lt;style&gt;     定义文档的样式信息。
+&lt;sub&gt;       定义下标文本。
+&lt;summary&gt;    有关文档的详细信息 
+&lt;details&gt;    元素定义可见的标题。
+&lt;sup&gt;        定义上标文本。
+&lt;source&gt;     定义媒介源。
+&lt;samp&gt;      定义计算机代码样本。
+&lt;section&gt;    定义 section。
+&lt;select&gt;     定义选择列表（下拉列表）。
+&lt;rt&gt;       定义 ruby 注释的解释。
+&lt;ruby&gt;      定义 ruby 注释。
+&lt;q&gt;         定义短的引用。
+&lt;progress&gt;    定义任何类型的任务的进度。
+&lt;param&gt;      定义对象的参数。
+&lt;pre&gt;        定义预格式文本。
+&lt;optgroup&gt;    定义选择列表中相关选项的组合。
+&lt;option&gt;     定义选择列表中的选项。
+&lt;output&gt;     定义输出的一些类型。
+&lt;details&gt;     定义元素的细节。
+&lt;dir&gt;       不赞成使用。定义目录列表。
+&lt;div&gt;      定义文档中的节。
+&lt;dfn&gt;       定义定义项目。
+&lt;dialog&gt;     定义对话框或窗口。
+&lt;dl&gt;      定义定义列表。
+&lt;dt&gt;       定义定义列表中的项目。
+&lt;embed&gt;     定义外部交互内容或插件。
+&lt;fieldset&gt;    定义围绕表单中元素的边框。
+&lt;figcaption&gt;    定义 figure 元素的标题。
+&lt;figure&gt;    定义媒介内容的分组，以及它们的标题。
+&lt;form&gt;   定义供用户输入的 HTML 表单。
+&lt;hr&gt;     定义水平线。
+&lt;img&gt;     定义图像。
+&lt;input&gt;     定义输入控件。
+&lt;ins&gt;     定义被插入文本。
+&lt;kbd&gt;     定义键盘文本。
+&lt;keygen&gt;     定义生成密钥。
+&lt;label&gt;     定义 input 元素的标注。
+&lt;legend&gt;     定义 fieldset 元素的标题。
+&lt;map&gt;     定义图像映射。
+&lt;mark&gt;     定义有记号的文本。
+&lt;menu&gt;     定义命令的列表或菜单。
+&lt;menuitem&gt;     定义用户可以从弹出菜单调用的命令/菜单项目。
+&lt;meter&gt;     定义预定义范围内的度量。
+&lt;nav&gt;      定义导航链接。
+&lt;object&gt;      定义内嵌对象。
+</code></pre><p>3：结构上的（方便分块查看，这个很重要）：结构上的可以被其他div+css代替但是好的前端会用这些标签来使代码可读性增强。</p>
+<pre><code>&lt;header&gt;      定义 section 或 page 的页眉。
+&lt;dd&gt;        定义定义列表中项目的描述。
+&lt;article&gt;    定义文章。
+&lt;aside&gt;      定义页面内容之外的内容。尤其上面的四位主要用于划分页面块，一般不做样式处理
+&lt;p&gt;         定义段落。
+&lt;em&gt;       把文本定义为强调的内容。
+&lt;strong&gt;    把文本定义为语气更强的强调的内容。
+&lt;bdo&gt;       定义文字方向。
+&lt;bdi&gt;        定义文本的文本方向，使其脱离其周围文本的方向设置，与bdo配合使用试试。
+&lt;big&gt;        定义大号文本。
+&lt;b&gt;           定义粗体字。
+&lt;del&gt;       定义被删除文本。
+&lt;ul&gt;        定义无序列表。
+&lt;ol&gt;        定义有序列表。
+&lt;table&gt;    定义表格。
+&lt;tbody&gt;      定义表格中的主体内容。
+&lt;td&gt;       定义表格中的单元。
+&lt;tfoot&gt;    定义表格中的表注内容（脚注）。
+&lt;th&gt;      定义表格中的表头单元格。
+&lt;thead&gt;      定义表格中的表头内容。
+&lt;tr&gt;      定义表格中的行。
+&lt;footer&gt;     定义 section 或 page 的页脚。
+&lt;h1&gt; to &lt;h6&gt;    定义 HTML 标题。
+&lt;i&gt;      定义斜体字。
+&lt;li&gt;     定义列表的项目。
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/08/18/算法编程题/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                算法编程题
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/08/10/前后端交互总结/">
+                前后端交互总结
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>31</span>Article</a>
+        <a class="count tags"><span>18</span>Tags</a>
+        <a class="count categories"><span>5</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/26/跨域常用解决方案/" title="跨域常用解决方案">跨域常用解决方案</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2019/08/23/js如何判断数组是Array类型/" title="js如何判断数组是Array类型">js如何判断数组是Array类型</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前端/">#前端</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/二叉树/">#二叉树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

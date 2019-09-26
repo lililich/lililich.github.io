@@ -161,6 +161,290 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-如何禁止chrome浏览器http自动转成https【转】">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/05/21/如何禁止chrome浏览器http自动转成https【转】/">如何禁止chrome浏览器http自动转成https【转】</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-05-21
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/跨域/" class="cube-excerpt-tag-link">#跨域</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>转载自：<a href="https://www.cnblogs.com/zhanglianghhh/p/9706852.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhanglianghhh/p/9706852.html</a></p>
+<h3 id="Chrome浏览器阻止跨域配置："><a href="#Chrome浏览器阻止跨域配置：" class="headerlink" title="Chrome浏览器阻止跨域配置："></a>Chrome浏览器阻止跨域配置：</h3><p>–disable-web-security –user-data-dir=C:\ChromeDebug</p>
+<h3 id="自动跳转原因"><a href="#自动跳转原因" class="headerlink" title="自动跳转原因"></a>自动跳转原因</h3><p>将HTTP请求自动转为HTTPS请求是浏览器的默认策略。当浏览器访问过某个HTTPS的网站后，再访问该网站时，一切HTTP请求会自动转为HTTPS请求。<br>HTTP转为HTTPS的主要原因是为了安全。</p>
+<h3 id="Chrome-浏览器"><a href="#Chrome-浏览器" class="headerlink" title="Chrome 浏览器"></a>Chrome 浏览器</h3><pre><code>1. 地址栏中输入 chrome://net-internals/#hsts
+2. 在 Delete domain security policies 中输入项目的域名，并 Delete 删除
+3. 可以在 Query domain 测试是否删除成功
+</code></pre><p>这里如果还是不行， 请清除浏览器缓存！<br> 参考文章  :<a href="https://www.cnblogs.com/nayu/p/6896469.html" target="_blank" rel="noopener">如何关闭浏览器的HSTS功能</a></p>
+<h3 id="Safari-浏览器"><a href="#Safari-浏览器" class="headerlink" title="Safari 浏览器"></a>Safari 浏览器</h3><pre><code>1. 完全关闭 Safari
+2. 删除 ~/Library/Cookies/HSTS.plist 这个文件
+3. 重新打开 Safari 即可
+4. 极少数情况下，需要重启系统
+</code></pre><h3 id="Opera-浏览器"><a href="#Opera-浏览器" class="headerlink" title="Opera 浏览器"></a>Opera 浏览器</h3><p>和 Chrome 方法一样Firefox 浏览器</p>
+<pre><code>1. 关闭所有已打开的页面
+2. 清空历史记录和缓存
+3. 地址栏输入 about:permissions
+4. 搜索项目域名，并点击 Forget About This Site
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/05/21/如何禁止chrome浏览器http自动转成https【转】/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day5-5.08">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/05/08/Vue-js学习笔记Day5-5-08/">Vue.js学习笔记Day5-5.08</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-05-08
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Vue-js学习笔记Day5-5-08"><a href="#Vue-js学习笔记Day5-5-08" class="headerlink" title="Vue.js学习笔记Day5-5.08"></a>Vue.js学习笔记Day5-5.08</h3><p>今日主要学习内容：</p>
+<ul>
+<li>复习父子组件传值问题；</li>
+<li>watch、computed和methods之间的对比；</li>
+<li>nrm的安装使用；</li>
+<li>Webpack的概念；</li>
+<li>使用vue实例的render方法渲染组件；</li>
+<li>在普通页面中使用render函数渲染组件；</li>
+<li>export default 和 export 使用方式；</li>
+<li>在vue组件页面中，集成vue-router路由模块；</li>
+<li>组件中css作用域问题（scoped属性）</li>
+</ul>
+<p>开始Vue框架的学习吧～<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/05/08/Vue-js学习笔记Day5-5-08/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day4-5.06">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/05/06/Vue-js学习笔记Day4-5-06/">Vue.js学习笔记Day4-5.06</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-05-06
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Vue-js学习笔记Day4-5-06"><a href="#Vue-js学习笔记Day4-5-06" class="headerlink" title="Vue.js学习笔记Day4-5.06"></a>Vue.js学习笔记Day4-5.06</h3><p>今日主要学习内容：</p>
+<ul>
+<li>使父组件向子组件传值；</li>
+<li>子组件向父组件传值；</li>
+<li>评论列表案例；</li>
+<li>使用 this.$refs 来获取元素和组件；</li>
+<li>什么是路由；</li>
+<li>设置路由高亮；</li>
+<li>设置路由高亮设置路由切换动效；</li>
+<li>在路由规则中定义参数；</li>
+<li>使用 children 属性实现路由嵌套；</li>
+<li>命名视图实现经典布局；</li>
+</ul>
+<p>开始Vue框架的学习吧～<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/05/06/Vue-js学习笔记Day4-5-06/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day3-4.29">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/29/Vue-js学习笔记Day3-4-29/">Vue.js学习笔记Day3-4.29</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-29
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Vue-js学习笔记Day3-4-29"><a href="#Vue-js学习笔记Day3-4-29" class="headerlink" title="Vue.js学习笔记Day3-4.29"></a>Vue.js学习笔记Day3-4.29</h3><p>今日主要学习内容：</p>
+<ul>
+<li>使用Vue-resource实现品牌的增删查功能；</li>
+<li>Vue中的动画；<ol>
+<li>使用过渡类名实现动画</li>
+<li>使用第三方 CSS 动画库</li>
+<li>使用动画钩子函数</li>
+<li>v-for 的列表过渡</li>
+</ol>
+</li>
+<li>使用定义Vue组件；<ol>
+<li>什么是组件</li>
+<li>组件化和模块化的不同</li>
+<li>全局组件定义的三种方式</li>
+<li>组件中展示数据和响应事件</li>
+<li>使用components属性定义局部子组件</li>
+<li>两种切换组件方法</li>
+</ol>
+</li>
+</ul>
+<p>开始和我一起Vue框架的学习吧～<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/29/Vue-js学习笔记Day3-4-29/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day2-4.24">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/24/Vue-js学习笔记Day2-4-24/">Vue.js学习笔记Day2-4.24</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-24
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Vue-js学习笔记Day2-4-24"><a href="#Vue-js学习笔记Day2-4-24" class="headerlink" title="Vue.js学习笔记Day2-4.24"></a>Vue.js学习笔记Day2-4.24</h3><p>今日主要学习内容：</p>
+<ul>
+<li>品牌列表案例；</li>
+<li>全局过滤器和私有过滤器；</li>
+<li>自定义按键修饰符；</li>
+<li>自定义指令；</li>
+<li>Vue实例的生命周期；</li>
+<li>vue-resource 实现 get, post, jsonp请求；</li>
+<li>配置本地数据库和数据接口API；</li>
+</ul>
+<p>开始Vue框架的学习吧～<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/24/Vue-js学习笔记Day2-4-24/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Vue.js学习笔记Day1-4.22">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/22/Vue-js学习笔记Day1-4-22/">Vue.js学习笔记Day1-4.22</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-22
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
+                
+                <a href="/tags/Vue/" class="cube-excerpt-tag-link">#Vue</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="Vue-js学习笔记Day1-4-22"><a href="#Vue-js学习笔记Day1-4-22" class="headerlink" title="Vue.js学习笔记Day1-4.22"></a>Vue.js学习笔记Day1-4.22</h3><p>今日主要学习内容：</p>
+<ul>
+<li>三大主流框架的区别；</li>
+<li>框架和库的区别；</li>
+<li>MVC和MVVM的区别；</li>
+<li>Vue的基本代码结构、插值表达式、<code>v-cloak</code>、<code>v-text</code>、<code>v-html</code>、<code>v-bind</code>、<code>v-on</code>；</li>
+<li>走马灯效果制作；</li>
+<li>事件修饰符（<code>.stop</code>、<code>.prevent</code>、<code>.capture</code>、<code>.self</code>、<code>.once</code>）；</li>
+<li><code>v-model</code>和实现表单元素的双向数据绑定；</li>
+<li>Vue中使用样式；</li>
+<li><code>v-for</code>指令和<code>key</code>属性；</li>
+<li><code>v-if</code>和<code>v-show</code>的使用和特点</li>
+</ul>
+<p>今天开始和我一起Vue框架的学习吧～<br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/22/Vue-js学习笔记Day1-4-22/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-十大排序算法">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/04/01/十大排序算法/">十大排序算法</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-04-01
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/排序/" class="cube-excerpt-tag-link">#排序</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>今天我们来学习一下排序算法，排序算法是《数据结构与算法》中最基本的算法之一，虽说学过这门课，但几种排序总是讲述不清，今天来做一个系统的学习归纳，跟着我一起来学习吧~</p>
+<p>排序算法可以分为内部排序和外部排序，<strong>内部排序</strong>是数据记录在内存中进行排序，<strong>外部排序</strong>是因排序的数据很大，一次不能容纳全部的排序记录，在排序过程中需要访问外存。常见的十大内部排序算法：<code>冒泡排序</code>、<code>选择排序</code>、<code>插入排序</code>、<code>希尔排序</code>、<code>归并排序</code>、<code>快速排序</code>、<code>堆排序</code>、<code>计数排序</code>、<code>桶排序</code>、<code>基数排序</code>。用一张图概括：<br><img src="//lililich.work/2019/04/01/十大排序算法/十大排序算法.png" alt><br></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/04/01/十大排序算法/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-Markdown基本语法">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/03/31/Markdown基本语法/">Markdown基本语法</a></h1>
@@ -208,9 +492,9 @@
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/Git/" class="cube-excerpt-tag-link">#Git</a>
-                
                 <a href="/tags/Github/" class="cube-excerpt-tag-link">#Github</a>
+                
+                <a href="/tags/Git/" class="cube-excerpt-tag-link">#Git</a>
                 
             </div>
         </div>
@@ -260,39 +544,9 @@
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-Hexo基本语法">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/03/20/hello-world/">Hexo基本语法</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-03-20
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/Hexo/" class="cube-excerpt-tag-link">#Hexo</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>让我们来学习下 <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> 的基本语法。你也可以进入 <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> 来进行系统的学习。 如果在运用Hexo的时候出现疑问，你可以去 <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> 上进行提问或者你可以上 <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a> 上寻求帮助。</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span>     //新建文章</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server               //启动服务预览</span><br></pre></td></tr></table></figure>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/03/20/hello-world/">Read More</a>
-    </footer>
-</div>
 
 
-
-<ul class="cube-pagination cube-pagination-6">
+<ul class="cube-pagination cube-pagination-7">
     
     <li class="cube-pagination-prev">
         <a href="/page/2/">« Prev</a>
@@ -318,11 +572,17 @@
             </li>
             
         
+            
+            <li class="cube-pagination-index">
+                <a href="/page/4">4</a>
+            </li>
+            
+        
     
 
     
-    <li class="cube-pagination-next disabled">
-        <span>Next »</span>
+    <li class="cube-pagination-next">
+        <a href="/page/4/">Next »</a>
     </li>
     
 </ul>
@@ -365,8 +625,8 @@
     
     
     <div class="count">
-        <a class="count articles"><span>24</span>Article</a>
-        <a class="count tags"><span>14</span>Tags</a>
+        <a class="count articles"><span>31</span>Article</a>
+        <a class="count tags"><span>18</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
 </div>
@@ -404,7 +664,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/19/js数组操作/" title="js数组操作">js数组操作</a>
+                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
                 </p>
             </div>
             
@@ -418,7 +678,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/" title="二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树">二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树</a>
+                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
                 </p>
             </div>
         </li>
@@ -431,7 +691,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/18/算法编程题/" title="算法编程题">算法编程题</a>
+                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
                 </p>
             </div>
         </li>
@@ -444,7 +704,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/10/前后端交互面经/" title="前后端交互面经">前后端交互面经</a>
+                    <a href="/2019/08/26/跨域常用解决方案/" title="跨域常用解决方案">跨域常用解决方案</a>
                 </p>
             </div>
         </li>
@@ -457,7 +717,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/08/08/Javascript面经/" title="Javascript面经">Javascript面经</a>
+                    <a href="/2019/08/23/js如何判断数组是Array类型/" title="js如何判断数组是Array类型">js如何判断数组是Array类型</a>
                 </p>
             </div>
         </li>
@@ -490,7 +750,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -522,11 +782,16 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
@@ -546,23 +811,23 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/跨域/">#跨域</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/Github/">#Github</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -571,8 +836,23 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
         </div>
         
         
