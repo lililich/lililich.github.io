@@ -239,7 +239,7 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
 <li><p><code>宏任务</code>:包括 script ， setTimeout ，setInterval ，setImmediate ，I/O ，UI rendering。</p>
 </li>
 </ul>
-<p>这里很多人会有个误区，认为微任务快于宏任务，其实是错误的。因为宏任务中包括了 script ，浏览器会先执行一个宏任务，接下来有异步代码的话才会先执行微任务。</p>
+<p>这里很多人会有个误区，认为微任务快于宏任务，其实是错误的。因为宏任务中包括了 script ，浏览器会先执行一个宏任务，接下来有异步代码的话才会先执行微任务。<br><strong>EventLoop执行顺序：</strong><br>script(主程序代码)—&gt;process.nextTick—&gt;Promises…——&gt;setTimeout——&gt;setInterval——&gt;setImmediate——&gt; I/O——&gt;UI rendering</p>
 <ul>
 <li>更多详情参考：<a href>https://blog.csdn.net/itKingOne/article/details/86502910</a></li>
 </ul>
@@ -413,7 +413,7 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -428,7 +428,7 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -459,12 +459,17 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/js/">#js</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -474,17 +479,12 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/html/">#html</a>
-        </div>
-        
-        
         <div class="cube-box ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
@@ -500,22 +500,22 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/CSS/">#CSS</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
             <a href="/tags/Github/">#Github</a>
         </div>
         
         
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/布局/">#布局</a>
         </div>
         
         
@@ -534,7 +534,7 @@ script start =&gt; async2 end =&gt; Promise =&gt; script end =&gt; promise1 =&gt
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         

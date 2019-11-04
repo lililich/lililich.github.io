@@ -194,7 +194,11 @@
 <li><p><strong>margin塌陷解决办法</strong>:<br><a href>https://www.cnblogs.com/syp172654682/p/7671830.html</a></p>
 </li>
 </ul>
-<h3 id="二-块级元素、行内元素、块级行内元素"><a href="#二-块级元素、行内元素、块级行内元素" class="headerlink" title="二. 块级元素、行内元素、块级行内元素"></a>二. 块级元素、行内元素、块级行内元素</h3><p>列举display的值：<br><img src="//lililich.work/2019/08/03/CSS总结/Image2.png" alt="Image2.png"></p>
+<h3 id="二-对BFC规范的理解？"><a href="#二-对BFC规范的理解？" class="headerlink" title="二. 对BFC规范的理解？"></a>二. 对BFC规范的理解？</h3><p>BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。</p>
+<h5 id="BFC-的原理-BFC的布局规则"><a href="#BFC-的原理-BFC的布局规则" class="headerlink" title="BFC 的原理/BFC的布局规则"></a>BFC 的原理/BFC的布局规则</h5><p>BFC 的原理，其实也就是 BFC 的渲染规则（能说出以下四点就够了）。包括：<br>（1）BFC 内部的子元素，在垂直方向，边距会发生重叠。<br>（2）BFC在页面中是独立的容器，外面的元素不会影响里面的元素，反之亦然。（稍后看举例1）<br>（3）BFC区域不与旁边的float box区域重叠。（可以用来清除浮动带来的影响）。（稍后看举例2）<br>（4）计算BFC的高度时，浮动的子元素也参与计算。（稍后看举例3）</p>
+<h5 id="如何生成BFC有以下几种方法："><a href="#如何生成BFC有以下几种方法：" class="headerlink" title="如何生成BFC有以下几种方法："></a>如何生成BFC有以下几种方法：</h5><p>方法1：overflow: 不为visible，可以让属性是 hidden、auto、scroll。【最常用】<br>方法2：浮动中：float的属性值不为none。意思是，只要设置了浮动，当前元素就创建了BFC。<br>方法3：定位中：只要posiiton的值不是 static或者是relative即可，可以是absolute或fixed，也就生成了一个BFC。<br>方法4：display为inline-block, table-cell, table-caption, flex, inline-flex</p>
+<h5 id="BFC-原理解释说明"><a href="#BFC-原理解释说明" class="headerlink" title="BFC 原理解释说明"></a>BFC 原理解释说明</h5><p>(1)解决 margin 重叠<br>当父元素和子元素发生 margin 重叠时，解决办法：给子元素或父元素创建BFC。<br>(2)清除浮动<br>儿子浮动了，但由于父亲没有设置高度，导致看不到父亲的背景色（此时父亲的高度为0）。正所谓有高度的盒子，才能关住浮动。如果想要清除浮动带来的影响，方法一是给父亲设置高度，然后采用隔墙法。方法二是 BFC：给父亲增加 overflow=hidden属性即可</p>
+<h3 id="三-块级元素、行内元素、块级行内元素"><a href="#三-块级元素、行内元素、块级行内元素" class="headerlink" title="三. 块级元素、行内元素、块级行内元素"></a>三. 块级元素、行内元素、块级行内元素</h3><p>列举display的值：<br><img src="//lililich.work/2019/08/03/CSS总结/Image2.png" alt="Image2.png"></p>
 <h4 id="1-行内元素：display-inline"><a href="#1-行内元素：display-inline" class="headerlink" title="1. 行内元素：display:inline"></a>1. <strong>行内元素：display:inline</strong></h4><ul>
 <li><strong>行内元素</strong>：a、b、span、img、input、strong、select、label、em、button、textarea（字体、input类、span）等；</li>
 <li><strong>特性</strong>：<br>  (1) 设置宽高无效；<br>  (2) margin仅设置左右方向有效，上下无效；padding设置上下左右都有效，即会撑大空间；<br>  (3) 不会自动进行换行；</li>
@@ -216,7 +220,7 @@
 <li>已知宽高（4种方法）<div class="wrapper"><div class="content"></div></div><br><img src="//lililich.work/2019/08/03/CSS总结/Image3.png" alt="Image3.png"><img src="//lililich.work/2019/08/03/CSS总结/Image4.png" alt="Image4.png"><img src="//lililich.work/2019/08/03/CSS总结/Image5.png" alt="Image5.png"><img src="//lililich.work/2019/08/03/CSS总结/Image6.png" alt="Image6.png"></li>
 <li>未知宽高(考虑flex布局和transform)</li>
 </ul>
-<h3 id="三-css相对定位、绝对定位"><a href="#三-css相对定位、绝对定位" class="headerlink" title="三. css相对定位、绝对定位"></a>三. css相对定位、绝对定位</h3><ul>
+<h3 id="四-css相对定位、绝对定位"><a href="#四-css相对定位、绝对定位" class="headerlink" title="四. css相对定位、绝对定位"></a>四. css相对定位、绝对定位</h3><ul>
 <li><p><code>静态定位</code>(position：static)不脱离标准文档流<br>这个是元素的默认定位方式，元素出现在正常的文档流中，会占用页面空间。不能使用top?bottom??left??right??z-index???</p>
 </li>
 <li><p><code>相对定位</code>(position: relative)不脱离标准文档流<br>相对定位完成的过程是首先按static(float)方式生成一个元素(并且元素像层一样浮动了起来)，然后相对于以前的位置移动，移动的方向和幅度由left、right、top、bottom属性确定，偏移前的位置保留不动.</p>
@@ -230,7 +234,7 @@
 <li><p><code>嵌套使用</code>：子容器在父容器底部居中：<br>父容器：position：relative；子容器：position：absolute；bottom：0；left：0；right：0；margin: auto</p>
 </li>
 </ul>
-<h3 id="四-Flex布局"><a href="#四-Flex布局" class="headerlink" title="四. Flex布局"></a>四. Flex布局</h3><p><code>容器的属性</code>以下6个属性设置在容器上：</p>
+<h3 id="五-Flex布局"><a href="#五-Flex布局" class="headerlink" title="五. Flex布局"></a>五. Flex布局</h3><p><code>容器的属性</code>以下6个属性设置在容器上：</p>
 <ul>
 <li>flex-direction：决定主轴的方向</li>
 <li>flex-wrap：定义如果一条轴线排不下，如何换行</li>
@@ -249,7 +253,7 @@
 <li>align-self：允许单个项目有与其他项目不一样的对齐方式</li>
 </ul>
 <p><strong>设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。</strong></p>
-<h3 id="五-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？"><a href="#五-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？" class="headerlink" title="五. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？"></a>五. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？</h3><p><code>CSS 选择符：</code></p>
+<h3 id="六-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？"><a href="#六-CSS-选择符有哪些？哪些属性可以继承？优先级算法如何计算？" class="headerlink" title="六. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？"></a>六. CSS 选择符有哪些？哪些属性可以继承？优先级算法如何计算？</h3><p><code>CSS 选择符：</code></p>
 <ol>
 <li>id选择器(# myid)</li>
 <li>类选择器(.myclassname)</li>
@@ -290,16 +294,77 @@
 <li>HTML 标签选择器的权值为 1</li>
 <li>多个进行累加，比较总和</li>
 </ol>
-<h3 id="六-CSS伪类"><a href="#六-CSS伪类" class="headerlink" title="六. CSS伪类"></a>六. CSS伪类</h3><h4 id="1-CSS-伪类用于向某些选择器添加特殊的效果。"><a href="#1-CSS-伪类用于向某些选择器添加特殊的效果。" class="headerlink" title="1. CSS 伪类用于向某些选择器添加特殊的效果。"></a>1. CSS 伪类用于向某些选择器添加特殊的效果。</h4><p><strong>伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性</strong>，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。<br><img src="//lililich.work/2019/08/03/CSS总结/Image11.png" alt="Image11.png"><br><strong>注意：first-child和last-child都得用于子元素，而不是父元素。</strong></p>
+<h3 id="七-CSS伪类"><a href="#七-CSS伪类" class="headerlink" title="七. CSS伪类"></a>七. CSS伪类</h3><h4 id="1-CSS-伪类用于向某些选择器添加特殊的效果。"><a href="#1-CSS-伪类用于向某些选择器添加特殊的效果。" class="headerlink" title="1. CSS 伪类用于向某些选择器添加特殊的效果。"></a>1. CSS 伪类用于向某些选择器添加特殊的效果。</h4><p><strong>伪类选择元素基于的是当前元素处于的状态，或者说元素当前所具有的特性</strong>，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。<br><img src="//lililich.work/2019/08/03/CSS总结/Image11.png" alt="Image11.png"><br><strong>注意：first-child和last-child都得用于子元素，而不是父元素。</strong></p>
 <h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2. 语法"></a>2. 语法</h4><pre><code>selector : pseudo-class {property: value}
 selector.class : pseudo-class {property: value}
-</code></pre><h4 id="3-锚伪类"><a href="#3-锚伪类" class="headerlink" title="3. 锚伪类"></a>3. 锚伪类</h4><p><code>a:hover {color: #FF00FF}</code> /<em> 必须被置于 a:link 和 a:visited 之后，才是有效的</em>/<br><code>a:active {color: #0000FF}</code> /<em> 选定的链接 必须被置于 a:hover 之后，才是有效的</em>/</p>
-<h4 id="4-CSS3新增伪类举例："><a href="#4-CSS3新增伪类举例：" class="headerlink" title="4. CSS3新增伪类举例："></a>4. CSS3新增伪类举例：</h4><p><code>p:first-of-type</code> 选择属于其父元素的首个p元素的每个p元素。<br><code>p:last-of-type</code>  选择属于其父元素的最后p元素的每个p元素。<br><code>p:only-of-type</code>  选择属于其父元素唯一的p元素的每个p元素。<br><code>p:only-child</code>    选择属于其父元素的唯一子元素的每个p元素。<br><code>p:nth-child(2)</code>  选择属于其父元素的第二个子元素的每个p元素。</p>
-<p><strong>:first-child与:first-of-type的不同</strong><br><code>:first-child</code> 匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。<br><code>:first-of-type</code> 匹配的是该类型的第一个<br><code>:enabled / :disabled</code> 控制表单控件的禁用状态。<br><code>:checked</code>  单选框或复选框被选中。</p>
-<h3 id="七-CSS伪元素"><a href="#七-CSS伪元素" class="headerlink" title="七. CSS伪元素"></a>七. CSS伪元素</h3><h4 id="1-CSS-伪元素用于向某些选择器设置特殊效果。"><a href="#1-CSS-伪元素用于向某些选择器设置特殊效果。" class="headerlink" title="1. CSS 伪元素用于向某些选择器设置特殊效果。"></a>1. CSS 伪元素用于向某些选择器设置特殊效果。</h4><p>与伪类针对特殊状态的元素不同的是，<strong>伪元素是对元素中的特定内容进行操作</strong>，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。<br><img src="//lililich.work/2019/08/03/CSS总结/Image12.png" alt="Image12.png"><br><strong>注意：:first-line和:first-letter伪元素只能用于块级元素。</strong></p>
+</code></pre><h4 id="3-锚伪类"><a href="#3-锚伪类" class="headerlink" title="3. 锚伪类"></a>3. 锚伪类</h4><table>
+<thead>
+<tr>
+<th>锚伪类</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a:hover {color: #FF00FF}</td>
+<td>必须被置于 a:link 和 a:visited 之后，才是有效的。</td>
+</tr>
+<tr>
+<td>a:active {color: #0000FF}</td>
+<td>选定的链接 必须被置于 a:hover 之后，才是有效的。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-CSS3新增伪类举例："><a href="#4-CSS3新增伪类举例：" class="headerlink" title="4. CSS3新增伪类举例："></a>4. CSS3新增伪类举例：</h4><table>
+<thead>
+<tr>
+<th>css3新增伪类</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>p:first-of-type</td>
+<td>选择属于其父元素的首个 <p> 元素的每个 </p><p> 元素。</p></td>
+</tr>
+<tr>
+<td>p:last-of-type</td>
+<td>选择属于其父元素的最后 <p> 元素的每个 </p><p> 元素。</p></td>
+</tr>
+<tr>
+<td>p:only-of-type</td>
+<td>选择属于其父元素唯一的 <p> 元素的每个 </p><p> 元素。</p></td>
+</tr>
+<tr>
+<td>p:only-child</td>
+<td>选择属于其父元素的唯一子元素的每个 <p> 元素。</p></td>
+</tr>
+<tr>
+<td>p:nth-child(2)</td>
+<td>选择属于其父元素的第二个子元素的每个 <p> 元素。</p></td>
+</tr>
+<tr>
+<td>:first-child</td>
+<td>匹配的是某父元素的第一个子元素，可以说是结构上的第一个子元素。</td>
+</tr>
+<tr>
+<td>:first-of-type</td>
+<td>匹配的是该类型的第一个。</td>
+</tr>
+<tr>
+<td>:enabled / :disabled</td>
+<td>控制表单控件的禁用状态。</td>
+</tr>
+<tr>
+<td>:checked</td>
+<td>单选框或复选框被选中。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="八-CSS伪元素"><a href="#八-CSS伪元素" class="headerlink" title="八. CSS伪元素"></a>八. CSS伪元素</h3><h4 id="1-CSS-伪元素用于向某些选择器设置特殊效果。"><a href="#1-CSS-伪元素用于向某些选择器设置特殊效果。" class="headerlink" title="1. CSS 伪元素用于向某些选择器设置特殊效果。"></a>1. CSS 伪元素用于向某些选择器设置特殊效果。</h4><p>与伪类针对特殊状态的元素不同的是，<strong>伪元素是对元素中的特定内容进行操作</strong>，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。<br><img src="//lililich.work/2019/08/03/CSS总结/Image12.png" alt="Image12.png"><br><strong>注意：:first-line和:first-letter伪元素只能用于块级元素。</strong></p>
 <h4 id="2-语法："><a href="#2-语法：" class="headerlink" title="2. 语法："></a>2. 语法：</h4><pre><code>selector:pseudo-element {property:value;}
 selector.class:pseudo-element {property:value;}
-</code></pre><h3 id="八-css3动画"><a href="#八-css3动画" class="headerlink" title="八. css3动画"></a>八. css3动画</h3><ul>
+</code></pre><h3 id="九-css3动画"><a href="#九-css3动画" class="headerlink" title="九. css3动画"></a>九. css3动画</h3><ul>
 <li><strong>先创建动画：</strong><br>@keyframes规则是创建动画。 @keyframes规则内指定一个CSS样式和动画将逐步从目前的样式更改为新的样式。</li>
 </ul>
 <pre><code>@keyframes myfirst
@@ -315,7 +380,7 @@ to {background: yellow;}
 animation: myfirst 5s;
 -webkit-animation: myfirst 5s; /* Safari 与 Chrome */
 }
-</code></pre><h3 id="九-CSS3新增内容"><a href="#九-CSS3新增内容" class="headerlink" title="九. CSS3新增内容"></a>九. CSS3新增内容</h3><ul>
+</code></pre><h3 id="十-CSS3新增内容"><a href="#十-CSS3新增内容" class="headerlink" title="十. CSS3新增内容"></a>十. CSS3新增内容</h3><ul>
 <li>边框border-radius（圆角边框）box-shadow（边框阴影）border-image</li>
 <li>背景background-size:宽高   background-origin(content-box,padding-box,border-box)</li>
 <li>文本效果 text-shadow  word-wrap(break-word)text-wrap?s</li>
@@ -328,14 +393,73 @@ animation: myfirst 5s;
 <li>多列  column-count:数字创建多列文本</li>
 <li>用户界面resize（用户可改变大小），box-sizing（border-box，content-box）</li>
 </ul>
-<h3 id="十-什么是CSS-Hack"><a href="#十-什么是CSS-Hack" class="headerlink" title="十. 什么是CSS Hack?"></a>十. 什么是CSS Hack?</h3><p>CSS hack是通过在CSS样式中加入一些特殊的符号，让不同的浏览器识别不同的符号，以达到应用不同的CSS样式的目的。(不同浏览器识别不同css样式)<br>比如IE6能识别下划线“<em>”和星号“<em>”，IE7能识别星号“</em>”，但不能识别下划线”</em> ”，而firefox两个都不能认识。<a href="https://blog.csdn.net/qq_31635733/article/details/81660897" target="_blank" rel="noopener">https://blog.csdn.net/qq_31635733/article/details/81660897</a></p>
-<h3 id="十一-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？"><a href="#十一-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？" class="headerlink" title="十一. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？"></a>十一. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</h3><p>IE浏览器的内核Trident、Mozilla的Gecko、google的WebKit、Opera内核Presto；</p>
-<h4 id="浏览器的兼容性："><a href="#浏览器的兼容性：" class="headerlink" title="浏览器的兼容性："></a>浏览器的兼容性：</h4><ol>
-<li>png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8位.</li>
-<li>浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。</li>
-<li>IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。…<br><a href="https://blog.csdn.net/qq_38892819/article/details/75426133" target="_blank" rel="noopener">https://blog.csdn.net/qq_38892819/article/details/75426133</a></li>
+<h3 id="十一-什么是CSS-Hack"><a href="#十一-什么是CSS-Hack" class="headerlink" title="十一. 什么是CSS Hack?"></a>十一. 什么是CSS Hack?</h3><p>CSS hack是通过在CSS样式中加入一些特殊的符号，让不同的浏览器识别不同的符号，以达到应用不同的CSS样式的目的。(不同浏览器识别不同css样式)<br>CSS Hack常见的有三种形式：<br>CSS属性Hack、CSS选择符Hack以及IE条件注释Hack， Hack主要针对IE浏览器。<br>1、属性级Hack：比如IE6能识别下划线<code>“_”</code>和星号<code>“*”</code>，IE7能识别星号<code>“*”</code>，但不能识别下划线<code>”_ ”</code>，而firefox两个都不能认识。<br>2、选择符级Hack：比如IE6能识别<code>*html .class{}</code>，IE7能识别<code>*+html .class{}</code>或者<code>*:first-child+html .class{}</code>。<br>3、IE条件注释Hack：IE条件注释是微软IE5开始就提供的一种非标准逻辑语句。比如针对所有IE：&lt;!-[if IE]&gt;&lt;!-您的代码-&gt;&lt;![endif]&gt;，针对IE6及以下版本：&lt;!-[if it IE 7]&gt;&lt;!-您的代码-&gt;&lt;![endif]-&gt;，这类Hack不仅对CSS生效，对写在判断语句里面的所有代码都会生效。<a href="https://blog.csdn.net/qq_31635733/article/details/81660897" target="_blank" rel="noopener">https://blog.csdn.net/qq_31635733/article/details/81660897</a></p>
+<h3 id="十二-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？"><a href="#十二-浏览器的内核分别是什么-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？" class="headerlink" title="十二. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？"></a>十二. 浏览器的内核分别是什么?经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</h3><p>常见的浏览器内核可以分四种：Trident、Gecko、Blink、Webkit</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>内核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IE浏览器</td>
+<td>Trident内核，也成为IE内核</td>
+</tr>
+<tr>
+<td>Chrome浏览器</td>
+<td>Webkit内核，现在是Blink内核</td>
+</tr>
+<tr>
+<td>Firefox浏览器</td>
+<td>Gecko内核，俗称Firefox内核</td>
+</tr>
+<tr>
+<td>Safari浏览器</td>
+<td>Webkit内核</td>
+</tr>
+<tr>
+<td>Opera浏览器</td>
+<td>最初是自己的Presto内核，后来加入谷歌大军，从Webkit又到了Blink内核；</td>
+</tr>
+<tr>
+<td>360浏览器</td>
+<td>IE+Chrome双内核</td>
+</tr>
+<tr>
+<td>猎豹浏览器</td>
+<td>IE+Chrome双内核</td>
+</tr>
+<tr>
+<td>百度浏览器</td>
+<td>IE内核</td>
+</tr>
+<tr>
+<td>QQ浏览器</td>
+<td>Trident（兼容模式）+Webkit（高速模式）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="浏览器常见的兼容性问题："><a href="#浏览器常见的兼容性问题：" class="headerlink" title="浏览器常见的兼容性问题："></a>浏览器常见的兼容性问题：</h4><ol>
+<li><p>不同浏览器的标签默认的外补丁( margin )和内补丁(padding)不同<br>解决方案： css 里增加通配符 * { margin: 0; padding: 0; }</p>
+</li>
+<li><p>IE6双边距问题；在 IE6中设置了float , 同时又设置margin , 就会出现边距问题<br>解决方案：设置display:inline;</p>
+</li>
+<li><p>当标签的高度设置小于10px，在IE6、IE7中会超出自己设置的高度<br>解决方案：超出高度的标签设置overflow:hidden,或者设置line-height的值小于你的设置高度</p>
+</li>
+<li><p>图片默认有间距<br>解决方案：使用float 为img 布局</p>
+</li>
+<li><p>IE9一下浏览器不能使用opacity<br>解决方案：<br>opacity: 0.5;filter: alpha(opacity = 50);filter: progid:DXImageTransform.Microsoft.Alpha(style = 0, opacity = 50);</p>
+</li>
+<li><p>边距重叠问题；当相邻两个元素都设置了margin 边距时，margin 将取最大值，舍弃最小值；<br>解决方案：为了不让边重叠，可以给子元素增加一个父级元素，并设置父级元素为overflow:hidden；</p>
+</li>
+<li><p>cursor:hand 显示手型在safari 上不支持<br>解决方案：统一使用 cursor:pointer</p>
+</li>
+<li><p>两个块级元素，父元素设置了overflow:auto；子元素设置了position:relative ;且高度大于父元素，在IE6、IE7会被隐藏而不是溢出；<br>解决方案：父级元素设置position:relative<br><a href="https://blog.csdn.net/qq_38892819/article/details/75426133" target="_blank" rel="noopener">https://blog.csdn.net/qq_38892819/article/details/75426133</a></p>
+</li>
 </ol>
-<h3 id="十二-display-none、visibility-hidden、visibility-collapse和opacity-0的区别"><a href="#十二-display-none、visibility-hidden、visibility-collapse和opacity-0的区别" class="headerlink" title="十二. display:none、visibility:hidden、visibility:collapse和opacity:0的区别"></a>十二. display:none、visibility:hidden、visibility:collapse和opacity:0的区别</h3><p><img src="//lililich.work/2019/08/03/CSS总结/Image7.png" alt="Image7.png"><br><code>Collapse</code>:是否折叠（即是否不占据文档流位置）；<br><code>event</code>：是否还能触发事件；<br><code>taborder</code>：是否还可以通过tab键选择到。其中，visibility:collapse在表格元素中yes，即不占据文档流位置，在其他元素占据位置</p>
+<h3 id="十三-display-none、visibility-hidden、visibility-collapse和opacity-0的区别"><a href="#十三-display-none、visibility-hidden、visibility-collapse和opacity-0的区别" class="headerlink" title="十三. display:none、visibility:hidden、visibility:collapse和opacity:0的区别"></a>十三. display:none、visibility:hidden、visibility:collapse和opacity:0的区别</h3><p><img src="//lililich.work/2019/08/03/CSS总结/Image7.png" alt="Image7.png"><br><code>Collapse</code>:是否折叠（即是否不占据文档流位置）；<br><code>event</code>：是否还能触发事件；<br><code>taborder</code>：是否还可以通过tab键选择到。其中，visibility:collapse在表格元素中yes，即不占据文档流位置，在其他元素占据位置</p>
 <p><strong>行内元素display:inline对应不显示为display:none<br>块状元素display:block对应不显示为visibility: hidden</strong></p>
 <ul>
 <li><code>display：none</code>设置该样式的元素（对象）的宽度、高度等各种属性值都将“丢失”，其元素不占据文档空间。不会触发事件</li>
@@ -343,8 +467,8 @@ animation: myfirst 5s;
 <li><code>opacity:0</code>opacity是CSS3的属性，0（完全透明），1（完全不透明），inherit设置此样式的元素（对象）仍然占据空间，并且能触发事件。</li>
 <li><code>visibility:collapse</code>在表格元素的tr中使用时，会删除一行或者一列，但是不会影响表格布局。若在td上使用，仅隐藏此单元格内容，仍然占据位置。应用与除表格外的其他元素，则仍然会为其保留位置，不会触发事件，也不会通过tab键选择到。</li>
 </ul>
-<h4 id="十三-visibility的值"><a href="#十三-visibility的值" class="headerlink" title="十三. visibility的值"></a>十三. visibility的值</h4><p><img src="//lililich.work/2019/08/03/CSS总结/Image8.png" alt="Image8.png"></p>
-<h3 id="十四-Float影响，清除浮动几种方法"><a href="#十四-Float影响，清除浮动几种方法" class="headerlink" title="十四. Float影响，清除浮动几种方法"></a>十四. Float影响，清除浮动几种方法</h3><ul>
+<h4 id="十四-visibility的值"><a href="#十四-visibility的值" class="headerlink" title="十四. visibility的值"></a>十四. visibility的值</h4><p><img src="//lililich.work/2019/08/03/CSS总结/Image8.png" alt="Image8.png"></p>
+<h3 id="十五-Float影响，清除浮动几种方法"><a href="#十五-Float影响，清除浮动几种方法" class="headerlink" title="十五. Float影响，清除浮动几种方法"></a>十五. Float影响，清除浮动几种方法</h3><ul>
 <li>浮动影响的主要是设置浮动元素之后的元素，对之前没有浮动的元素不产生影响。<br>不管是设置浮动还是未设置浮动，其垂直位置不变，紧紧跟在未设置浮动元素之后，上边距与上一个元素的下边距对齐。</li>
 <li>如果父元素没有设置高度，在子块没有浮动的情况下，父块会被撑开，但是内部子块浮动的话，就会产生以下影响：<ol>
 <li>父元素的背景不能显示</li>
@@ -353,23 +477,22 @@ animation: myfirst 5s;
 </ol>
 </li>
 </ul>
-<h3 id="十五-清除浮动的几种方法："><a href="#十五-清除浮动的几种方法：" class="headerlink" title="十五. 清除浮动的几种方法："></a>十五. 清除浮动的几种方法：</h3><ol>
+<h3 id="十六-清除浮动的几种方法："><a href="#十六-清除浮动的几种方法：" class="headerlink" title="十六. 清除浮动的几种方法："></a>十六. 清除浮动的几种方法：</h3><ol>
 <li>设置父元素的高度为子元素的最高高度加上父元素的上下边框宽度。</li>
 <li>给父元素结束标签之前添加一个div标签，将此标签的css设置为：<code>clear:both</code>或者是<code>clear:left;</code>(clear规定哪一侧不允许有浮动元素)</li>
 <li>给父元素添加<code>overflow：hidden</code>。</li>
 <li>:after作用于浮动元素的父元素将其设置为<code>display:block</code></li>
 </ol>
 <p>其中:<br>clear:both;指清除所有浮动；<br>content: ‘.’; display:block;对于FF/chrome/opera/IE8不能缺少，其中content（）可以取值也可以为空。visibility:hidden;的作用是允许浏览器渲染它，但是不显示出来，这样才能实现清除浮动。</p>
-<h3 id="十六-为什么要初始化CSS样式。"><a href="#十六-为什么要初始化CSS样式。" class="headerlink" title="十六. 为什么要初始化CSS样式。"></a>十六. 为什么要初始化CSS样式。</h3><p>因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。</p>
+<h3 id="十七-为什么要初始化CSS样式。"><a href="#十七-为什么要初始化CSS样式。" class="headerlink" title="十七. 为什么要初始化CSS样式。"></a>十七. 为什么要初始化CSS样式。</h3><p>因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。</p>
 <p>当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。</p>
 <p>最简单的初始化方法就是： * {padding: 0; margin: 0;} （不建议）</p>
-<h3 id="十七-link-和-import-的区别是？"><a href="#十七-link-和-import-的区别是？" class="headerlink" title="十七. link 和@import 的区别是？"></a>十七. link 和@import 的区别是？</h3><ol>
+<h3 id="十八-link-和-import-的区别是？"><a href="#十八-link-和-import-的区别是？" class="headerlink" title="十八. link 和@import 的区别是？"></a>十八. link 和@import 的区别是？</h3><ol>
 <li>link属于HTML标签，而@import是CSS提供的; </li>
 <li>页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;</li>
 <li>import只在IE5以上才能识别，而link是HTML标签，无兼容问题; </li>
 <li>link方式的样式的权重 高于@import的权重.</li>
 </ol>
-<h3 id="十八-对BFC规范的理解？"><a href="#十八-对BFC规范的理解？" class="headerlink" title="十八. 对BFC规范的理解？"></a>十八. 对BFC规范的理解？</h3><p>BFC，块级格式化上下文，一个创建了新的BFC的盒子是独立布局的，盒子里面的子元素的样式不会影响到外面的元素。在同一个BFC中的两个毗邻的块级盒在垂直方向（和布局方向有关系）的margin会发生折叠。<br>（W3C CSS 2.1 规范中的一个概念，它决定了元素如何对其内容进行布局，以及与其他元素的关系和相互作用。）</p>
 <h3 id="十九-解释下-CSS-sprites，以及你要如何在页面或网站中使用它。"><a href="#十九-解释下-CSS-sprites，以及你要如何在页面或网站中使用它。" class="headerlink" title="十九. 解释下 CSS sprites，以及你要如何在页面或网站中使用它。"></a>十九. 解释下 CSS sprites，以及你要如何在页面或网站中使用它。</h3><p>CSS Sprites其实就是把网页中一些背景图片整合到一张图片文件中，再利用CSS的“background-image”，“background- repeat”，“background-position”的组合进行背景定位，background-position可以用数字能精确的定位出背景图片的位置。这样可以减少很多图片请求的开销，因为请求耗时比较长；请求虽然可以并发，但是也有限制，一般浏览器都是6个。对于未来而言，就不需要这样做了，因为有了<code>http2</code>。</p>
 <h3 id="二十-圣杯布局、双飞翼布局"><a href="#二十-圣杯布局、双飞翼布局" class="headerlink" title="二十. 圣杯布局、双飞翼布局"></a>二十. 圣杯布局、双飞翼布局</h3><p>两边固定，中间自适应。<br><img src="//lililich.work/2019/08/03/CSS总结/Image9.png" alt="Image9.png"><img src="//lililich.work/2019/08/03/CSS总结/Image10.png" alt="Image10.png"></p>
 <ul>
@@ -377,6 +500,53 @@ animation: myfirst 5s;
 <li>与圣杯布局一样，一开始三个col都设置float: left,为了把left和right定位到左右部分，采用负边距，left部分margin-left: -100%，right部分margin-right: -190px。之后就是处理main中内容的遮盖问题，只需设置main-wrap的左右外边距即可解决。</li>
 <li>相比圣杯布局，双飞翼不必设置左右栏的position: relative，也不必设置左右left、right值，只需多添加一个子元素包含，相应的padding换成margin。总的说来简单不少。</li>
 <li><code>双飞翼布局的好处</code>：主要的内容先加载的优化；兼容目前所有的主流浏览器，包括IE6在内；<br>衍生布局：<a href="http://www.cnblogs.com/lyzg/p/5160570.html" target="_blank" rel="noopener">http://www.cnblogs.com/lyzg/p/5160570.html</a><br>CSS布局面试：<a href="http://developer.51cto.com/art/201504/473284.htm" target="_blank" rel="noopener">http://developer.51cto.com/art/201504/473284.htm</a></li>
+</ul>
+<h4 id="css经典布局——双飞翼布局"><a href="#css经典布局——双飞翼布局" class="headerlink" title="css经典布局——双飞翼布局"></a>css经典布局——双飞翼布局</h4><p><a href="https://blog.csdn.net/qq_38128179/article/details/86542447" target="_blank" rel="noopener">https://blog.csdn.net/qq_38128179/article/details/86542447</a></p>
+<h4 id="css经典布局——圣杯布局"><a href="#css经典布局——圣杯布局" class="headerlink" title="css经典布局——圣杯布局"></a>css经典布局——圣杯布局</h4><p><a href="https://blog.csdn.net/qq_38128179/article/details/86533976" target="_blank" rel="noopener">https://blog.csdn.net/qq_38128179/article/details/86533976</a></p>
+<ul>
+<li>圣杯布局和双飞翼布局达到的效果基本相同，都是侧边两栏宽度固定，中间栏宽度自适应。 主要的不同之处就是在解决中间部分被挡住的问题时，采取的解决办法不一样。</li>
+<li>圣杯布局是在父元素上设置了padding-left和padding-right，在给左右两边的内容设置position为relative，通过左移和右移来使得左右两边的内容得以很好的展现</li>
+<li>而双飞翼则是在center这个div中再加了一个div来放置内容，在给这个新的div设置margin-left和margin-right 。</li>
+</ul>
+<h4 id="双飞翼布局要求"><a href="#双飞翼布局要求" class="headerlink" title="双飞翼布局要求"></a>双飞翼布局要求</h4><ul>
+<li>header和footer各自占领屏幕所有宽度，高度固定。</li>
+<li>中间的container是一个三栏布局。</li>
+<li>三栏布局两侧宽度固定不变，中间部分自动填充整个区域。</li>
+<li>中间部分的高度是三栏中最高的区域的高度。<h4 id="双飞翼布局的实现"><a href="#双飞翼布局的实现" class="headerlink" title="双飞翼布局的实现"></a>双飞翼布局的实现</h4></li>
+<li>left、center、right三种都设置左浮动</li>
+<li>设置center宽度为100%</li>
+<li>设置负边距，left设置负边距为100%，right设置负边距为自身宽度</li>
+<li>设置content的margin值为左右两个侧栏留出空间，margin值大小为left和right宽度</li>
+</ul>
+<h4 id="圣杯布局要求"><a href="#圣杯布局要求" class="headerlink" title="圣杯布局要求"></a>圣杯布局要求</h4><ul>
+<li>header和footer各自占领屏幕所有宽度，高度固定。</li>
+<li>中间的container是一个三栏布局。</li>
+<li>三栏布局两侧宽度固定不变，中间部分自动填充整个区域。</li>
+<li>中间部分的高度是三栏中最高的区域的高度。<h4 id="圣杯布局的三种实现"><a href="#圣杯布局的三种实现" class="headerlink" title="圣杯布局的三种实现"></a>圣杯布局的三种实现</h4><h5 id="（1）浮动"><a href="#（1）浮动" class="headerlink" title="（1）浮动"></a>（1）浮动</h5></li>
+<li>先定义好header和footer的样式，使之横向撑满。</li>
+<li>在container中的三列设为浮动和相对定位(后面会用到)，center要放在最前面，footer清除浮动。</li>
+<li>三列的左右两列分别定宽200px和150px，中间部分center设置100%撑满</li>
+<li>这样因为浮动的关系，center会占据整个container，左右两块区域被挤下去了</li>
+<li>接下来设置left的 margin-left: -100%;，让left回到上一行最左侧</li>
+<li>但这会把center给遮住了，所以这时给外层的container设置 padding-left: 200px;padding-right: 150px;，给left和right空出位置</li>
+<li>这时left并没有在最左侧，因为之前已经设置过相对定位，所以通过 left: -200px; 把left拉回最左侧</li>
+<li>同样的，对于right区域，设置 margin-right: -150px; 把right拉回第一行</li>
+<li>这时右侧空出了150px的空间，所以最后设置 right: -150px;把right区域拉到最右侧就行了。</li>
+</ul>
+<h5 id="（2）flex弹性盒子"><a href="#（2）flex弹性盒子" class="headerlink" title="（2）flex弹性盒子"></a>（2）flex弹性盒子</h5><ul>
+<li>header和footer设置样式，横向撑满。</li>
+<li>container中的left、center、right依次排布即可</li>
+<li>给container设置弹性布局 display: flex;</li>
+<li>left和right区域定宽，center设置 flex: 1; 即可</li>
+</ul>
+<h5 id="（3）grid布局"><a href="#（3）grid布局" class="headerlink" title="（3）grid布局"></a>（3）grid布局</h5><p>如上图所示，我们把body划分成三行四列的网格，其中有5条列网格线</p>
+<ul>
+<li>给body元素添加display: grid;属性变成一个grid(网格)</li>
+<li>给header元素设置grid-row: 1; 和 grid-column: 1/5; 意思是占据第一行网格的从第一条列网格线开始到第五条列网格线结束</li>
+<li>给footer元素设置grid-row: 1; 和 grid-column: 1/5; 意思是占据第三行网格的从第一条列网格线开始到第五条列网格线结束</li>
+<li>给left元素设置grid-row: 2; 和 grid-column: 1/2; 意思是占据第二行网格的从第一条列网格线开始到第二条列网格线结束</li>
+<li>给center元素设置grid-row: 2; 和 grid-column: 2/4; 意思是占据第二行网格的从第二条列网格线开始到第四条列网格线结束</li>
+<li>给right元素设置grid-row: 2; 和 grid-column: 4/5; 意思是占据第二行网格的从第四条列网格线开始到第五条列网格线结束</li>
 </ul>
 
     </div>
@@ -555,7 +725,7 @@ animation: myfirst 5s;
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -565,12 +735,12 @@ animation: myfirst 5s;
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/工程/">#工程</a>
         </div>
         
@@ -591,7 +761,7 @@ animation: myfirst 5s;
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
@@ -607,6 +777,11 @@ animation: myfirst 5s;
         
         
         <div class="cube-box ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -617,16 +792,11 @@ animation: myfirst 5s;
         
         
         <div class="cube-box ">
-            <a href="/tags/html/">#html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
@@ -642,6 +812,16 @@ animation: myfirst 5s;
         
         
         <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/CSS/">#CSS</a>
         </div>
         
@@ -652,21 +832,11 @@ animation: myfirst 5s;
         
         
         <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/面经/">#面经</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Vue/">#Vue</a>
         </div>
         

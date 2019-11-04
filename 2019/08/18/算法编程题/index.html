@@ -196,6 +196,9 @@
 <li>string 里的每个单词首字母大写</li>
 <li>判断字符串是否是指定字符结尾</li>
 <li>重复字符串指定次数</li>
+<li>找出字符串中出现最多的字符和个数</li>
+<li>创建一个函数判断给定的表达式中的小括号是否闭合</li>
+<li>在字符串中找出连续最长的数字串</li>
 <li>使用canvas 绘制一个有限度的斐波那契数列的曲线？</li>
 <li>实现阶乘</li>
 <li>过滤敏感词</li>
@@ -203,21 +206,24 @@
 <li>App版本比较</li>
 <li>生成菲波那切数列</li>
 <li>使用JS 实现二叉查找树(Binary Search Tree)</li>
+<li>密码强度判断</li>
+<li>修改路由规则</li>
+<li>字符串大小写转换</li>
 </ul>
 <p>跟着我一起学习吧~<br><a id="more"></a></p>
-<h3 id="js降维"><a href="#js降维" class="headerlink" title="js降维"></a>js降维</h3><pre><code>//二维数组变一维数组
-//遍历数组两遍，放入新数组
-var arr=[[1,2,3],[&quot;sy&quot;,1,&quot;jh&quot;,null],[&quot;&quot;,9],1]
+<h3 id="js降维"><a href="#js降维" class="headerlink" title="js降维"></a>js降维</h3><pre><code>//迭代降维
 function jiangwei(arr){
-  var newarr=[]
-  arr.forEach(item =&gt; {
-  //判断是不是数组，是进入下一个判断，不是直接push
-    item.forEach?item.forEach(val =&gt; {
-      newarr.push(val)
-    }):newarr.push(item)
-  });
+  var newarr = []
+  arr.forEach(item=&gt;{
+    if(item instanceof Array){
+      newarr.push(...jiangwei(item))
+    } else{
+      newarr.push(item)
+    }
+  })
   return newarr
 }
+console.log(jiangwei( [3, [&apos;a&apos;, [0,[&apos;a&apos;,1], 1], null], [4, &apos;4j&apos;, [3]], -2]))
 
 //用apply的特性，将数组作为参数展开传入新的空数组[]，再contact
 var arr=[[1,2,3],[&quot;sy&quot;,1,&quot;jh&quot;,null],[&quot;&quot;,9],1]
@@ -245,7 +251,13 @@ function jiangwei(arr){
   return newarr
 }
 console.log(jiangwei(arr))
-</code></pre><h3 id="js排序"><a href="#js排序" class="headerlink" title="js排序"></a>js排序</h3><pre><code>//js数组排序，冒泡，相邻元素比较交换
+</code></pre><h3 id="js排序"><a href="#js排序" class="headerlink" title="js排序"></a>js排序</h3><pre><code>//一、冒泡排序，相邻元素比较交换
+
+//基本思路：
+//1.比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+//2.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
+//3.针对所有的元素重复以上的步骤，除了最后一个。
+//4.持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
 var arr=[9,-2,1,30,-59]
 function paixu(arr){
     for(var i=0; i&lt;arr.length-1; i++){
@@ -261,7 +273,12 @@ function paixu(arr){
 }
 console.log(paixu(arr))
 
-//快速排序
+//二、快速排序
+
+//基本思路：
+//1.以一个数为基准(中间的数)，比基准小的放到左边，比基准大的放到右边
+//2.再按此方法对这两部分数据分别进行快速排序（递归进行）
+//3.不能再分后退出递归，并重新将数组合并
 function quickSort(arr) {
     if (arr.length &lt;= 1) {
         return arr;
@@ -371,6 +388,22 @@ console.log(swap(a,b))
     } 
     return maxProfit; 
 }
+
+function getMaxProfit(arr){
+  var min = arr[0]
+  var max = arr[0]
+  var value = 0
+  arr.map(item=&gt;{
+    if(item &lt; min){
+      min = item
+    } else if (item &gt; max){
+      max = item
+    }
+    value = Math.max(value, max-min)
+  })
+  return value
+}
+console.log(getMaxProfit([8,10,1,3,6,2,9]))
 </code></pre><h3 id="随机生成指定长度的字符串"><a href="#随机生成指定长度的字符串" class="headerlink" title="随机生成指定长度的字符串"></a>随机生成指定长度的字符串</h3><p>实现一个算法，随机生成指指定长度的字符窜。<br>比如：给定 长度 8 输出 4ldkfg9j</p>
 <pre><code>function randomString(n) {  
   let str = &apos;abcdefghijklmnopqrstuvwxyz9876543210&apos;;
@@ -465,6 +498,65 @@ confirmEnding(&quot;He has to give me a new name&quot;, &quot;name&quot;);
   return str;
 }
 repeat(&quot;abc&quot;, 3);
+</code></pre><h3 id="找出字符串中出现最多的字符和个数"><a href="#找出字符串中出现最多的字符和个数" class="headerlink" title="找出字符串中出现最多的字符和个数"></a>找出字符串中出现最多的字符和个数</h3><pre><code>var string=&quot;sssfgtdfssddfsssfssss&quot;;
+function max(str){
+  var json={};
+  var num=0;
+  var value=null;
+  for(var i=0;i&lt;str.length;i++){
+    var k=str[i];
+    if(!json[k]){
+      json[k]=[];
+    }
+    json[k].push(k); //这里不需要else，否则只有存在这个字符时才添加。次数会少一次
+  }
+  for(var attr in json){
+    if(num&lt;json[attr].length){
+      num=json[attr].length;
+      value=json[attr][0];
+    }
+  }
+  return value+&apos; &apos;+num;
+};
+console.log(max(string))
+</code></pre><h3 id="创建一个函数判断给定的表达式中的小括号是否闭合"><a href="#创建一个函数判断给定的表达式中的小括号是否闭合" class="headerlink" title="创建一个函数判断给定的表达式中的小括号是否闭合"></a>创建一个函数判断给定的表达式中的小括号是否闭合</h3><pre><code>var expression = &quot;(())()()&quot;
+var expressionFalse = &quot;()(()&quot;
+function isBalanced(expression) {
+  var checkString = expression;
+  var stack = [];
+  if (checkString.length &lt;= 0) return true;
+  for (var i = 0; i &lt; checkString.length; i++) {
+    if(checkString[i] === &apos;(&apos;) {
+      stack.push(checkString[i]);
+    } else if (checkString[i] === &apos;)&apos;) {
+      // Pop on an empty array is undefined
+      if (stack.length &gt; 0) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+  // If the array is not empty, it is not balanced
+  if (stack.pop()) return false;
+  return true;
+}
+console.log(isBalanced(expression))
+</code></pre><h3 id="在字符串中找出连续最长的数字串"><a href="#在字符串中找出连续最长的数字串" class="headerlink" title="在字符串中找出连续最长的数字串"></a>在字符串中找出连续最长的数字串</h3><pre><code>var lines = &apos;abc360360xyz#123you&apos;
+
+function findTheNumString(str) {
+    var reg = /\d+/g     
+    var array = str.match(reg)
+    var max = 0
+    for (var i = 0; i &lt; array.length; i++) {
+        if (array[i].length &gt;= max) {
+            max = array[i].length
+            var j = i
+        }
+    }
+    return array[j].length + &apos;/&apos; + array[j]
+}
+console.log(findTheNumString(lines))
 </code></pre><h3 id="使用canvas-绘制一个有限度的斐波那契数列的曲线？"><a href="#使用canvas-绘制一个有限度的斐波那契数列的曲线？" class="headerlink" title="使用canvas 绘制一个有限度的斐波那契数列的曲线？"></a>使用canvas 绘制一个有限度的斐波那契数列的曲线？</h3><p><img src="//lililich.work/2019/08/18/算法编程题/Image1.png" alt="Image1.png"><br>数列长度限定在9.斐波那契数列，又称黄金分割数列，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波纳契数列主要考察递归的调用。我们一般都知道定义fibo[i] = fibo[i-1]+fibo[i-2];  生成斐波那契数组的方法</p>
 <pre><code>function getFibonacci(n) {  
   var fibarr = [];
@@ -757,6 +849,104 @@ module.exports = BinarySearchTree;
     */
     xmlhttp.send();
 }
+</code></pre><h3 id="密码强度判断"><a href="#密码强度判断" class="headerlink" title="密码强度判断"></a>密码强度判断</h3><pre><code>function checkPassWord(value){
+    var modes = 0;
+    if(/\d/.test(value)){//如果用户输入的密码 包含了数字
+        modes++;
+    }
+    if(/[a-z]/.test(value)){//如果用户输入的密码 包含了小写的a到z
+        modes++;
+    }
+    if(/[A-Z]/.test(value)){//如果用户输入的密码 包含了大写的A到Z
+        modes++;
+    }
+    if(/\W/.test(value)){//如果是非数字 字母 下划线
+        modes++;
+    }
+    if(value.length &lt; 8 || modes == 1){//最初级别
+        return 0;
+    } else {
+        if(modes == 2){
+            if(/\d/.test(value)&amp;&amp;/[a-z]/.test(value)){
+                return 1;
+            } else if(/\d/.test(value)&amp;&amp;/[A-Z]/.test(value)){
+                return 1;
+            } else {
+                return 2;
+            }
+        } else if(modes == 3){
+            return 3;
+        } else if(modes == 4){
+            return 3;
+        }
+    }
+}
+console.log(checkPassWord(&apos;ssqk!!!!!!hk&apos;))
+</code></pre><h3 id="修改路由规则"><a href="#修改路由规则" class="headerlink" title="修改路由规则"></a>修改路由规则</h3><pre><code>var routes = [
+    {
+        path:&quot;/home&quot;,
+        content:&quot;home&quot;,
+        children:[
+            {
+                path:&quot;/hello&quot;,
+                content:&quot;hello&quot;
+            },
+            {
+                path:&quot;/hello1&quot;,
+                content:&quot;hello1&quot;
+            }
+        ]
+    },
+    {
+        path:&quot;/about&quot;,
+        content:&quot;about&quot;,
+        children:[{
+            path:&quot;/hello&quot;,
+            content:&quot;hello&quot;
+        }]
+    }
+]
+function getRoute(routes){
+    var obj=[];
+    routes.map(element =&gt; {
+        var itempath1 = element.path;
+        var itemcontent1 = element.content;
+        var itemobj1 = {
+            path: itempath1,
+            content: itemcontent1
+        }
+        obj.push(itemobj1);
+        if(element.children){
+            element.children.map(item =&gt; {
+                var itemcontent2 = [];
+                var itempath2;
+                itemcontent2.push(itemcontent1);
+                itempath2 = element.path+item.path;
+                itemcontent2.push(item.content)
+                var itemobj2 = {
+                    path: itempath2,
+                    content: itemcontent2
+                }
+                obj.push(itemobj2);
+            })
+        }
+    });
+    return obj
+}
+console.log(getRoute(routes));
+</code></pre><h3 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h3><pre><code>function change(str){
+  var arr = str.split(&apos;&apos;)
+  var newarr = []
+  arr.map(item=&gt;{
+    if(/[a-z]/.test(item)){
+      newarr.push(item.toUpperCase())
+    } else if(/[A-Z]/.test(item)){
+      newarr.push(item.toLowerCase())
+    }
+  })
+  return newarr.join(&apos;&apos;)
+}
+console.log(change(&apos;sSuFHJwil&apos;))
 </code></pre>
     </div>
 </div>
@@ -767,7 +957,7 @@ module.exports = BinarySearchTree;
         <li class="prev">
             <a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">
                 <i class="cube-icon cube-prev" aria-hidden="true"></i>
-                二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树
+                二叉树的前序遍历、中序遍历和后序遍历
             </a>
         </li>
         
@@ -934,7 +1124,7 @@ module.exports = BinarySearchTree;
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -944,7 +1134,7 @@ module.exports = BinarySearchTree;
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -980,8 +1170,13 @@ module.exports = BinarySearchTree;
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/html/">#html</a>
         </div>
         
         
@@ -990,13 +1185,8 @@ module.exports = BinarySearchTree;
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/html/">#html</a>
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
@@ -1005,12 +1195,12 @@ module.exports = BinarySearchTree;
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
@@ -1021,12 +1211,7 @@ module.exports = BinarySearchTree;
         
         
         <div class="cube-box ">
-            <a href="/tags/CSS/">#CSS</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/布局/">#布局</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -1036,11 +1221,16 @@ module.exports = BinarySearchTree;
         
         
         <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/CSS/">#CSS</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/布局/">#布局</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/面经/">#面经</a>
         </div>
         

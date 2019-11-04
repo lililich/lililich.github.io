@@ -10,7 +10,7 @@
     
     
     
-    <title>二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树 | Lililich&#39;s Blog</title>
+    <title>二叉树的前序遍历、中序遍历和后序遍历 | Lililich&#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -161,7 +161,7 @@
     <div class="cube-content">
         <div class="cube-left">
             <div class="cube-article">
-    <h1 class="title">二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树</h1>
+    <h1 class="title">二叉树的前序遍历、中序遍历和后序遍历</h1>
     
     <div class="cube-article-header">
         <div class="cube-article-date">
@@ -181,7 +181,10 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>（1）前序遍历<br>      a、访问根节点；b、前序遍历左子树；c、前序遍历右子树。</p>
+        <h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>树是一种非顺序数据结构（节点，根节点，内部节点，外部节点，子树，深度）</p>
+<p>节点包括（key left right）</p>
+<p>二叉搜索树是二叉树的一种，左节点key值&lt;父节点key值，右节点key值&gt;=父节点key值</p>
+<p>（1）前序遍历<br>      a、访问根节点；b、前序遍历左子树；c、前序遍历右子树。</p>
 <p>（2）中序遍历<br>      a、中序遍历左子树；b、访问根节点；c、中序遍历右子树。</p>
 <p>（3）后序遍历<br>      a、后序遍历左子树；b、后续遍历右子树；c、访问根节点。<br><a id="more"></a></p>
 <h3 id="2、前序遍历和中序遍历还原二叉树"><a href="#2、前序遍历和中序遍历还原二叉树" class="headerlink" title="2、前序遍历和中序遍历还原二叉树"></a>2、前序遍历和中序遍历还原二叉树</h3><p>思想如下：<br>    a、根据前序遍历结果，第一个元素为二叉树的根结点；<br>    b、观察中序遍历结果，根结点左侧的为左子树，若左子树根结点前（后）再无任何元素，则左（右）子树的左分支为空；根结点右侧的为右子树，若右子树根结点前（后）再无任何元素，则左（右）子树的左分支为空；<br>    c、上面的过程是递归的。先找到当前树的根结点，然后划分为左右子树，再进入左子树重复上面的过程，最后进入右子树重复上面的过程，最终还原一棵树。</p>
@@ -402,7 +405,7 @@ divList.push(node);
     <div class="cube-boxs">
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -412,7 +415,7 @@ divList.push(node);
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -453,6 +456,11 @@ divList.push(node);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/html/">#html</a>
+        </div>
+        
+        
         <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
@@ -460,11 +468,6 @@ divList.push(node);
         
         <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/html/">#html</a>
         </div>
         
         
@@ -478,7 +481,7 @@ divList.push(node);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
@@ -489,12 +492,7 @@ divList.push(node);
         
         
         <div class="cube-box ">
-            <a href="/tags/CSS/">#CSS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -503,8 +501,13 @@ divList.push(node);
         </div>
         
         
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
+            <a href="/tags/布局/">#布局</a>
         </div>
         
         
@@ -523,7 +526,7 @@ divList.push(node);
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
