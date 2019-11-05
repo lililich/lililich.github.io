@@ -10,7 +10,7 @@
     
     
     
-    <title>Tags: 面经 | Lililich&#39;s Blog</title>
+    <title>正则表达式详解 | Lililich&#39;s Blog</title>
     <!-- inject:style -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
     <!-- endinject -->
@@ -160,41 +160,153 @@
     
     <div class="cube-content">
         <div class="cube-left">
-            <style>
-    @media(max-width: 768px) {
-        body {
-            background-color: #fff!important;
-        }
-    }
-</style>
-<div class="cube-archives">
+            <div class="cube-article">
+    <h1 class="title">正则表达式详解</h1>
     
-    <div class="cube-archive" style="margin-top: 0;">
-        <h1 class="title">面经</h1>
-        
-        <ul class="posts">
-            
-            <li class="post">
-                <a href="/2019/08/10/前后端交互总结/">前后端交互总结</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2019/08/08/Javascript总结/">Javascript总结</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2019/08/03/CSS总结/">CSS总结</a>
-            </li>
-            
-            <li class="post">
-                <a href="/2019/07/23/HTML总结/">HTML总结</a>
-            </li>
-            
-        </ul>
-        
-    </div>
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-10-24
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/js/">#js</a>
     
 </div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h3 id="一-为什么要使用正则表达式呢？"><a href="#一-为什么要使用正则表达式呢？" class="headerlink" title="一.为什么要使用正则表达式呢？"></a>一.为什么要使用正则表达式呢？</h3><p>通过使用正则表达式，可以：</p>
+<ol>
+<li><p>测试字符串内的模式。<br>例如，可以测试输入字符串，以查看字符串内是否出现电话号码模式或信用卡号码模式。这称为数据验证。</p>
+</li>
+<li><p>替换文本。<br>可以使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它。</p>
+</li>
+<li><p>基于模式匹配从字符串中提取子字符串。<br>可以查找文档内或输入域内特定的文本。</p>
+</li>
+</ol>
+<p><strong>正则表达式(regular expression)</strong> 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>例如，创建一个正则表达式：</p>
+<pre><code>let re = /ab+c/
+// 或者
+let re = new RegExp(&quot;ab+c&quot;, &apos;g&apos;)//ab+c/g
+/* 
+g 是全局搜索; 
+i 不区分大小写;
+m 多行搜索; 
+s 允许 . 匹配换行符; 
+u 使用unicode码的模式进行匹配; 
+y 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。*/
+</code></pre><a id="more"></a>
+<h3 id="二-正则字符简单介绍"><a href="#二-正则字符简单介绍" class="headerlink" title="二.正则字符简单介绍"></a>二.正则字符简单介绍</h3><h3 id="1-元字符介绍"><a href="#1-元字符介绍" class="headerlink" title="1. 元字符介绍"></a>1. 元字符介绍</h3><p><strong><code>&quot;^&quot;</code> ：^会匹配行或者字符串的起始位置，有时还会匹配整个文档的起始位置。</strong> </p>
+<p><strong><code>&quot;$&quot;</code>  ：$会匹配行或字符串的结尾</strong></p>
+<p><strong><code>&quot;\b&quot;</code> : \b不会消耗任何字符只匹配一个位置，常用于匹配单词边界</strong><br>　如 我想从字符串中”This is Regex”匹配单独的单词 “is” 正则就要写成 “\bis\b”<br>　\b 不会匹配is 两边的字符，但它会识别is 两边是否为单词的边界 </p>
+<p><strong><code>&quot;\d&quot;</code>: 匹配数字，</strong></p>
+<p>　例如要匹配一个固定格式的电话号码以0开头前4位后7位，如0737-5686123  正则:^0\d\d\d-\d\d\d\d\d\d\d$ 这里只是为了介绍”\d”字符，实际上有更好的写法会在     下面介绍。</p>
+<p><strong><code>&quot;\w&quot;</code>：匹配字母，数字，下划线.</strong></p>
+<p>　例如我要匹配”a2345BCD__TTz” 正则：”\w+”  这里的”+”字符为一个量词指重复的次数，稍后会详细介绍。</p>
+<p><strong><code>&quot;\s&quot;</code>：匹配空格</strong> </p>
+<p>　例如字符 “a b c” 正则：”\w\s\w\s\w”  一个字符后跟一个空格，如有字符间有多个空格直接把”\s” 写成 “\s+” 让空格重复</p>
+<p><strong><code>&quot;.&quot;</code>：匹配除了换行符以外的任何字符</strong></p>
+<p>　这个算是”\w”的加强版了”\w”不能匹配 空格 如果把字符串加上空格用”\w”就受限了，看下用 “.”是如何匹配字符”a23 4 5 B C D__TTz”  正则：”.+”</p>
+<p><strong><code>&quot;[abc]&quot;</code>: 字符组  匹配包含括号内元素的字符</strong>  </p>
+<p>　这个比较简单了只匹配括号内存在的字符，还可以写成[a-z]匹配a至z的所以字母就等于可以用来控制只能输入英文了，</p>
+<h3 id="2-几种反义"><a href="#2-几种反义" class="headerlink" title="2.几种反义"></a>2.几种反义</h3><p>写法很简单改成大写就行了，意思与原来的相反，这里就不举例子了</p>
+<p><code>&quot;\W&quot;</code>   匹配任意不是字母，数字，下划线 的字符</p>
+<p><code>&quot;\S&quot;</code>   匹配任意不是空白符的字符</p>
+<p><code>&quot;\D&quot;</code>  匹配任意非数字的字符</p>
+<p><code>&quot;\B&quot;</code>  匹配不是单词开头或结束的位置</p>
+<p><code>&quot;[^abc]&quot;</code>  匹配除了abc以外的任意字符</p>
+<h3 id="3-量词"><a href="#3-量词" class="headerlink" title="3.量词"></a>3.量词</h3><p>先解释关于量词所涉及到的重要的三个概念</p>
+<ol>
+<li><p><strong>贪婪(贪心)</strong> 如”*”字符 贪婪量词会首先匹配整个字符串，尝试匹配时，它会选定尽可能多的内容，如果 失败则回退一个字符，然后再次尝试回退的过程就叫做回溯，它会每次回退一个字符，直到找到匹配的内容或者没有字符可以回退。相比下面两种贪婪量词对资源的消耗是最大的，</p>
+</li>
+<li><p><strong>懒惰(勉强)</strong> 如 “?”  懒惰量词使用另一种方式匹配，它从目标的起始位置开始尝试匹配，每次检查一个字符，并寻找它要匹配的内容，如此循环直到字符结尾处。</p>
+</li>
+<li><p><strong>占有</strong>  如”+” 占有量词会覆盖事个目标字符串，然后尝试寻找匹配内容 ，但它只尝试一次，不会回溯，就好比先抓一把石头，然后从石头中挑出黄金</p>
+</li>
+</ol>
+<h4 id="常用量词举例"><a href="#常用量词举例" class="headerlink" title="常用量词举例"></a>常用量词举例</h4><p><strong><code>&quot;*&quot;(贪婪)</code>   重复零次或更多</strong></p>
+<p>　例如”aaaaaaaa” 匹配字符串中所有的a  正则： <code>&quot;a*&quot;</code>   会出到所有的字符”a”</p>
+<p><strong><code>&quot;+&quot;(懒惰)</code>   重复一次或更多次</strong></p>
+<p>　例如”aaaaaaaa” 匹配字符串中所有的a  正则： “a+”  会取到字符中所有的a字符，  <code>&quot;a+&quot;</code>与 <code>&quot;a *&quot;</code>   不同在于<code>&quot;+&quot;</code>至少是一次而<code>&quot;*&quot;</code>可以是0次，</p>
+<p>　稍后会与”?”字符结合来体现这种区别</p>
+<p><strong><code>&quot;?&quot;(占有)</code>   重复零次或一次</strong></p>
+<p>　例如”aaaaaaaa” 匹配字符串中的a 正则 ： “a?” 只会匹配一次，也就是结果只是单个字符a</p>
+<p><strong><code>&quot;{n}&quot;</code>  重复n次</strong></p>
+<p>　例如从”aaaaaaaa” 匹配字符串的a 并重复3次 正则：  “a{3}”  结果就是取到3个a字符  “aaa”;</p>
+<p><strong><code>&quot;{n,m}&quot;</code>  重复n到m次</strong></p>
+<p>　例如正则 “a{3,4}” 将a重复匹配3次或者4次 所以供匹配的字符可以是三个”aaa”也可以是四个”aaaa” 正则都可以匹配到</p>
+<p><strong><code>&quot;{n,}&quot;</code>  重复n次或更多次</strong></p>
+<p> 　与{n,m}不同之处就在于匹配的次数将没有上限，但至少要重复n次 如 正则”a{3,}” a至少要重复3次</p>
+<p>把量词了解了之后之前匹配电话号码的正则现在就可以改得简单点了^0\d\d\d-\d\d\d\d\d\d\d$ 可以改为”^0\d+-\d{7}$”。</p>
+<p>这样写还不够完美如果因为前面的区号没有做限定，以至于可以输入很多们，而通常只能是3位或者4位，现在再改一下 “^0\d{2,3}-\d{7}”如此一来区号部分就可以匹配3位或者4位的了</p>
+<h3 id="4-懒惰限定符"><a href="#4-懒惰限定符" class="headerlink" title="4.懒惰限定符"></a>4.懒惰限定符</h3><p><strong><code>&quot;*?&quot;</code>   重复任意次，但尽可能少重复</strong></p>
+<p>　如 “acbacb”  正则  “a.*?b” 只会取到第一个”acb” 原本可以全部取到但加了限定符后，只会匹配尽可能少的字符 ，而”acbacb”最少字符的结果就是”acb” </p>
+<p><strong><code>&quot;+?&quot;</code>  重复1次或更多次，但尽可能少重复</strong></p>
+<p>　与上面一样，只是至少要重复1次</p>
+<p><strong><code>&quot;??&quot;</code>  重复0次或1次，但尽可能少重复</strong></p>
+<p>　如 “aaacb” 正则 “a.??b” 只会取到最后的三个字符”acb”</p>
+<p><strong><code>&quot;{n,m}?&quot;</code>  重复n到m次，但尽可能少重复</strong></p>
+<p>  如 “aaaaaaaa”  正则 “a{0,m}” 因为最少是0次所以取到结果为空</p>
+<p><strong><code>&quot;{n,}?&quot;</code>    重复n次以上，但尽可能少重复</strong></p>
+<p>  如 “aaaaaaa”  正则 “a{1,}” 最少是1次所以取到结果为 “a”</p>
+<h3 id="三-正则进阶-捕获分组"><a href="#三-正则进阶-捕获分组" class="headerlink" title="三.正则进阶-捕获分组"></a>三.正则进阶-捕获分组</h3><p>下面列出捕获分组常有的用法</p>
+<p><strong><code>&quot;(exp)&quot;</code>    匹配exp,并捕获文本到自动命名的组里</strong></p>
+<p><strong><code>&quot;(?&lt;name&gt;exp)&quot;</code>   匹配exp,并捕获文本到名称为name的组里</strong></p>
+<p><strong><code>&quot;(?:exp)&quot;</code>  匹配exp,不捕获匹配的文本，也不给此分组分配组号</strong></p>
+<p>以下为零宽断言</p>
+<p><strong><code>&quot;(?=exp)&quot;</code>  匹配exp前面的位置</strong></p>
+<p>　　如 “How are you doing” 正则”(?<txt>.+(?=ing))” 这里取ing前所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为”How are you do”;</txt></p>
+<p><strong><code>&quot;(?&lt;=exp)&quot;</code>  匹配exp后面的位置</strong></p>
+<p>　　如 “How are you doing” 正则”(?<txt>(?&lt;=How).+)” 这里取”How”之后所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为” are you doing”;</txt></p>
+<p><strong><code>&quot;(?!exp)&quot;</code>  匹配后面跟的不是exp的位置</strong></p>
+<p>　　如 “123abc” 正则 “\d{3}(?!\d)”匹配3位数字后非数字的结果</p>
+<p><strong><code>&quot;(?&lt;!exp)&quot;</code>  匹配前面不是exp的位置</strong></p>
+<p>　　如 “abc123 “ 正则 “(?&lt;![0-9])123” 匹配”123”前面是非数字的结果也可写成”(?!&lt;\d)123”</p>
+<h3 id="四-js正则表达式方法"><a href="#四-js正则表达式方法" class="headerlink" title="四.js正则表达式方法"></a>四.js正则表达式方法</h3><pre><code>reg.exec(str)        //查找字符串str是否匹配reg规则，它返回一个数组（未匹配到则返回 null）。 [ &apos;abbc&apos;, index: 0, input: &apos;abbc&apos;, groups: undefined ]
+reg.test(str)        //测试字符串str否匹配reg规则，匹配返回 true 或 不匹配返回false。
+str.match(reg)        //一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。
+str.matchAll(reg)    //一个在字符串中执行查找所有匹配的String方法，它返回一个迭代器（iterator）。Object [RegExp String Iterator] {}
+str.search(reg)        //一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者不存在时返回-1。
+str.replace(reg, str2)        //一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。
+str.split(reg)            //一个使用正则表达式，并将分隔后的子字符串存储到数组中。
+
+
+function match(s, pattern)
+{
+  var pattern = &apos;^&apos; + pattern + &apos;$&apos;; // ^ab*a$
+  var pat = new RegExp(pattern,&apos;g&apos;); // /^ab*a$/g  new RegExp(&apos;^ab*a$&apos;,&apos;g&apos;)
+  return pat.test(s); // s匹配pat, pat是否包含s
+}
+</code></pre><h3 id="五-常用正则表达式"><a href="#五-常用正则表达式" class="headerlink" title="五.常用正则表达式"></a>五.常用正则表达式</h3><p><img src="en-resource://database/1088:0" alt="aeb7e63b5c2918a8e52e08b27e1620b6.png"></p>
+<p>详情参考:<br><a href="https://www.runoob.com/js/js-regexp.html" target="_blank" rel="noopener">https://www.runoob.com/js/js-regexp.html</a><br><a href="https://www.cnblogs.com/zery/p/3438845.html" target="_blank" rel="noopener">https://www.cnblogs.com/zery/p/3438845.html</a><br><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">http://tool.oschina.net/uploads/apidocs/jquery/regexp.html</a></p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        
+        <li class="next">
+            <a href="/2019/09/20/EventLoop详解/">
+                EventLoop详解
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
         </div>
         <div class="cube-right">
             
@@ -347,12 +459,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -383,7 +495,7 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Echarts/">#Echarts</a>
         </div>
         
@@ -393,12 +505,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/html/">#html</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -408,12 +520,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/二叉树/">#二叉树</a>
         </div>
         
@@ -443,12 +555,12 @@
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/Git/">#Git</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/面经/">#面经</a>
         </div>
         
@@ -458,12 +570,12 @@
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/webpack/">#webpack</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         

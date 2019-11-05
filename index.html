@@ -161,6 +161,54 @@
     <div class="cube-content">
         <div class="cube-left">
             
+<div class="cube-excerpt" id="cube-excerpt-正则表达式详解">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2019/10/24/正则表达式详解/">正则表达式详解</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2019-10-24
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h3 id="一-为什么要使用正则表达式呢？"><a href="#一-为什么要使用正则表达式呢？" class="headerlink" title="一.为什么要使用正则表达式呢？"></a>一.为什么要使用正则表达式呢？</h3><p>通过使用正则表达式，可以：</p>
+<ol>
+<li><p>测试字符串内的模式。<br>例如，可以测试输入字符串，以查看字符串内是否出现电话号码模式或信用卡号码模式。这称为数据验证。</p>
+</li>
+<li><p>替换文本。<br>可以使用正则表达式来识别文档中的特定文本，完全删除该文本或者用其他文本替换它。</p>
+</li>
+<li><p>基于模式匹配从字符串中提取子字符串。<br>可以查找文档内或输入域内特定的文本。</p>
+</li>
+</ol>
+<p><strong>正则表达式(regular expression)</strong> 描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p>
+<p>例如，创建一个正则表达式：</p>
+<pre><code>let re = /ab+c/
+// 或者
+let re = new RegExp(&quot;ab+c&quot;, &apos;g&apos;)//ab+c/g
+/* 
+g 是全局搜索; 
+i 不区分大小写;
+m 多行搜索; 
+s 允许 . 匹配换行符; 
+u 使用unicode码的模式进行匹配; 
+y 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。*/
+</code></pre>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2019/10/24/正则表达式详解/">Read More</a>
+    </footer>
+</div>
+
 <div class="cube-excerpt" id="cube-excerpt-EventLoop详解">
     <header class="cube-excerpt-header">
         <h1><a href="/2019/09/20/EventLoop详解/">EventLoop详解</a></h1>
@@ -504,40 +552,6 @@ console.log(typeof fn); //function
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-二叉树的前序遍历、中序遍历和后序遍历">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">二叉树的前序遍历、中序遍历和后序遍历</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-19
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/编程/" class="cube-excerpt-tag-link">#编程</a>
-                
-                <a href="/tags/二叉树/" class="cube-excerpt-tag-link">#二叉树</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>树是一种非顺序数据结构（节点，根节点，内部节点，外部节点，子树，深度）</p>
-<p>节点包括（key left right）</p>
-<p>二叉搜索树是二叉树的一种，左节点key值&lt;父节点key值，右节点key值&gt;=父节点key值</p>
-<p>（1）前序遍历<br>      a、访问根节点；b、前序遍历左子树；c、前序遍历右子树。</p>
-<p>（2）中序遍历<br>      a、中序遍历左子树；b、访问根节点；c、中序遍历右子树。</p>
-<p>（3）后序遍历<br>      a、后序遍历左子树；b、后续遍历右子树；c、访问根节点。<br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">Read More</a>
-    </footer>
-</div>
-
 
 
 <ul class="cube-pagination cube-pagination-7">
@@ -619,7 +633,7 @@ console.log(typeof fn); //function
     
     
     <div class="count">
-        <a class="count articles"><span>33</span>Article</a>
+        <a class="count articles"><span>34</span>Article</a>
         <a class="count tags"><span>18</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
@@ -658,7 +672,7 @@ console.log(typeof fn); //function
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/20/EventLoop详解/" title="EventLoop详解">EventLoop详解</a>
+                    <a href="/2019/10/24/正则表达式详解/" title="正则表达式详解">正则表达式详解</a>
                 </p>
             </div>
             
@@ -672,7 +686,7 @@ console.log(typeof fn); //function
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                    <a href="/2019/09/20/EventLoop详解/" title="EventLoop详解">EventLoop详解</a>
                 </p>
             </div>
         </li>
@@ -685,7 +699,7 @@ console.log(typeof fn); //function
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
                 </p>
             </div>
         </li>
@@ -698,7 +712,7 @@ console.log(typeof fn); //function
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/" title="CSS经典布局——圣杯布局和双飞翼布局">CSS经典布局——圣杯布局和双飞翼布局</a>
+                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
                 </p>
             </div>
         </li>
@@ -711,7 +725,7 @@ console.log(typeof fn); //function
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/七种实现左侧固定，右侧自适应两栏布局的方法/" title="七种实现左侧固定，右侧自适应两栏布局的方法">七种实现左侧固定，右侧自适应两栏布局的方法</a>
+                    <a href="/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/" title="CSS经典布局——圣杯布局和双飞翼布局">CSS经典布局——圣杯布局和双飞翼布局</a>
                 </p>
             </div>
         </li>
@@ -734,7 +748,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/语法/">#语法</a>
         </div>
         
@@ -780,7 +794,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/html/">#html</a>
         </div>
         
@@ -790,7 +804,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
@@ -800,13 +814,8 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/二叉树/">#二叉树</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/flex/">#flex</a>
         </div>
         
         
@@ -815,13 +824,8 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/flex/">#flex</a>
         </div>
         
         
@@ -836,6 +840,16 @@ console.log(typeof fn); //function
         
         
         <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/面经/">#面经</a>
         </div>
         
@@ -845,7 +859,7 @@ console.log(typeof fn); //function
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/webpack/">#webpack</a>
         </div>
         
