@@ -204,9 +204,9 @@ y 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可�
 <h3 id="二-正则字符简单介绍"><a href="#二-正则字符简单介绍" class="headerlink" title="二.正则字符简单介绍"></a>二.正则字符简单介绍</h3><h3 id="1-元字符介绍"><a href="#1-元字符介绍" class="headerlink" title="1. 元字符介绍"></a>1. 元字符介绍</h3><p><strong><code>&quot;^&quot;</code> ：^会匹配行或者字符串的起始位置，有时还会匹配整个文档的起始位置。</strong> </p>
 <p><strong><code>&quot;$&quot;</code>  ：$会匹配行或字符串的结尾</strong></p>
 <p><strong><code>&quot;\b&quot;</code> : \b不会消耗任何字符只匹配一个位置，常用于匹配单词边界</strong><br>　如 我想从字符串中”This is Regex”匹配单独的单词 “is” 正则就要写成 “\bis\b”<br>　\b 不会匹配is 两边的字符，但它会识别is 两边是否为单词的边界 </p>
-<p><strong><code>&quot;\d&quot;</code>: 匹配数字，</strong></p>
+<p><strong><code>&quot;\d&quot;</code>: 匹配数字</strong></p>
 <p>　例如要匹配一个固定格式的电话号码以0开头前4位后7位，如0737-5686123  正则:^0\d\d\d-\d\d\d\d\d\d\d$ 这里只是为了介绍”\d”字符，实际上有更好的写法会在     下面介绍。</p>
-<p><strong><code>&quot;\w&quot;</code>：匹配字母，数字，下划线.</strong></p>
+<p><strong><code>&quot;\w&quot;</code>：匹配字母，数字，下划线</strong></p>
 <p>　例如我要匹配”a2345BCD__TTz” 正则：”\w+”  这里的”+”字符为一个量词指重复的次数，稍后会详细介绍。</p>
 <p><strong><code>&quot;\s&quot;</code>：匹配空格</strong> </p>
 <p>　例如字符 “a b c” 正则：”\w\s\w\s\w”  一个字符后跟一个空格，如有字符间有多个空格直接把”\s” 写成 “\s+” 让空格重复</p>
@@ -282,8 +282,8 @@ function match(s, pattern)
   var pat = new RegExp(pattern,&apos;g&apos;); // /^ab*a$/g  new RegExp(&apos;^ab*a$&apos;,&apos;g&apos;)
   return pat.test(s); // s匹配pat, pat是否包含s
 }
-</code></pre><h3 id="五-常用正则表达式"><a href="#五-常用正则表达式" class="headerlink" title="五.常用正则表达式"></a>五.常用正则表达式</h3><p><img src="en-resource://database/1088:0" alt="aeb7e63b5c2918a8e52e08b27e1620b6.png"></p>
-<p>详情参考:<br><a href="https://www.runoob.com/js/js-regexp.html" target="_blank" rel="noopener">https://www.runoob.com/js/js-regexp.html</a><br><a href="https://www.cnblogs.com/zery/p/3438845.html" target="_blank" rel="noopener">https://www.cnblogs.com/zery/p/3438845.html</a><br><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">http://tool.oschina.net/uploads/apidocs/jquery/regexp.html</a></p>
+</code></pre><h3 id="五-常用正则表达式"><a href="#五-常用正则表达式" class="headerlink" title="五.常用正则表达式"></a>五.常用正则表达式</h3><p><img src="//lililich.work/2019/10/24/正则表达式详解/Image1" alt="Image1.png"></p>
+<p>详情参考:<br><a href="https://www.runoob.com/js/js-regexp.html" target="_blank" rel="noopener">https://www.runoob.com/js/js-regexp.html</a><br><a href="https://www.cnblogs.com/zery/p/3438845.html" target="_blank" rel="noopener">https://www.cnblogs.com/zery/p/3438845.html</a><br><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">http://tool.oschina.net/uploads/apidocs/jquery/regexp.html</a><br><a href="https://www.cnblogs.com/520Girl/p/10031738.html" target="_blank" rel="noopener">https://www.cnblogs.com/520Girl/p/10031738.html</a></p>
 
     </div>
 </div>
@@ -344,7 +344,7 @@ function match(s, pattern)
     
     
     <div class="count">
-        <a class="count articles"><span>34</span>Article</a>
+        <a class="count articles"><span>35</span>Article</a>
         <a class="count tags"><span>18</span>Tags</a>
         <a class="count categories"><span>5</span>Categories</a>
     </div>
@@ -454,7 +454,7 @@ function match(s, pattern)
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
@@ -464,7 +464,7 @@ function match(s, pattern)
         </div>
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/categories/算法/">#算法</a>
         </div>
         
@@ -490,7 +490,7 @@ function match(s, pattern)
     <div class="cube-boxs">
         
         
-        <div class="cube-box ">
+        <div class="cube-box-bg ">
             <a href="/tags/前端/">#前端</a>
         </div>
         
@@ -505,12 +505,12 @@ function match(s, pattern)
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/html/">#html</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -520,18 +520,13 @@ function match(s, pattern)
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/编程/">#编程</a>
         </div>
         
         
         <div class="cube-box-bg ">
             <a href="/tags/二叉树/">#二叉树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/跨域/">#跨域</a>
         </div>
         
         
@@ -555,13 +550,8 @@ function match(s, pattern)
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
         <div class="cube-box ">
-            <a href="/tags/面经/">#面经</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -571,11 +561,21 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
+            <a href="/tags/面经/">#面经</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/webpack/">#webpack</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
