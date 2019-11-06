@@ -288,7 +288,16 @@ console.log(another())//输出jack  这里的this指向全局对象=
 //运用bind方法更改this指向
 var another2=another.bind(demo);
 console.log(another2());//输出rose  这里this指向了demo对象了;
-</code></pre><h3 id="四-JS-ES6特性"><a href="#四-JS-ES6特性" class="headerlink" title="四. JS ES6特性"></a>四. JS ES6特性</h3><p> ECMAScript 6 简称 ES6，是 JavaScript 语言的下一代标准，已经在2015年6月正式发布。<br><strong>新特性：</strong></p>
+</code></pre><h3 id="四-基础数据类型："><a href="#四-基础数据类型：" class="headerlink" title="四. 基础数据类型："></a>四. 基础数据类型：</h3><ul>
+<li>基本类型：String(任意字符串) Number(任意数字) boolean(true/false) null(null) undefined(undefined)</li>
+<li>对象类型（引用类型）：Object(任意对象) Array(一种特别对象，数值下表，内部数据有序) Function(一种特别对象)</li>
+<li>分类：typeof instanceof<ul>
+<li>typeof:可以判断number string boolean undefined function；不可以判断：array与object、null与object；返回数据类型是字符串表达式</li>
+<li>instanceof：判断对象的具体类型；可以判断undefined和null</li>
+</ul>
+</li>
+</ul>
+<h3 id="五-JS-ES6特性"><a href="#五-JS-ES6特性" class="headerlink" title="五. JS ES6特性"></a>五. JS ES6特性</h3><p> ECMAScript 6 简称 ES6，是 JavaScript 语言的下一代标准，已经在2015年6月正式发布。<br><strong>新特性：</strong></p>
 <ol>
 <li>let、const<strong>块级作用域</strong></li>
 <li>import导入模块、export导出模块</li>
@@ -303,7 +312,7 @@ console.log(another2());//输出rose  这里this指向了demo对象了;
 <li><strong>Promise</strong>：它主要用于处理异步回调代码，让代码不至于陷入回调嵌套的死路中。构造函数有callreject/resolve这几个方法，reject/resolve两个参数，将处理信息传递给promise函数</li>
 <li><strong>Generators</strong>：生成器（ generator）是能返回一个迭代器的函数。</li>
 </ol>
-<h3 id="五-JS-同步和异步的区别"><a href="#五-JS-同步和异步的区别" class="headerlink" title="五. JS 同步和异步的区别"></a>五. JS 同步和异步的区别</h3><p>javascript语言是一门“单线程”的语言，所谓单线程就是按次序执行，执行完一个任务再执行下一个。<strong>同步和异步的差别就在于这单线程上各个流程的执行顺序不同。</strong></p>
+<h3 id="六-JS-同步和异步的区别"><a href="#六-JS-同步和异步的区别" class="headerlink" title="六. JS 同步和异步的区别"></a>六. JS 同步和异步的区别</h3><p>javascript语言是一门“单线程”的语言，所谓单线程就是按次序执行，执行完一个任务再执行下一个。<strong>同步和异步的差别就在于这单线程上各个流程的执行顺序不同。</strong></p>
 <ul>
 <li><code>同步</code>：在主线程上排队执行的任务，只有前一个任务执行完毕，才能执行后一个任务；</li>
 <li><p><code>异步</code>：不进入主线程、而进入”任务队列”（task queue）的任务，自己做自己的任务，只有等主线程任务执行完毕，自己下面的任务也做完了，”任务队列”开始通知主线程，请求执行任务，该任务才会进入主线程执行。</p>
@@ -317,7 +326,7 @@ console.log(another2());//输出rose  这里this指向了demo对象了;
 </ol>
 </li>
 </ul>
-<h3 id="六-深拷贝与浅拷贝"><a href="#六-深拷贝与浅拷贝" class="headerlink" title="六. 深拷贝与浅拷贝"></a>六. 深拷贝与浅拷贝</h3><ul>
+<h3 id="七-深拷贝与浅拷贝"><a href="#七-深拷贝与浅拷贝" class="headerlink" title="七. 深拷贝与浅拷贝"></a>七. 深拷贝与浅拷贝</h3><ul>
 <li><code>浅拷贝</code>：是指只复制一层对象，当对象的属性是引用类型时，实质复制的是其引用，当引用指向的值改变时也会跟着变化（就是假设B复制了A，当修改A时，B也变化了）</li>
 <li><code>深拷贝</code>：是指复制对象的所有层级（当修改A时，B没变化）。</li>
 <li><strong>实现方法</strong><ol>
@@ -327,11 +336,11 @@ console.log(another2());//输出rose  这里this指向了demo对象了;
 </ol>
 </li>
 </ul>
-<h3 id="七-JS-的引用赋值与传值赋值"><a href="#七-JS-的引用赋值与传值赋值" class="headerlink" title="七. JS 的引用赋值与传值赋值"></a>七. JS 的引用赋值与传值赋值</h3><ul>
+<h3 id="八-JS-的引用赋值与传值赋值"><a href="#八-JS-的引用赋值与传值赋值" class="headerlink" title="八. JS 的引用赋值与传值赋值"></a>八. JS 的引用赋值与传值赋值</h3><ul>
 <li><code>number,string类型</code>都是基本类型是通过<code>传值赋值</code>的，而基本类型存放在栈区，访问时按值访问，赋值是按照普通方式赋值；</li>
 <li><code>对象和数组</code>是通过<code>引用来赋值</code>的，所以改变arr1的同时arr2也会跟着改变;</li>
 </ul>
-<h3 id="八-js内存泄漏"><a href="#八-js内存泄漏" class="headerlink" title="八. js内存泄漏"></a>八. js内存泄漏</h3><ul>
+<h3 id="九-js内存泄漏"><a href="#九-js内存泄漏" class="headerlink" title="九. js内存泄漏"></a>九. js内存泄漏</h3><ul>
 <li>内存泄漏可以定义为一个应用，由于某些原因不再需要的内存没有被操作系统或者空闲内存池回收。</li>
 <li><p><strong>常见的JavaScript泄漏</strong></p>
 <ol>
@@ -348,11 +357,11 @@ console.log(another2());//输出rose  这里this指向了demo对象了;
 </ol>
 </li>
 </ul>
-<h3 id="九-click和onclick的区别"><a href="#九-click和onclick的区别" class="headerlink" title="九. click和onclick的区别"></a>九. click和onclick的区别</h3><ul>
+<h3 id="十-click和onclick的区别"><a href="#十-click和onclick的区别" class="headerlink" title="十. click和onclick的区别"></a>十. click和onclick的区别</h3><ul>
 <li>click 是方法，由程序员写语句调用；onclick是事件；方法触发事件</li>
 <li>click本身是方法作用是触发onclick事件，只要执行了元素的click()方法，就会触发onclick事件；</li>
 </ul>
-<h3 id="十-DOM操作——怎样添加、移除、移动、复制、创建和查找节点。"><a href="#十-DOM操作——怎样添加、移除、移动、复制、创建和查找节点。" class="headerlink" title="十. DOM操作——怎样添加、移除、移动、复制、创建和查找节点。"></a>十. DOM操作——怎样添加、移除、移动、复制、创建和查找节点。</h3><h5 id="1-创建新节点"><a href="#1-创建新节点" class="headerlink" title="1. 创建新节点"></a>1. 创建新节点</h5><p>createDocumentFragment() //创建一个DOM片段<br>createElement() //创建一个具体的元素<br>createTextNode() //创建一个文本节点</p>
+<h3 id="十一-DOM操作——怎样添加、移除、移动、复制、创建和查找节点。"><a href="#十一-DOM操作——怎样添加、移除、移动、复制、创建和查找节点。" class="headerlink" title="十一. DOM操作——怎样添加、移除、移动、复制、创建和查找节点。"></a>十一. DOM操作——怎样添加、移除、移动、复制、创建和查找节点。</h3><h5 id="1-创建新节点"><a href="#1-创建新节点" class="headerlink" title="1. 创建新节点"></a>1. 创建新节点</h5><p>createDocumentFragment() //创建一个DOM片段<br>createElement() //创建一个具体的元素<br>createTextNode() //创建一个文本节点</p>
 <h5 id="2-添加、移除、替换、插入"><a href="#2-添加、移除、替换、插入" class="headerlink" title="2. 添加、移除、替换、插入"></a>2. 添加、移除、替换、插入</h5><p>appendChild()<br>removeChild()<br>replaceChild()<br>insertBefore() //在已有的子节点前插入一个新的子节点</p>
 <h5 id="3-查找"><a href="#3-查找" class="headerlink" title="3. 查找"></a>3. 查找</h5><p>getElementsByTagName() //通过标签名称<br>getElementsByName() //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)<br>getElementById() //通过元素Id，唯一性</p>
 <h5 id="4-向页面中添加30000个li标签"><a href="#4-向页面中添加30000个li标签" class="headerlink" title="4. 向页面中添加30000个li标签"></a>4. 向页面中添加30000个li标签</h5><p><a href="https://www.jianshu.com/p/15c9f38e07cc" target="_blank" rel="noopener">https://www.jianshu.com/p/15c9f38e07cc</a></p>
@@ -392,15 +401,15 @@ while (base * oneCount &lt; preCount) {
     container.appendChild(fragment);
     base = base + 1;
 }
-</code></pre><h3 id="十一-setTimeOut，promise和主程序的执行顺序"><a href="#十一-setTimeOut，promise和主程序的执行顺序" class="headerlink" title="十一. setTimeOut，promise和主程序的执行顺序"></a>十一. setTimeOut，promise和主程序的执行顺序</h3><p>then和settimeout执行顺序，即setTimeout(fn, 0)在下一轮“事件循环”开始时执行，Promise.then()在本轮“事件循环”结束时执行。因此then 函数先输出，settimeout后输出。</p>
-<h3 id="十二-事件机制之冒泡、捕获、传播和委托。"><a href="#十二-事件机制之冒泡、捕获、传播和委托。" class="headerlink" title="十二. 事件机制之冒泡、捕获、传播和委托。"></a>十二. 事件机制之冒泡、捕获、传播和委托。</h3><ul>
+</code></pre><h3 id="十二-setTimeOut，promise和主程序的执行顺序"><a href="#十二-setTimeOut，promise和主程序的执行顺序" class="headerlink" title="十二. setTimeOut，promise和主程序的执行顺序"></a>十二. setTimeOut，promise和主程序的执行顺序</h3><p>then和settimeout执行顺序，即setTimeout(fn, 0)在下一轮“事件循环”开始时执行，Promise.then()在本轮“事件循环”结束时执行。因此then 函数先输出，settimeout后输出。</p>
+<h3 id="十三-事件机制之冒泡、捕获、传播和委托。"><a href="#十三-事件机制之冒泡、捕获、传播和委托。" class="headerlink" title="十三. 事件机制之冒泡、捕获、传播和委托。"></a>十三. 事件机制之冒泡、捕获、传播和委托。</h3><ul>
 <li>DOM事件流（event flow ）存在三个阶段：事件捕获阶段、处于目标阶段、事件冒泡阶段。<br><code>事件捕获（event capturing）</code>：通俗的理解就是，当鼠标点击或者触发dom事件时，浏览器会从根节点开始由外到内进行事件传播，即点击了子元素，如果父元素通过事件捕获方式注册了对应的事件的话，会先触发父元素绑定的事件。<br><code>事件冒泡（dubbed bubbling）</code>：与事件捕获恰恰相反，事件冒泡顺序是由内到外进行事件传播，直到根节点。</li>
 <li><p>dom标准事件流的触发的先后顺序为：<code>先捕获再冒泡</code>，即当触发dom事件时，会先进行事件捕获，捕获到事件源之后通过事件传播进行事件冒泡。</p>
 </li>
 <li><p>说到事件冒泡与捕获就不得不提一下两个用于事件绑定的方法addEventListener、attachEvent。当然还有其它的事件绑定的方式这里不做介绍。<br><code>addEventListener(event, listener, useCapture)</code><br>参数定义：event—（事件名称，如click，不带on），listener—事件监听函数，useCapture—是否采用事件捕获进行事件捕捉，默认为false，即采用事件冒泡方式<br>addEventListener在 IE11、Chrome 、Firefox、Safari等浏览器都得到支持。<br><code>attachEvent(event,listener)</code><br>参数定义：event—（事件名称，如onclick，带on），listener—事件监听函数。<br>attachEvent主要用于IE浏览器，并且仅在IE10及以下才支持，IE11已经废了这个方法了（微软还是挺识趣的，慢慢向标准靠拢）。</p>
 </li>
 </ul>
-<h3 id="十三-Js阻塞及解决思路"><a href="#十三-Js阻塞及解决思路" class="headerlink" title="十三. Js阻塞及解决思路"></a>十三. Js阻塞及解决思路</h3><ul>
+<h3 id="十四-Js阻塞及解决思路"><a href="#十四-Js阻塞及解决思路" class="headerlink" title="十四. Js阻塞及解决思路"></a>十四. Js阻塞及解决思路</h3><ul>
 <li>Js阻塞机制，跟Js引擎的单线程处理方式有关，每个window一个JS线程。所谓单线程，在某个特定的时刻只有特定的代码能够被执行，并阻塞其它的代码。</li>
 <li>由于浏览器是事件驱动的（Event driven），因此浏览器中很多行为是异步的，很容易有事件被同时或者连续触发。当异步事件发生时，会创建事件并放入执行队列中，等待当前代码执行完成之后再执行这些代码，如鼠标点击事件发生、XMLHttpRequest 完成回调、定时器触发事件发生这些事件，都会被放入执行队列中等待。</li>
 <li><p><strong>js执行会阻塞DOM树的解析和渲染，那么css加载不会阻塞DOM树的解析(结构)，但是会阻塞DOM树的渲染(样式)。</strong></p>
@@ -414,8 +423,8 @@ while (base * oneCount &lt; preCount) {
 <li><p>详情参考<a href>http://blog.csdn.net/talking12391239/article/details/21168489</a></p>
 </li>
 </ul>
-<h3 id="十四-JS无缝滚动效果实现方法分析效果："><a href="#十四-JS无缝滚动效果实现方法分析效果：" class="headerlink" title="十四. JS无缝滚动效果实现方法分析效果："></a>十四. JS无缝滚动效果实现方法分析效果：</h3><p>1.默认缓慢往左滚动<br>2.放到左箭头上还是向左滚动，放到右箭头上向右滚动<br>3.放到图片上停止滚动，移出继续滚动<br><strong>思路：</strong><br>1.计算图片列表ul的宽度<br>2.开启定时器，使其向左边距不断增大，造成向左运动的效果<br>3.图片列表复制一份，向左移动时，当左边距大于一份的宽度时，把它的左边距拉回到0。向右移动时，当左边距大于0时，把它的左边距拉到整个两份图片列表一半的宽度（即一份的宽度）。（拉的瞬间很快，用户察觉不到，造成一种无缝滚动的假象）<br>4.offsetLeft值的正负决定往哪边移动<br>5.放到图片上停止这个定时器，移开再开启</p>
-<h3 id="十五-轮播图的实现原理"><a href="#十五-轮播图的实现原理" class="headerlink" title="十五. 轮播图的实现原理"></a>十五. 轮播图的实现原理</h3><p>在html ，css 已经写好的情况下。最主要的就是js的功能问题了。轮播图的功能步骤如下：</p>
+<h3 id="十五-JS无缝滚动效果实现方法分析效果："><a href="#十五-JS无缝滚动效果实现方法分析效果：" class="headerlink" title="十五. JS无缝滚动效果实现方法分析效果："></a>十五. JS无缝滚动效果实现方法分析效果：</h3><p>1.默认缓慢往左滚动<br>2.放到左箭头上还是向左滚动，放到右箭头上向右滚动<br>3.放到图片上停止滚动，移出继续滚动<br><strong>思路：</strong><br>1.计算图片列表ul的宽度<br>2.开启定时器，使其向左边距不断增大，造成向左运动的效果<br>3.图片列表复制一份，向左移动时，当左边距大于一份的宽度时，把它的左边距拉回到0。向右移动时，当左边距大于0时，把它的左边距拉到整个两份图片列表一半的宽度（即一份的宽度）。（拉的瞬间很快，用户察觉不到，造成一种无缝滚动的假象）<br>4.offsetLeft值的正负决定往哪边移动<br>5.放到图片上停止这个定时器，移开再开启</p>
+<h3 id="十六-轮播图的实现原理"><a href="#十六-轮播图的实现原理" class="headerlink" title="十六. 轮播图的实现原理"></a>十六. 轮播图的实现原理</h3><p>在html ，css 已经写好的情况下。最主要的就是js的功能问题了。轮播图的功能步骤如下：</p>
 <ol>
 <li>先让图片轮播起来。基本就是写一个 play函数里面加定时器，每次使图片的index对象加一，当index大于最值，设置index等于第 一张图片.这样轮播图就动起来了。</li>
 <li>轮播图动起来基本就是只显示一张图片隐藏其他的图片。我上面使用的是opacity 。</li>
@@ -657,7 +666,7 @@ while (base * oneCount &lt; preCount) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -673,17 +682,17 @@ while (base * oneCount &lt; preCount) {
         
         
         <div class="cube-box ">
-            <a href="/tags/二叉树/">#二叉树</a>
-        </div>
-        
-        
-        <div class="cube-box ">
             <a href="/tags/flex/">#flex</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
         </div>
         
         
@@ -697,13 +706,8 @@ while (base * oneCount &lt; preCount) {
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
         <div class="cube-box-bg ">
-            <a href="/tags/Github/">#Github</a>
+            <a href="/tags/Git/">#Git</a>
         </div>
         
         
@@ -722,7 +726,12 @@ while (base * oneCount &lt; preCount) {
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
+            <a href="/tags/二叉树/">#二叉树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
         </div>
         
