@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>DOM详解 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">DOM详解</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-03-22
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/DOM/">#DOM</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>作为前端必备知识点，怎么能不会DOM节点操作呢，今天我们来学一下DOM节点操作吧~<br>学习参考：<br><a href="https://www.cnblogs.com/yinshuige/p/5812095.html" target="_blank" rel="noopener">https://www.cnblogs.com/yinshuige/p/5812095.html</a><br><a href="https://zhuanlan.zhihu.com/p/148070585" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/148070585</a><br><a href="https://blog.csdn.net/alex_wen2014/article/details/101962054" target="_blank" rel="noopener">https://blog.csdn.net/alex_wen2014/article/details/101962054</a><br><a href="https://blog.csdn.net/qq_42127861/article/details/82145842" target="_blank" rel="noopener">https://blog.csdn.net/qq_42127861/article/details/82145842</a></p>
+<h3 id="一、什么是DOM？"><a href="#一、什么是DOM？" class="headerlink" title="一、什么是DOM？"></a>一、什么是DOM？</h3><p>DOM就是文档对象模型，是针对于xml但是扩展用于HTML的应用程序编程接口，定义了访问和操作HTML的文档的标准。<br>文档对象模型( DOM, Document Object Model )主要用于对HTML和XML文档的内容进行操作。DOM描绘了一个层次化的节点树，通过对节点进行操作，实现对文档内容的添加、删除、修改、查找等功能。</p>
+<h4 id="DOM树有两种，分别为节点树和元素树。"><a href="#DOM树有两种，分别为节点树和元素树。" class="headerlink" title="DOM树有两种，分别为节点树和元素树。"></a>DOM树有两种，分别为节点树和元素树。</h4><ul>
+<li>节点树：把文档中所有的内容都看成树上的节点；</li>
+<li>元素树：仅把文档中的所有标签看成树上的节点。</li>
+</ul>
+<a id="more"></a>
+<h3 id="二、DOM的常用方法"><a href="#二、DOM的常用方法" class="headerlink" title="二、DOM的常用方法"></a>二、DOM的常用方法</h3><h4 id="1-获取节点"><a href="#1-获取节点" class="headerlink" title="1.获取节点"></a>1.获取节点</h4><pre><code>// 通过id号来获取元素，返回一个元素对象
+var myElement = document.getElementById(idName) 
+
+// 通过name属性获取id号，返回元素对象数组 
+document.getElementsByName(name)  
+
+// 通过class来获取元素，返回元素对象数组
+document.getElementsByClassName(className)   
+
+// 通过标签名获取元素，返回元素对象数组
+document.getElementsByTagName(tagName) 
+
+//仅返回第一个匹配的元素,不需要兼容IE      
+document.querySelector(&apos;#idxxx&apos;)
+
+//返回所有匹配的元素，querySelectorAll() 不适用于 Internet Explorer 8 及其更早版本。
+document.querySelectorAll(&apos;.red&apos;)[0]
+
+document.querySelectorAll(&apos;#idxxx&apos;)[0]
+
+document.querySelectorAll(&quot;p.intro&quot;);
+
+//获取页面中的HTML标签
+document.documentElement
+
+//获取页面中的BODY标签
+document.body
+
+//获取页面中的所有元素节点的对象集合型
+document.all[&apos;&apos;]
+</code></pre><h4 id="2-获取-设置元素的属性值："><a href="#2-获取-设置元素的属性值：" class="headerlink" title="2.获取/设置元素的属性值："></a>2.获取/设置元素的属性值：</h4><pre><code>// 括号传入属性名，返回对应属性的属性值
+element.getAttribute(attributeName)
+
+// 传入属性名及设置的值
+element.setAttribute(attributeName,attributeValue)
+</code></pre><h4 id="3-创建节点Node"><a href="#3-创建节点Node" class="headerlink" title="3.创建节点Node"></a>3.创建节点Node</h4><pre><code>// 创建一个html元素，这里以创建h3元素为例
+document.createElement(&quot;h3&quot;)
+
+// 创建一个文本节点；
+document.createTextNode(String);
+
+// 创建一个属性节点，这里以创建class属性为例
+document.createAttribute(&quot;class&quot;);
+
+//创建新的注释节点
+document.createComment(&apos;注释节点&apos;);
+
+//创建文档片段节点
+document.createDocumentFragment( );
+</code></pre><h4 id="4-增添节点"><a href="#4-增添节点" class="headerlink" title="4.增添节点"></a>4.增添节点</h4><pre><code>// 往element内部最后面添加一个节点，参数是节点类型
+parent.appendChild(
+element/txt/comment/fragment);
+
+// 在element内部的中在existingNode前面插入newNode
+parent.insertBefore(newNode,existingNode); 
+
+//给元素增加属性节点
+element.setAttributeNode( attributeName );
+
+//给元素增加指定属性，并设定属性值
+element.setAttribute( attributeName, attributeValue );
+</code></pre><h5 id="添加文本节点，有两种常见方法："><a href="#添加文本节点，有两种常见方法：" class="headerlink" title="添加文本节点，有两种常见方法："></a>添加文本节点，有两种常见方法：</h5><ol>
+<li>document.createTextNode(‘新增文本内容’);</li>
+</ol>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;创建文本节点&lt;/h2&gt;
+&lt;button onclick=&quot;addText()&quot;&gt;创建文本节点&lt;/button&gt;
+&lt;p&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function addText(){
+            var element = document.getElementsByTagName(&apos;p&apos;)[0];
+            var txt = document.createTextNode(&apos;新增文本内容&apos;); //创建文本节点
+            element.appendChild(txt); //添加文本节点
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ol start="2">
+<li>element.innerHTML=’新增文本内容’; 【推荐】</li>
+</ol>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h2&gt;创建文本节点&lt;/h2&gt;
+&lt;button onclick=&quot;addText()&quot;&gt;创建文本节点&lt;/button&gt;
+&lt;p&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function addText(){
+            var element = document.getElementsByTagName(&apos;p&apos;)[0];
+            element.innerHTML=&apos;新增文本内容&apos;; //插入文本内容
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="5-删除节点"><a href="#5-删除节点" class="headerlink" title="5.删除节点"></a>5.删除节点</h4><pre><code>//删除当前节点下指定的子节点，删除成功返回该被删除的节点，否则返回null
+parentNode.removeChild(Node)
+
+//删除具有指定属性名称的属性，无返回值
+element.removeAttribute(&apos;属性名&apos;);
+
+//删除指定属性，返回值为删除的属性
+element.removeAttributeNode( attrNode );
+</code></pre><h4 id="6-修改节点"><a href="#6-修改节点" class="headerlink" title="6.修改节点"></a>6.修改节点</h4><pre><code>//用新节点替换父节点中已有的子节点
+parentNode.replaceChild( newChild, existingChild );
+
+//若原元素已有该节点，此操作能达到修改该属性值的目的
+element.setAttributeNode( attributeName );
+
+//若原元素已有该节点，此操作能达到修改该属性值的目的
+element.setAttribute( attributeName, attributeValue );
+
+//更改元素属性
+document.getElementById(id).style.property = new style
+</code></pre><h5 id="添加属性节点，修改属性值，有两种常见方法："><a href="#添加属性节点，修改属性值，有两种常见方法：" class="headerlink" title="添加属性节点，修改属性值，有两种常见方法："></a>添加属性节点，修改属性值，有两种常见方法：</h5><ol>
+<li>element.setAttribute( attributeName, attributeValue );</li>
+</ol>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;属性节点&lt;/h2&gt;
+    &lt;p class=&quot;classValue&quot;&gt;增添id属性，并修改class属性值&lt;/p&gt;
+    &lt;script&gt;
+        var element = document.getElementsByTagName(&apos;p&apos;)[0];
+        element.setAttribute(&apos;id&apos;,&apos;idValue&apos;); //添加属性节点
+        element.setAttribute(&apos;class&apos;,&apos;classNewValue&apos;);//修改属性值
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><ol start="2">
+<li>element.setAttributeNode( attributeName );</li>
+</ol>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h2&gt;属性节点&lt;/h2&gt;
+    &lt;p class=&quot;classValue&quot;&gt;增添id属性，并修改class属性值&lt;/p&gt;
+    &lt;script&gt;
+        var element = document.getElementsByTagName(&apos;p&apos;)[0];
+// 添加属性节点
+        var attr = document.createAttribute(&apos;id&apos;);
+        attr.value = &apos;idValue&apos;;
+        element.setAttributeNode(attr);
+
+// 修改属性值
+        var attr = document.createAttribute(&apos;class&apos;);
+        attr.value = &apos;classNewValue&apos;;
+        element.setAttributeNode(attr);
+
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="三、DOM常用属性"><a href="#三、DOM常用属性" class="headerlink" title="三、DOM常用属性"></a>三、DOM常用属性</h3><h4 id="1-获取当前元素的文本"><a href="#1-获取当前元素的文本" class="headerlink" title="1.获取当前元素的文本"></a>1.获取当前元素的文本</h4><pre><code>// 返回元素的所有文本，包括html代码
+element.innerHTML
+
+// 返回当前元素的自身及子代所有文本值，只是文本内容，不包括html代码
+element.innerText
+</code></pre><h5 id="document-write和innerHTML主要区别："><a href="#document-write和innerHTML主要区别：" class="headerlink" title="document.write和innerHTML主要区别："></a>document.write和innerHTML主要区别：</h5><p>document.write是直接将内容写入页面的内容流，会导致页面全部重绘，innerHTML将内容写入某个DOM节点，不会导致页面全部重绘</p>
+<p>例子一：页面有初始内容，点击页面中的按钮向页面中通过document.write()方法写入内容，会发现原先的初始内容消失了，整个页面只剩下了通过write()方法写入的内容。原因是整个页面进行了重绘</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!--初始内容 --&gt;
+&lt;button onclick=&quot;fun()&quot; &gt;按鈕&lt;/button&gt;
+
+&lt;script&gt;
+    function fun() {
+        document.write(&quot;write内容&quot;);
+    }
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>举例二：页面有初始内容，在初始内容后面给定一个节点，通过innerHTML向这个节点写内容，初始内容不消失，通过innerHTML新增加的内容准确的显示在节点位置</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- 初始内容 --&gt;
+&lt;a id=&quot;p&quot;&gt;&lt;/a&gt;
+
+
+&lt;button οnclick=&quot;fun()&quot;&gt;按钮&lt;/button&gt;
+
+
+&lt;script&gt;
+    function fun() {
+    document.getElementById(&quot;p&quot;).innerHTML=&quot;新增加的innerHTML内容&quot;;
+    }
+
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h4 id="2-设置当前元素的样式"><a href="#2-设置当前元素的样式" class="headerlink" title="2.设置当前元素的样式"></a>2.设置当前元素的样式</h4><pre><code>// 设置元素的样式时使用style
+element.style.color=&quot;#eea&quot;;   
+</code></pre><h5 id="使用-JavaScript-创建动画"><a href="#使用-JavaScript-创建动画" class="headerlink" title="使用 JavaScript 创建动画"></a>使用 JavaScript 创建动画</h5><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;style&gt;
+#container {
+width: 400px;
+height: 400px;
+position: relative;
+background: yellow;
+}
+#animate {
+width: 50px;
+height: 50px;
+position: absolute;
+background-color: red;
+}
+&lt;/style&gt;
+&lt;body&gt;
+
+&lt;p&gt;&lt;button onclick=&quot;myMove()&quot;&gt;单击我&lt;/button&gt;&lt;/p&gt; 
+
+&lt;div id =&quot;container&quot;&gt;
+&lt;div id =&quot;animate&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function myMove() {
+var elem = document.getElementById(&quot;animate&quot;);   
+var pos = 0;
+var id = setInterval(frame, 5);
+function frame() {
+    if (pos == 350) {
+    clearInterval(id);
+    } else {
+    pos++; 
+    elem.style.top = pos + &quot;px&quot;; 
+    elem.style.left = pos + &quot;px&quot;; 
+    }
+}
+}
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt; 
+</code></pre><h4 id="3-获取当前节点的名称"><a href="#3-获取当前节点的名称" class="headerlink" title="3.获取当前节点的名称"></a>3.获取当前节点的名称</h4><pre><code>// 返回当前节点的名称
+node.nodeName 
+</code></pre><p>nodeName 属性规定节点的值。</p>
+<ul>
+<li>元素节点的 nodeName 是标签名</li>
+<li>文本节点的 nodeName 是属性名称</li>
+<li>属性节点的 nodeName 是#text</li>
+</ul>
+<h4 id="4-获取当前节点的值"><a href="#4-获取当前节点的值" class="headerlink" title="4.获取当前节点的值"></a>4.获取当前节点的值</h4><pre><code>// 返回当前节点的值
+node.nodeValue 
+</code></pre><p>nodeValue 属性规定节点的值。</p>
+<ul>
+<li>元素节点的 nodeValue 是 undefined 或 null</li>
+<li>文本节点的 nodeValue 是文本本身</li>
+<li>属性节点的 nodeValue 是属性值</li>
+</ul>
+<h4 id="5-获取当前节点的节点类型"><a href="#5-获取当前节点的节点类型" class="headerlink" title="5.获取当前节点的节点类型"></a>5.获取当前节点的节点类型</h4><pre><code>// 返回节点的类型,数字形式（1-12）
+// 常见几个1：元素节点，2：属性节点，3：文本节点。
+node.nodeType   
+</code></pre><p>nodeType 属性返回节点的类型。nodeType 是只读的。比较重要的节点类型有：</p>
+<table>
+<thead>
+<tr>
+<th>元素类型</th>
+<th>NodeType</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>元素</td>
+<td>1</td>
+</tr>
+<tr>
+<td>属性</td>
+<td>2</td>
+</tr>
+<tr>
+<td>文本</td>
+<td>3</td>
+</tr>
+<tr>
+<td>注释</td>
+<td>8</td>
+</tr>
+<tr>
+<td>文档</td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<h5 id="5-1-元素节点、属性节点、文本节点三者关系"><a href="#5-1-元素节点、属性节点、文本节点三者关系" class="headerlink" title="5.1 元素节点、属性节点、文本节点三者关系"></a>5.1 元素节点、属性节点、文本节点三者关系</h5><p>元素节点可以拥有类型属性节点、文本节点、注释节点的子节点。<br>属性节点与文本节点不是一个层面（角度）上的，因为：在旧 DOM 规范中，属性继承自 Node，是一种特殊的节点。但是DOM4 中已废弃这一条，属性不再是节点。<br><img src="//lililich.work/2020/03/22/DOM详解/Image3-1.png" alt="Image3-1.png"></p>
+<h5 id="5-2-节点标志（只介绍三种最重要的节点）"><a href="#5-2-节点标志（只介绍三种最重要的节点）" class="headerlink" title="5.2 节点标志（只介绍三种最重要的节点）"></a>5.2 节点标志（只介绍三种最重要的节点）</h5><table>
+<thead>
+<tr>
+<th></th>
+<th>元素节点</th>
+<th>属性节点</th>
+<th>文本节点</th>
+<th>注释节点</th>
+<th>文档节点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NodeType</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td>NodeName</td>
+<td>标签名</td>
+<td>属性名称</td>
+<td>#text</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>NodeValue</td>
+<td>null</td>
+<td>属性value</td>
+<td>标签中间夹的文本值</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="5-3-三种节点的获取方法（这里使用jQuery方法）"><a href="#5-3-三种节点的获取方法（这里使用jQuery方法）" class="headerlink" title="5.3 三种节点的获取方法（这里使用jQuery方法）"></a>5.3 三种节点的获取方法（这里使用jQuery方法）</h5><pre><code>&lt;!DOCTYPE html&gt; 
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        $(function () {
+        //代码
+        })
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;ul id=&quot;csdn&quot; name=&quot;myname&quot;&gt;
+    &lt;li&gt;1&lt;/li&gt;
+    &lt;li&gt;2&lt;/li&gt;
+    &lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h6 id="1-获取元素节点"><a href="#1-获取元素节点" class="headerlink" title="1. 获取元素节点"></a>1. 获取元素节点</h6><pre><code>//原生写法
+var d = document.getElementById(&quot;csdn&quot;); 
+
+d–&gt;获取当前元素节点
+d.nodeType–&gt;获取nodeType（只读）
+d.nodeName–&gt;获取nodeName（只读）
+d.nodeValue–&gt;获取nodeValue（无）
+
+// jquery写法
+var d = $(&quot;ul&quot;)
+
+d–&gt;获取所有元素节点
+d[0].nodeType–&gt;获取nodeType（只读）
+d[0].nodeName–&gt;获取nodeName（只读）
+d[0].nodeValue–&gt;获取nodeValue（无）
+</code></pre><p><img src="//lililich.work/2020/03/22/DOM详解/Image3-2.png" alt="Image3-2.png"></p>
+<p>注意：（这时候浏览器也打印出了ul的子节点）</p>
+<p><img src="//lililich.work/2020/03/22/DOM详解/Image3-3.png" alt="Image3-3.png"></p>
+<p>其中的text指的是“回车键”</p>
+<p>浏览器显示最终结果如下：</p>
+<p><img src="//lililich.work/2020/03/22/DOM详解/Image3-4.png" alt="Image3-4.png"></p>
+<p>分析：对于子节点来说，就是childNodes来说，回车键也算一个节点，那么如图所示，就存在四个回车节点3个元素节点（li）</p>
+<p><strong>注意：区分children与childNodes:</strong></p>
+<p><img src="//lililich.work/2020/03/22/DOM详解/Image3-5.png" alt="Image3-5.png"></p>
+<h6 id="2-获取属性节点"><a href="#2-获取属性节点" class="headerlink" title="2. 获取属性节点"></a>2. 获取属性节点</h6><pre><code>//原生写法
+var d = document.getElementById(&quot;csdn&quot;).getAttributeNode(&quot;id&quot;); 
+
+d–&gt;获取当前属性节点
+d.nodeType–&gt;获取nodeType（只读）
+d.nodeName–&gt;获取nodeName（只读）
+d.nodeValue–&gt;获取nodeValue（无）
+
+// jquery写法 
+var d = $(&quot;ul&quot;)[0].attributes–&gt;获取所有
+
+d–&gt;获取所有属性节点
+d[0].nodeType–&gt;获取nodeType（只读）
+d[0].nodeName–&gt;获取nodeName（只读）
+d[0].nodeValue–&gt;获取nodeValue（无）
+d[0].nodeValue=&quot;newValue&quot;–&gt;设置新的nodeValue（写）
+
+//之所以在attributes的下标用0是因为attributes是一个json数组，id这个属性就在其attributes[0]这个地方，如果在设置一个class属性，那么class就在attributes[1]这个地方
+</code></pre><p>浏览器显示如下<br><img src="//lililich.work/2020/03/22/DOM详解/Image3-6.png" alt="Image3-6.png"></p>
+<h6 id="3-获取文本节点"><a href="#3-获取文本节点" class="headerlink" title="3. 获取文本节点"></a>3. 获取文本节点</h6><pre><code>//原生写法
+var d = document.
+getElementsByTagName(&quot;li&quot;)[0].firstChild;  
+
+d–&gt;获取当前文本节点
+d.nodeType–&gt;获取nodeType（只读）
+d.nodeName–&gt;获取nodeName（只读）
+d.nodeValue–&gt;获取nodeValue（无）
+
+//jquery写法 
+var d = $(&quot;li&quot;).first()[0].childNodes–&gt;获取所有
+
+d–&gt;获取所有文本节点
+d[0].nodeType–&gt;获取nodeType（只读）
+d[0].nodeName–&gt;获取nodeName（只读）
+d[0].nodeValue–&gt;获取nodeValue（无）
+d[0].nodeValue=&quot;newValue&quot;–&gt;设置新的nodeValue（写）
+
+
+//之所以在childNodes中下标用0，因为childNodes是一个json数组，而此文本节点刚好在其下标为0的地方，即childNodes的第一个元素
+</code></pre><p>浏览器显示如下</p>
+<p><img src="//lililich.work/2020/03/22/DOM详解/Image3-7.png" alt="Image3-7.png"></p>
+<p>综上：想要获得属性节点或者文本节点，第一步首先要绑定元素节点，然后再从元素节点向下找其子节点</p>
+<h3 id="四、DOM导航"><a href="#四、DOM导航" class="headerlink" title="四、DOM导航"></a>四、DOM导航</h3><p>通过 HTML DOM，您能够使用节点关系来导航节点树</p>
+<p>节点树中的节点彼此拥有层级关系。我们常用父（parent）、子（child）和同胞（sibling）等术语来描述这些关系。</p>
+<ul>
+<li>术语（父、子和同胞，parent、child 以及 sibling）用于描述这些关系。</li>
+<li>在节点树中，顶端节点被称为根（根节点）。</li>
+<li>每个节点都有父节点，除了根（根节点没有父节点）。</li>
+<li>节点能够拥有一定数量的子</li>
+<li>同胞（兄弟或姐妹）指的是拥有相同父的节点。</li>
+</ul>
+<pre><code>&lt;html&gt;
+
+&lt;head&gt;
+    &lt;title&gt;DOM 教程&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;h1&gt;DOM 第一课&lt;/h1&gt;
+    &lt;p&gt;Hello world!&lt;/p&gt;
+&lt;/body&gt;
+
+&lt;/html&gt; 
+</code></pre><p><img src="//lililich.work/2020/03/22/DOM详解/Image4-1.png" alt="Image4-1.png"></p>
+<p>通过 JavaScript，您可以使用以下节点属性在节点之间导航：</p>
+<ul>
+<li>parentNode</li>
+<li>childNodes[nodenumber]</li>
+<li>firstChild</li>
+<li>lastChild</li>
+<li>nextSibling</li>
+<li>previousSibling<h4 id="1-获取当前元素的父节点"><a href="#1-获取当前元素的父节点" class="headerlink" title="1.获取当前元素的父节点"></a>1.获取当前元素的父节点</h4></li>
+</ul>
+<pre><code>// 返回当前元素的父节点对象
+element.parentNode
+</code></pre><h4 id="2-获取当前元素的子节点"><a href="#2-获取当前元素的子节点" class="headerlink" title="2.获取当前元素的子节点"></a>2.获取当前元素的子节点</h4><pre><code>// 返回当前元素所有子元素节点对象，只返回HTML节点
+element.chlidren
+
+// 返回当前元素多有子节点，包括文本，HTML，属性节点。（回车也会当做一个节点）
+element.chilidNodes
+
+// 返回当前元素的第一个子节点对象
+element.firstChild
+
+// 返回当前元素的最后一个子节点对象
+element.lastChild
+</code></pre><h4 id="3-获取当前元素的同级元素"><a href="#3-获取当前元素的同级元素" class="headerlink" title="3.获取当前元素的同级元素"></a>3.获取当前元素的同级元素</h4><pre><code>// 返回当前元素的下一个同级元素 没有就返回null
+element.nextSibling
+
+// 返回当前元素上一个同级元素 没有就返回 null
+element.previousSibling
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2020/08/21/如何访问共享文件夹/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                如何访问共享文件夹
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/10/24/正则表达式详解/">
+                正则表达式详解
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

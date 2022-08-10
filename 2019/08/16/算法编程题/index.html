@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>算法编程题 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">算法编程题</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2019-08-16
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/编程/">#编程</a>
+    
+    <a href="/tags/js/">#js</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>本文总结了很多简单的算法编程：</p>
+<ul>
+<li>降维</li>
+<li>排序</li>
+<li>去重</li>
+<li>统计一个字符串出现最多的字母</li>
+<li>不借助临时变量，进行两个整数的交换</li>
+<li>找出下列正数组的最大差值</li>
+<li>随机生成指定长度的字符串</li>
+<li>实现类似getElementsByClassName 的功能</li>
+<li>判断一个单词是否是回文？</li>
+<li>找出最长单词</li>
+<li>string 里的每个单词首字母大写</li>
+<li>判断字符串是否是指定字符结尾</li>
+<li>重复字符串指定次数</li>
+<li>找出字符串中出现最多的字符和个数</li>
+<li>创建一个函数判断给定的表达式中的小括号是否闭合</li>
+<li>在字符串中找出连续最长的数字串</li>
+<li>使用canvas 绘制一个有限度的斐波那契数列的曲线？</li>
+<li>实现阶乘</li>
+<li>过滤敏感词</li>
+<li>二分查找</li>
+<li>App版本比较</li>
+<li>生成菲波那切数列</li>
+<li>使用JS 实现二叉查找树(Binary Search Tree)</li>
+<li>密码强度判断</li>
+<li>修改路由规则</li>
+<li>字符串大小写转换</li>
+</ul>
+<p>跟着我一起学习吧~<br><a id="more"></a></p>
+<h3 id="js降维"><a href="#js降维" class="headerlink" title="js降维"></a>js降维</h3><pre><code>//迭代降维
+function jiangwei(arr){
+  var newarr = []
+  arr.forEach(item=&gt;{
+    if(item instanceof Array){
+      newarr.push(...jiangwei(item))
+    } else{
+      newarr.push(item)
+    }
+  })
+  return newarr
+}
+console.log(jiangwei( [3, [&apos;a&apos;, [0,[&apos;a&apos;,1], 1], null], [4, &apos;4j&apos;, [3]], -2]))
+
+//用apply的特性，将数组作为参数展开传入新的空数组[]，再contact
+var arr=[[1,2,3],[&quot;sy&quot;,1,&quot;jh&quot;,null],[&quot;&quot;,9],1]
+function jiangwei(arr){
+  var newarr=[]
+  newarr=newarr.concat.apply(newarr,arr)
+  return newarr
+}
+
+//使用ES6特性-扩展运算符将数组展开
+function jiangwei(arr){
+  var newarr=[]
+  newarr=[].concat(...arr)
+  return newarr
+}
+console.log(jiangwei(arr))
+
+//多维数组变成一维数组
+//es6新增的flat方法
+var arr = [3, [&apos;a&apos;, [0, 1], null], [4, &apos;4j&apos;, [3]], -2]
+function jiangwei(arr){
+  var newarr=[]
+  //数字参数指定降维次数
+  newarr=arr.flat(3)
+  return newarr
+}
+console.log(jiangwei(arr))
+</code></pre><h3 id="js排序"><a href="#js排序" class="headerlink" title="js排序"></a>js排序</h3><pre><code>//一、冒泡排序，相邻元素比较交换
+
+//基本思路：
+//1.比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+//2.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
+//3.针对所有的元素重复以上的步骤，除了最后一个。
+//4.持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+var arr=[9,-2,1,30,-59]
+function paixu(arr){
+    for(var i=0; i&lt;arr.length-1; i++){
+        for(var j=0; j&lt;arr.length-1-i; j++){
+            if (arr[j]&gt;arr[j+1]){
+                var temp=arr[j]
+                arr[j]=arr[j+1]
+                arr[j+1]=temp
+            }
+        }
+    }
+    return arr
+}
+console.log(paixu(arr))
+
+//二、快速排序
+
+//基本思路：
+//1.以一个数为基准(中间的数)，比基准小的放到左边，比基准大的放到右边
+//2.再按此方法对这两部分数据分别进行快速排序（递归进行）
+//3.不能再分后退出递归，并重新将数组合并
+function quickSort(arr) {
+    if (arr.length &lt;= 1) {
+        return arr;
+    }
+    let leftArr = [];
+    let rightArr = [];
+    let q = arr[0];
+    for (let i = 1; i &lt; arr.length; i++) {
+        if (arr[i] &gt; q) {
+            rightArr.push(arr[i]);
+        } else {
+            leftArr.push(arr[i]);
+        }
+    }
+    return [].concat(quickSort(leftArr), [q], quickSort(rightArr));
+}
+console.log(quickSort(arr));//[&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]
+</code></pre><h3 id="js去重"><a href="#js去重" class="headerlink" title="js去重"></a>js去重</h3><pre><code>var arr = [&apos;1&apos;,&apos;hello&apos;,&apos;ree&apos;,&apos;ke&apos;,&apos;yi&apos;,&apos;1&apos;,&apos;e&apos;,&apos;1&apos;]
+
+//ES6数组去重，无法去{}空对象
+function quchong(arr){
+    return Array.from(new Set(arr))
+}
+
+//splice去重，一个数据和后面所有数据比较，相同的删除
+function quchong(arr){
+    for (var i=0; i&lt;arr.length; i++){
+        for (var j=i+1; j&lt;arr.length; j++){
+            if (arr[i]==arr[j]){
+                arr.splice(j,1)
+                j--
+            }
+        }
+    }
+    return arr
+}
+
+//使用indexOf去重，新建一个数组，把原数组的数据与新数组里的数据比较newarr.indexOf(arr[i])===-1，不存在就push进去，存在的就跳过
+function quchong(arr){
+    var newarr=[]
+    for (var i=0; i&lt;arr.length; i++){
+        if(newarr.indexOf(arr[i])===-1){
+            newarr.push(arr[i])
+        }
+    }
+    return newarr
+}
+
+
+//使用sort去重，先将数组排序，然后前后数据相比较，不存在就放入新的数组
+function quchong(arr){
+    var newarr=[]
+    arr= arr.sort()
+    for (var i=0; i&lt;arr.length; i++){
+        if(arr[i]!==arr[i+1]){
+            newarr.push(arr[i])
+        }
+    }
+    return newarr
+}
+
+console.log(quchong(arr))
+</code></pre><h3 id="统计一个字符串出现最多的字母"><a href="#统计一个字符串出现最多的字母" class="headerlink" title="统计一个字符串出现最多的字母"></a>统计一个字符串出现最多的字母</h3><p>给出一段英文连续的英文字符窜，找出重复出现次数最多的字母比如：<br>输入：afjghdfraaaasdenas ;输出 ： a<br>前面出现过去重的算法，这里需要是统计重复次数。<br>利用Object中key的唯一性，利用key来进行筛选，然后计数。</p>
+<pre><code>var string = &apos;afjghdfraaaasdenas&apos;
+function findMaxDuplicateChar(str) {  
+  if(str.length == 1) {
+    return str;
+  }
+  let charObj = {};
+  for(let i=0;i&lt;str.length;i++) {
+    if(!charObj[str.charAt(i)]) {
+      charObj[str.charAt(i)] = 1;
+    }else{
+      charObj[str.charAt(i)] += 1;
+    }
+  }
+  let maxChar = &apos;&apos;,
+      maxValue = 1;
+  for(var k in charObj) {
+    if(charObj[k] &gt;= maxValue) {
+      maxChar = k;
+      maxValue = charObj[k];
+    }
+  }
+  return maxChar;
+}
+console.log(findMaxDuplicateChar(string))
+</code></pre><h3 id="不借助临时变量，进行两个整数的交换"><a href="#不借助临时变量，进行两个整数的交换" class="headerlink" title="不借助临时变量，进行两个整数的交换　　"></a>不借助临时变量，进行两个整数的交换　　</h3><p>举例：输入 a = 2, b = 4 输出 a = 4, b =2　　<br>这种问题非常巧妙，需要大家跳出惯有的思维，利用 a , b进行置换。　　<br>主要是利用 + - 去进行运算，类似 a = a + ( b - a) 实际上等同于最后 的 a = b;</p>
+<pre><code>var a = 2
+var b = 4
+function swap(a , b) {  
+  b = b - a;
+  a = a + b;
+  b = a - b;
+  return [a,b];
+}
+console.log(swap(a,b))
+</code></pre><h3 id="找出下列正数组的最大差值"><a href="#找出下列正数组的最大差值" class="headerlink" title="找出下列正数组的最大差值"></a>找出下列正数组的最大差值</h3><p>比如：输入 [10,5,11,7,8,9] ;输出 6<br>这是通过一道题目去测试对于基本的数组的最大值的查找，很明显我们知道，最大差值肯定是一个数组中最大值与最小值的差。</p>
+<pre><code>function getMaxProfit(arr) { 
+    var minPrice = arr[0]; 
+    var maxProfit = 0; 
+    for (var i = 0; i &lt; arr.length; i++) { 
+        var currentPrice = arr[i]; 
+        minPrice = Math.min(minPrice, currentPrice); 
+        var potentialProfit = currentPrice - minPrice; 
+        maxProfit = Math.max(maxProfit, potentialProfit); 
+    } 
+    return maxProfit; 
+}
+
+function getMaxProfit(arr){
+  var min = arr[0]
+  var max = arr[0]
+  var value = 0
+  arr.map(item=&gt;{
+    if(item &lt; min){
+      min = item
+    } else if (item &gt; max){
+      max = item
+    }
+    value = Math.max(value, max-min)
+  })
+  return value
+}
+console.log(getMaxProfit([8,10,1,3,6,2,9]))
+</code></pre><h3 id="随机生成指定长度的字符串"><a href="#随机生成指定长度的字符串" class="headerlink" title="随机生成指定长度的字符串"></a>随机生成指定长度的字符串</h3><p>实现一个算法，随机生成指指定长度的字符窜。<br>比如：给定 长度 8 输出 4ldkfg9j</p>
+<pre><code>function randomString(n) {  
+  let str = &apos;abcdefghijklmnopqrstuvwxyz9876543210&apos;;
+  let tmp = &apos;&apos;,
+      i = 0,
+      l = str.length;
+  for (i = 0; i &lt; n; i++) {
+    tmp += str.charAt(Math.floor(Math.random() * l));
+  }
+  return tmp;
+}
+console.log(randomString(8))
+</code></pre><h3 id="实现类似getElementsByClassName-的功能"><a href="#实现类似getElementsByClassName-的功能" class="headerlink" title="实现类似getElementsByClassName 的功能　　"></a>实现类似getElementsByClassName 的功能　　</h3><p>自己实现一个函数，查找某个DOM节点下面的包含某个class的所有DOM节点？<br>不允许使用原生提供的 getElementsByClassName querySelectorAll 等原生提供DOM查找函数。</p>
+<pre><code>function queryClassName(node, name) {  
+  var starts = &apos;(^|[ \n\r\t\f])&apos;,
+      ends = &apos;([ \n\r\t\f]|$)&apos;;
+  var array = [],
+        regex = new RegExp(starts + name + ends),
+        elements = node.getElementsByTagName(&quot;*&quot;),
+        length = elements.length,
+        i = 0,
+        element;
+
+    while (i &lt; length) {
+        element = elements[i];
+        if (regex.test(element.className)) {
+            array.push(element);
+        }
+
+        i += 1;
+    }
+
+    return array;
+}
+</code></pre><h3 id="判断一个单词是否是回文？"><a href="#判断一个单词是否是回文？" class="headerlink" title="判断一个单词是否是回文？"></a>判断一个单词是否是回文？</h3><p>回文是指把相同的词汇或句子，在下文中调换位置或颠倒过来，产生首尾回环的情趣，叫做回文，也叫回环。比如 mamam redivider<br>很多人拿到这样的题目非常容易想到用for 将字符串颠倒字母顺序然后匹配就行了。其实重要的考察的就是对于reverse的实现。其实我们可以利用现成的函数，将字符串转换成数组，这个思路很重要，我们可以拥有更多的自由度去进行字符串的一些操作。</p>
+<pre><code>// 简易好理解的方法
+var str = &apos;helloolleh&apos;;
+function checkPalindrom(str) {  
+    return str == str.split(&apos;&apos;).reverse().join(&apos;&apos;);
+}
+console.log(checkPalindrom(str));//true
+
+
+// 复杂方法
+function isPalindrome(str){
+    if (typeof str !== &apos;string&apos; || str.constructor !== String) {
+  return false;
+    }
+    var len = parseInt((str.length+1)/2);
+    for(var i=0; i&lt;len; i++){
+  if (str[i] !== str[str.length-i-1]) {
+      return false;
+  }
+    }
+    return true;
+}
+console.log(isPalindrome(&apos;adddddda&apos;));//true
+console.log(isPalindrome(&apos;addddda&apos;));//true
+console.log(isPalindrome(&apos;adddasd&apos;));//false
+</code></pre><h3 id="找出最长单词"><a href="#找出最长单词" class="headerlink" title="找出最长单词"></a>找出最长单词</h3><p>这个有很多种解决办法 我只是用了个蠢一点最早想到的方法<br>Find the Longest Word in a String</p>
+<pre><code>function findLongestWord(str) {
+  // 请把你的代码写在这里
+  var new_str = str.split(&quot; &quot;);
+  var arr = [];
+  for(var i = 0;i&lt;new_str.length;i++){
+    arr.push(new_str[i].length);
+  }
+  return arr.sort(function(a,b){
+        return b-a;
+    })[0];
+}
+findLongestWord(&quot;The quick brown fox jumped over the lazy dog&quot;);
+</code></pre><h3 id="string-里的每个单词首字母大写"><a href="#string-里的每个单词首字母大写" class="headerlink" title="string 里的每个单词首字母大写"></a>string 里的每个单词首字母大写</h3><p>Title Case a Sentence</p>
+<pre><code>function titleCase(str) {
+  return str.toLowerCase().split(&quot; &quot;).map((item)=&gt;{
+    return item.replace(item.charAt(0),item[0].toUpperCase())
+}).join(&quot; &quot;)
+}
+titleCase(&quot;I&apos;m a little tea pot&quot;);
+</code></pre><h3 id="判断字符串是否是指定字符结尾"><a href="#判断字符串是否是指定字符结尾" class="headerlink" title="判断字符串是否是指定字符结尾"></a>判断字符串是否是指定字符结尾</h3><p>这只是一种思路 我这个有点过去简单粗暴了 小伙伴们如果有更多答案 可以留言 探讨下</p>
+<pre><code>function confirmEnding(str, target) { 
+    return (str.substr(-target.length)==target) ? true:false;
+}
+confirmEnding(&quot;He has to give me a new name&quot;, &quot;name&quot;);
+</code></pre><h3 id="重复字符串指定次数"><a href="#重复字符串指定次数" class="headerlink" title="重复字符串指定次数"></a>重复字符串指定次数</h3><p>这个折腾了一会儿 刚开始得保存一次 没想到Repeat a string repeat a string</p>
+<pre><code>function repeat(str, num) {
+  if(num&lt;=0)
+      return &quot;&quot;;
+  var save_ = str
+  for(var i=1;i&lt;num;i++)
+    str+=save_ ;
+  return str;
+}
+repeat(&quot;abc&quot;, 3);
+</code></pre><h3 id="找出字符串中出现最多的字符和个数"><a href="#找出字符串中出现最多的字符和个数" class="headerlink" title="找出字符串中出现最多的字符和个数"></a>找出字符串中出现最多的字符和个数</h3><pre><code>var string=&quot;sssfgtdfssddfsssfssss&quot;;
+function max(str){
+  var json={};
+  var num=0;
+  var value=null;
+  for(var i=0;i&lt;str.length;i++){
+    var k=str[i];
+    if(!json[k]){
+      json[k]=[];
+    }
+    json[k].push(k); //这里不需要else，否则只有存在这个字符时才添加。次数会少一次
+  }
+  for(var attr in json){
+    if(num&lt;json[attr].length){
+      num=json[attr].length;
+      value=json[attr][0];
+    }
+  }
+  return value+&apos; &apos;+num;
+};
+console.log(max(string))
+</code></pre><h3 id="创建一个函数判断给定的表达式中的小括号是否闭合"><a href="#创建一个函数判断给定的表达式中的小括号是否闭合" class="headerlink" title="创建一个函数判断给定的表达式中的小括号是否闭合"></a>创建一个函数判断给定的表达式中的小括号是否闭合</h3><pre><code>var expression = &quot;(())()()&quot;
+var expressionFalse = &quot;()(()&quot;
+function isBalanced(expression) {
+  var checkString = expression;
+  var stack = [];
+  if (checkString.length &lt;= 0) return true;
+  for (var i = 0; i &lt; checkString.length; i++) {
+    if(checkString[i] === &apos;(&apos;) {
+      stack.push(checkString[i]);
+    } else if (checkString[i] === &apos;)&apos;) {
+      // Pop on an empty array is undefined
+      if (stack.length &gt; 0) {
+        stack.pop();
+      } else {
+        return false;
+      }
+    }
+  }
+  // If the array is not empty, it is not balanced
+  if (stack.pop()) return false;
+  return true;
+}
+console.log(isBalanced(expression))
+</code></pre><h3 id="在字符串中找出连续最长的数字串"><a href="#在字符串中找出连续最长的数字串" class="headerlink" title="在字符串中找出连续最长的数字串"></a>在字符串中找出连续最长的数字串</h3><pre><code>var lines = &apos;abc360360xyz#123you&apos;
+
+function findTheNumString(str) {
+    var reg = /\d+/g     
+    var array = str.match(reg)
+    var max = 0
+    for (var i = 0; i &lt; array.length; i++) {
+        if (array[i].length &gt;= max) {
+            max = array[i].length
+            var j = i
+        }
+    }
+    return array[j].length + &apos;/&apos; + array[j]
+}
+console.log(findTheNumString(lines))
+</code></pre><h3 id="使用canvas-绘制一个有限度的斐波那契数列的曲线？"><a href="#使用canvas-绘制一个有限度的斐波那契数列的曲线？" class="headerlink" title="使用canvas 绘制一个有限度的斐波那契数列的曲线？"></a>使用canvas 绘制一个有限度的斐波那契数列的曲线？</h3><p><img src="//lililich.work/2019/08/16/算法编程题/Image1.png" alt="Image1.png"><br>数列长度限定在9.斐波那契数列，又称黄金分割数列，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……在数学上，斐波纳契数列主要考察递归的调用。我们一般都知道定义fibo[i] = fibo[i-1]+fibo[i-2];  生成斐波那契数组的方法</p>
+<pre><code>function getFibonacci(n) {  
+  var fibarr = [];
+  var i = 0;
+  while(i&lt;n) {
+    if(i&lt;=1) {
+      fibarr.push(i);
+    }else{
+      fibarr.push(fibarr[i-1] + fibarr[i-2])
+    }
+    i++;
+  }
+  return fibarr;
+}
+</code></pre><h3 id="实现阶乘"><a href="#实现阶乘" class="headerlink" title="实现阶乘"></a>实现阶乘</h3><ol>
+<li>非递归实现?</li>
+</ol>
+<pre><code>function factorialize(num) {
+ var result = 1;
+ if(num &lt; 0) return -1;
+ if(num == 0 || num == 1) return 1;
+ while(num&gt;1)
+  result *= num--;
+ return result;
+}
+</code></pre><ol start="2">
+<li>递归实现</li>
+</ol>
+<pre><code>function factorialize(num) {
+  if (num &lt; 0) { 
+        return -1; 
+    } else if (num === 0 || num === 1) { 
+        return 1; 
+    } else { 
+        return (num * factorialize(num - 1)); 
+    } 
+}
+factorialize(5);
+</code></pre><h3 id="过滤敏感词"><a href="#过滤敏感词" class="headerlink" title="过滤敏感词"></a>过滤敏感词</h3><pre><code>function sensitive(content){
+    var keywords=[&quot;暴力&quot;, &quot;色情&quot;, &quot;fuck&quot;, &quot;TMD&quot;];//敏感词词库
+      var value = content;//获取需要过滤的内容
+      //遍历敏感词数组
+      for(var i=0;i&lt;keywords.length;i++){
+          var reg = new RegExp(keywords[i],&quot;g&quot;);//全局替换
+          //判断内容中是否包括敏感词
+          if(value.indexOf(keywords[i])!=-1){
+              var result = value.replace(reg,&quot;****&quot;);
+              value = result;
+          }
+      }
+    return value;
+  }
+</code></pre><h3 id="二分查找"><a href="#二分查找" class="headerlink" title="二分查找"></a>二分查找</h3><p>二分查找又称折半查找，是在有序数组查找中用到的较为频繁的一种算法，优点是比较次数少，查找速度快，平均性能好；其缺点是要求待查表为有序表，且插入删除困难。</p>
+<ol>
+<li>非递归实现</li>
+</ol>
+<pre><code>function binary_search(arr, key) {
+ var low = 0,
+  high = arr.length - 1;
+ while(low &lt;= high){
+  var mid = parseInt((high + low) / 2);
+  if(key == arr[mid]){
+   return mid;
+  }else if(key &gt; arr[mid]){
+   low = mid + 1;
+  }else if(key &lt; arr[mid]){
+   high = mid -1;
+  }
+ }
+ return -1;
+};
+</code></pre><ol start="2">
+<li>递归实现</li>
+</ol>
+<pre><code>function binary_search2(arr, low, high, key) {
+ if(low &gt; high)
+  return -1;
+ var mid = parseInt((low + high)/2);
+ if(key == arr[mid])
+  return mid;
+ else if(key &gt; arr[mid])
+  return binary_search2(arr, mid+1, high, key);
+ else if(key &lt; arr[mid])
+  return binary_search2(arr, low, mid-1, key);
+}
+</code></pre><h3 id="App版本比较"><a href="#App版本比较" class="headerlink" title="App版本比较"></a>App版本比较</h3><pre><code>function Version(curV, reqV) {
+  var arr1 = curV.toString().split(&apos;.&apos;);
+  var arr2 = reqV.toString().split(&apos;.&apos;);
+  //将两个版本号拆成数字
+  var minL = Math.min(arr1.length, arr2.length);
+  var pos = 0; //当前比较位
+  var diff = 0; //当前为位比较是否相等
+  var flag = false;
+  //逐个比较如果当前位相等则继续比较下一位
+  while(pos &lt; minL) {
+    diff = parseInt(arr1[pos]) - parseInt(arr2[pos]);
+    if(diff == 0) {
+      pos++;
+      continue;
+    } else if(diff &gt; 0) {
+      flag = true;
+      break;
+    } else {
+      flag = false;
+      break;
+    }
+  }
+  if(flag){
+    return curV + &apos;,&apos; + reqV
+  } else {
+    return reqV + &apos;,&apos; + curV
+  }
+}
+let test_v = Version(&apos;4.1.3&apos;,&apos;5.0.1&apos;)
+console.log(test_v )
+</code></pre><h3 id="生成菲波那切数列"><a href="#生成菲波那切数列" class="headerlink" title="生成菲波那切数列"></a>生成菲波那切数列</h3><p>斐波那契数列，又称黄金分割数列，指的是这样一个数列：0、1、1、2、3、5、8、13、21、34、……<br>在数学上，斐波纳契数列主要考察递归的调用。通过定义fibo[i] = fibo[i-1]+fibo[i-2];来生成斐波那契数组。</p>
+<ol>
+<li>强行递归实现</li>
+</ol>
+<pre><code>function getfib(n){
+ if(n == 0)
+ return 0;
+ if(n == 1)
+  return 1;
+ if(n &gt; 1){
+ return getfib(n-1) + getfib(n-2);
+ }
+}
+function fibo(len){
+ var fibo = [];
+ for(var i=0;i&lt;len;i++)
+ fibo.push(getfib(i));
+ return fibo;
+}
+</code></pre><ol start="2">
+<li>简约非递归版</li>
+</ol>
+<pre><code>function getFibonacci(n) {
+ var fibarr = [];
+ var i = 0;
+ while(i &lt; n) {
+  if(i &lt;= 1) {
+   fibarr.push(i);
+  } else {
+   fibarr.push(fibarr[i - 1] + fibarr[i - 2])
+  }
+  i++;
+ }
+ return fibarr;
+}
+</code></pre><h3 id="使用JS-实现二叉查找树-Binary-Search-Tree"><a href="#使用JS-实现二叉查找树-Binary-Search-Tree" class="headerlink" title="使用JS 实现二叉查找树(Binary Search Tree)"></a>使用JS 实现二叉查找树(Binary Search Tree)</h3><p>一般叫全部写完的概率比较少，但是重点考察你对它的理解和一些基本特点的实现。 二叉查找树，也称二叉搜索树、有序二叉树（英语：ordered binary tree）是指一棵空树或者具有下列性质的二叉树：</p>
+<ul>
+<li>任意节点的左子树不空，则左子树上所有结点的值均小于它的根结点的值；</li>
+<li>任意节点的右子树不空，则右子树上所有结点的值均大于它的根结点的值；</li>
+<li>任意节点的左、右子树也分别为二叉查找树；</li>
+<li>没有键值相等的节点。二叉查找树相比于其他数据结构的优势在于查找、插入的时间复杂度较低。为O(log n)。二叉查找树是基础性数据结构，用于构建更为抽象的数据结构，如集合、multiset、关联数组等。<br><img src="//lililich.work/2019/08/16/算法编程题/Image2.png" alt="Image2.png"><br>在写的时候需要足够理解二叉搜素树的特点，需要先设定好每个节点的数据结构</li>
+</ul>
+<pre><code>class Node {  
+  constructor(data, left, right) {
+    this.data = data;
+    this.left = left;
+    this.right = right;
+  }
+}
+</code></pre><p>树是有节点构成，由根节点逐渐延生到各个子节点，因此它具备基本的结构就是具备一个根节点，具备添加，查找和删除节点的方法.</p>
+<pre><code>class BinarySearchTree {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(data) {
+    let n = new Node(data, null, null);
+    if (!this.root) {
+      return this.root = n;
+    }
+    let currentNode = this.root;
+    let parent = null;
+    while (1) {
+      parent = currentNode;
+      if (data &lt; currentNode.data) {
+        currentNode = currentNode.left;
+        if (currentNode === null) {
+          parent.left = n;
+          break;
+        }
+      } else {
+        currentNode = currentNode.right;
+        if (currentNode === null) {
+          parent.right = n;
+          break;
+        }
+      }
+    }
+  }
+
+  remove(data) {
+    this.root = this.removeNode(this.root, data)
+  }
+
+  removeNode(node, data) {
+    if (node == null) {
+      return null;
+    }
+
+    if (data == node.data) {
+      // no children node
+      if (node.left == null &amp;&amp; node.right == null) {
+        return null;
+      }
+      if (node.left == null) {
+        return node.right;
+      }
+      if (node.right == null) {
+        return node.left;
+      }
+
+      let getSmallest = function(node) {
+        if(node.left === null &amp;&amp; node.right == null) {
+          return node;
+        }
+        if(node.left != null) {
+          return node.left;
+        }
+        if(node.right !== null) {
+          return getSmallest(node.right);
+        }
+
+      }
+      let temNode = getSmallest(node.right);
+      node.data = temNode.data;
+      node.right = this.removeNode(temNode.right,temNode.data);
+      return node;
+
+    } else if (data &lt; node.data) {
+      node.left = this.removeNode(node.left,data);
+      return node;
+    } else {
+      node.right = this.removeNode(node.right,data);
+      return node;
+    }
+  }
+
+  find(data) {
+    var current = this.root;
+    while (current != null) {
+      if (data == current.data) {
+        break;
+      }
+      if (data &lt; current.data) {
+        current = current.left;
+      } else {
+        current = current.right
+      }
+    }
+    return current.data;
+  }
+
+}
+module.exports = BinarySearchTree;  
+</code></pre><h3 id="ajax"><a href="#ajax" class="headerlink" title=".ajax"></a>.ajax</h3><p><a href="https://www.runoob.com/ajax/ajax-examples.html" target="_blank" rel="noopener">https://www.runoob.com/ajax/ajax-examples.html</a></p>
+<pre><code>function ajaxtest(){
+    var xmlhttp;
+    if (window.XMLHttpRequest)
+    {
+        //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+        xmlhttp=new XMLHttpRequest();
+    }
+    else
+    {
+        // IE6, IE5 浏览器执行代码
+        xmlhttp=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+    }
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 &amp;&amp; xmlhttp.status==200)//0-4和200，404
+        {
+            // responseText 获得字符串形式的响应数据。
+            // responseXML  获得 XML 形式的响应数据。
+            document.getElementById(&quot;myDiv&quot;).innerHTML=xmlhttp.responseText;
+        }
+    }
+    /* 规定请求的类型、URL 以及是否异步处理请求。
+    method：请求的类型；GET 或 POST
+    url：文件在服务器上的位置
+    async：true（异步）或 false（同步）*/
+    xmlhttp.open(&quot;GET&quot;,&quot;/try/ajax/ajax_info.txt&quot;,true);
+    /*
+    将请求发送到服务器。
+    string：仅用于 POST 请求
+    */
+    xmlhttp.send();
+}
+</code></pre><h3 id="密码强度判断"><a href="#密码强度判断" class="headerlink" title="密码强度判断"></a>密码强度判断</h3><pre><code>function checkPassWord(value){
+    var modes = 0;
+    if(/\d/.test(value)){//如果用户输入的密码 包含了数字
+        modes++;
+    }
+    if(/[a-z]/.test(value)){//如果用户输入的密码 包含了小写的a到z
+        modes++;
+    }
+    if(/[A-Z]/.test(value)){//如果用户输入的密码 包含了大写的A到Z
+        modes++;
+    }
+    if(/\W/.test(value)){//如果是非数字 字母 下划线
+        modes++;
+    }
+    if(value.length &lt; 8 || modes == 1){//最初级别
+        return 0;
+    } else {
+        if(modes == 2){
+            if(/\d/.test(value)&amp;&amp;/[a-z]/.test(value)){
+                return 1;
+            } else if(/\d/.test(value)&amp;&amp;/[A-Z]/.test(value)){
+                return 1;
+            } else {
+                return 2;
+            }
+        } else if(modes == 3){
+            return 3;
+        } else if(modes == 4){
+            return 3;
+        }
+    }
+}
+console.log(checkPassWord(&apos;ssqk!!!!!!hk&apos;))
+</code></pre><h3 id="修改路由规则"><a href="#修改路由规则" class="headerlink" title="修改路由规则"></a>修改路由规则</h3><pre><code>var routes = [
+    {
+        path:&quot;/home&quot;,
+        content:&quot;home&quot;,
+        children:[
+            {
+                path:&quot;/hello&quot;,
+                content:&quot;hello&quot;
+            },
+            {
+                path:&quot;/hello1&quot;,
+                content:&quot;hello1&quot;
+            }
+        ]
+    },
+    {
+        path:&quot;/about&quot;,
+        content:&quot;about&quot;,
+        children:[{
+            path:&quot;/hello&quot;,
+            content:&quot;hello&quot;
+        }]
+    }
+]
+function getRoute(routes){
+    var obj=[];
+    routes.map(element =&gt; {
+        var itempath1 = element.path;
+        var itemcontent1 = element.content;
+        var itemobj1 = {
+            path: itempath1,
+            content: itemcontent1
+        }
+        obj.push(itemobj1);
+        if(element.children){
+            element.children.map(item =&gt; {
+                var itemcontent2 = [];
+                var itempath2;
+                itemcontent2.push(itemcontent1);
+                itempath2 = element.path+item.path;
+                itemcontent2.push(item.content)
+                var itemobj2 = {
+                    path: itempath2,
+                    content: itemcontent2
+                }
+                obj.push(itemobj2);
+            })
+        }
+    });
+    return obj
+}
+console.log(getRoute(routes));
+</code></pre><h3 id="字符串大小写转换"><a href="#字符串大小写转换" class="headerlink" title="字符串大小写转换"></a>字符串大小写转换</h3><pre><code>function change(str){
+  var arr = str.split(&apos;&apos;)
+  var newarr = []
+  arr.map(item=&gt;{
+    if(/[a-z]/.test(item)){
+      newarr.push(item.toUpperCase())
+    } else if(/[A-Z]/.test(item)){
+      newarr.push(item.toLowerCase())
+    }
+  })
+  return newarr.join(&apos;&apos;)
+}
+console.log(change(&apos;sSuFHJwil&apos;))
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2019/08/18/HTML5语义化标签的理解/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                HTML5语义化标签的理解
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2019/08/15/面试宝典-Vue/">
+                面试宝典-Vue
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

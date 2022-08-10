@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>js创建对象 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">js创建对象</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-09-06
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/js/">#js</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h4 id="1-对象字面量方式"><a href="#1-对象字面量方式" class="headerlink" title="1. 对象字面量方式"></a>1. 对象字面量方式</h4><pre><code>var person = {
+name: &quot;XiaoMing&quot;,
+age: 29,
+job: &quot;Software Engineer&quot;,
+sayName: function () {
+    alert(this.name)
+}
+</code></pre><h4 id="2-object构造函数"><a href="#2-object构造函数" class="headerlink" title="2.object构造函数"></a>2.object构造函数</h4><pre><code>var person = new Object();
+person.name = &quot;XiaoMing&quot;;
+person.age = 18;
+person.job = &quot;software Engineer&quot;;
+
+person.sayName = function () {
+alert(this.name);
+}
+</code></pre><p>使用object构造函数和对象字面量方式创建对象有一个缺点：如果我们想创建与该对象同类型的对象，就会产生大量重复的代码。</p>
+<a id="more"></a>
+<h4 id="3-工厂模式-用函数来封装以特定接口创建对象的细节"><a href="#3-工厂模式-用函数来封装以特定接口创建对象的细节" class="headerlink" title="3.工厂模式(用函数来封装以特定接口创建对象的细节)"></a>3.工厂模式(用函数来封装以特定接口创建对象的细节)</h4><pre><code>function createPerson(name,age,job) {
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+
+    o.sayName = function () {
+        alert(this.name);
+    }
+    return o;
+}
+var person1 = createPerson(&apos;jill&apos;,18,&apos;software&apos;);
+var person2 = createPerson(&apos;vane&apos;,23,&apos;student&apos;);
+</code></pre><p>使用这种方式创建对象虽然解决了创建多个结构相似的对象的问题，但是没有解决对象识别的问题（即无法判断一个对象的类型）</p>
+<h4 id="4-构造函数模式"><a href="#4-构造函数模式" class="headerlink" title="4.构造函数模式"></a>4.构造函数模式</h4><pre><code>function Person(name,age,job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.sayName = function () {
+        alert(this.name);
+    }
+}
+
+var person1 = new Person(&apos;xiaoming&apos;,18,&apos;software&apos;);
+var person2 = new Person(&apos;xiaohong&apos;,20,&apos;student&apos;);
+
+alert(person1.constructor == Person) //true
+alert(person1 instanceof Object);//true
+alert(person1 instanceof Person);//true
+</code></pre><p>创建自定义构造函数可以将它的实例标识为一种特定的类型,但是其中的每个方法都要在每个实例上重新创建一遍。即会导致不同的作用域链和标识符解析，但是创建Function新实例的机制是相同的。所以<br>person1.sayName == person2.sayName //false</p>
+<h4 id="5-原型模式"><a href="#5-原型模式" class="headerlink" title="5. 原型模式"></a>5. 原型模式</h4><pre><code>function Person() {}
+// constructor -&gt; Person
+Person.prototype.name = &quot;xiaoming&quot;;
+Person.prototype.age = 18;
+Person.prototype.job = &quot;software&quot;;
+Person.prototype.sayName = function () {
+    alert(this.name);
+}
+
+// constructor -&gt; object
+// Person.prototype = {
+//     constructor: Person,
+//     name: &quot;xiaoming&quot;,
+//     age: 18,
+//     job: &quot;software&quot;,
+//     sayName: function () {
+//         alert(this.name);
+//     }
+// }
+
+var person5 = new Person();
+person5.sayName(); // xiaoming
+var person6 = new Person();
+person6.sayName(); //xiaoming
+alert(person5.sayName === person6.sayName);//true
+</code></pre><p>关于原型模式，每个函数在创建时，都有一个prototype属性，指向该函数的原型对象。使用原型对象的好处是可以让所有对向实例共享它所包含的属性和方法。通过 hasOwnPrototype（）方法可以判断属性是实例属性还是原型属性。若为实例属性，返回true，否则返回false。<br>实例中的指针（[[ Prototype ]]）指向原型。<br>原型对象的问题：原型中的所有属性是被很多实例共享的，这种共享对于函数非常合适，然而对于包含引用类型值的属性来说，问题就比较突出。</p>
+<h4 id="6-组合使用构造函数模式原型模式"><a href="#6-组合使用构造函数模式原型模式" class="headerlink" title="6.组合使用构造函数模式原型模式"></a>6.组合使用构造函数模式原型模式</h4><p>构造函数模式用来定义实例属性，原型模式用来定义方法和共享的属性。</p>
+<pre><code>function Person(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.friends = [&quot;vane&quot;, &quot;ming&quot;];
+}
+Person.prototype = {
+    constructor: Person,
+    sayName: function () {
+        alert(this.name);
+    }
+}
+
+var person9 = new Person(&quot;xiaoming&quot;, 12, &quot;student&quot;);
+var person10 = new Person(&quot;xiaohong&quot;, 32, &quot;doctor&quot;);
+
+person9.friends.push(&apos;xiaogang&apos;);
+
+alert(person9.friends);//vane,ming,xiaogang
+alert(person10.friends);//vane,ming
+alert(person9.friends === person10.friends);//false
+alert(person9.sayName === person10.sayName);//true
+</code></pre><h4 id="7-动态原型模式"><a href="#7-动态原型模式" class="headerlink" title="7.动态原型模式"></a>7.动态原型模式</h4><p>大多数开发人员看到独立的构造函数和原型时，会感到困惑。我们使用动态原型模式解决这一问题。即通过检查某个应该存在的方法是否有效，来决定是否需要初始化原型。</p>
+<pre><code>function Person(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+    this.friends = [&quot;vane&quot;, &quot;ming&quot;];
+
+    //    方法
+    if (typeof this.sayName != &quot;function&quot;) {
+        //使用动态原型模式时，不能使用对象字面量重写原型。如果在已经创建了实例的情况下重写原型，那么就会切断现有实例与新原型之间的联系
+        Person.prototype.sayName = function () {
+            alert(this.name);
+        }
+    }
+}
+</code></pre><h4 id="8-寄生构造函数模式"><a href="#8-寄生构造函数模式" class="headerlink" title="8.寄生构造函数模式"></a>8.寄生构造函数模式</h4><p>基本思想：创建一个函数，其作用是封装创建对象的代码，然后返回新创建的对象。</p>
+<pre><code>function Person(name,age,job) {
+    var o = new Object();
+    o.name = name;
+    o.age = age;
+    o.job = job;
+    o.sayName = function () {
+        alert(this.name);
+    }
+    return o;
+}
+var person = new Person(&quot;ming&quot;,18,&quot;software&quot;);
+person.sayName();//ming
+</code></pre><p>构造函数返回的对象与在构造函数外部创建的对象没什么不同，不能使用instanceof来确定对象的类型。</p>
+<h4 id="9-稳妥构造函数模式"><a href="#9-稳妥构造函数模式" class="headerlink" title="9.稳妥构造函数模式"></a>9.稳妥构造函数模式</h4><p>稳妥对象，指的是没有公共属性，而且其方法也不引用this的对象。稳妥对象最适合在一些安全的环境中（这些环境会禁止使用this和new），或者在防止数据被其他应用程序改动时使用。<br>其与寄生构造函数不同之处：1、新创建对象的实例方法不引用this；2、不使用new操作符调用构造函数</p>
+<pre><code>function Person(name, age, job) {
+    var o = new Object();
+    //可以在这里定义私有变量和函数
+
+    o.sayName = function () {
+        alert(name);
+    }
+    return o;
+}
+var person12 = Person(&quot;ming&quot;,29,&quot;student&quot;);
+person12.sayName();//ming
+</code></pre>
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2020/09/20/js事件大全/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                js事件大全
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/08/21/如何访问共享文件夹/">
+                如何访问共享文件夹
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

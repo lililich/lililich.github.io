@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>React学习笔记2（官网学习） | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">React学习笔记2（官网学习）</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2021-03-28
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/React/">#React</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><h3 id="1-在网站中添加React"><a href="#1-在网站中添加React" class="headerlink" title="1. 在网站中添加React"></a>1. 在网站中添加React</h3><h4 id="（1）添加一个DOM容器到HTML中"><a href="#（1）添加一个DOM容器到HTML中" class="headerlink" title="（1）添加一个DOM容器到HTML中"></a>（1）添加一个DOM容器到HTML中</h4><p>首先，打开你想要编辑的 HTML 页面。添加一个空的 <code>&lt;div&gt;</code> 标签作为标记你想要用 React 显示内容的位置。例如：</p>
+<pre><code>&lt;!-- ... 其它 HTML ... --&gt;
+&lt;div id=&quot;like_button_container&quot;&gt;&lt;/div&gt;
+&lt;!-- ... 其它 HTML ... --&gt;
+</code></pre><p>我们给这个 <code>&lt;div&gt;</code> 加上唯一的 id HTML 属性。这将允许我们稍后用 JavaScript 代码找到它，并在其中显示一个 React 组件。</p>
+<a id="more"></a>
+<h4 id="（2）添加Script标签"><a href="#（2）添加Script标签" class="headerlink" title="（2）添加Script标签"></a>（2）添加Script标签</h4><p>接下来，在 <code>&lt;/body&gt;</code> 结束标签之前，向 HTML 页面中添加三个 <code>&lt;script&gt;</code> 标签：  </p>
+<pre><code>&lt;!-- ... 其它 HTML ... --&gt;
+&lt;!-- 加载 React。--&gt;
+&lt;!-- 注意: 部署时，将 &quot;development.js&quot; 替换为 &quot;production.min.js&quot;。--&gt;  
+&lt;script src=&quot;https://unpkg.com/react@17/umd/react.development.js&quot; crossorigin&gt;&lt;/script&gt;  
+&lt;script src=&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot; crossorigin&gt;&lt;/script&gt;
+&lt;!-- 加载我们的 React 组件。--&gt;  
+&lt;script src=&quot;like_button.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre><p>前两个标签加载 React。第三个将加载你的组件代码。</p>
+<h4 id="（3）创建一个React组件"><a href="#（3）创建一个React组件" class="headerlink" title="（3）创建一个React组件"></a>（3）创建一个React组件</h4><p>在 HTML 页面文件的同级目录下创建一个名为 <code>like_button.js</code> 的文件，将这段代码粘贴到 <code>like_button.js</code> 文件中。</p>
+<pre><code>&apos;use strict&apos;;
+
+const e = React.createElement;
+
+class LikeButton extends React.Component {
+constructor(props) {
+    super(props);
+    this.state = { liked: false };
+}
+
+render() {
+    if (this.state.liked) {
+    return &apos;You liked this.&apos;;
+    }
+
+    return e(
+    &apos;button&apos;,
+    { onClick: () =&gt; this.setState({ liked: true }) },
+    &apos;Like&apos;
+    );
+}
+}
+</code></pre><p>在 like_button.js 的底部，在模板代码之后，加入以下两行代码。</p>
+<pre><code>// ... 此前粘贴的代码 ...
+const domContainer = document.querySelector(&apos;#like_button_container&apos;);
+ReactDOM.render(e(LikeButton), domContainer);
+</code></pre><p>这两行代码会找到我们在步骤 1 中添加到 HTML 里的 <code>&lt;div&gt;</code>，然后在它内部显示我们的 React 组件 “Like” 按钮。<br>最终，两个文件代码编辑如下：<br>index.html：</p>
+<pre><code>&lt;!--index.html--&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Add React in One Minute&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h2&gt;Add React in One Minute&lt;/h2&gt;
+    &lt;p&gt;This page demonstrates using React with no build tooling.&lt;/p&gt;
+    &lt;p&gt;React is loaded as a script tag.&lt;/p&gt;
+    &lt;!-- We will put our React component inside this div. --&gt;
+    &lt;div id=&quot;like_button_container&quot;&gt;&lt;/div&gt;
+    &lt;!-- 加载 React。--&gt;
+    &lt;!-- 注意: 部署时，将 &quot;development.js&quot; 替换为 &quot;production.min.js&quot;。--&gt;
+    &lt;script src=&quot;https://unpkg.com/react@17/umd/react.development.js&quot; crossorigin&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot; crossorigin&gt;&lt;/script&gt;
+    &lt;!-- 加载我们的 React 组件。--&gt;
+    &lt;script src=&quot;like_button.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>like_button.js：</p>
+<pre><code>//like_button.js
+&apos;use strict&apos;;
+const e = React.createElement;
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+  render() {
+    if (this.state.liked) {
+      return &apos;You liked this.&apos;;
+    }
+    return e(
+      &apos;button&apos;,
+      { onClick: () =&gt; this.setState({ liked: true }) },
+      &apos;Like&apos;
+    );
+  }
+}
+const domContainer = document.querySelector(&apos;#like_button_container&apos;);
+ReactDOM.render(e(LikeButton), domContainer);
+</code></pre><p>至此，我们已经成功将一个React组件添加到网站中<br><img src="//lililich.work/2021/03/28/React学习笔记2/Image1.png" alt="Image1.png"></p>
+<h4 id="（4）知识扩展：重用一个组件通常"><a href="#（4）知识扩展：重用一个组件通常" class="headerlink" title="（4）知识扩展：重用一个组件通常"></a>（4）知识扩展：重用一个组件通常</h4><p>你可能希望在 HTML 页面的多个位置展示 React 组件。下面是一个示例，它显示了三次 “Like” 按钮，并向各自传入了一些数据：<br>完整代码如下：<br>index.html：</p>
+<pre><code>&lt;!--index.html--&gt;
+
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;title&gt;Add React in One Minute&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h2&gt;Add React in One Minute&lt;/h2&gt;
+    &lt;p&gt;This page demonstrates using React with no build tooling.&lt;/p&gt;
+    &lt;p&gt;React is loaded as a script tag.&lt;/p&gt;
+    &lt;p&gt;
+      This is the first comment.
+      &lt;!-- We will put our React component inside this div. --&gt;
+      &lt;div class=&quot;like_button_container&quot; data-commentid=&quot;1&quot;&gt;&lt;/div&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      This is the second comment.
+      &lt;!-- We will put our React component inside this div. --&gt;
+      &lt;div class=&quot;like_button_container&quot; data-commentid=&quot;2&quot;&gt;&lt;/div&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+      This is the third comment.
+      &lt;!-- We will put our React component inside this div. --&gt;
+      &lt;div class=&quot;like_button_container&quot; data-commentid=&quot;3&quot;&gt;&lt;/div&gt;
+    &lt;/p&gt;
+    &lt;!-- Load React. --&gt;
+    &lt;!-- Note: when deploying, replace &quot;development.js&quot; with &quot;production.min.js&quot;. --&gt;
+    &lt;script src=&quot;https://unpkg.com/react@17/umd/react.development.js&quot; crossorigin&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot; crossorigin&gt;&lt;/script&gt;
+    &lt;!-- Load our React component. --&gt;
+    &lt;script src=&quot;like_button.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>like_button.js</p>
+<pre><code>// like_button.js
+
+&apos;use strict&apos;;
+const e = React.createElement;
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+  render() {
+    if (this.state.liked) {
+      return &apos;You liked comment number &apos; + this.props.commentID;
+    }
+    return e(
+      &apos;button&apos;,
+      { onClick: () =&gt; this.setState({ liked: true }) },
+      &apos;Like&apos;
+    );
+  }
+}
+// Find all DOM containers, and render Like buttons into them.
+document.querySelectorAll(&apos;.like_button_container&apos;)
+  .forEach(domContainer =&gt; {
+    // Read the comment ID from a data-* attribute.
+    const commentID = parseInt(domContainer.dataset.commentid, 10);
+    ReactDOM.render(
+      e(LikeButton, { commentID: commentID }),
+      domContainer
+    );
+  });
+</code></pre><p>至此，我们已经成功将三个React组件添加到网站中<br><img src="//lililich.work/2021/03/28/React学习笔记2/Image2.png" alt="Image2.png"></p>
+<h4 id="（5）使用-React-和-JSX"><a href="#（5）使用-React-和-JSX" class="headerlink" title="（5）使用 React 和 JSX"></a>（5）使用 React 和 JSX</h4><p>在上面的示例中，我们只依赖了浏览器原生支持的特性。这就是为什么我们使用了 JavaScript 函数调用来告诉 React 要显示什么：</p>
+<pre><code>const e = React.createElement;
+// 显示一个 &quot;Like&quot; &lt;button&gt;return e(
+&apos;button&apos;,
+{ onClick: () =&gt; this.setState({ liked: true }) },
+&apos;Like&apos;
+);
+</code></pre><p>然而，React 还提供了一种使用 JSX 编写界面的方式：</p>
+<pre><code>// 显示一个 &quot;Like&quot; &lt;button&gt;return (
+&lt;button onClick={() =&gt; this.setState({ liked: true })}&gt;
+    Like
+&lt;/button&gt;
+);
+</code></pre><p>这两段代码是等价的。虽然 JSX 完全是可选的，但是多数人觉得这样编写 UI 代码更方便 —— 无论是使用 React 还是其它库。</p>
+<h4 id="（6）快速尝试-JSX"><a href="#（6）快速尝试-JSX" class="headerlink" title="（6）快速尝试 JSX"></a>（6）快速尝试 JSX</h4><p>在项目中尝试 JSX 最快的方法是在页面中添加这个 <code>&lt;script&gt;</code> 标签：</p>
+<pre><code>&lt;script src=&quot;https://unpkg.com/babel-standalone@6/babel.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>现在，你可以在任何 <code>&lt;script&gt;</code> 标签内使用 JSX，方法是在为其添加 <code>type=&quot;text/babel&quot;</code> 属性。</p>
+<p><strong>这种方式适合于学习和创建简单的示例。然而，它会使你的网站变慢，并且不适用于生产环境。</strong> 当你准备好更进一步时，删除你添加的这个新的 <code>&lt;script&gt;</code> 标签以及type=”text/babel” 属性。取而代之的，在下一小节中，你将设置一个 <code>JSX 预处理器</code>来自动转换所有 <code>&lt;script&gt;</code> 标签的内容。</p>
+<h5 id="1-将JSX添加到项目中"><a href="#1-将JSX添加到项目中" class="headerlink" title="1) 将JSX添加到项目中"></a>1) 将JSX添加到项目中</h5><p>将 JSX 添加到项目中并不需要诸如打包工具或开发服务器那样复杂的工具。本质上，添加 JSX 就像添加 CSS 预处理器一样。唯一的要求是你在计算机上安装了 <code>Node.js</code>。<br>在终端上跳转到你的项目文件夹，然后粘贴这两个命令：</p>
+<ul>
+<li><strong>步骤 1： 执行 <code>npm init -y</code> </strong></li>
+</ul>
+<p><img src="//lililich.work/2021/03/28/React学习笔记2/Image3.png" alt="Image3.png"></p>
+<p>运行成功后，文件夹中会增加一个 <code>package.json</code> 的文件</p>
+<ul>
+<li><strong>步骤 2： 执行 <code>npm install babel-cli@6 babel-preset-react-app@3</code></strong></li>
+</ul>
+<p><img src="//lililich.work/2021/03/28/React学习笔记2/Image4.png" alt="Image4.png"></p>
+<p>运行成功后，文件夹中会增加一个 <code>package-lock.json</code> 的文件和<code>node_modules</code>文件夹</p>
+<p>提示我们在这里使用 npm 只是用来安装 JSX 预处理器，之后你不再需要它。React 和应用程序代码都可以继续使用 <code>&lt;script&gt;</code> 标签而不做任何更改。<br>恭喜！你刚刚为你的项目加入了一个生产就绪（production-ready）的 JSX 配置环境。</p>
+<h5 id="2-运行-JSX-预处理器"><a href="#2-运行-JSX-预处理器" class="headerlink" title="2) 运行 JSX 预处理器"></a>2) 运行 JSX 预处理器</h5><p>创建一个名为 src 的文件夹并执行这个终端命令：</p>
+<pre><code>npx babel --watch src --out-dir . --presets react-app/prod
+</code></pre><p><img src="//lililich.work/2021/03/28/React学习笔记2/Image5.png" alt="Image5.png"></p>
+<p>注意：</p>
+<ul>
+<li>npx 不是拼写错误 —— 它是 npm 5.2+ 附带的 package 运行工具。</li>
+<li><p>如果你看到一个错误消息显示为：“You have mistakenly installed the babel package”，你可能错过了上一步(将JSX添加到项目中)。在同一个文件夹中执行它，然后重试。</p>
+</li>
+<li><p><strong>不要等待它运行结束 —— 这个命令启动了一个对 JSX 的自动监听器。</strong></p>
+</li>
+<li>如果此时你用这段 JSX 入门代码创建一个 src/like_button.js 文件，监听器会创建一个预处理过的 like_button.js 文件，它包含了适用于浏览器的普通 JavaScript 代码。当你编辑带有 JSX 的源文件时，转换过程将自动重新执行。</li>
+</ul>
+<h3 id="2-React-工具链"><a href="#2-React-工具链" class="headerlink" title="2. React 工具链"></a>2. React 工具链</h3><h4 id="Create-React-App"><a href="#Create-React-App" class="headerlink" title="Create React App"></a>Create React App</h4><p>Create React App 是一个用于学习 React 的舒适环境，也是用 React 创建新的单页应用的最佳方式。</p>
+<p>它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体验，并为生产环境优化你的应用程序。你需要在你的机器上安装 Node &gt;= 10.16 和 npm &gt;= 5.6。要创建项目，请执行：</p>
+<pre><code>npx create-react-app my-app
+cd my-app
+npm start
+</code></pre><blockquote>
+<p>注意第一行的 npx 不是拼写错误 —— 它是 npm 5.2+ 附带的 package 运行工具。</p>
+</blockquote>
+<p>Create React App 不会处理后端逻辑或操纵数据库；它只是创建一个前端构建流水线（build pipeline），所以你可以使用它来配合任何你想使用的后端。它在内部使用 Babel 和 webpack，但你无需了解它们的任何细节。</p>
+<p>当你准备好部署到生产环境时，执行 npm run build 会在 build 文件夹内生成你应用的优化版本。你能从它的 README 和用户指南了解 Create React App 的更多信息。</p>
+<h4 id="一组-JavaScript-构建工具链通常由这些组成："><a href="#一组-JavaScript-构建工具链通常由这些组成：" class="headerlink" title="一组 JavaScript 构建工具链通常由这些组成："></a>一组 JavaScript 构建工具链通常由这些组成：</h4><ul>
+<li>一个 package 管理器，比如 Yarn 或 npm。它能让你充分利用庞大的第三方 package 的生态系统，并且轻松地安装或更新它们。</li>
+<li>一个打包器，比如 webpack 或 Parcel。它能让你编写模块化代码，并将它们组合在一起成为小的 package，以优化加载时间。</li>
+<li>一个编译器，例如 Babel。它能让你编写的新版本 JavaScript 代码，在旧版浏览器中依然能够工作。</li>
+</ul>
+<h3 id="3-CDN链接"><a href="#3-CDN链接" class="headerlink" title="3.CDN链接"></a>3.CDN链接</h3><pre><code>&lt;script crossorigin src=&quot;https://unpkg.com/react@17/umd/react.development.js&quot;&gt;&lt;/script&gt;
+&lt;script crossorigin src=&quot;https://unpkg.com/react-dom@17/umd/react-dom.development.js&quot;&gt;&lt;/script&gt;
+</code></pre><p><strong>上述版本仅用于开发环境，不适合用于生产环境。</strong> 压缩优化后可用于生产的 React 版本可通过如下方式引用：</p>
+<pre><code>&lt;script crossorigin src=&quot;https://unpkg.com/react@17/umd/react.production.min.js&quot;&gt;&lt;/script&gt;
+&lt;script crossorigin src=&quot;https://unpkg.com/react-dom@17/umd/react-dom.production.min.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>如果需要加载指定版本的 react 和 react-dom，可以把 17 替换成所需加载的版本号。</p>
+<h4 id="为什么要使用crossorigin属性"><a href="#为什么要使用crossorigin属性" class="headerlink" title="为什么要使用crossorigin属性?"></a>为什么要使用crossorigin属性?</h4><p>如果你通过 CDN 的方式引入 React，我们建议你设置crossorigin属性：</p>
+<pre><code>&lt;script crossorigin src=&quot;...&quot;&gt;&lt;/script&gt;
+</code></pre><p>我们同时建议你验证使用的 CDN 是否设置了<code>Access-Control-Allow-Origin: * HTTP</code> 请求头：</p>
+<p><img src="//lililich.work/2021/03/28/React学习笔记2/Image6.png" alt="Image6.png"></p>
+<p>这样能在 React 16 及以上的版本中有更好的错误处理体验。</p>
+<h2 id="二、基础知识"><a href="#二、基础知识" class="headerlink" title="二、基础知识"></a>二、基础知识</h2><h3 id="1-JSX是什么？"><a href="#1-JSX是什么？" class="headerlink" title="1. JSX是什么？"></a>1. JSX是什么？</h3><p> JSX是一个 JavaScript 的语法扩展，可以很好地描述 UI 应该呈现出它应有交互的本质形式。</p>
+<h4 id="为什么使用-JSX？"><a href="#为什么使用-JSX？" class="headerlink" title="为什么使用 JSX？"></a>为什么使用 JSX？</h4><ul>
+<li>React 认为渲染逻辑本质上与其他 UI 逻辑内在耦合，比如，在 UI 中需要绑定处理事件、在某些时刻状态发生变化时需要通知到 UI，以及需要在 UI 中展示准备好的数据。</li>
+<li>React 并没有采用将标记与逻辑进行分离到不同文件这种人为地分离方式，而是通过将二者共同存放在称之为“组件”的松散耦合单元之中，来实现关注点分离。我们将在后面章节中深入学习组件。如果你还没有适应在 JS 中使用标记语言，这个会议讨论应该可以说服你。</li>
+<li>React 不强制要求使用 JSX，但是大多数人发现，在 JavaScript 代码中将 JSX 和 UI 放在一起时，会在视觉上有辅助作用。它还可以使 React 显示更多有用的错误和警告消息。</li>
+</ul>
+<h4 id="在-JSX-中嵌入表达式"><a href="#在-JSX-中嵌入表达式" class="headerlink" title="在 JSX 中嵌入表达式"></a>在 JSX 中嵌入表达式</h4><p>在下面的例子中，我们声明了一个名为 name 的变量，然后在 JSX 中使用它，并将它包裹在大括号中：</p>
+<pre><code>const name = &apos;Josh Perez&apos;;
+const element = &lt;h1&gt;Hello, {name}&lt;/h1&gt;;
+ReactDOM.render(
+element,
+document.getElementById(&apos;root&apos;)
+);
+</code></pre><p>在 JSX 语法中，你可以在大括号内放置任何有效的 JavaScript 表达式。</p>
+<h4 id="JSX-特定属性"><a href="#JSX-特定属性" class="headerlink" title="JSX 特定属性"></a>JSX 特定属性</h4><ul>
+<li><strong>（1）使用<code>引号</code>来将属性值指定为字符串字面量：</strong></li>
+</ul>
+<pre><code>const element = &lt;div tabIndex=&quot;0&quot;&gt;&lt;/div&gt;;
+</code></pre><ul>
+<li><strong>（2）使用<code>大括号</code>来在属性值中插入一个 JavaScript 表达式：</strong></li>
+</ul>
+<pre><code>const element = &lt;img src={user.avatarUrl}&gt;&lt;/img&gt;;
+</code></pre><blockquote>
+<p><strong>注意：（1）在属性中嵌入 JavaScript 表达式时，不要在大括号外面加上引号。你应该仅使用引号（对于字符串值）或大括号（对于表达式）中的一个，对于同一属性不能同时使用这两种符号。<br>（2）React DOM 使用 <code>camelCase</code>（小驼峰命名）来定义属性的名称，而不使用 HTML 属性名称的命名约定。例如，JSX 里的 class 变成了 className，而 tabindex 则变为 tabIndex。</strong></p>
+</blockquote>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2021/04/08/React-井字棋游戏案例/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                React-井字棋游戏案例
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2021/03/16/React学习笔记1/">
+                React学习笔记1
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

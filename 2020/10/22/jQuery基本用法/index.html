@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>jQuery基本用法 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">jQuery基本用法</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-10-22
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/jQuery/">#jQuery</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>作为前端必备知识点，怎么能不会Jquery呢，今天我们来学一下Jquery吧~</p>
+<h3 id="jQuery基本语法"><a href="#jQuery基本语法" class="headerlink" title="jQuery基本语法"></a>jQuery基本语法</h3><h4 id="jQuery语法"><a href="#jQuery语法" class="headerlink" title="jQuery语法"></a>jQuery语法</h4><p>jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。<br>基础语法： $(selector).action()</p>
+<ul>
+<li>美元符号定义 jQuery</li>
+<li>选择符（selector）”查询”和”查找” HTML 元素</li>
+<li>jQuery 的 action() 执行对元素的操作</li>
+</ul>
+<pre><code>// 实例
+$(this).hide() //隐藏当前元素
+$(&quot;p&quot;).hide() //隐藏所有 &lt;p&gt; 元素
+$(&quot;p.test&quot;).hide() //隐藏所有 class=&quot;test&quot; 的 &lt;p&gt; 元素
+$(&quot;#test&quot;).hide() //隐藏 id=&quot;test&quot; 的元素
+</code></pre><a id="more"></a>
+<h4 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h4><p>jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。<br>jQuery 选择器基于元素的 id、类、类型、属性、属性值等”查找”（或选择）HTML 元素。 它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。<br>jQuery 中所有选择器都以美元符号开头：$()。</p>
+<pre><code>// 实例
+$(&quot;p&quot;).hide();  //元素选择器
+$(&quot;#test&quot;).hide();  //id选择器
+$(&quot;.test&quot;).hide();  // class选择器
+</code></pre><p><img src="//lililich.work/2020/10/22/jQuery基本用法/Image1.png" alt="Image1.png"></p>
+<h4 id="jQuery获取内容或属性"><a href="#jQuery获取内容或属性" class="headerlink" title="jQuery获取内容或属性"></a>jQuery获取内容或属性</h4><ul>
+<li><code>text()</code>  设置或返回所选元素的文本内容</li>
+<li><code>html()</code>  设置或返回所选元素的内容（包括 HTML 标记）</li>
+<li><code>val()</code>  设置或返回表单字段的值</li>
+<li><code>attr()</code> 方法用于获取属性值。</li>
+</ul>
+<pre><code>//获取元素文本内容
+$(&quot;#btn1&quot;).click(function(){ 
+    alert(&quot;Text: &quot; + $(&quot;#test&quot;).text()); 
+});
+
+//设置元素文本内容
+$(&quot;#btn1&quot;).click(function(){ 
+    $(&quot;#test1&quot;).text(&quot;Hello world!&quot;); 
+});
+
+//获取元素属性
+$(&quot;button&quot;).click(function(){ 
+    alert($(&quot;#runoob&quot;).attr(&quot;href&quot;)); 
+});
+
+//设置元素属性
+$(&quot;button&quot;).click(function(){ 
+    $(&quot;#runoob&quot;).attr({ 
+        &quot;href&quot; : &quot;http://www.runoob.com/jquery&quot;, 
+        &quot;title&quot; : &quot;jQuery 教程&quot; 
+    });
+});
+
+//text()、html() 以及 val() 的回调函数有两个参数：被选元素列表中当前元素的下标，以及原始（旧的）值
+$(&quot;#btn2&quot;).click(function(){   
+    $(&quot;#test2&quot;).html(function(i,origText){ 
+        return &quot;旧 html: &quot; + origText + &quot; 新 html: Hello &lt;b&gt;world!&lt;/b&gt; (index: &quot; + i + &quot;)&quot;; 
+    });
+});
+</code></pre><h4 id="操作表单对象属性"><a href="#操作表单对象属性" class="headerlink" title="操作表单对象属性"></a>操作表单对象属性</h4><p>Jquery提供了两个方法：prop(),attr()。<br>官方的建议：<strong>具有 true 和 false 两个属性的属性，如 checked, selected 或者 disabled 使用prop()，其他的使用 attr()。</strong></p>
+<pre><code>&lt;input type=&quot;checkbox&quot;  id=&quot;checkId&quot; checked=&quot;&quot;/&gt;
+&lt;input type=&quot;text&quot;  id=&quot;textId&quot; value=&quot;abc&quot; valuebak=&quot;&quot; /&gt;
+&lt;script&gt;
+$(function() { 
+     var checkValue = $(&quot;#checkId&quot;).prop(&apos;checked&apos;);  //获取复选框checked的属性值
+     console.log(checkValue);
+     var textValue = $(&quot;#textId&quot;).attr(&apos;valuebak&apos;);   //获取输入框valuebak的属性值
+     console.log(textValue );
+     $(&quot;#checkId&quot;).prop(&apos;checked&apos;,’true’);            //给复选框checked的属性赋值
+     $(&quot;#textId&quot;).attr(&apos;valuebak&apos;,’abc’);             //给输入框valuebak的属性赋值
+}); 
+&lt;/script&gt;
+</code></pre><h4 id="jQuery添加元素"><a href="#jQuery添加元素" class="headerlink" title="jQuery添加元素"></a>jQuery添加元素</h4><ul>
+<li><code>append()</code> 在被选元素的结尾插入内容</li>
+<li><code>prepend()</code> 在被选元素的开头插入内容</li>
+<li><code>after()</code> 在被选元素之后插入内容</li>
+<li><code>before()</code> 在被选元素之前插入内容</li>
+</ul>
+<p><strong>append/prepend和after/before有什么区别呢？</strong></p>
+<ul>
+<li>append</li>
+</ul>
+<pre><code>&lt;p&gt;
+    &lt;span class=&quot;s1&quot;&gt;s1&lt;/span&gt;
+&lt;/p&gt;
+&lt;script&gt;
+    $(&quot;p&quot;).append(&apos;&lt;span class=&quot;s2&quot;&gt;s2&lt;/span&gt;&apos;);
+&lt;/script&gt;
+</code></pre><p>结果是这样的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">    &lt;span class=&quot;s1&quot;&gt;s1&lt;/span&gt;</span><br><span class="line">    &lt;span class=&quot;s2&quot;&gt;s2&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>after</li>
+</ul>
+<pre><code>&lt;p&gt;
+    &lt;span class=&quot;s1&quot;&gt;s1&lt;/span&gt;
+&lt;/p&gt;
+&lt;script&gt;
+    $(&quot;p&quot;).after(&apos;&lt;span class=&quot;s2&quot;&gt;s2&lt;/span&gt;&apos;);
+&lt;/script&gt;
+</code></pre><p>结果是这样的:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">    &lt;span class=&quot;s1&quot;&gt;s1&lt;/span&gt;</span><br><span class="line">&lt;/p&gt;</span><br><span class="line">&lt;span class=&quot;s2&quot;&gt;s2&lt;/span&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>总结：append/prepend 是在选择元素内部嵌入。after/before 是在元素外面追加。</strong></p>
+<h4 id="jQuery删除元素"><a href="#jQuery删除元素" class="headerlink" title="jQuery删除元素"></a>jQuery删除元素</h4><ul>
+<li><code>remove()</code> 删除被选元素（及其子元素）</li>
+<li><code>empty()</code> 从被选元素中删除子元素</li>
+</ul>
+<pre><code>//过滤被删除元素
+$(&quot;p&quot;).remove(&quot;.italic&quot;);
+</code></pre><p><strong>remove()和hide()的区别</strong><br>用 hide 和用 remove 都可以得到相同效果，但两者有区别，当我们用hide 时，事件触发后HTML代码中第一个 div 多了一个 “display：none；”属性，并且是由此属性来实现页面隐藏，源代码还存在；而用 remove 时，是通过移除第一个 div 及其里面的内容来实现页面隐藏的，源代码已被删除。当需要实现页面隐藏效果时，推荐使用 hide()。</p>
+<h4 id="jQuery操作css"><a href="#jQuery操作css" class="headerlink" title="jQuery操作css"></a>jQuery操作css</h4><ul>
+<li><code>addClass()</code> - 向被选元素添加一个或多个类</li>
+<li><code>removeClass()</code> - 从被选元素删除一个或多个类</li>
+<li><code>toggleClass()</code> - 对被选元素进行添加/删除类的切换操作</li>
+<li><code>css()</code> - 设置或返回样式属性</li>
+</ul>
+<pre><code>$(&quot;body div:first&quot;).addClass(&quot;important blue&quot;);
+$(&quot;h1,h2,p&quot;).removeClass(&quot;blue&quot;);
+$(&quot;h1,h2,p&quot;).toggleClass(&quot;blue&quot;);
+$(&quot;p&quot;).css(&quot;background-color&quot;,&quot;yellow&quot;);
+$(&quot;p&quot;).css({&quot;background-color&quot;:&quot;yellow&quot;,&quot;font-size&quot;:&quot;200%&quot;});
+</code></pre><h4 id="jQuery对象绑定事件"><a href="#jQuery对象绑定事件" class="headerlink" title="jQuery对象绑定事件"></a>jQuery对象绑定事件</h4><p>页面对不同访问者的响应叫做事件。事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。<br>在事件中经常使用术语”触发”（或”激发”）例如： “当您按下按键时触发 keypress 事件”。</p>
+<p><img src="//lililich.work/2020/10/22/jQuery基本用法/Image2.png" alt="Image2.png"></p>
+<pre><code>&lt;div  id=&quot;btId&quot; name=&quot;btName&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+$(function() { 
+     $(&apos;#btId&apos;).bind(&apos;click&apos;,function(){
+        alert(‘click me!’);
+     });
+}); 
+&lt;/script&gt;
+</code></pre><h5 id="常用的-jQuery-事件方法"><a href="#常用的-jQuery-事件方法" class="headerlink" title="常用的 jQuery 事件方法"></a>常用的 jQuery 事件方法</h5><ul>
+<li><code>$(document).ready()</code>  允许我们在文档完全加载完后执行函数。</li>
+<li>鼠标事件：<ul>
+<li><code>click()</code>  当按钮点击事件被触发时会调用一个函数。</li>
+<li><code>dblclick()</code>  当双击元素时，会发生 dblclick 事件。</li>
+<li><code>mouseenter()</code>  当鼠标指针穿过元素时，会发生 mouseenter 事件。</li>
+<li><code>mouseleave()</code>  当鼠标指针离开元素时，会发生 mouseleave 事件。</li>
+<li><code>mousedown()</code>  当鼠标指针移动到元素上方，并按下鼠标按键时，会发生 mousedown 事件。</li>
+<li><code>mouseup()</code>  当在元素上松开鼠标按钮时，会发生 mouseup 事件。</li>
+<li><code>hover()</code>  用于模拟光标悬停事件。</li>
+</ul>
+</li>
+<li>键盘事件：<ul>
+<li><code>keypress()</code>  当按钮被按下时发生该事件。keypress 事件不会触发所有的键（比如 ALT、CTRL、SHIFT、ESC）</li>
+<li><code>keydown()</code>  当键盘键被按下时发生 keydown 事件。</li>
+<li><code>keyup()</code>  当键盘键被松开时发生 keyup 事件。</li>
+</ul>
+</li>
+<li>表单事件：<ul>
+<li><code>submit()</code>  当提交表单时，会发生 submit 事件。该事件只适用于 <form> 元素。</form></li>
+<li><code>change()</code>  当元素的值改变时发生 change 事件（仅适用于表单字段）。当用于 select 元素时，change 事件会在选择某个选项时发生。当用于 text field 或 text area 时，change 事件会在元素失去焦点时发生。</li>
+<li><code>focus()</code>  当元素获得焦点时（当通过鼠标点击选中元素或通过 tab 键定位到元素时），发生 focus 事件。</li>
+<li><code>blur()</code>  当元素失去焦点时，发生 blur 事件。</li>
+</ul>
+</li>
+<li>文档/窗口事件：<ul>
+<li><code>resize()</code>  当调整浏览器窗口大小时，发生 resize 事件。</li>
+<li><code>scroll()</code>  当用户滚动指定的元素时，会发生 scroll 事件。scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。</li>
+</ul>
+</li>
+</ul>
+<pre><code>//当点击事件在某个 &lt;p&gt; 元素上触发时，隐藏当前的 &lt;p&gt; 元素：
+$(&quot;p&quot;).click(function(){ 
+    $(this).hide(); 
+});
+
+//当提交表单时，显示警告框：
+$(&quot;form&quot;).submit(function(){
+    alert(&quot;提交&quot;);
+});
+
+//当 &lt;input&gt; 字段获得焦点时调整span标签的样式
+$(&quot;input&quot;).focus(function(){
+    $(&quot;span&quot;).css(&quot;display&quot;,&quot;inline&quot;).fadeOut(2000); 
+});
+
+//对浏览器窗口调整大小进行计数
+$(window).resize(function(){
+    $(&apos;span&apos;).text(x+=1); 
+});
+
+//对元素滚动的次数进行计数：
+$(&quot;div&quot;).scroll(function(){ $(&quot;span&quot;).text(x+=1); });
+</code></pre><h4 id="jQuery常用效果"><a href="#jQuery常用效果" class="headerlink" title="jQuery常用效果"></a>jQuery常用效果</h4><ul>
+<li><code>hide()</code> 和 <code>show()</code>  隐藏和显示 HTML 元素<blockquote>
+<p>$(selector).hide(speed,callback);<br>可选的 speed 参数规定隐藏/显示的速度，可以取以下值：”slow”、”fast” 或毫秒。<br>可选的 callback 参数是隐藏或显示完成后所执行的函数名称。<br>第二个参数是一个字符串，表示过渡使用哪种缓动函数。</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>$(document).ready(function(){   
+    $(&quot;.hidebtn&quot;).click(function(){     
+        $(&quot;div&quot;).hide(1000,&quot;linear&quot;,function(){ 
+            alert(&quot;Hide() 方法已完成!&quot;); 
+        });
+    }); 
+});
+</code></pre><ul>
+<li><code>toggle()</code>  切换 hide() 和 show() 方法。</li>
+<li><code>fadeIn()</code> 和 <code>fadeOut()</code> 用于淡入已隐藏的元素/淡出可见元素。</li>
+<li><code>fadeToggle()</code> 方法可以在 fadeIn() 与 fadeOut() 方法之间进行切换。</li>
+</ul>
+<pre><code>$(&quot;button&quot;).click(function(){ 
+    $(&quot;#div1&quot;).fadeToggle(); 
+    $(&quot;#div2&quot;).fadeToggle(&quot;slow&quot;); 
+    $(&quot;#div3&quot;).fadeToggle(3000); 
+});
+</code></pre><ul>
+<li><code>fadeTo()</code> 方法允许渐变为给定的不透明度（值介于 0 与 1 之间）<blockquote>
+<p>$(selector).fadeTo(speed,opacity,callback);<br>必需的 speed 参数规定效果的时长。它可以取以下值：”slow”、”fast” 或毫秒。fadeTo() 方法中必需的 opacity 参数将淡入淡出效果设置为给定的不透明度（值介于 0 与 1 之间）。可选的 callback 参数是该函数完成后所执行的函数名称。</p>
+</blockquote>
+</li>
+</ul>
+<pre><code>$(&quot;button&quot;).click(function(){   
+    $(&quot;#div1&quot;).fadeTo(&quot;slow&quot;,0.15); 
+    $(&quot;#div2&quot;).fadeTo(&quot;slow&quot;,0.4);
+    $(&quot;#div3&quot;).fadeTo(&quot;slow&quot;,0.7); 
+});
+</code></pre><ul>
+<li><code>slideDown()</code> 和<code>slideUp()</code>  用于向下/向上滑动元素。</li>
+<li><code>slideToggle()</code>  在 slideDown() 与 slideUp() 方法之间进行切换。</li>
+<li><code>animate()</code> 方法用于创建自定义动画。</li>
+</ul>
+<pre><code>$(&quot;button&quot;).click(function(){ 
+    $(&quot;div&quot;).animate({ 
+        left:&apos;250px&apos;, 
+        opacity:&apos;0.5&apos;, 
+        height:&apos;150px&apos;, 
+        width:&apos;150px&apos; 
+    }); 
+});
+</code></pre><ul>
+<li><code>stop()</code>  方法用于停止动画或效果，在它们完成之前。stop() 方法适用于所有 jQuery 效果函数，包括滑动、淡入淡出和自定义动画。</li>
+</ul>
+<h4 id="jQuery获取页面尺寸"><a href="#jQuery获取页面尺寸" class="headerlink" title="jQuery获取页面尺寸"></a>jQuery获取页面尺寸</h4><ul>
+<li><code>width()</code> 设置或返回元素的宽度（不包括内边距、边框或外边距）。</li>
+<li><code>height()</code> 设置或返回元素的高度（不包括内边距、边框或外边距）。</li>
+<li><code>innerWidth()</code> 返回元素的宽度（包括内边距）。</li>
+<li><code>innerHeight()</code> 返回元素的高度（包括内边距）。</li>
+<li><code>outerWidth()</code> 返回元素的宽度（包括内边距和边框）。</li>
+<li><code>outerHeight()</code> 返回元素的高度（包括内边距和边框）。</li>
+</ul>
+<p><img src="//lililich.work/2020/10/22/jQuery基本用法/Image3.png" alt="Image3.png"></p>
+<pre><code>$(&quot;button&quot;).click(function(){ 
+    var txt=&quot;&quot;; 
+    txt+=&quot;div 的宽度是: &quot; + $(&quot;#div1&quot;).width() + &quot;&lt;/br&gt;&quot;; 
+    txt+=&quot;div 的高度是: &quot; + $(&quot;#div1&quot;).height(); 
+    $(&quot;#div1&quot;).html(txt); 
+});
+</code></pre><h4 id="jQuery遍历"><a href="#jQuery遍历" class="headerlink" title="jQuery遍历"></a>jQuery遍历</h4><p>jQuery 遍历，意为”移动”，用于根据其相对于其他元素的关系来”查找”（或选取）HTML 元素。以某项选择开始，并沿着这个选择移动，直到抵达您期望的元素为止。下图展示了一个家族树。通过 jQuery 遍历，您能够从被选（当前的）元素开始，轻松地在家族树中向上移动（祖先），向下移动（子孙），水平移动（同胞）。这种移动被称为对 DOM 进行遍历。<br><img src="//lililich.work/2020/10/22/jQuery基本用法/Image4.png" alt="Image4.png"></p>
+<ul>
+<li><code>parent()</code> 返回被选元素的直接父元素。</li>
+<li><code>parents()</code> 返回被选元素的所有祖先元素，它一路向上直到文档的根元素 (<html>)。</html></li>
+<li><code>parentsUntil()</code> 返回介于两个给定元素之间的所有祖先元素。</li>
+</ul>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2020/11/10/ajax详解/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                ajax详解
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/09/26/undefined、null与NaN/">
+                undefined、null与NaN
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>ajax详解 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">ajax详解</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2020-11-10
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/ajax/">#ajax</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>今天我们来学一下什么是ajax请求吧~<br>学习参考:<br><a href="https://blog.csdn.net/chaopingyao/article/details/106481895" target="_blank" rel="noopener">https://blog.csdn.net/chaopingyao/article/details/106481895</a></p>
+<h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><h4 id="1-什么是Ajax"><a href="#1-什么是Ajax" class="headerlink" title="1. 什么是Ajax"></a>1. 什么是Ajax</h4><p>Ajax：即异步 JavaScript 和XML。<strong>Ajax是一种用于创建快速动态网页的技术</strong>。通过在后台与服务器进行少量数据交换，Ajax可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。而传统的网页(不使用 Ajax)如果需要更新内容，必需重载整个网页面。</p>
+<h4 id="2-同步与异步的区别"><a href="#2-同步与异步的区别" class="headerlink" title="2. 同步与异步的区别"></a>2. 同步与异步的区别</h4><p><strong>同步提交</strong>：当用户发送请求时，当前页面不可以使用，服务器响应页面到客户端，响应完成，用户才可以使用页面。</p>
+<p><strong>异步提交</strong>：当用户发送请求时，当前页面还可以继续使用，当异步请求的数据响应给页面，页面把数据显示出来 。</p>
+<a id="more"></a>
+<h4 id="3-ajax的工作原理"><a href="#3-ajax的工作原理" class="headerlink" title="3. ajax的工作原理"></a>3. ajax的工作原理</h4><p>客户端发送请求，请求交给xhr，xhr把请求提交给服务，服务器进行业务处理，服务器响应数据交给xhr对象，xhr对象接收数据，由javascript把数据写到页面上，如下图所示：</p>
+<p><img src="//lililich.work/2020/11/10/ajax详解/Image1.png" alt="Image1.png"></p>
+<h3 id="二、实现AJAX的基本步骤"><a href="#二、实现AJAX的基本步骤" class="headerlink" title="二、实现AJAX的基本步骤"></a>二、实现AJAX的基本步骤</h3><p>要完整实现一个AJAX异步调用和局部刷新,通常需要以下几个步骤:</p>
+<ol>
+<li>创建XMLHttpRequest对象,即创建一个异步调用对象.</li>
+<li>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</li>
+<li>设置响应HTTP请求状态变化的函数.</li>
+<li>发送HTTP请求.</li>
+<li>获取异步调用返回的数据.</li>
+<li>使用JavaScript和DOM实现局部刷新.</li>
+</ol>
+<h4 id="1-创建XMLHttpRequest对象"><a href="#1-创建XMLHttpRequest对象" class="headerlink" title="1. 创建XMLHttpRequest对象"></a>1. 创建XMLHttpRequest对象</h4><p>不同浏览器使用的异步调用对象有所不同，在IE浏览器中异步调用使用的是XMLHTTP组件中的XMLHttpRequest对象，而在Netscape、Firefox浏览器中则直接使用XMLHttpRequest组件。因此，在不同浏览器中创建XMLHttpRequest对象的方式都有所不同.</p>
+<p>在IE浏览器中创建XMLHttpRequest对象的方式为:</p>
+<blockquote>
+<p>var xmlHttpRequest = new ActiveXObject(“Microsoft.XMLHTTP”);</p>
+</blockquote>
+<p>在Netscape浏览器中创建XMLHttpRequest对象的方式为:</p>
+<blockquote>
+<p>var xmlHttpRequest = new XMLHttpRequest();</p>
+</blockquote>
+<p>由于无法确定用户使用的是什么浏览器,所以在创建XMLHttpRequest对象时,最好将以上两种方法都加上.如以下代码所示:</p>
+<pre><code>var xmlHttpRequest;  //定义一个变量,用于存放XMLHttpRequest对象
+createXMLHttpRequst();   //调用创建对象的方法
+//创建XMLHttpRequest对象的方法 
+function createXMLHttpRequest(){                                                 
+    if(window.ActiveXObject) {//判断是否是IE浏览器
+        xmlHttpRequest = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);//创建IE的XMLHttpRequest对象
+    }else if(window.XMLHttpRequest){//判断是否是Netscape等其他支持XMLHttpRequest组件的浏览器
+        xmlHttpRequest = new XMLHttpRequest();//创建其他浏览器上的XMLHttpRequest对象
+    }
+}
+</code></pre><blockquote>
+<p><code>&quot;if(window.ActiveXObject)&quot;</code>用来判断是否使用IE浏览器.其中ActiveXOject并不是Windows对象的标准属性,而是IE浏览器中专有的属性,可以用于判断浏览器是否支持ActiveX控件.通常只有IE浏览器或以IE浏览器为核心的浏览器才能支持Active控件.<br><code>&quot;else if(window.XMLHttpRequest)&quot;</code>是为了防止一些浏览器既不支持ActiveX控件,也不支持XMLHttpRequest组件而进行的判断.其中XMLHttpRequest也不是window对象的标准属性,但可以用来判断浏览器是否支持XMLHttpRequest组件.<br>如果浏览器既不支持ActiveX控件,也不支持XMLHttpRequest组件,那么就不会对xmlHttpRequest变量赋值.</p>
+</blockquote>
+<h4 id="2-创建HTTP请求"><a href="#2-创建HTTP请求" class="headerlink" title="2. 创建HTTP请求"></a>2. 创建HTTP请求</h4><p>创建了XMLHttpRequest对象之后，必须为XMLHttpRequest对象创建HTTP请求，用于说明XMLHttpRequest对象要从哪里获取数据。通常可以是网站中的数据,也可以是本地中其他文件中的数据。</p>
+<p>创建HTTP请求可以使用XMLHttpRequest对象的open()方法,其语法代码如下所示:</p>
+<blockquote>
+<p>XMLHttpRequest.open(method,URL,flag,name,password);</p>
+</blockquote>
+<p>代码中的参数解释如下所示:</p>
+<ul>
+<li><p>method：该参数用于指定HTTP的请求方法，一共有get、post、head、put、delete五种方法，常用的方法为get和post。</p>
+</li>
+<li><p>URL：该参数用于指定HTTP请求的URL地址，可以是绝对URL，也可以是相对URL。</p>
+</li>
+<li><p>flag：该参数为可选，参数值为布尔型。该参数用于指定是否使用异步方式。true表示异步、false表示同步，默认为true。</p>
+</li>
+<li><p>name：该参数为可选参数，用于输入用户名。如果服务器需要验证，则必须使用该参数。</p>
+</li>
+<li><p>password：该参数为可选，用于输入密码。若服务器需要验证，则必须使用该参数。</p>
+</li>
+</ul>
+<p>通常可以使用以下代码来访问一个网站文件的内容。      </p>
+<blockquote>
+<p>xmlHttpRequest.open(“get”,”<a href="http://www.aspxfans.com/BookSupport/JavaScript/ajax.htm&quot;,true)" target="_blank" rel="noopener">http://www.aspxfans.com/BookSupport/JavaScript/ajax.htm&quot;,true)</a>;</p>
+</blockquote>
+<p>或者使用以下代码来访问一个本地文件内容：</p>
+<blockquote>
+<p>xmlHttpRequest.open(“get”,”ajax.htm”,true);</p>
+</blockquote>
+<p>注意：如果HTML文件放在Web服务器上，在Netscape浏览器中的JavaScript安全机制不允许与本机之外的主机进行通信。也就是说，使用open()方法只能打开与HTML文件在同一个服务器上的文件。而在IE浏览器中则无此限制（虽然可以打开其他服务器上的文件，但也会有警告提示）。</p>
+<h4 id="3-设置响应HTTP请求状态变化的函数"><a href="#3-设置响应HTTP请求状态变化的函数" class="headerlink" title="3. 设置响应HTTP请求状态变化的函数"></a>3. 设置响应HTTP请求状态变化的函数</h4><p>创建完HTTP请求之后，应该就可以将HTTP请求发送给Web服务器了。然而，发送HTTP请求的目的是为了接收从服务器中返回的数据。从创建XMLHttpRequest对象开始，到发送数据、接收数据、XMLHttpRequest对象一共会经历以下5种状态。</p>
+<blockquote>
+<ol>
+<li><strong>未初始化状态</strong>。在创建完XMLHttpRequest对象时，该对象处于未初始化状态，此时XMLHttpRequest对象的readyState属性值为0。</li>
+<li><strong>初始化状态</strong>。在创建完XMLHttpRequest对象后使用open()方法创建了HTTP请求时，该对象处于初始化状态。此时XMLHttpRequest对象的readyState属性值为1。</li>
+<li><strong>发送数据状态</strong>。在初始化XMLHttpRequest对象后，使用send()方法发送数据时，该对象处于发送数据状态，此时XMLHttpRequest对象的readyState属性值为2。</li>
+<li><strong>接收数据状态</strong>。Web服务器接收完数据并进行处理完毕之后，向客户端传送返回的结果。此时，XMLHttpRequest对象处于接收数据状态，XMLHttpRequest对象的readyState属性值为3。</li>
+<li><strong>完成状态</strong>。XMLHttpRequest对象接收数据完毕后，进入完成状态，此时XMLHttpRequest对象的readyState属性值为4。此时接收完毕后的数据存入在客户端计算机的内存中，可以使用responseText属性或responseXml属性来获取数据。</li>
+</ol>
+</blockquote>
+<p>只有在XMLHttpRequest对象完成了以上5个步骤之后，才可以获取从服务器端返回的数据。因此，如果要获得从服务器端返回的数据，就必须要先判断XMLHttpRequest对象的状态。</p>
+<p>XMLHttpRequest对象可以响应readystatechange事件，该事件在XMLHttpRequest对象状态改变时（也就是readyState属性值改变时）激发。因此，可以通过该事件调用一个函数，并在该函数中判断XMLHttpRequest对象的readyState属性值。如果readyState属性值为4则使用responseText属性或responseXml属性来获取数据。具体代码如下所示：</p>
+<pre><code>//设置当XMLHttpRequest对象状态改变时调用的函数，注意函数名后面不要添加小括号
+xmlHttpRequest.onreadystatechange = getData;
+
+//定义函数
+function getData(){
+    //判断XMLHttpRequest对象的readyState属性值是否为4，如果为4表示异步调用完成
+    if(xmlHttpRequest.readyState == 4) {
+        //设置获取数据的语句
+    }
+}
+</code></pre><h4 id="4-设置获取服务器返回数据的语句"><a href="#4-设置获取服务器返回数据的语句" class="headerlink" title="4. 设置获取服务器返回数据的语句"></a>4. 设置获取服务器返回数据的语句</h4><p><strong>如果XMLHttpRequest对象的readyState属性值等于4，表示异步调用过程完毕</strong>，就可以通过XMLHttpRequest对象的responseText属性或responseXml属性来获取数据。</p>
+<p>但是，异步调用过程完毕，并不代表异步调用成功了，如果要判断异步调用是否成功，<strong>还要判断XMLHttpRequest对象的status属性值，只有该属性值为200，才表示异步调用成功</strong>，因此，要获取服务器返回数据的语句，还必须要先判断XMLHttpRequest对象的status属性值是否等于200，如以下代码所示：</p>
+<pre><code>if(xmlHttpRequst.status == 200) {
+    document.write(xmlHttpRequest.responseText);//将返回结果以字符串形式输出
+    //document.write(xmlHttpRequest.responseXML);//或者将返回结果以XML形式输出
+}
+</code></pre><p>注意：如果HTML文件不是在Web服务器上运行，而是在本地运行，则xmlHttpRequest.status的返回值为0。因此，如果该文件在本地运行，则应该加上xmlHttpRequest.status == 0的判断。</p>
+<p>通常将以上代码放在响应HTTP请求状态变化的函数体内，如以下代码所示：  </p>
+<pre><code>//设置当XMLHttpRequest对象状态改变时调用的函数，注意函数名后面不要添加小括号
+xmlHttpRequest.onreadystatechange = getData;
+
+//定义函数
+function getData(){
+    //判断XMLHttpRequest对象的readyState属性值是否为4，如果为4表示异步调用完成
+    if(xmlHttpRequest.readyState==4){
+        if(xmlHttpRequest.status == 200 || xmlHttpRequest.status == 0){//设置获取数据的语句
+            document.write(xmlHttpRequest.responseText);//将返回结果以字符串形式输出
+            //docunment.write(xmlHttpRequest.responseXML);//或者将返回结果以XML形式输出
+        }
+    }
+}
+</code></pre><h4 id="5-发送HTTP请求"><a href="#5-发送HTTP请求" class="headerlink" title="5. 发送HTTP请求"></a>5. 发送HTTP请求</h4><p>在经过以上几个步骤的设置之后，就可以将HTTP请求发送到Web服务器上去了。发送HTTP请求可以使用XMLHttpRequest对象的send()方法，其语法代码如下所示：</p>
+<blockquote>
+<p>XMLHttpRequest.send(data);</p>
+</blockquote>
+<p>其中data是个可选参数，如果请求的数据不需要参数，即可以使用null来替代。data参数的格式与在URL中传递参数的格式类似，以下代码为一个send()方法中的data参数的示例：</p>
+<blockquote>
+<p>name=myName&amp;value=myValue</p>
+</blockquote>
+<p>只有在使用send()方法之后，XMLHttpRequest对象的readyState属性值才会开始改变，也才会激发readystatechange事件，并调用函数。</p>
+<h4 id="6、局部更新"><a href="#6、局部更新" class="headerlink" title="6、局部更新"></a>6、局部更新</h4><p>在通过Ajax的异步调用获得服务器端数据之后，可以使用JavaScript或DOM来将网页中的数据进行局部更新。</p>
+<h3 id="三、完整的AJAX实例"><a href="#三、完整的AJAX实例" class="headerlink" title="三、完整的AJAX实例"></a>三、完整的AJAX实例</h3><pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;AJAX实例&lt;/title&gt;
+&lt;script language=&quot;javascript&quot; type=&quot;text/javascript&quot;&gt;   
+    function ajaxHttpRequestFunc(){
+        let xmlHttpRequest;  // 创建XMLHttpRequest对象，即一个用于保存异步调用对象的变量
+        if(window.ActiveXObject){ // IE浏览器的创建方式
+            xmlHttpRequest = new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+        }else if(window.XMLHttpRequest){ // Netscape浏览器中的创建方式
+            xmlHttpRequest = new XMLHttpRequest();
+        }
+        xmlHttpRequest.onreadystatechange=function(){ // 设置响应http请求状态变化的事件
+            console.log(&apos;请求过程&apos;, xmlHttpRequest.readyState);
+            if(xmlHttpRequest.readyState == 4){ // 判断异步调用是否成功,若成功开始局部更新数据
+                console.log(&apos;状态码为&apos;, xmlHttpRequest.status);
+                if(xmlHttpRequest.status == 200) {
+                    console.log(&apos;异步调用返回的数据为：&apos;, xmlHttpRequest .responseText);
+                    document.getElementById(&quot;myDiv&quot;).innerHTML = xmlHttpRequest .responseText; // 局部刷新数据到页面
+                } else { // 如果异步调用未成功,弹出警告框,并显示错误状态码
+                    alert(&quot;error:HTTP状态码为:&quot;+xmlHttpRequest.status);
+                }
+            }
+        }
+        xmlHttpRequest.open(&quot;GET&quot;,&quot;https://www.runoob.com/try/ajax/ajax_info.txt&quot;,true); // 创建http请求，并指定请求得方法（get）、url（https://www.runoob.com/try/ajax/ajax_info.txt）以及验证信息
+        xmlHttpRequest.send(null); // 发送请求
+    }
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;myDiv&quot;&gt;原数据&lt;/div&gt;
+    &lt;input type = &quot;button&quot; value = &quot;更新数据&quot; onclick = &quot;ajaxHttpRequestFunc()&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p> 直接运行该段代码可能会出现跨域的现象，控制台的报错信息如下：</p>
+<p><img src="//lililich.work/2020/11/10/ajax详解/Image3-1.png" alt="Image3-1.png"></p>
+<p>这是因为代码中设置请求的是菜鸟驿站服务端的文件，所以出现跨域导致未正常获取到服务端返回的数据。</p>
+<p>解决办法：复制该段代码在菜鸟驿站的编辑器中粘贴运行即可。</p>
+<p>点击运行前页面显示为：</p>
+<p><img src="//lililich.work/2020/11/10/ajax详解/Image3-2.png" alt="Image3-2.png"></p>
+<p>点击运行后页面显示为：</p>
+<p><img src="//lililich.work/2020/11/10/ajax详解/Image3-3.png" alt="Image3-3.png"></p>
+<p>好啦，关于ajax的部分到此就全部学习完成了,恭喜你又掌握一个新知识点~</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2020/11/22/几种前端请求数据方式/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                几种前端请求数据方式
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2020/10/22/jQuery基本用法/">
+                jQuery基本用法
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

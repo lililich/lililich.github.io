@@ -104,7 +104,7 @@
     <img src=" /images/background.jpg " alt="头部背景图片">
     
     <div class="cube-type">
-        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-title">小畅的学习笔记</span>
         <span class="cube-typed-cursor">|</span>
     </div>
     
@@ -140,7 +140,7 @@
     <header class="cube-background cube-header-background">
         
         <div class="cube-type">
-            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-title">小畅的学习笔记</span>
             <span class="cube-typed-cursor">|</span>
         </div>
         
@@ -179,7 +179,7 @@
     
     <div class="cube-article-content cube-markdown">
         
-        <h3 id="一-为什么要使用正则表达式呢？"><a href="#一-为什么要使用正则表达式呢？" class="headerlink" title="一.为什么要使用正则表达式呢？"></a>一.为什么要使用正则表达式呢？</h3><p>通过使用正则表达式，可以：</p>
+        <h3 id="一-为什么要使用正则表达式呢？"><a href="#一-为什么要使用正则表达式呢？" class="headerlink" title="一. 为什么要使用正则表达式呢？"></a>一. 为什么要使用正则表达式呢？</h3><p>通过使用正则表达式，可以：</p>
 <ol>
 <li><p>测试字符串内的模式。<br>例如，可以测试输入字符串，以查看字符串内是否出现电话号码模式或信用卡号码模式。这称为数据验证。</p>
 </li>
@@ -201,26 +201,57 @@ s 允许 . 匹配换行符;
 u 使用unicode码的模式进行匹配; 
 y 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可以使用y标志。*/
 </code></pre><a id="more"></a>
-<h3 id="二-正则字符简单介绍"><a href="#二-正则字符简单介绍" class="headerlink" title="二.正则字符简单介绍"></a>二.正则字符简单介绍</h3><h3 id="1-元字符介绍"><a href="#1-元字符介绍" class="headerlink" title="1. 元字符介绍"></a>1. 元字符介绍</h3><p><strong><code>&quot;^&quot;</code> ：^会匹配行或者字符串的起始位置，有时还会匹配整个文档的起始位置。</strong> </p>
+<p>在 JavaScript 中，正则表达式通常用于以下几个字符串方法 : search() 、match() 、replace()和 split()。</p>
+<ul>
+<li><strong>search()</strong> 方法用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子串的起始位置。如果没有找到匹配，则返回-1。</li>
+<li><strong>match()</strong> 方法用于确定原字符串是否匹配某个子字符串，返回一个数组，成员为匹配的第一个字符串。如果没有找到匹配，则返回null。</li>
+<li><strong>replace()</strong> 方法用于在字符串中用一些字符串替换另一些字符串，或替换一个与正则表达式匹配的子串。</li>
+<li><strong>split()</strong> 方法用于把字符串分割为字符串数组</li>
+</ul>
+<pre><code>//search():使用正则表达式搜索 &quot;Runoob&quot; 字符串，且不区分大小写：
+var str = &quot;Visit Runoob!&quot;;
+var n = str.search(/Runoob/i);
+
+//match():检索指定的值，或找到一个或多个正则表达式的匹配
+var str=&quot; mm -4193 1 with words&quot; 
+var n = str.match(/\d+/g) // [&quot;4193&quot;, &quot;1&quot;]
+
+//replace():使用正则表达式且不区分大小写将字符串中的 Microsoft 替换为 Runoob :
+var str = document.getElementById(&quot;demo&quot;).innerHTML; 
+var txt = str.replace(/microsoft/i,&quot;Runoob&quot;);
+
+//split():用于把字符串分割为字符串数组
+var str=&quot;How are you doing today?&quot;;
+var n=str.split(&quot; &quot;);
+//返回How,are,you,doing,today?
+</code></pre><h3 id="二-正则字符简单介绍"><a href="#二-正则字符简单介绍" class="headerlink" title="二. 正则字符简单介绍"></a>二. 正则字符简单介绍</h3><h4 id="2-1-修饰符介绍"><a href="#2-1-修饰符介绍" class="headerlink" title="2.1 修饰符介绍"></a>2.1 修饰符介绍</h4><p>修饰符用于执行区分大小写和全局匹配:<br><strong><code>&quot;i&quot;</code> ：执行对大小写不敏感的匹配。</strong></p>
+<p><strong><code>&quot;g&quot;</code> ：执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。</strong></p>
+<p><strong><code>&quot;m&quot;</code> : 执行多行匹配。</strong></p>
+<pre><code>var patt1=/is/i;
+var patt1=/is/g;
+var patt1=/is/m;
+var patt1=/is/gi;  //全局匹配+忽略大小写
+</code></pre><h4 id="2-2-元字符介绍"><a href="#2-2-元字符介绍" class="headerlink" title="2.2 元字符介绍"></a>2.2 元字符介绍</h4><p><strong><code>&quot;^&quot;</code> ：^会匹配行或者字符串的起始位置，有时还会匹配整个文档的起始位置。</strong> </p>
 <p><strong><code>&quot;$&quot;</code>  ：$会匹配行或字符串的结尾</strong></p>
-<p><strong><code>&quot;\b&quot;</code> : \b不会消耗任何字符只匹配一个位置，常用于匹配单词边界</strong><br>　如 我想从字符串中”This is Regex”匹配单独的单词 “is” 正则就要写成 “\bis\b”<br>　\b 不会匹配is 两边的字符，但它会识别is 两边是否为单词的边界 </p>
+<p><strong><code>&quot;\b&quot;</code> : \b不会消耗任何字符只匹配一个位置，常用于匹配单词边界</strong></p>
+<p> 如 我想从字符串中”This is Regex”匹配单独的单词 “is” 正则就要写成 “\bis\b”<br> \b 不会匹配is 两边的字符，但它会识别is 两边是否为单词的边界 </p>
 <p><strong><code>&quot;\d&quot;</code>: 匹配数字</strong></p>
-<p>　例如要匹配一个固定格式的电话号码以0开头前4位后7位，如0737-5686123  正则:^0\d\d\d-\d\d\d\d\d\d\d$ 这里只是为了介绍”\d”字符，实际上有更好的写法会在     下面介绍。</p>
+<p> 例如要匹配一个固定格式的电话号码以0开头前4位后7位，如0737-5686123  正则:^0\d\d\d-\d\d\d\d\d\d\d$ 这里只是为了介绍”\d”字符，实际上有更好的写法会在     下面介绍。</p>
 <p><strong><code>&quot;\w&quot;</code>：匹配字母，数字，下划线</strong></p>
-<p>　例如我要匹配”a2345BCD__TTz” 正则：”\w+”  这里的”+”字符为一个量词指重复的次数，稍后会详细介绍。</p>
+<p> 例如我要匹配”a2345BCD__TTz” 正则：”\w+”  这里的”+”字符为一个量词指重复的次数，稍后会详细介绍。</p>
 <p><strong><code>&quot;\s&quot;</code>：匹配空格</strong> </p>
-<p>　例如字符 “a b c” 正则：”\w\s\w\s\w”  一个字符后跟一个空格，如有字符间有多个空格直接把”\s” 写成 “\s+” 让空格重复</p>
+<p> 例如字符 “a b c” 正则：”\w\s\w\s\w”  一个字符后跟一个空格，如有字符间有多个空格直接把”\s” 写成 “\s+” 让空格重复</p>
 <p><strong><code>&quot;.&quot;</code>：匹配除了换行符以外的任何字符</strong></p>
-<p>　这个算是”\w”的加强版了”\w”不能匹配 空格 如果把字符串加上空格用”\w”就受限了，看下用 “.”是如何匹配字符”a23 4 5 B C D__TTz”  正则：”.+”</p>
+<p> 这个算是”\w”的加强版了”\w”不能匹配 空格 如果把字符串加上空格用”\w”就受限了，看下用 “.”是如何匹配字符”a23 4 5 B C D__TTz”  正则：”.+”</p>
 <p><strong><code>&quot;[abc]&quot;</code>: 字符组  匹配包含括号内元素的字符</strong>  </p>
-<p>　这个比较简单了只匹配括号内存在的字符，还可以写成[a-z]匹配a至z的所以字母就等于可以用来控制只能输入英文了，</p>
-<h3 id="2-几种反义"><a href="#2-几种反义" class="headerlink" title="2.几种反义"></a>2.几种反义</h3><p>写法很简单改成大写就行了，意思与原来的相反，这里就不举例子了</p>
+<p> 这个比较简单了只匹配括号内存在的字符，还可以写成[a-z]匹配a至z的所以字母就等于可以用来控制只能输入英文了，</p>
+<h4 id="2-3-几种反义"><a href="#2-3-几种反义" class="headerlink" title="2.3 几种反义"></a>2.3 几种反义</h4><p>写法很简单改成大写就行了，意思与原来的相反，这里就不举例子了</p>
 <p><code>&quot;\W&quot;</code>   匹配任意不是字母，数字，下划线 的字符</p>
 <p><code>&quot;\S&quot;</code>   匹配任意不是空白符的字符</p>
 <p><code>&quot;\D&quot;</code>  匹配任意非数字的字符</p>
 <p><code>&quot;\B&quot;</code>  匹配不是单词开头或结束的位置</p>
 <p><code>&quot;[^abc]&quot;</code>  匹配除了abc以外的任意字符</p>
-<h3 id="3-量词"><a href="#3-量词" class="headerlink" title="3.量词"></a>3.量词</h3><p>先解释关于量词所涉及到的重要的三个概念</p>
+<h4 id="2-4-量词"><a href="#2-4-量词" class="headerlink" title="2.4 量词"></a>2.4 量词</h4><p>先解释关于量词所涉及到的重要的三个概念</p>
 <ol>
 <li><p><strong>贪婪(贪心)</strong> 如”*”字符 贪婪量词会首先匹配整个字符串，尝试匹配时，它会选定尽可能多的内容，如果 失败则回退一个字符，然后再次尝试回退的过程就叫做回溯，它会每次回退一个字符，直到找到匹配的内容或者没有字符可以回退。相比下面两种贪婪量词对资源的消耗是最大的，</p>
 </li>
@@ -229,60 +260,212 @@ y 执行“粘性”搜索,匹配从目标字符串的当前位置开始，可�
 <li><p><strong>占有</strong>  如”+” 占有量词会覆盖事个目标字符串，然后尝试寻找匹配内容 ，但它只尝试一次，不会回溯，就好比先抓一把石头，然后从石头中挑出黄金</p>
 </li>
 </ol>
-<h4 id="常用量词举例"><a href="#常用量词举例" class="headerlink" title="常用量词举例"></a>常用量词举例</h4><p><strong><code>&quot;*&quot;(贪婪)</code>   重复零次或更多</strong></p>
-<p>　例如”aaaaaaaa” 匹配字符串中所有的a  正则： <code>&quot;a*&quot;</code>   会出到所有的字符”a”</p>
+<h5 id="常用量词举例"><a href="#常用量词举例" class="headerlink" title="常用量词举例"></a>常用量词举例</h5><p><strong><code>&quot;*&quot;(贪婪)</code>   重复零次或更多</strong></p>
+<p> 例如”aaaaaaaa” 匹配字符串中所有的a  正则： <code>&quot;a*&quot;</code>   会出到所有的字符”a”</p>
 <p><strong><code>&quot;+&quot;(懒惰)</code>   重复一次或更多次</strong></p>
-<p>　例如”aaaaaaaa” 匹配字符串中所有的a  正则： “a+”  会取到字符中所有的a字符，  <code>&quot;a+&quot;</code>与 <code>&quot;a *&quot;</code>   不同在于<code>&quot;+&quot;</code>至少是一次而<code>&quot;*&quot;</code>可以是0次，</p>
-<p>　稍后会与”?”字符结合来体现这种区别</p>
+<p> 例如”aaaaaaaa” 匹配字符串中所有的a  正则： “a+”  会取到字符中所有的a字符，  <code>&quot;a+&quot;</code>与 <code>&quot;a *&quot;</code>   不同在于<code>&quot;+&quot;</code>至少是一次而<code>&quot;*&quot;</code>可以是0次，</p>
+<p> 稍后会与”?”字符结合来体现这种区别</p>
 <p><strong><code>&quot;?&quot;(占有)</code>   重复零次或一次</strong></p>
-<p>　例如”aaaaaaaa” 匹配字符串中的a 正则 ： “a?” 只会匹配一次，也就是结果只是单个字符a</p>
+<p> 例如”aaaaaaaa” 匹配字符串中的a 正则 ： “a?” 只会匹配一次，也就是结果只是单个字符a</p>
 <p><strong><code>&quot;{n}&quot;</code>  重复n次</strong></p>
-<p>　例如从”aaaaaaaa” 匹配字符串的a 并重复3次 正则：  “a{3}”  结果就是取到3个a字符  “aaa”;</p>
+<p> 例如从”aaaaaaaa” 匹配字符串的a 并重复3次 正则：  “a{3}”  结果就是取到3个a字符  “aaa”;</p>
 <p><strong><code>&quot;{n,m}&quot;</code>  重复n到m次</strong></p>
-<p>　例如正则 “a{3,4}” 将a重复匹配3次或者4次 所以供匹配的字符可以是三个”aaa”也可以是四个”aaaa” 正则都可以匹配到</p>
+<p> 例如正则 “a{3,4}” 将a重复匹配3次或者4次 所以供匹配的字符可以是三个”aaa”也可以是四个”aaaa” 正则都可以匹配到</p>
 <p><strong><code>&quot;{n,}&quot;</code>  重复n次或更多次</strong></p>
-<p> 　与{n,m}不同之处就在于匹配的次数将没有上限，但至少要重复n次 如 正则”a{3,}” a至少要重复3次</p>
+<p> 与{n,m}不同之处就在于匹配的次数将没有上限，但至少要重复n次 如 正则”a{3,}” a至少要重复3次</p>
 <p>把量词了解了之后之前匹配电话号码的正则现在就可以改得简单点了^0\d\d\d-\d\d\d\d\d\d\d$ 可以改为”^0\d+-\d{7}$”。</p>
 <p>这样写还不够完美如果因为前面的区号没有做限定，以至于可以输入很多们，而通常只能是3位或者4位，现在再改一下 “^0\d{2,3}-\d{7}”如此一来区号部分就可以匹配3位或者4位的了</p>
-<h3 id="4-懒惰限定符"><a href="#4-懒惰限定符" class="headerlink" title="4.懒惰限定符"></a>4.懒惰限定符</h3><p><strong><code>&quot;*?&quot;</code>   重复任意次，但尽可能少重复</strong></p>
-<p>　如 “acbacb”  正则  “a.*?b” 只会取到第一个”acb” 原本可以全部取到但加了限定符后，只会匹配尽可能少的字符 ，而”acbacb”最少字符的结果就是”acb” </p>
+<h4 id="2-5-懒惰限定符"><a href="#2-5-懒惰限定符" class="headerlink" title="2.5 懒惰限定符"></a>2.5 懒惰限定符</h4><p><strong><code>&quot;*?&quot;</code>   重复任意次，但尽可能少重复</strong></p>
+<p> 如 “acbacb”  正则  “a.*?b” 只会取到第一个”acb” 原本可以全部取到但加了限定符后，只会匹配尽可能少的字符 ，而”acbacb”最少字符的结果就是”acb” </p>
 <p><strong><code>&quot;+?&quot;</code>  重复1次或更多次，但尽可能少重复</strong></p>
-<p>　与上面一样，只是至少要重复1次</p>
+<p> 与上面一样，只是至少要重复1次</p>
 <p><strong><code>&quot;??&quot;</code>  重复0次或1次，但尽可能少重复</strong></p>
-<p>　如 “aaacb” 正则 “a.??b” 只会取到最后的三个字符”acb”</p>
+<p> 如 “aaacb” 正则 “a.??b” 只会取到最后的三个字符”acb”</p>
 <p><strong><code>&quot;{n,m}?&quot;</code>  重复n到m次，但尽可能少重复</strong></p>
-<p>  如 “aaaaaaaa”  正则 “a{0,m}” 因为最少是0次所以取到结果为空</p>
+<p> 如 “aaaaaaaa”  正则 “a{0,m}” 因为最少是0次所以取到结果为空</p>
 <p><strong><code>&quot;{n,}?&quot;</code>    重复n次以上，但尽可能少重复</strong></p>
-<p>  如 “aaaaaaa”  正则 “a{1,}” 最少是1次所以取到结果为 “a”</p>
-<h3 id="三-正则进阶-捕获分组"><a href="#三-正则进阶-捕获分组" class="headerlink" title="三.正则进阶-捕获分组"></a>三.正则进阶-捕获分组</h3><p>下面列出捕获分组常有的用法</p>
+<p> 如 “aaaaaaa”  正则 “a{1,}” 最少是1次所以取到结果为 “a”</p>
+<h3 id="三-正则进阶-捕获分组"><a href="#三-正则进阶-捕获分组" class="headerlink" title="三. 正则进阶-捕获分组"></a>三. 正则进阶-捕获分组</h3><p>下面列出捕获分组常有的用法</p>
 <p><strong><code>&quot;(exp)&quot;</code>    匹配exp,并捕获文本到自动命名的组里</strong></p>
 <p><strong><code>&quot;(?&lt;name&gt;exp)&quot;</code>   匹配exp,并捕获文本到名称为name的组里</strong></p>
 <p><strong><code>&quot;(?:exp)&quot;</code>  匹配exp,不捕获匹配的文本，也不给此分组分配组号</strong></p>
 <p>以下为零宽断言</p>
 <p><strong><code>&quot;(?=exp)&quot;</code>  匹配exp前面的位置</strong></p>
-<p>　　如 “How are you doing” 正则”(?<txt>.+(?=ing))” 这里取ing前所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为”How are you do”;</txt></p>
+<p> 如 “How are you doing” 正则”(?<txt>.+(?=ing))” 这里取ing前所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为”How are you do”;</txt></p>
 <p><strong><code>&quot;(?&lt;=exp)&quot;</code>  匹配exp后面的位置</strong></p>
-<p>　　如 “How are you doing” 正则”(?<txt>(?&lt;=How).+)” 这里取”How”之后所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为” are you doing”;</txt></p>
+<p> 如 “How are you doing” 正则”(?<txt>(?&lt;=How).+)” 这里取”How”之后所有的字符，并定义了一个捕获分组名字为 “txt” 而”txt”这个组里的值为” are you doing”;</txt></p>
 <p><strong><code>&quot;(?!exp)&quot;</code>  匹配后面跟的不是exp的位置</strong></p>
-<p>　　如 “123abc” 正则 “\d{3}(?!\d)”匹配3位数字后非数字的结果</p>
+<p> 如 “123abc” 正则 “\d{3}(?!\d)”匹配3位数字后非数字的结果</p>
 <p><strong><code>&quot;(?&lt;!exp)&quot;</code>  匹配前面不是exp的位置</strong></p>
-<p>　　如 “abc123 “ 正则 “(?&lt;![0-9])123” 匹配”123”前面是非数字的结果也可写成”(?!&lt;\d)123”</p>
-<h3 id="四-js正则表达式方法"><a href="#四-js正则表达式方法" class="headerlink" title="四.js正则表达式方法"></a>四.js正则表达式方法</h3><pre><code>reg.exec(str)        //查找字符串str是否匹配reg规则，它返回一个数组（未匹配到则返回 null）。 [ &apos;abbc&apos;, index: 0, input: &apos;abbc&apos;, groups: undefined ]
-reg.test(str)        //测试字符串str否匹配reg规则，匹配返回 true 或 不匹配返回false。
-str.match(reg)        //一个在字符串中执行查找匹配的String方法，它返回一个数组，在未匹配到时会返回 null。
-str.matchAll(reg)    //一个在字符串中执行查找所有匹配的String方法，它返回一个迭代器（iterator）。Object [RegExp String Iterator] {}
-str.search(reg)        //一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者不存在时返回-1。
-str.replace(reg, str2)        //一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。
-str.split(reg)            //一个使用正则表达式，并将分隔后的子字符串存储到数组中。
+<p> 如 “abc123 “ 正则 “(?&lt;![0-9])123” 匹配”123”前面是非数字的结果也可写成”(?!&lt;\d)123”</p>
+<h3 id="四-使用RegExp-对象"><a href="#四-使用RegExp-对象" class="headerlink" title="四. 使用RegExp 对象"></a>四. 使用RegExp 对象</h3><p><strong>RegExp 对象</strong>：是一个预定义了属性和方法的正则表达式对象。</p>
+<h4 id="4-1-RegExp-对象方法"><a href="#4-1-RegExp-对象方法" class="headerlink" title="4.1 RegExp 对象方法"></a>4.1 RegExp 对象方法</h4><h5 id="4-1-1-test"><a href="#4-1-1-test" class="headerlink" title="4.1.1 test()"></a>4.1.1 test()</h5><p>test() 方法是一个正则表达式方法。test() 方法用于检测一个字符串是否匹配某个模式，如果字符串中含有匹配的文本，则返回 true，否则返回 false。</p>
+<pre><code>var str=&quot;Hello world!&quot;; 
+//查找&quot;Hello&quot; 
+var patt=/Hello/g;
+var result=patt.test(str); 
+document.write(&quot;返回值: &quot; + result);
+//查找 &quot;Runoob&quot; 
+patt=/Runoob/g; 
+result=patt.test(str); 
+document.write(&quot;&lt;br&gt;返回值: &quot; + result);
 
+//返回值: true
+//返回值: false
+</code></pre><h5 id="4-1-2-exec"><a href="#4-1-2-exec" class="headerlink" title="4.1.2 exec()"></a>4.1.2 exec()</h5><p>exec() 方法是一个正则表达式方法。exec() 方法用于检索字符串中的正则表达式的匹配。该函数返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。</p>
+<pre><code>var str=&quot;Hello world!&quot;;
+//查找&quot;Hello&quot; 
+var patt=/Hello/g; 
+var result=patt.exec(str); 
+document.write(&quot;返回值: &quot; + result); 
+//查找 &quot;RUNOOB&quot; 
+patt=/RUNOOB/g; 
+result=patt.exec(str); 
+document.write(&quot;&lt;br&gt;返回值: &quot; + result);
 
-function match(s, pattern)
-{
-  var pattern = &apos;^&apos; + pattern + &apos;$&apos;; // ^ab*a$
-  var pat = new RegExp(pattern,&apos;g&apos;); // /^ab*a$/g  new RegExp(&apos;^ab*a$&apos;,&apos;g&apos;)
-  return pat.test(s); // s匹配pat, pat是否包含s
+//返回值: Hello
+//返回值: null
+</code></pre><h5 id="4-1-3-toString"><a href="#4-1-3-toString" class="headerlink" title="4.1.3 toString()"></a>4.1.3 toString()</h5><p>toString() 方法返回正则表达式的字符串值。</p>
+<pre><code>var patt = new RegExp(&quot;RUNOOB&quot;, &quot;g&quot;); 
+var res = patt.toString();
+
+//返回值：/RUNOOB/g
+</code></pre><h4 id="4-2-RegExp-对象属性"><a href="#4-2-RegExp-对象属性" class="headerlink" title="4.2 RegExp 对象属性"></a>4.2 RegExp 对象属性</h4><h5 id="4-2-1-constructor"><a href="#4-2-1-constructor" class="headerlink" title="4.2.1 constructor"></a>4.2.1 constructor</h5><p>constructor属性：返回一个函数，该函数是一个创建 RegExp 对象的原型。</p>
+<p>在 JavaScript 中, constructor 属性返回对象的构造函数。<br>返回值是函数的引用，不是函数名：</p>
+<ul>
+<li><strong>JavaScript 正则表达式</strong> constructor 属性返回 function RegExp() { [native code] }</li>
+<li><strong>JavaScript 数组</strong> constructor 属性返回 function Array() { [native code] }</li>
+<li><strong>JavaScript 数字</strong> constructor 属性返回 function Number() { [native code] }</li>
+<li><strong>JavaScript 字符串</strong> constructor 属性返回 returns function String() { [native code] }</li>
+<li>如果一个变量是数组你可以使用 constructor 属性来定义。</li>
+</ul>
+<pre><code>var patt = new RegExp(&quot;RUNOOB&quot;, &quot;g&quot;); 
+var res = patt.constructor;
+
+//返回值：function RegExp() { [native code] }
+</code></pre><h5 id="4-2-2-global属性"><a href="#4-2-2-global属性" class="headerlink" title="4.2.2 global属性"></a>4.2.2 global属性</h5><p>global属性：判断是否设置了 “g” 修饰符。如果 g 标志被设置，则该属性为 true，否则为 false。：</p>
+<pre><code>var str=&quot;Visit RUNOOB!&quot;; 
+var patt1=/RUN/g;
+if(patt1.global) { 
+    document.write(&quot;g 模式有设置!&quot;); 
+} else { 
+    document.write(&quot;g 模式有设置!&quot;); 
 }
-</code></pre><h3 id="五-常用正则表达式"><a href="#五-常用正则表达式" class="headerlink" title="五.常用正则表达式"></a>五.常用正则表达式</h3><p><img src="//lililich.work/2019/10/24/正则表达式详解/Image1.png" alt="Image1.png"></p>
+
+//返回值：g 模式有设置!
+</code></pre><h5 id="4-2-3-ignoreCase属性"><a href="#4-2-3-ignoreCase属性" class="headerlink" title="4.2.3 ignoreCase属性"></a>4.2.3 ignoreCase属性</h5><p>ignoreCase属性：判断是否设置了 “i” 修饰符。如果设置了 “i” 标志，则返回 true，否则返回 false。</p>
+<pre><code>var str=&quot;Visit RUNOOB!&quot;;
+var patt1=/RUN/i; 
+if(patt1.ignoreCase) { 
+    document.write(&quot;i 模式有设置!&quot;); 
+} else { 
+    document.write(&quot;i 模式没有设置!&quot;); 
+}
+
+//返回值：i 模式有设置!
+</code></pre><h5 id="4-2-4-lastIndex属性"><a href="#4-2-4-lastIndex属性" class="headerlink" title="4.2.4 lastIndex属性"></a>4.2.4 lastIndex属性</h5><p>lastIndex属性：用于规定下次匹配的起始位置。</p>
+<p><strong>注意： 该属性只有设置标志 g 才能使用</strong>。<br>上次匹配的结果是由方法 RegExp.exec() 和 RegExp.test() 找到的，它们都以 lastIndex 属性所指的位置作为下次检索的起始点。这样，就可以通过反复调用这两个方法来遍历一个字符串中的所有匹配文本。<br><strong>注意：该属性是可读可写的</strong>。<br>只要目标字符串的下一次搜索开始，就可以对它进行设置。当方法 exec() 或 test() 再也找不到可以匹配的文本时，它们会自动把 lastIndex 属性重置为 0。</p>
+<pre><code>var str=&quot;The rain in Spain stays mainly in the plain&quot;; 
+var patt1=/ain/g; 
+while (patt1.test(str)==true) { 
+    document.write(&quot;&apos;ain&apos; found. Index now at: &quot;+patt1.lastIndex); 
+    document.write(&quot;&lt;br&gt;&quot;);
+}
+
+//返回值：
+&apos;ain&apos; found. Index now at: 8
+&apos;ain&apos; found. Index now at: 17
+&apos;ain&apos; found. Index now at: 28
+&apos;ain&apos; found. Index now at: 43
+</code></pre><h5 id="4-2-5-multiline属性"><a href="#4-2-5-multiline属性" class="headerlink" title="4.2.5 multiline属性"></a>4.2.5 multiline属性</h5><p>multiline属性：判断是否设置了 “m” 修饰符。如果 m 标志被设置，则该属性为 true，否则为 false。</p>
+<pre><code>var str=&quot;Visit RUNOOB!&quot;; 
+var patt1=/RUN/gi; 
+if(patt1.multiline) { 
+    document.write(&quot;m 模式有设置!&quot;); 
+} else { 
+    document.write(&quot;m 模式没有设置!&quot;); 
+}
+
+//返回值：m 模式没有设置!
+</code></pre><h5 id="4-2-6-source属性"><a href="#4-2-6-source属性" class="headerlink" title="4.2.6 source属性"></a>4.2.6 source属性</h5><p>source属性：返回正则表达式的匹配模式，返回模式匹配所用的文本。</p>
+<pre><code>var str=&quot;Visit RUNOOB&quot;;
+var patt1=/RUN/g; 
+document.write(&quot;The text of the RegExp is: &quot;+patt1.source);
+
+//返回值：The text of the RegExp is: RUN
+</code></pre><h3 id="五-常用正则表达式"><a href="#五-常用正则表达式" class="headerlink" title="五. 常用正则表达式"></a>五. 常用正则表达式</h3><p><img src="//lililich.work/2019/10/24/正则表达式详解/Image1.png" alt="Image1.png"></p>
+<p>了解更多常用正则表达式请参考<a href="https://www.jianshu.com/p/4ccc491a571a" target="_blank" rel="noopener">https://www.jianshu.com/p/4ccc491a571a</a></p>
+<h4 id="5-1-校验数字的表达式"><a href="#5-1-校验数字的表达式" class="headerlink" title="5.1 校验数字的表达式"></a>5.1 校验数字的表达式</h4><ul>
+<li><code>数字</code>：^[0-9]*$</li>
+<li><code>n位的数字</code>：^\d{n}$</li>
+<li><code>至少n位的数字</code>：^\d{n,}$</li>
+<li><code>m-n位的数字</code>：^\d{m,n}$</li>
+<li><code>零和非零开头的数字</code>：^(0|[1-9][0-9]*)$</li>
+<li><code>非零开头的最多带两位小数的数字</code>：^([1-9][0-9]*)+(.[0-9]{1,2})?$</li>
+<li><code>带1-2位小数的正数或负数</code>：^(-)?\d+(.\d{1,2})?$</li>
+<li><code>正数、负数、和小数</code>：^(-|+)?\d+(.\d+)?$</li>
+<li><code>有两位小数的正实数</code>：^[0-9]+(.[0-9]{2})?$</li>
+<li><code>有1~3位小数的正实数</code>：^[0-9]+(.[0-9]{1,3})?$</li>
+<li><code>非零的正整数</code>：^[1-9]\d<em>$ 或 ^([1-9][0-9]</em>){1,3}$ 或 ^+?[1-9][0-9]*$</li>
+<li><code>非零的负整数</code>：^-[1-9][]0-9”<em>$ 或 ^-[1-9]\d</em>$</li>
+<li><code>非负整数</code>：^\d+$ 或 ^[1-9]\d*|0$</li>
+<li><code>非正整数</code>：^-[1-9]\d*|0$ 或 ^((-\d+)|(0+))$</li>
+<li><code>非负浮点数</code>：^\d+(.\d+)?$ 或 ^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0$</li>
+<li><code>非正浮点数</code>：^((-\d+(.\d+)?)|(0+(.0+)?))$ 或 ^(-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>))|0?.0+|0$</li>
+<li><code>正浮点数</code>：^[1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>$ 或 ^(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>))$</li>
+<li><code>负浮点数</code>：^-([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>)$ 或 ^(-(([0-9]+.[0-9]<em>[1-9][0-9]</em>)|([0-9]<em>[1-9][0-9]</em>.[0-9]+)|([0-9]<em>[1-9][0-9]</em>)))$</li>
+<li><code>浮点数</code>：^(-?\d+)(.\d+)?$ 或 ^-?([1-9]\d<em>.\d</em>|0.\d<em>[1-9]\d</em>|0?.0+|0)$</li>
+</ul>
+<h4 id="5-2-校验字符的表达式"><a href="#5-2-校验字符的表达式" class="headerlink" title="5.2 校验字符的表达式"></a>5.2 校验字符的表达式</h4><ul>
+<li><code>汉字</code>：^[\u4e00-\u9fa5]{0,}$</li>
+<li><code>英文和数字</code>：^[A-Za-z0-9]+$ 或 ^[A-Za-z0-9]{4,40}$</li>
+<li><code>长度为3-20的所有字符</code>：^.{3,20}$</li>
+<li><code>由26个英文字母组成的字符串</code>：^[A-Za-z]+$</li>
+<li><code>由26个大写英文字母组成的字符串</code>：^[A-Z]+$</li>
+<li><code>由26个小写英文字母组成的字符串</code>：^[a-z]+$</li>
+<li><code>由数字和26个英文字母组成的字符串</code>：^[A-Za-z0-9]+$</li>
+<li><code>由数字、26个英文字母或者下划线组成的字符串</code>：^\w+$ 或 ^\w{3,20}$</li>
+<li><code>中文、英文、数字包括下划线</code>：^[\u4E00-\u9FA5A-Za-z0-9_]+$</li>
+<li><code>中文、英文、数字但不包括下划线等符号</code>：^[\u4E00-\u9FA5A-Za-z0-9]+$ 或 ^[\u4E00-\u9FA5A-Za-z0-9]{2,20}$</li>
+<li><code>可以输入含有^%&amp;&#39;,;=?$\&quot;等字符</code>：[^%&amp;’,;=?$\x22]+</li>
+<li><code>禁止输入含有~的字符</code>：[^~\x22]+</li>
+</ul>
+<h4 id="5-3-特殊需求表达式"><a href="#5-3-特殊需求表达式" class="headerlink" title="5.3 特殊需求表达式"></a>5.3 特殊需求表达式</h4><ul>
+<li><code>Email地址</code>：^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$</li>
+<li><code>域名</code>：[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(/.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+/.?</li>
+<li><code>InternetURL</code>：[a-zA-z]+://[^\s]<em> 或 ^http://([\w-]+.)+[\w-]+(/[\w-./?%&amp;=]</em>)?$</li>
+<li><code>手机号码</code>：^(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])\d{8}$ (由于工信部放号段不定时，所以建议使用泛解析 ^([1][3,4,5,6,7,8,9])\d{9}$)</li>
+<li><code>电话号码(&quot;XXX-XXXXXXX&quot;、&quot;XXXX-XXXXXXXX&quot;、&quot;XXX-XXXXXXX&quot;、&quot;XXX-XXXXXXXX&quot;、&quot;XXXXXXX&quot;和&quot;XXXXXXXX)</code>：^((\d{3,4}-)|\d{3.4}-)?\d{7,8}$ </li>
+<li><code>国内电话号码(0511-4405222、021-87888822)</code>：\d{3}-\d{8}|\d{4}-\d{7} </li>
+<li><code>18位身份证号码(数字、字母x结尾)</code>：^((\d{18})|([0-9x]{18})|([0-9X]{18}))$</li>
+<li><code>帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)</code>：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</li>
+<li><code>密码(以字母开头，长度在6~18之间，只能包含字母、数字和下划线)</code>：^[a-zA-Z]\w{5,17}$</li>
+<li><code>强密码(必须包含大小写字母和数字的组合，不能使用特殊字符，长度在8-10之间)</code>：^(?=.<em>\d)(?=.</em>[a-z])(?=.*[A-Z]).{8,10}$ </li>
+<li><code>日期格式</code>：^\d{4}-\d{1,2}-\d{1,2}</li>
+<li><code>一年的12个月(01～09和1～12)</code>：^(0?[1-9]|1[0-2])$</li>
+<li><code>一个月的31天(01～09和1～31)</code>：^((0?[1-9])|((1|2)[0-9])|30|31)$  </li>
+<li><code>xml文件</code>：^([a-zA-Z]+-?)+[a-zA-Z0-9]+\.[x|X][m|M][l|L]$</li>
+<li><code>中文字符的正则表达式</code>：[\u4e00-\u9fa5]</li>
+<li><code>双字节字符</code>：[^\x00-\xff] (包括汉字在内，可以用来计算字符串的长度(一个双字节字符长度计2，ASCII字符计1))</li>
+<li><code>空白行的正则表达式</code>：\n\s*\r (可以用来删除空白行)</li>
+<li><code>HTML标记的正则表达式</code>：&lt;(\S<em>?)[^&gt;]</em>&gt;.<em>?&lt;/\1&gt;|&lt;.</em>? /&gt; (网上流传的版本太糟糕，上面这个也仅仅能部分，对于复杂的嵌套标记依旧无能为力)</li>
+<li><code>首尾空白字符的正则表达式</code>：^\s<em>|\s</em>$或(^\s<em>)|(\s</em>$) (可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式)</li>
+<li><code>腾讯QQ号</code>：[1-9][0-9]{4,} (腾讯QQ号从10000开始)</li>
+<li><code>中国邮政编码</code>：[1-9]\d{5}(?!\d) (中国邮政编码为6位数字)</li>
+<li><code>IP地址</code>：\d+.\d+.\d+.\d+ (提取IP地址时有用)</li>
+<li><code>IP地址</code>：((?:(?:25[0-5]|2[0-4]\d|[01]?\d?\d)\.){3}(?:25[0-5]|2[0-4]\d|[01]?\d?\d)) </li>
+</ul>
+<h4 id="5-4-钱的输入格式"><a href="#5-4-钱的输入格式" class="headerlink" title="5.4 钱的输入格式"></a>5.4 钱的输入格式</h4><ul>
+<li><code>有四种钱的表示形式我们可以接受:&quot;10000.00&quot; 和 &quot;10,000.00&quot;, 和没有 &quot;分&quot; 的 &quot;10000&quot; 和 &quot;10,000&quot;</code>：^[1-9][0-9]*$ </li>
+<li><code>这表示任意一个不以0开头的数字,但是,这也意味着一个字符&quot;0&quot;不通过,所以我们采用下面的形式</code>：^(0|[1-9][0-9]*)$ </li>
+<li><code>一个0或者一个不以0开头的数字.我们还可以允许开头有一个负号</code>：^(0|-?[1-9][0-9]*)$ </li>
+<li><code>这表示一个0或者一个可能为负的开头不为0的数字.让用户以0开头好了.把负号的也去掉,因为钱总不能是负的吧.下面我们要加的是说明可能的小数部分</code>：^[0-9]+(.[0-9]+)?$ </li>
+<li><code>必须说明的是,小数点后面至少应该有1位数,所以&quot;10.&quot;是不通过的,但是 &quot;10&quot; 和 &quot;10.2&quot; 是通过的</code>：^[0-9]+(.[0-9]{2})?$ </li>
+<li><code>这样我们规定小数点后面必须有两位,如果你认为太苛刻了,可以这样</code>：^[0-9]+(.[0-9]{1,2})?$ </li>
+<li><code>这样就允许用户只写一位小数.下面我们该考虑数字中的逗号了,我们可以这样</code>：^[0-9]{1,3}(,[0-9]{3})*(.[0-9]{1,2})?$ </li>
+<li><code>1到3个数字,后面跟着任意个 逗号+3个数字,逗号成为可选,而不是必须</code>：^([0-9]+|[0-9]{1,3}(,[0-9]{3})*)(.[0-9]{1,2})?$ </li>
+</ul>
+<p>备注：这就是最终结果了,别忘了”+”可以用”*”替代如果你觉得空字符串也可以接受的话(奇怪,为什么?)最后,别忘了在用函数时去掉去掉那个反斜杠,一般的错误都在这里</p>
 <p>详情参考:<br><a href="https://www.runoob.com/js/js-regexp.html" target="_blank" rel="noopener">https://www.runoob.com/js/js-regexp.html</a><br><a href="https://www.cnblogs.com/zery/p/3438845.html" target="_blank" rel="noopener">https://www.cnblogs.com/zery/p/3438845.html</a><br><a href="http://tool.oschina.net/uploads/apidocs/jquery/regexp.html" target="_blank" rel="noopener">http://tool.oschina.net/uploads/apidocs/jquery/regexp.html</a><br><a href="https://www.cnblogs.com/520Girl/p/10031738.html" target="_blank" rel="noopener">https://www.cnblogs.com/520Girl/p/10031738.html</a></p>
 
     </div>
@@ -290,6 +473,13 @@ function match(s, pattern)
 
 <div class="cube-article-nav">
     <ul>
+        
+        <li class="prev">
+            <a href="/2020/03/22/DOM详解/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                DOM详解
+            </a>
+        </li>
         
         
         <li class="next">
@@ -344,9 +534,9 @@ function match(s, pattern)
     
     
     <div class="count">
-        <a class="count articles"><span>35</span>Article</a>
-        <a class="count tags"><span>18</span>Tags</a>
-        <a class="count categories"><span>5</span>Categories</a>
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
     </div>
 </div>
 
@@ -383,7 +573,7 @@ function match(s, pattern)
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/24/正则表达式详解/" title="正则表达式详解">正则表达式详解</a>
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
                 </p>
             </div>
             
@@ -397,7 +587,7 @@ function match(s, pattern)
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/20/EventLoop详解/" title="EventLoop详解">EventLoop详解</a>
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
                 </p>
             </div>
         </li>
@@ -410,7 +600,7 @@ function match(s, pattern)
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
                 </p>
             </div>
         </li>
@@ -423,7 +613,7 @@ function match(s, pattern)
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
                 </p>
             </div>
         </li>
@@ -436,7 +626,7 @@ function match(s, pattern)
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/" title="CSS经典布局——圣杯布局和双飞翼布局">CSS经典布局——圣杯布局和双飞翼布局</a>
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
                 </p>
             </div>
         </li>
@@ -455,17 +645,12 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
-            <a href="/categories/前端工具/">#前端工具</a>
+            <a href="/categories/CSS/">#CSS</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/语法/">#语法</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/categories/算法/">#算法</a>
+            <a href="/categories/概念原理/">#概念原理</a>
         </div>
         
         
@@ -475,6 +660,51 @@ function match(s, pattern)
         
         
         <div class="cube-box-bg ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/categories/面经/">#面经</a>
         </div>
         
@@ -491,7 +721,27 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
-            <a href="/tags/前端/">#前端</a>
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
         </div>
         
         
@@ -501,16 +751,16 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
-            <a href="/tags/js/">#js</a>
+            <a href="/tags/React/">#React</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/html/">#html</a>
+            <a href="/tags/编程/">#编程</a>
         </div>
         
         
-        <div class="cube-box-bg ">
+        <div class="cube-box ">
             <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
@@ -521,42 +771,22 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
-            <a href="/tags/编程/">#编程</a>
+            <a href="/tags/SVN/">#SVN</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/flex/">#flex</a>
+            <a href="/tags/VScode/">#VScode</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/跨域/">#跨域</a>
+            <a href="/tags/VuePress/">#VuePress</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/CSS/">#CSS</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box-bg ">
-            <a href="/tags/面经/">#面经</a>
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
         </div>
         
         
@@ -566,17 +796,117 @@ function match(s, pattern)
         
         
         <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
             <a href="/tags/webpack/">#webpack</a>
         </div>
         
         
-        <div class="cube-box ">
-            <a href="/tags/二叉树/">#二叉树</a>
+        <div class="cube-box-bg ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/fullPage/">#fullPage</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
         </div>
         
     </div>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Lililich&#39;s Blog">
+    
+    
+    
+    
+    
+    
+    <title>SVN环境搭建 | Lililich&#39;s Blog</title>
+    <!-- inject:style -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <!-- endinject -->
+    <style>
+        .cube-loading {
+            top: 0;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: url('/images/lg/loading.gif') no-repeat center center;
+            background-color: rgba(0,0,0,.7);
+        }
+
+        .cube-loading.out {
+            display: none;
+        }
+
+        .cube-loading:before {
+            display: block;
+            content: 'Loading';
+            position: relative;
+            width: 100%;
+            top: 50%;
+            right: -50%;
+            color: #fff;
+        }
+
+        @media(max-width: 768px) {
+            .cube-loading:before {
+                font-size: 1.2em;
+                transform: translate(-24px,20px);
+                -webkit-transform: translate(-24px,20px);
+                -o-transform: translate(-24px,20px);
+                -ms-transform: translate(-24px,20px);
+            }
+        }
+
+        @media(min-width: 768px) {
+            .cube-loading:before {
+
+            }
+        }
+    </style>
+    
+</head></html>
+<body>
+<div class="cube-body">
+    <nav id="cube-top-memu" class="cube-menu">
+    <ul class="cube-menu-collapse">
+        
+        <li>
+            <i class="cube-icon cube-icon-home" aria-hidden="true"></i>
+            <a href="/">首页</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-archive" aria-hidden="true"></i>
+            <a href="/archives">归档</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-categories" aria-hidden="true"></i>
+            <a href="/categories">分类</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-tags" aria-hidden="true"></i>
+            <a href="/tags">标签</a>
+        </li>
+        
+        <li>
+            <i class="cube-icon cube-icon-about" aria-hidden="true"></i>
+            <a href="/about-me">关于我</a>
+        </li>
+        
+    </ul>
+</nav>
+<nav class="cube-side-menu" id="cube-side-menu">
+    <ul class="cube-menu-list">
+        
+        <li>
+            <a class="lrc-control">Open Lyrics</a>
+        </li>
+        
+        <li>
+            <a class="scroll-to-top">Top</a>
+        </li>
+    </ul>
+</nav>
+    <header class="cube-header" id="cube-header">
+    <img src=" /images/background.jpg " alt="头部背景图片">
+    
+    <div class="cube-type">
+        <span class="cube-typed-title">小畅的学习笔记</span>
+        <span class="cube-typed-cursor">|</span>
+    </div>
+    
+</header>
+
+    <style>
+        nav.cube-menu:before {
+            content: '';
+            visibility: hidden;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+        
+            filter: blur(5px);
+            -webkit-filter: blur(5px);
+        
+            z-index: -1;
+            background-image: url('/images/background.jpg');
+            background-repeat: no-repeat;
+            background-position: center -656px;
+            background-size: cover;
+            background-color: transparent;
+        }
+
+        header.cube-background.cube-header-background {
+            visibility: hidden;
+            background-image: url('/images/background.jpg');
+            background-position: center -700px;
+        }
+    </style>
+    <header class="cube-background cube-header-background">
+        
+        <div class="cube-type">
+            <span class="cube-typed-title">小畅的学习笔记</span>
+            <span class="cube-typed-cursor">|</span>
+        </div>
+        
+    </header>
+    <div class="load-header-background"></div>
+    <script>
+        (function (window) {
+
+            window.headerModule = {}
+            window.headerModule.image = {
+                width: '2000',
+                height: '1250'
+            }
+
+        })(window)
+    </script>
+    
+    <div class="cube-content">
+        <div class="cube-left">
+            <div class="cube-article">
+    <h1 class="title">SVN环境搭建</h1>
+    
+    <div class="cube-article-header">
+        <div class="cube-article-date">
+            <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+            <!-- moment.js对象 -->
+            2021-08-24
+        </div>
+        <div class="cube-article-tags">
+    <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+    
+    <a href="/tags/SVN/">#SVN</a>
+    
+</div>
+    </div>
+    
+    <div class="cube-article-content cube-markdown">
+        
+        <p>最近有个项目，要把界面搭建在web服务器上，同时支持通过SVN上传修改代码同步界面，因此学习一下SVN搭建过程，跟着我一起来学习吧~</p>
+<h1 id="一、SVN下载地址"><a href="#一、SVN下载地址" class="headerlink" title="一、SVN下载地址"></a>一、SVN下载地址</h1><p>Subversion（SVN）它是一个自由/开源的版本控制系统，一组文件存放在中心版本库，记录每一次文件和目录的修改，SVN允许把数据恢复到早期版本，或是检查数据修改的历史，它可以通过网络访问它的版本库，从而使用户在不同的电脑上进行操作。</p>
+<p>SVN包含两部分，<code>SVN服务端</code>和<code>SVN客户端</code>，最好两部分搭配使用，下载地址如下：</p>
+<ul>
+<li><p><strong>svn服务端下载地址：</strong><br><a href="https://www.visualsvn.com/server/download/" target="_blank" rel="noopener">https://www.visualsvn.com/server/download/</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image1.png" alt="Image1.png"></p>
+</li>
+<li><p><strong>svn客户端及中文包下载地址：</strong><br><a href="https://tortoisesvn.net/downloads.zh.html" target="_blank" rel="noopener">https://tortoisesvn.net/downloads.zh.html</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image2.png" alt="Image2.png"></p>
+</li>
+</ul>
+<a id="more"></a>
+<h1 id="二、SVN服务器安装及使用方法"><a href="#二、SVN服务器安装及使用方法" class="headerlink" title="二、SVN服务器安装及使用方法"></a>二、SVN服务器安装及使用方法</h1><h2 id="2-1-VisualSVN安装"><a href="#2-1-VisualSVN安装" class="headerlink" title="2.1 VisualSVN安装"></a>2.1 VisualSVN安装</h2><p>第一步：首先要下载SVN服务端，下载地址：<a href="https://www.visualsvn.com/server/download/" target="_blank" rel="noopener">https://www.visualsvn.com/server/download/</a>，根据系统选择对应的版本。</p>
+<p>第二步： 双击安装程序 VisualSVN-Server-4.3.4-x64.msi<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3.png" alt="Image3.png"></p>
+<p>第三步：勾选“I accept…”，然后单击“Next”<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image4.png" alt="Image4.png"></p>
+<p>第四步：使⽤默认配置，点击Next<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image5.png" alt="Image5.png"></p>
+<p>第五步：设置服务器的安装路径、资源的存放⽬录及端⼝<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image6.png" alt="Image6.png"></p>
+<blockquote>
+<p>Location是你的安装目录，C盘或D盘都可以，我选择存放在D盘，Repositories是你的源代码仓库，也就是你SVN帮你管理代码放置的位置，这里我选择放置在E盘。</p>
+</blockquote>
+<p>第六步：使⽤默认配置，点击Next<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image7.png" alt="Image7.png"></p>
+<p>第七步：使⽤默认配置，点击Next</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image8.png" alt="Image8.png"></p>
+<p>第八步：点击install进行安装：</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image9.png" alt="Image9.png"></p>
+<p>等待安装<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image10.png" alt="Image10.png"></p>
+<p>第九步：安装完成后可勾选复选框，然后选择 Finish完成安装<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image11.png" alt="Image11.png"></p>
+<p>SVN服务端界面显示如下：<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image12.png" alt="Image12.png"></p>
+<h2 id="2-2-VisualSVN使用方法"><a href="#2-2-VisualSVN使用方法" class="headerlink" title="2.2 VisualSVN使用方法"></a>2.2 VisualSVN使用方法</h2><h3 id="2-2-1-创建版本库"><a href="#2-2-1-创建版本库" class="headerlink" title="2.2.1 创建版本库"></a>2.2.1 创建版本库</h3><p>第一步：右键-“create new Repository”<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image13.png" alt="Image13.png"></p>
+<p>第二步：使⽤默认配置，进入下一步<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image14.png" alt="Image14.png"></p>
+<p>第三步：创建版本库的名称，进入下一步<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image15.png" alt="Image15.png"></p>
+<p>第四步：选择【Single-project repository】，创建trunk，branches, tags三个文件夹，三个目录表示主杆、分枝、存档。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image16.png" alt="Image16.png"></p>
+<p>第五步：使⽤默认配置，进行创建<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image17.png" alt="Image17.png"></p>
+<p>第六步：创建完成，我们可以看到我们的版本库中自动帮我们创建了trunk，branches, tags三个文件夹<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image18.png" alt="Image18.png"><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image19.png" alt="Image19.png"></p>
+<h3 id="2-2-2-创建用户"><a href="#2-2-2-创建用户" class="headerlink" title="2.2.2 创建用户"></a>2.2.2 创建用户</h3><p>第一步：选中Users用户组，右键单击，选择Create User或者新建-&gt;User<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image20.png" alt="Image20.png"></p>
+<p>第二步：填写Username和password后，点击ok按钮<br>为方便记忆，密码先统一设置为123456<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image21.png" alt="Image21.png"></p>
+<p>第三步：创建完成显示如下<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image22.png" alt="Image22.png"></p>
+<h3 id="2-2-3-创建分组"><a href="#2-2-3-创建分组" class="headerlink" title="2.2.3 创建分组"></a>2.2.3 创建分组</h3><p>第一步：选中Groups用户组，右键单击，选择Create Group或者新建-&gt;Group,如图:<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image23.png" alt="Image23.png"></p>
+<p>第二步：创建一个开发组，将刚刚创建的用户添加到该组中，点击ok按钮<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image24.png" alt="Image24.png"></p>
+<p>第三步：创建完成显示如下<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image25.png" alt="Image25.png"></p>
+<h3 id="2-2-4-给版本库设置权限"><a href="#2-2-4-给版本库设置权限" class="headerlink" title="2.2.4 给版本库设置权限"></a>2.2.4 给版本库设置权限</h3><p>第一步：在faqRepository上单击右键,选择属性Properties<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image26.png" alt="Image26.png"></p>
+<p>第二步：设置权限，你可以按组来设置，也可以按个人来设置，设置完成点击确定即可<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image27.png" alt="Image27.png"></p>
+<h3 id="2-2-5-将本地文件导入到SVN服务器"><a href="#2-2-5-将本地文件导入到SVN服务器" class="headerlink" title="2.2.5 将本地文件导入到SVN服务器"></a>2.2.5 将本地文件导入到SVN服务器</h3><p>第一步：首选需要过滤不必要上传到svn服务器的文件和文件夹。进入源码目录，在空白出点击右键，选择【TortoiseSVN】，选择【设置】，选择【常规设置】，在【Subversion】下的【全局忽略样式】中输入要忽略的文件夹名称及文件名称，以空格分隔。注意：此处建议忽略.temp、.vscode、node_modules等文件<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image28.png" alt="Image28.png"></p>
+<p>第二步：打开VisualSVN Server Manager，选择版本库【demo1-mvcone】，选择【trunk】，在【trunk】上点击右键选择【Copy URL to Cliboard】，将版本库主杆地址copy到剪贴板。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image29.png" alt="Image29.png"></p>
+<p>第三步：进入本机源码所在的目录，右键菜单，选择【TortoiseSVN】，选择【导入…】<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image30.png" alt="Image30.png"></p>
+<p>第四步：在版本库URL输入框里粘贴版本库地址，填上导入信息，强烈建议每次提交都填入导入信息，便于看日志做了哪些更改<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image31.png" alt="Image31.png"></p>
+<p>第五步：输入svn  server版本库demo1-mvcone的用户名和密码，点击确定开始上传<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image32.png" alt="Image32.png"></p>
+<p>第六步：等待上传，完成上传<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image33.png" alt="Image33.png"></p>
+<blockquote>
+<p>注意：我们可以看到本次完成上传的时间是11分钟，耗时太久，浪费时间，因此，此处建议不要上传.temp、.vscode、node_modules等文件，因为耗时太久、可以先将源码更新下来再在本地<code>npm install</code>进行手动更新需要加载的模块，这样可以提高上传下载效率</p>
+</blockquote>
+<p>第七步：修改ignore文件、重新上传<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image34.png" alt="Image34.png"><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image35.png" alt="Image35.png"></p>
+<p>第八步：刷新服务端，我们可以看到我们的代码已经上传到服务端了，可以开始进行客户端操作了<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image36.png" alt="Image36.png"></p>
+<h4 id="2-2-5-1-遇到的问题"><a href="#2-2-5-1-遇到的问题" class="headerlink" title="2.2.5.1. 遇到的问题"></a>2.2.5.1. 遇到的问题</h4><p>注意：我在其他环境种导入代码遇到了如下问题：</p>
+<p><strong>1. 不知道这样的主机</strong><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image37.png" alt="Image37.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image38.png" alt="Image38.png"></p>
+<p><strong>原因：</strong> 地址<a href="https://e2jdkdwwxx01/svn/faqRepositories/trunk" target="_blank" rel="noopener">https://e2jdkdwwxx01/svn/faqRepositories/trunk</a> 中e2jdkdwwxx01是虚拟机的名字<br><strong>解决方法：</strong> 是把地址中“e2jdkdwwxx01”改成虚拟机的IP地址的形式，查询虚拟机IP地址方法是输入cmd打开命令提示符，再输入ipconfig，回车， IPv4地址即虚拟机的IP地址</p>
+<p>将地址改成<a href="https://10.30.4.89/svn/faqRepositories/trunk，即可继续上传" target="_blank" rel="noopener">https://10.30.4.89/svn/faqRepositories/trunk，即可继续上传</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image39.png" alt="Image39.png"></p>
+<p>此外，如果我们想修改我们的端口号，我们可以通过-&gt;右键-&gt;properties-Network来修改我们想要的端口号<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image40.png" alt="Image40.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image41.png" alt="Image41.png"></p>
+<p><strong>2. 提示证书认证失败的问题</strong><br><strong>解决办法：</strong> 直接选择“永久接受凭证”或者“接受凭证”即可<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image42.png" alt="Image42.png"></p>
+<p>输入SVN中设置的用户名和密码即可完成上传<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image43.png" alt="Image43.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image44.png" alt="Image44.png"></p>
+<p>打开服务器的VisualSVN，即可看到我们的代码已经更新到SVN服务器中了<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image45.png" alt="Image45.png"></p>
+<h1 id="三、SVN客户端安装及使用方法"><a href="#三、SVN客户端安装及使用方法" class="headerlink" title="三、SVN客户端安装及使用方法"></a>三、SVN客户端安装及使用方法</h1><h2 id="3-1-TortoiseSVN安装"><a href="#3-1-TortoiseSVN安装" class="headerlink" title="3.1 TortoiseSVN安装"></a>3.1 TortoiseSVN安装</h2><p>第一步：首先要下载SVN客户端，下载地址：<a href="https://tortoisesvn.net/downloads.zh.html" target="_blank" rel="noopener">https://tortoisesvn.net/downloads.zh.html</a>  ，根据系统选择对应的版本。</p>
+<p>第二步： 双击安装程序 TortoiseSVN-1.14.1.29085-x64-svn-1.14.1.msi<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-1.png" alt="Image3-1.png"></p>
+<p>第三步：进入版权信息页面，直接点击Next<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-2.png" alt="Image3-2.png"></p>
+<p>第四步：选择安装位置和需要的特性，默认，一般直接点击Next即可（你也可以根据自己的需求进行选择安装），具体想安装在哪个盘可以自定义<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-3.png" alt="Image3-3.png"></p>
+<p>第五步：进入到安装界面，点击Install开始安装<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-4.png" alt="Image3-4.png"></p>
+<p>第六步：点击Install后，进入到安装界面，可以看到安装的进度条，耐性等待哦<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-5.png" alt="Image3-5.png"></p>
+<p>第七步：选上，更新日志，可以查看更新的版本详细信息，也可以不够选，点击Finish完成安装<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-6.png" alt="Image3-6.png"></p>
+<h2 id="3-2-安装TortoiseSVN汉化包"><a href="#3-2-安装TortoiseSVN汉化包" class="headerlink" title="3.2 安装TortoiseSVN汉化包"></a>3.2 安装TortoiseSVN汉化包</h2><p>第一步：双击【LanguagePack_1.14.1.29085-x64-zh_CN.msi】安装TortoiseSVN汉化包。</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-7.png" alt="Image3-7.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-8.png" alt="Image3-8.png"></p>
+<p>第二步：安装完成后，在资源管理器空白处单击鼠标右键，就可以看到汉化版的TortoiseSVN菜单。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-9.png" alt="Image3-9.png"></p>
+<p>第三步：选择 【Settings】，将General选项的Language设置为【简体中文】,【确定】后菜单文都变成中文的了。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-10.png" alt="Image3-10.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-11.png" alt="Image3-11.png"></p>
+<h2 id="3-3-TortoiseSVN使用方法"><a href="#3-3-TortoiseSVN使用方法" class="headerlink" title="3.3 TortoiseSVN使用方法"></a>3.3 TortoiseSVN使用方法</h2><h3 id="3-3-1-下载源码到本地"><a href="#3-3-1-下载源码到本地" class="headerlink" title="3.3.1 下载源码到本地"></a>3.3.1 下载源码到本地</h3><p>第一步：在本地新建文件夹，右键SVN检出<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-12.png" alt="Image3-12.png"></p>
+<p>第二步：填写版本库URL，导出源码<br><a href="https://lichang.supcon.com/svn/faqRepositories/trunk" target="_blank" rel="noopener">https://lichang.supcon.com/svn/faqRepositories/trunk</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-13.png" alt="Image3-13.png"></p>
+<p>第三步：等待导出完成，导出完成，此时导出的代码为最新的源码版本<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-14.png" alt="Image3-14.png"></p>
+<p>注意：如果我们之前有进行过版本库检出，后续要修改代码直接 -&gt; 右键 -&gt; SVN更新（SVN update），将代码更新到最新版即可</p>
+<p>第四步：这个时候我们可以看到文件目录中已经把源码下下来了，左下角的绿色小图标代表此时文件状内容和服务器中的源码保持一致<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-15.png" alt="Image3-15.png"></p>
+<p>第五步：打开终端，进入到代码目录，输入npm install<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-16.png" alt="Image3-16.png"></p>
+<p>即可看到我们的目录中重新加载了node_modules<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-17.png" alt="Image3-17.png"></p>
+<blockquote>
+<p><code>node_modules</code>是安装node后用来存放用包管理工具下载安装的包的文件夹。比如webpack、gulp、grunt这些工具。</p>
+</blockquote>
+<p>第六步：接下来输入口令：yarn docs:dev<br>注意：如果不执行第五步，直接执行第六步就会报错哦<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-18.png" alt="Image3-18.png"></p>
+<p>完成第五步第六步，输入口令：yarn docs:dev，即可运行程序显示界面<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-19.png" alt="Image3-19.png"><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-20.png" alt="Image3-20.png"><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-21.png" alt="Image3-21.png"></p>
+<h3 id="3-3-2-文件上传（SVN-commit）"><a href="#3-3-2-文件上传（SVN-commit）" class="headerlink" title="3.3.2 文件上传（SVN commit）"></a>3.3.2 文件上传（SVN commit）</h3><p>当我们编写完我们想要更新的文件，想要将其上传到服务器中，那么，你要了解接下来的一系列操作。  </p>
+<p>第一步：我们可以看到，未被修改过的文件显示绿色对号，修改过未上传的文件会被标注红色叹号，新创建的文件左下角没有标识<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-22.png" alt="Image3-22.png"></p>
+<p>第二步：找到需要上传的文件或文件夹，点击右键，选中SVN提交（SVN commit）</p>
+<p>我们可以单独提交某个文件<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-23.png" alt="Image3-23.png"></p>
+<p>也可以提交整个文件夹<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-24.png" alt="Image3-24.png"></p>
+<p>选中所要上传的文档，并填写commit message来记录上传内容<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-25.png" alt="Image3-25.png"></p>
+<p>提示提交成功则完成代码提交<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-26.png" alt="Image3-26.png"></p>
+<p>提交完成可以看到我们的图标已经变成了绿色对号<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-27.png" alt="Image3-27.png"></p>
+<h2 id="3-3-3-查看更新内容（show-log）"><a href="#3-3-3-查看更新内容（show-log）" class="headerlink" title="3.3.3 查看更新内容（show log）"></a>3.3.3 查看更新内容（show log）</h2><p>我们可以 -&gt; 右键 -&gt; TortoiseSVN -&gt; 显示日志 查看文档更新的内容</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-28.png" alt="Image3-28.png"></p>
+<p>双击修改文件，可以查看修改细节，参考下图：</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-29.png" alt="Image3-29.png"></p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-30.png" alt="Image3-30.png"></p>
+<h2 id="3-3-4-设置钩子，使得VisualSVN-Server可以自动发布配置部署svn代码到web目录服务器上线"><a href="#3-3-4-设置钩子，使得VisualSVN-Server可以自动发布配置部署svn代码到web目录服务器上线" class="headerlink" title="3.3.4 设置钩子，使得VisualSVN Server可以自动发布配置部署svn代码到web目录服务器上线"></a>3.3.4 设置钩子，使得VisualSVN Server可以自动发布配置部署svn代码到web目录服务器上线</h2><blockquote>
+<p>SVN钩子有很多种：</p>
+<ul>
+<li>post-commit 在提交完成成功创建版本之后执行该钩子，提交已经完成，不可更改。</li>
+<li>pre-commit 提交完成前触发执行该脚本</li>
+<li>start-commit 在客户端还没有想服务器提交数据之前，及没有建立Subversion transaction 之前。</li>
+</ul>
+</blockquote>
+<p>仓库-&gt;右键-&gt;Properties-&gt;Hooks，添加一个post- commit文件；当有commit动作发生时（提交到SVN Server时）就会执行这个post-commit文件，在该文件实现数据的复制。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-31.png" alt="Image3-31.png"></p>
+<p>适用条件：<br>SVN Server与测试用的Web Server在同一台Windows系统服务器上，SVN Server使用的是VisualSVN，Web Server使用的是Apache。项目的名称为faqSVN，客户端使用TortoiseSVN。首先创建一个文件夹，进行checkout，输入需要用户名和密码，将test项目取出到该文件夹中。<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-32.png" alt="Image3-32.png"></p>
+<p>找到SVN Server的Repositories目录，在Repositories/test/hooks文件夹中创建post-commit.bat，在其中写入命令：</p>
+<pre><code>&quot;C:\Program Files\VisualSVN Server\bin\svn.exe&quot; update &quot;D:\www\test&quot; --quiet --username name --password pwd（即执行svn update命令，请自行替换用户名和密码）
+</code></pre><p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-33.png" alt="Image3-33.png"></p>
+<p>也可以这样写</p>
+<p>@echo off<br>SET REPOS=%1<br>SET REV=%2<br>SET DIR=%REPOS%/hooks<br>SET PATH=%PATH%;<br>SET WORKING_COPY=C:\lichang\faqSVN<br>“C:\Program Files\VisualSVN Server\bin\svn.exe” update %WORKING_COPY% –username admin –password 123456</p>
+<p><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-34.png" alt="Image3-34.png"><br>注意：修改完钩子文件，我们需要重启一下VisualSVN<br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image3-35.png" alt="Image3-35.png"></p>
+<p>post-commit文件设置完成后，我们可以测试一下，当我们在客户端提交SVN文件的时候,VisualSVN Server会通过这个钩子文件，将SVN中更新的内容自动update到我们本地部署的faqSVN文件夹中</p>
+
+    </div>
+</div>
+
+<div class="cube-article-nav">
+    <ul>
+        
+        <li class="prev">
+            <a href="/2021/08/28/SVN常见问题汇总/">
+                <i class="cube-icon cube-prev" aria-hidden="true"></i>
+                SVN常见问题汇总
+            </a>
+        </li>
+        
+        
+        <li class="next">
+            <a href="/2021/06/18/VuePress-项目搭建过程/">
+                VuePress-项目搭建过程
+                <i class="cube-icon cube-next" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+<!-- TODO 根据theme.comment的内容进行入口选择 -->
+
+
+
+        </div>
+        <div class="cube-right">
+            
+
+<div class="cube-search cube-sidebar" id="cube-search">
+    <div class="search-container">
+        <input type="text" placeholder="Search" class="cube-search-input" id="cube-search-input">
+        <i class="cube-icon cube-icon-search cube-search-submit" aria-hidden="true"></i>
+    </div>
+    <!-- TODO 通过给window赋一个全局变量，通过脚本赋值 -->
+</div>
+<script>
+    (function (window) {
+        'use strict';
+        window.searchModule = {}
+        window.searchModule.JSONUrl = '/content.json'
+        window.searchModule.rootUrl = '/'
+    })(window)
+</script>
+<div class="cube-search-form">
+    <div class="cube-search-control">
+        <input type="text" placeholder="Search" class="search-input">
+        <a class="close-button">
+            <i class="cube-icon cube-close" aria-hidden="true"></i>
+        </a>
+    </div>
+    <div class="cube-search-result"></div>
+</div>
+
+
+<div class="cube-author cube-sidebar" id="cube-author">
+    
+    
+    <span>Lililich&#39;s Blog</span>
+    
+    
+    <div class="count">
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
+    </div>
+</div>
+
+
+
+<div class="cube-music cube-sidebar" id="cube-music">
+    <div class="cube-player aplayer" id="cube-player"></div>
+</div>
+<script>
+    (function (window) {
+        window.musicModule = {}
+        window.musicModule.musicConfig = '{"narrow":false,"autoplay":false,"showlrc":3,"theme":"#b7daff","mutex":true,"mode":"circulation","preload":"auto","listmaxheight":"513px","music":[{"title":"Dear friends","author":"TRIPLANE","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/TRIPLANE - Dear friends.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Dear friends - TRIPLANE.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/TRIPLANE - Dear friends.jpg"},{"title":"Butter-Fly","author":"和田光司","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/和田光司 - Butter-Fly (ピアノヴァージョン).mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/Butter-Fly (ピアノヴァージョン) - 和田光司.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/和田光司 - Butter-Fly (ピアノヴァージョン).jpg"},{"title":"宵闇花火","author":"葉月ゆら","url":"http://cube-1252774894.cosgz.myqcloud.com/music/source/葉月ゆら - 宵闇花火.mp3","lrc":"http://cube-1252774894.cosgz.myqcloud.com/music/lrc/宵闇花火 - 葉月ゆら.lrc","pic":"http://cube-1252774894.cosgz.myqcloud.com/music/image/葉月ゆら - 宵闇花火.jpg"}]}'
+        window.musicModule.lrcConfig = {
+            open: 'Open Lyrics',
+            close: 'Close Lyrics'
+        }
+    })(window)
+</script>
+
+
+
+<div class="cube-recent-posts cube-sidebar" id="cube-recent-posts">
+    <div class="title">
+        <a>Recent Posts</a>
+    </div>
+    <ul class="list">
+        
+        
+        <li>
+            <!-- TODO 如果文章要显示图片，那么在front-matter上添加preview属性(url or path) -->
+            
+            <div class="normal">
+                <p class="index first">
+                    <span>1</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
+                </p>
+            </div>
+            
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>2</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>3</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>4</span>
+                </p>
+                <p class="title">
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
+                </p>
+            </div>
+        </li>
+        
+        
+        
+        <li>
+            <div class="normal">
+                <p class="index">
+                    <span>5</span>
+                </p>
+                <p class="title">
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
+                </p>
+            </div>
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-categories cube-sidebar" id="cube-categories">
+    <div class="title">
+        <a href="/categories">Categories</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/语法/">#语法</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/算法/">#算法</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/面经/">#面经</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-tagcloud cube-sidebar" id="cube-tagcloud">
+    <div class="title">
+        <a href="/tags">Tagcloud</a>
+    </div>
+    <div class="cube-boxs">
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS/">#CSS</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Echarts/">#Echarts</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/React/">#React</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/编程/">#编程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Hexo/">#Hexo</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Markdown/">#Markdown</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/SVN/">#SVN</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VScode/">#VScode</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/VuePress/">#VuePress</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/webpack/">#webpack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
+        </div>
+        
+    </div>
+</div>
+
+
+
+<div class="cube-links cube-sidebar" id="cube-links">
+    <div class="title">
+        <a>Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            
+            
+            <img src="http://cube-1252774894.cosgz.myqcloud.com/links/GitHub.png">
+            
+            <a href="https://github.com/lililich" target="_blank">GitHub</a>
+        </li>
+        
+        <li>
+            
+            
+            <img src="/images/weibo.jpg">
+            
+            <a href="https://weibo.com/2046576567/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" target="_blank">Weibo</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+<div class="cube-friend-links cube-sidebar" id="cube-friend-links">
+    <div class="title">
+        <a>Friend Links</a>
+    </div>
+    <ul class="list">
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Shuki.jpg">
+            <a href="https://shuki.top/" target="_blank">Shuki</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Rayshell.png">
+            <a href="https://www.Rayshell.work/" target="_blank">Rayshell</a>
+        </li>
+        
+        <li>
+            <!-- TODO change avatar.png to friend.png-->
+            <img src="/images/Friendlink/Vikeezan.jpg">
+            <a href="http://vikeezan.club/" target="_blank">Vikeezan</a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+    </div>
+</div>
+<footer class="cube-footer">
+    
+© 2017 Lililich&#39;s Blog
+
+<br>
+Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
+</footer>
+<!-- inject:script -->
+<script src="/js/script.js"></script>
+<!-- endinject -->
+<div class="cube-loading out"></div>
+</body>
+</html>

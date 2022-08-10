@@ -104,7 +104,7 @@
     <img src=" /images/background.jpg " alt="头部背景图片">
     
     <div class="cube-type">
-        <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+        <span class="cube-typed-title">小畅的学习笔记</span>
         <span class="cube-typed-cursor">|</span>
     </div>
     
@@ -140,7 +140,7 @@
     <header class="cube-background cube-header-background">
         
         <div class="cube-type">
-            <span class="cube-typed-title">小畅童鞋的学习笔记</span>
+            <span class="cube-typed-title">小畅的学习笔记</span>
             <span class="cube-typed-cursor">|</span>
         </div>
         
@@ -161,20 +161,18 @@
     <div class="cube-content">
         <div class="cube-left">
             
-<div class="cube-excerpt" id="cube-excerpt-二叉树的前序遍历、中序遍历和后序遍历">
+<div class="cube-excerpt" id="cube-excerpt-SVN常见问题汇总">
     <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">二叉树的前序遍历、中序遍历和后序遍历</a></h1>
+        <h1><a href="/2021/08/28/SVN常见问题汇总/">SVN常见问题汇总</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-19
+                2021-08-28
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/编程/" class="cube-excerpt-tag-link">#编程</a>
-                
-                <a href="/tags/二叉树/" class="cube-excerpt-tag-link">#二叉树</a>
+                <a href="/tags/SVN/" class="cube-excerpt-tag-link">#SVN</a>
                 
             </div>
         </div>
@@ -182,32 +180,156 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <h3 id="1、概念"><a href="#1、概念" class="headerlink" title="1、概念"></a>1、概念</h3><p>树是一种非顺序数据结构（节点，根节点，内部节点，外部节点，子树，深度）</p>
-<p>节点包括（key left right）</p>
-<p>二叉搜索树是二叉树的一种，左节点key值&lt;父节点key值，右节点key值&gt;=父节点key值</p>
-<p>（1）前序遍历<br>      a、访问根节点；b、前序遍历左子树；c、前序遍历右子树。</p>
-<p>（2）中序遍历<br>      a、中序遍历左子树；b、访问根节点；c、中序遍历右子树。</p>
-<p>（3）后序遍历<br>      a、后序遍历左子树；b、后续遍历右子树；c、访问根节点。<br></p>
+           <h2 id="SVN常见问题汇总："><a href="#SVN常见问题汇总：" class="headerlink" title="SVN常见问题汇总："></a>SVN常见问题汇总：</h2><p><strong>1. post-commit中，系统找不到指定的路径</strong><br><img src="//lililich.work/2021/08/28/SVN常见问题汇总/Image1.png" alt="Image1.png"><br>解决办法：钩子函数中路径不对，核对post-commit文件中所用到的文件路径</p>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/19/二叉树的前序遍历、中序遍历和后序遍历之间还原二叉树/">Read More</a>
+        <a class="cube-excerpt-more" href="/2021/08/28/SVN常见问题汇总/">Read More</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-算法编程题">
+<div class="cube-excerpt" id="cube-excerpt-SVN环境搭建">
     <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/18/算法编程题/">算法编程题</a></h1>
+        <h1><a href="/2021/08/24/SVN环境搭建/">SVN环境搭建</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-18
+                2021-08-24
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/SVN/" class="cube-excerpt-tag-link">#SVN</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>最近有个项目，要把界面搭建在web服务器上，同时支持通过SVN上传修改代码同步界面，因此学习一下SVN搭建过程，跟着我一起来学习吧~</p>
+<h1 id="一、SVN下载地址"><a href="#一、SVN下载地址" class="headerlink" title="一、SVN下载地址"></a>一、SVN下载地址</h1><p>Subversion（SVN）它是一个自由/开源的版本控制系统，一组文件存放在中心版本库，记录每一次文件和目录的修改，SVN允许把数据恢复到早期版本，或是检查数据修改的历史，它可以通过网络访问它的版本库，从而使用户在不同的电脑上进行操作。</p>
+<p>SVN包含两部分，<code>SVN服务端</code>和<code>SVN客户端</code>，最好两部分搭配使用，下载地址如下：</p>
+<ul>
+<li><p><strong>svn服务端下载地址：</strong><br><a href="https://www.visualsvn.com/server/download/" target="_blank" rel="noopener">https://www.visualsvn.com/server/download/</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image1.png" alt="Image1.png"></p>
+</li>
+<li><p><strong>svn客户端及中文包下载地址：</strong><br><a href="https://tortoisesvn.net/downloads.zh.html" target="_blank" rel="noopener">https://tortoisesvn.net/downloads.zh.html</a><br><img src="//lililich.work/2021/08/24/SVN环境搭建/Image2.png" alt="Image2.png"></p>
+</li>
+</ul>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/08/24/SVN环境搭建/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-VuePress-项目搭建过程">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/06/18/VuePress-项目搭建过程/">VuePress-项目搭建过程</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-06-18
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/VuePress/" class="cube-excerpt-tag-link">#VuePress</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>搭建参考文档：<br><a href="https://segmentfault.com/a/1190000017055963" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017055963</a><br><a href="https://blog.csdn.net/weixin_39157014/article/details/110423784" target="_blank" rel="noopener">https://blog.csdn.net/weixin_39157014/article/details/110423784</a></p>
+<h3 id="一、安装yarn"><a href="#一、安装yarn" class="headerlink" title="一、安装yarn"></a>一、安装yarn</h3><h4 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h4><pre><code>npm i -g -yarn
+</code></pre><p><img src="//lililich.work/2021/06/18/VuePress-项目搭建过程/Image1.png" alt="Image1.png"></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/06/18/VuePress-项目搭建过程/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-移动端返回后页面刷新">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/04/24/移动端返回后页面刷新/">移动端返回后页面刷新</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-04-24
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
                 <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
                 
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>学习参考：<br><a href="https://blog.csdn.net/qq_35430000/article/details/109098866?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link" target="_blank" rel="noopener">https://blog.csdn.net/qq_35430000/article/details/109098866?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-1.no_search_link</a></p>
+<h2 id="移动端返回刷新"><a href="#移动端返回刷新" class="headerlink" title="移动端返回刷新"></a>移动端返回刷新</h2><p>手机端返回后页面不刷新，一些失效的信息依然显示在页面上。这个问题在iphone手机上会出现，在Android手机上返回时会自动刷新，为了解决这个问题，可以用pageshow方法。</p>
+<p><strong>onpageshow 事件在用户浏览网页时触发。</strong><br>onpageshow 事件类似于 onload 事件，onload 事件在页面第一次加载时触发， onpageshow 事件在每次加载页面时触发，即 onload 事件在页面从浏览器缓存中读取时不触发，此外还有pagehide在不显示的时候触发。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/04/24/移动端返回后页面刷新/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-页面加载前进后退的方法">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/04/12/页面加载前进后退的方法/">页面加载前进后退的方法</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-04-12
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="1-页面加载方法："><a href="#1-页面加载方法：" class="headerlink" title="1.页面加载方法："></a>1.页面加载方法：</h2><h3 id="1-1-location-href常见的几种形式"><a href="#1-1-location-href常见的几种形式" class="headerlink" title="1.1 location.href常见的几种形式"></a>1.1 location.href常见的几种形式</h3><pre><code>self.location.href;//当前页面打开URL页面
+window.location.href;//当前页面打开URL页面
+this.location.href;//当前页面打开URL页面
+location.href;// 当前页面打开URL页面
+parent.location.href;//在父页面打开新页面
+top.location.href;//在顶层页面打开新页面 
+</code></pre><blockquote>
+<p>注：location是window对象的属性，而所有的网页下的对象都是属于window作用域链中（这是顶级作用域），所以使用时是可以省略window。而top是指向顶级窗口对象，parent是指向父级窗口对象。</p>
+</blockquote>
+<p>如果页面中自定义了frame，那么可将parent、self、top换为自定义frame的名称,效果是在frame窗口打开url地址。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/04/12/页面加载前进后退的方法/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-React-井字棋游戏案例">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/04/08/React-井字棋游戏案例/">React-井字棋游戏案例</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-04-08
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/React/" class="cube-excerpt-tag-link">#React</a>
+                
                 <a href="/tags/编程/" class="cube-excerpt-tag-link">#编程</a>
                 
             </div>
@@ -216,55 +338,130 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>本文总结了很多简单的算法编程：</p>
+           <p>学习教程：<a href="https://zh-hans.reactjs.org/tutorial/tutorial.html" target="_blank" rel="noopener">React井字游戏教材</a><br>井字棋游戏扩展：<br><a href="https://blog.csdn.net/xxdesky/article/details/103427340" target="_blank" rel="noopener">https://blog.csdn.net/xxdesky/article/details/103427340</a><br><a href="https://blog.csdn.net/qq_40792800/article/details/106567832?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242" target="_blank" rel="noopener">https://blog.csdn.net/qq_40792800/article/details/106567832?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_title~default-0.control&amp;spm=1001.2101.3001.4242</a></p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/04/08/React-井字棋游戏案例/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-React学习笔记2（官网学习）">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/03/28/React学习笔记2/">React学习笔记2（官网学习）</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-03-28
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/React/" class="cube-excerpt-tag-link">#React</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><h3 id="1-在网站中添加React"><a href="#1-在网站中添加React" class="headerlink" title="1. 在网站中添加React"></a>1. 在网站中添加React</h3><h4 id="（1）添加一个DOM容器到HTML中"><a href="#（1）添加一个DOM容器到HTML中" class="headerlink" title="（1）添加一个DOM容器到HTML中"></a>（1）添加一个DOM容器到HTML中</h4><p>首先，打开你想要编辑的 HTML 页面。添加一个空的 <code>&lt;div&gt;</code> 标签作为标记你想要用 React 显示内容的位置。例如：</p>
+<pre><code>&lt;!-- ... 其它 HTML ... --&gt;
+&lt;div id=&quot;like_button_container&quot;&gt;&lt;/div&gt;
+&lt;!-- ... 其它 HTML ... --&gt;
+</code></pre><p>我们给这个 <code>&lt;div&gt;</code> 加上唯一的 id HTML 属性。这将允许我们稍后用 JavaScript 代码找到它，并在其中显示一个 React 组件。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/03/28/React学习笔记2/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-React学习笔记1">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/03/16/React学习笔记1/">React学习笔记1</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-03-16
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/React/" class="cube-excerpt-tag-link">#React</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>今天我们来学习一下作为三大主流框架之一的React，跟着我一起学习吧~</p>
+<h3 id="一、安装"><a href="#一、安装" class="headerlink" title="一、安装"></a>一、安装</h3><p>React 的核心思想是：封装组件。<br>各个组件维护自己的状态和 UI，当状态变更，自动重新渲染整个组件。<br>基于这种方式的一个直观感受就是我们不再需要不厌其烦地来回查找某个 DOM 元素，然后操作 DOM 去更改 UI。React 大体包含下面这些概念：<br>组件<br>JSX<br>Virtual DOM<br>Data Flow<br>这里通过一个简单的组件来快速了解这些概念，以及建立起对 React 的一个总体认识。</p>
+<pre><code>import React, { Component } from &apos;react&apos;;
+import { render } from &apos;react-dom&apos;;
+
+class HelloMessage extends Component {
+    render() {
+        return &lt;div&gt;Hello {this.props.name}&lt;/div&gt;;
+    }
+}
+
+// 加载组件到 DOM 元素 mountNode
+render(&lt;HelloMessage name=&quot;John&quot; /&gt;, mountNode);
+</code></pre><p>React 的安装包，可以到<a href="https://reactjs.org/docs/getting-started.html" target="_blank" rel="noopener">官网</a>下载。</p>
+        
+    </article>
+    <footer class="cube-excerpt-footer">
+        <a class="cube-excerpt-more" href="/2021/03/16/React学习笔记1/">Read More</a>
+    </footer>
+</div>
+
+<div class="cube-excerpt" id="cube-excerpt-Grid布局方式">
+    <header class="cube-excerpt-header">
+        <h1><a href="/2021/01/27/Grid布局方式/">Grid布局方式</a></h1>
+        <div class="cube-excerpt-header-msg">
+            <div class="cube-excerpt-date">
+                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
+                2021-01-27
+            </div>
+            <div class="cube-excerpt-tags">
+                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
+                
+                <a href="/tags/Grid/" class="cube-excerpt-tag-link">#Grid</a>
+                
+            </div>
+        </div>
+    </header>
+    <article class="cube-excerpt-entry cube-markdown">
+        
+        
+           <p>作为前端必备知识点，Grid为我们页面布局提供了灵活性，今天我们来学一下Grid布局吧~<br>学习参考:<a href="http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html" target="_blank" rel="noopener">阮一峰CSS Grid 网格布局教程</a></p>
+<h2 id="一、概述"><a href="#一、概述" class="headerlink" title="一、概述"></a>一、概述</h2><p>网格布局（Grid）是最强大的 CSS 布局方案。它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局。以前，只能通过复杂的 CSS 框架达到的效果，现在浏览器内置了。</p>
+<p>Grid 布局与 Flex 布局有一定的相似性，都可以指定容器内部多个项目的位置。但是，它们也存在重大区别。</p>
 <ul>
-<li>降维</li>
-<li>排序</li>
-<li>去重</li>
-<li>统计一个字符串出现最多的字母</li>
-<li>不借助临时变量，进行两个整数的交换</li>
-<li>找出下列正数组的最大差值</li>
-<li>随机生成指定长度的字符串</li>
-<li>实现类似getElementsByClassName 的功能</li>
-<li>判断一个单词是否是回文？</li>
-<li>找出最长单词</li>
-<li>string 里的每个单词首字母大写</li>
-<li>判断字符串是否是指定字符结尾</li>
-<li>重复字符串指定次数</li>
-<li>找出字符串中出现最多的字符和个数</li>
-<li>创建一个函数判断给定的表达式中的小括号是否闭合</li>
-<li>在字符串中找出连续最长的数字串</li>
-<li>使用canvas 绘制一个有限度的斐波那契数列的曲线？</li>
-<li>实现阶乘</li>
-<li>过滤敏感词</li>
-<li>二分查找</li>
-<li>App版本比较</li>
-<li>生成菲波那切数列</li>
-<li>使用JS 实现二叉查找树(Binary Search Tree)</li>
-<li>密码强度判断</li>
-<li>修改路由规则</li>
-<li>字符串大小写转换</li>
+<li><strong>Flex 布局是轴线布局，只能指定”项目”针对轴线的位置，可以看作是一维布局。</strong></li>
+<li><strong>Grid 布局则是将容器划分成”行”和”列”，产生单元格，然后指定”项目所在”的单元格，可以看作是二维布局。Grid 布局远比 Flex 布局强大。</strong></li>
 </ul>
-<p>跟着我一起学习吧~<br></p>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/18/算法编程题/">Read More</a>
+        <a class="cube-excerpt-more" href="/2021/01/27/Grid布局方式/">Read More</a>
     </footer>
 </div>
 
-<div class="cube-excerpt" id="cube-excerpt-HTML5语义化标签的理解">
+<div class="cube-excerpt" id="cube-excerpt-获取页面的宽度和高度">
     <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/16/HTML5语义化标签的理解/">HTML5语义化标签的理解</a></h1>
+        <h1><a href="/2020/12/21/获取页面的宽度和高度/">获取页面的宽度和高度</a></h1>
         <div class="cube-excerpt-header-msg">
             <div class="cube-excerpt-date">
                 <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-16
+                2020-12-21
             </div>
             <div class="cube-excerpt-tags">
                 <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
                 
-                <a href="/tags/html/" class="cube-excerpt-tag-link">#html</a>
+                <a href="/tags/js/" class="cube-excerpt-tag-link">#js</a>
                 
             </div>
         </div>
@@ -272,263 +469,19 @@
     <article class="cube-excerpt-entry cube-markdown">
         
         
-           <p>语义化标签的好处要从HTML 全局属性说起，即有的标签有默认的HTML全局属性，所以最好用语义化标签。<br><strong>引入语义化标签的好处主要有下列三点：</strong></p>
-<ul>
-<li>比div标签有更加丰富的含义，方便开发与维护</li>
-<li>搜索引擎能更方便的识别页面的每个部分</li>
-<li>方便其他设备解析（如移动设备、盲人阅读器等）</li>
-</ul>
-<p>1：以下元素支持 tabindex 属性：</p>
-<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;object&gt;, &lt;select&gt; 以及 &lt;textarea&gt;。
-</code></pre><p>用法：<element tabindex="number">number规定元素的 tab 键控制次序（1 是第一个）。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br>2：以下元素支持 accesskey 属性：</element></p>
-<pre><code>&lt;a&gt;, &lt;area&gt;, &lt;button&gt;, &lt;input&gt;, &lt;label&gt;, &lt;legend&gt; 以及 &lt;textarea&gt;。
-</code></pre><p>用法：<element accesskey="character">character规定激活（使元素获得焦点）元素的便捷按键。<br><strong>作用：增强用户键盘的可操作性，所以不要用div代替</strong><br></element></p>
+           <h3 id="1-clientHeight-clientWidth"><a href="#1-clientHeight-clientWidth" class="headerlink" title="1. clientHeight clientWidth"></a>1. clientHeight clientWidth</h3><p>元素的像素高度,包含元素的高度+内边距,不包含水平滚动条,边框和外边距。</p>
+<p>包括padding但不包括border、水平滚动条、margin的元素的高度。对于inline的元素这个属性一直是0，单位px，只读元素。</p>
+<p><img src="//lililich.work/2020/12/21/获取页面的宽度和高度/Image1.png" alt="Image1.png"></p>
         
     </article>
     <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/16/HTML5语义化标签的理解/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Vue总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/15/Vue总结/">Vue总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-15
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/面经/" class="cube-excerpt-tag-link">#面经</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <h3 id="什么是MVVM？"><a href="#什么是MVVM？" class="headerlink" title="什么是MVVM？"></a>什么是MVVM？</h3><p>MVVM是Model-View-ViewModel的缩写。MVVM是一种设计思想。Model 层代表数据模型，也可以在Model中定义数据修改和操作的业务逻辑；View 代表UI 组件，它负责将数据模型转化成UI 展现出来，ViewModel 是一个同步View 和Model的对象（桥梁）。</p>
-<p>在MVVM架构下，View 和 Model 之间并没有直接的联系，而是通过ViewModel进行交互，Model 和 ViewModel 之间的交互是双向的， 因此View 数据的变化会同步到Model中，而Model 数据的变化也会立即反应到View 上。</p>
-<p>ViewModel 通过双向数据绑定把 View 层和 Model 层连接了起来，而View 和 Model 之间的同步工作完全是自动的，无需人为干涉，因此开发者只需关注业务逻辑，不需要手动操作DOM, 不需要关注数据状态的同步问题，复杂的数据状态维护完全由 MVVM 来统一管理。</p>
-<h3 id="mvvm和mvc区别？它和其它框架（jquery）的区别是什么？哪些场景适合？"><a href="#mvvm和mvc区别？它和其它框架（jquery）的区别是什么？哪些场景适合？" class="headerlink" title="mvvm和mvc区别？它和其它框架（jquery）的区别是什么？哪些场景适合？"></a>mvvm和mvc区别？它和其它框架（jquery）的区别是什么？哪些场景适合？</h3><p>mvc和mvvm其实区别并不大。都是一种设计思想。主要就是mvc中Controller演变成mvvm中的viewModel。mvvm主要解决了mvc中大量的DOM 操作使页面渲染性能降低，加载速度变慢，影响用户体验。<br>区别：vue数据驱动，通过数据来显示视图层而不是节点操作。<br>场景：数据操作比较多的场景，更加便捷</p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/15/Vue总结/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-前后端交互总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/10/前后端交互总结/">前后端交互总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-10
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/面经/" class="cube-excerpt-tag-link">#面经</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>秋招季，总结一下前后端交互部分面经~</p>
-<h3 id="一-跨域问题："><a href="#一-跨域问题：" class="headerlink" title="一. 跨域问题："></a>一. 跨域问题：</h3><h4 id="什么是跨域？"><a href="#什么是跨域？" class="headerlink" title="什么是跨域？"></a>什么是跨域？</h4><p>跨域，指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对JavaScript施加的安全限制。<br>所谓同源是指，协议，域名，端口均相同。<br>注意：<br>如果是协议和端口造成的跨域问题“前台”是无能为力的；<br>在跨域问题上，域仅仅是通过“URL的首部”来识别</p>
-<h4 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h4><p><strong>特别注意两点：</strong><br>第一，如果是协议和端口造成的跨域问题“前台”是无能为力的，<br>第二：在跨域问题上，域仅仅是通过“URL的首部”来识别而不会去尝试判断相同的ip地址对应着两个域或两个域是否在同一个ip上。<br><strong>1. JSONP方式解决跨域问题</strong><br>script标签src属性中的链接却可以访问跨域的js脚本，利用这个特性，服务端不再返回JSON格式的数据，而是返回一段调用某个函数的js代码，在src中进行了调用，这样实现了跨域。<br><strong>2. CORS解决跨域问题</strong><br>对后台进行配置，例如：PHP端修改header，然后配置Apache web服务器跨域<br><strong>3. 代理请求方式解决接口跨域问题</strong><br>前端对接口进行代理：（前端ajax请求的是本地接口；本地接口接收到请求后向实际的接口请求数据，然后再将信息返回给前端；一般用node.js即可代理；）<br>详情参考<a href>https://segmentfault.com/a/1190000012469713</a><br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/10/前后端交互总结/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Javascript总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/08/Javascript总结/">Javascript总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-08
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/面经/" class="cube-excerpt-tag-link">#面经</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>秋招季，总结一下HTML部分面经~</p>
-<h3 id="一-JS作用域和作用域链"><a href="#一-JS作用域和作用域链" class="headerlink" title="一. JS作用域和作用域链"></a>一. JS作用域和作用域链</h3><h4 id="1-作用域"><a href="#1-作用域" class="headerlink" title="1. 作用域:"></a>1. 作用域:</h4><p>作用域就是变量和函数的可访问范围，或者说变量或函数起作用的区域。</p>
-<ol>
-<li>javascript函数的作用域：<br>函数内的区域，就是这个函数的作用域，变量和函数在这个区域都可以访问操作。最外层函数外的区域叫<strong>全局用域</strong>，函数内的区域叫<strong>局部作用域</strong>。</li>
-<li>javascript变量的作用域：<br>在源代码中变量所在的区域，就是这个变量的作用域，变量在这个区域内可被访问操作。在全局作用域上定义的变量叫<strong>全局变量</strong>，在函数内定义的变量叫<strong>局部变量</strong>。</li>
-</ol>
-<h4 id="2-作用域链"><a href="#2-作用域链" class="headerlink" title="2. 作用域链"></a>2. 作用域链</h4><p>作用域链（Scope Chain）是javascript内部中一种变量、函数查找机制，它决定了变量和函数的作用范围，即作用域。每个作用域都有一条对应的作用域链，链头是全局作用域，链尾是当前函数作用域。</p>
-<h4 id="3-作用域链的作用"><a href="#3-作用域链的作用" class="headerlink" title="3. 作用域链的作用"></a>3. 作用域链的作用</h4><p>是保证执行环境里有权访问的变量和函数是有序的，作用域链的变量只能向上访问，变量访问到window对象即被终止，作用域链向下访问变量是不被允许的。<br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/08/Javascript总结/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-CSS总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/08/03/CSS总结/">CSS总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-08-03
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/面经/" class="cube-excerpt-tag-link">#面经</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>秋招季，总结一下CSS部分面经~</p>
-<h3 id="一-CSS3盒子模型"><a href="#一-CSS3盒子模型" class="headerlink" title="一. CSS3盒子模型"></a>一. CSS3盒子模型</h3><ul>
-<li><strong>盒子模型</strong><br><code>IE 盒子模型和标准 W3C 盒子模型</code>的范围包括 margin、border、padding、content<br>使用“标准 W3C 盒子模型”：在网页顶部加上Doctype声明。</li>
-<li><strong>在不同标准里width的区别</strong><br><code>在标准 W3C 盒子模型</code>中，width指content部分的宽度<br><code>在 IE 盒子模型中</code>，width表示（content+padding+border）这三个部分的宽度</li>
-<li><p><strong>box-sizing</strong><br><code>box-sizing: content-box</code> 是 W3C 盒子模型;content-box动态大小 | 受 “边框” “边距” 等属性影响<br><code>box-sizing: border-box</code> 是 IE 盒子模型;border-box固定大小 | 不受 “边框” “边距” 等属性影响</p></li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/08/03/CSS总结/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-HTML总结">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/07/23/HTML总结/">HTML总结</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-07-23
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/面经/" class="cube-excerpt-tag-link">#面经</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>秋招季，总结一下HTML部分面经~</p>
-<h3 id="一-行内元素、块级元素、空元素举例"><a href="#一-行内元素、块级元素、空元素举例" class="headerlink" title="一. 行内元素、块级元素、空元素举例"></a>一. 行内元素、块级元素、空元素举例</h3><ul>
-<li><code>空元素</code>没有内容的HTML元素。<br>空元素在开始标签中关闭的。（单标签）如：br、hr、img、input、param、meta、link</li>
-<li><code>行内元素</code>：a、b、span、img、input、strong、select、label、em、button、textarea</li>
-<li><code>块级元素</code>：div、ul、li、dl、dt、dd、p、h1-h6、blockquote</li>
-</ul>
-<h4 id="块级元素和行内元素区别"><a href="#块级元素和行内元素区别" class="headerlink" title="块级元素和行内元素区别"></a>块级元素和行内元素区别</h4><ol>
-<li>占据空间<br>块级元素总是单独占一行，并从新的一行开始；<br>行内元素和其他同为行内元素占据同一行。</li>
-<li>Width,height,Margin-padding是否可设置<br>块级可以，行内不可以。<br>通过改变元素的display可改变此属性。</li>
-<li>宽度<br>行内元素宽度与内容相关；<br>块级元素不设置则与浏览器同宽。</li>
-<li>容纳内容<br>块级元素可容纳内联元素和其他块元素；<br>行内元素只可容纳文本和其他行内元素。</li>
-</ol>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/07/23/HTML总结/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-使用flex布局来搭建基本的页面布局">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/19/使用flex布局来搭建基本的页面布局/">使用flex布局来搭建基本的页面布局</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-19
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-                <a href="/tags/flex/" class="cube-excerpt-tag-link">#flex</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>我们的目的是为了实现这样的布局：<br><img src="//lililich.work/2019/06/19/使用flex布局来搭建基本的页面布局/Image1.png" alt="Image1.png"><br></p>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/19/使用flex布局来搭建基本的页面布局/">Read More</a>
-    </footer>
-</div>
-
-<div class="cube-excerpt" id="cube-excerpt-Vue_CLI脚手架学习与搭建">
-    <header class="cube-excerpt-header">
-        <h1><a href="/2019/06/18/Vue-CLI脚手架学习与搭建/">Vue_CLI脚手架学习与搭建</a></h1>
-        <div class="cube-excerpt-header-msg">
-            <div class="cube-excerpt-date">
-                <i class="cube-icon cube-icon-date" aria-hidden="true"></i>
-                2019-06-18
-            </div>
-            <div class="cube-excerpt-tags">
-                <i class="cube-icon cube-icon-tag" aria-hidden="true"></i>
-                
-                <a href="/tags/前端/" class="cube-excerpt-tag-link">#前端</a>
-                
-            </div>
-        </div>
-    </header>
-    <article class="cube-excerpt-entry cube-markdown">
-        
-        
-           <p>今天我们来学习一下<a href="https://cli.vuejs.org/zh/guide/" target="_blank" rel="noopener">Vue CLI脚手架</a>，本文主要是总结<code>Vue CLI脚手架</code>搭建过程及总结遇到的问题，跟着我一起来学习吧~</p>
-<h4 id="1-node-js安装与环境配置"><a href="#1-node-js安装与环境配置" class="headerlink" title="1.node.js安装与环境配置"></a>1.node.js安装与环境配置</h4><h5 id="1-1-node-js安装"><a href="#1-1-node-js安装" class="headerlink" title="1.1 node.js安装"></a>1.1 node.js安装</h5><ul>
-<li>安装包下载地址：<a href="https://nodejs.org/en/" target="_blank" rel="noopener">https://nodejs.org/en/</a></li>
-<li><p>下载完成后，双击<code>node-v10.16.0-x64.msi</code>，开始安装Node.js，全程默认一直点击下一步（注意：安装地址最后不要默认选择C盘，选择D盘），安装完毕后点击finish结束安装进程，然后在VS code终端，依次输入命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果正确输出版本号，说明我们的<code>NodeJS</code>和<code>NPM</code>就安装好了，如下图所示：<br><img src="//lililich.work/2019/06/18/Vue-CLI脚手架学习与搭建/Image1.png" alt="Image1.png"></p>
-</li>
-<li>此处说明下：新版的Node.js已自带npm，安装Node.js时会一起安装，npm的作用就是对Node.js依赖的包进行管理，也可以理解为用来安装/卸载Node.js需要装的东西</li></ul>
-        
-    </article>
-    <footer class="cube-excerpt-footer">
-        <a class="cube-excerpt-more" href="/2019/06/18/Vue-CLI脚手架学习与搭建/">Read More</a>
+        <a class="cube-excerpt-more" href="/2020/12/21/获取页面的宽度和高度/">Read More</a>
     </footer>
 </div>
 
 
 
-<ul class="cube-pagination cube-pagination-7">
+<ul class="cube-pagination cube-pagination-9">
     
     <li class="cube-pagination-prev">
         <a href="/">« Prev</a>
@@ -537,28 +490,36 @@
     
         
             
-            <li class="cube-pagination-index">
-                <a href="/">1</a>
-            </li>
+                
+                <li class="cube-pagination-index">
+                    <a href="/">1</a>
+                </li>
+                
             
-        
+                
+                <li class="cube-pagination-index disabled">
+                    <span>2</span>
+                </li>
+                
             
-            <li class="cube-pagination-index disabled">
-                <span>2</span>
-            </li>
+                
+                <li class="cube-pagination-index">
+                    <a href="/page/3">3</a>
+                </li>
+                
             
-        
+                
+                <li class="cube-pagination-index">
+                    <a href="/page/4">4</a>
+                </li>
+                
             
-            <li class="cube-pagination-index">
-                <a href="/page/3">3</a>
-            </li>
-            
-        
-            
-            <li class="cube-pagination-index">
-                <a href="/page/4">4</a>
-            </li>
-            
+                <li class="cube-pagination-ellipses">
+                    <span>...</span>
+                </li>
+                <li class="cube-pagination-index">
+                    <a href="/page/7">7</a>
+                </li>
         
     
 
@@ -607,9 +568,9 @@
     
     
     <div class="count">
-        <a class="count articles"><span>35</span>Article</a>
-        <a class="count tags"><span>18</span>Tags</a>
-        <a class="count categories"><span>5</span>Categories</a>
+        <a class="count articles"><span>66</span>Article</a>
+        <a class="count tags"><span>38</span>Tags</a>
+        <a class="count categories"><span>13</span>Categories</a>
     </div>
 </div>
 
@@ -646,7 +607,7 @@
                     <span>1</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/10/24/正则表达式详解/" title="正则表达式详解">正则表达式详解</a>
+                    <a href="/2022/01/08/js实现数字滚动/" title="js实现数字滚动">js实现数字滚动</a>
                 </p>
             </div>
             
@@ -660,7 +621,7 @@
                     <span>2</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/20/EventLoop详解/" title="EventLoop详解">EventLoop详解</a>
+                    <a href="/2022/01/08/js实现雪花效果/" title="js实现雪花效果">js实现雪花效果</a>
                 </p>
             </div>
         </li>
@@ -673,7 +634,7 @@
                     <span>3</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/18/webpack基本原理/" title="webpack基本原理">webpack基本原理</a>
+                    <a href="/2022/01/06/H5视频、音频不能自动播放/" title="H5视频、音频不能自动播放">H5视频、音频不能自动播放</a>
                 </p>
             </div>
         </li>
@@ -686,7 +647,7 @@
                     <span>4</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/js实现继承/" title="js实现继承">js实现继承</a>
+                    <a href="/2022/01/05/几种页面滑动插件（swiper、fullPage、hammer）/" title="几种页面滑动插件（swiper、fullPage、hammer）">几种页面滑动插件（swiper、fullPage、hammer）</a>
                 </p>
             </div>
         </li>
@@ -699,7 +660,7 @@
                     <span>5</span>
                 </p>
                 <p class="title">
-                    <a href="/2019/09/06/CSS经典布局——圣杯布局和双飞翼布局/" title="CSS经典布局——圣杯布局和双飞翼布局">CSS经典布局——圣杯布局和双飞翼布局</a>
+                    <a href="/2021/12/22/Echarts-地图-各城市经纬度总结/" title="Echarts-地图-各城市经纬度总结">Echarts-地图-各城市经纬度总结</a>
                 </p>
             </div>
         </li>
@@ -717,8 +678,28 @@
     <div class="cube-boxs">
         
         
+        <div class="cube-box-bg ">
+            <a href="/categories/CSS/">#CSS</a>
+        </div>
+        
+        
         <div class="cube-box ">
-            <a href="/categories/前端工具/">#前端工具</a>
+            <a href="/categories/概念原理/">#概念原理</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/工程/">#工程</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/插件/">#插件</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/React/">#React</a>
         </div>
         
         
@@ -727,13 +708,33 @@
         </div>
         
         
-        <div class="cube-box-bg ">
-            <a href="/categories/算法/">#算法</a>
+        <div class="cube-box ">
+            <a href="/categories/前端工具/">#前端工具</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/categories/工程/">#工程</a>
+            <a href="/categories/Vue/">#Vue</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/JS/">#JS</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/动画/">#动画</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/categories/数据结构/">#数据结构</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/categories/算法/">#算法</a>
         </div>
         
         
@@ -754,32 +755,37 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/前端/">#前端</a>
+            <a href="/tags/CSS/">#CSS</a>
         </div>
         
         
         <div class="cube-box ">
+            <a href="/tags/CSS-Hack/">#CSS Hack</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/EventLoop/">#EventLoop</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/HTML/">#HTML</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/H5/">#H5</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/Echarts/">#Echarts</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/js/">#js</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/html/">#html</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Hexo/">#Hexo</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/Markdown/">#Markdown</a>
+            <a href="/tags/React/">#React</a>
         </div>
         
         
@@ -789,37 +795,32 @@
         
         
         <div class="cube-box ">
-            <a href="/tags/flex/">#flex</a>
+            <a href="/tags/Hexo/">#Hexo</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/跨域/">#跨域</a>
+            <a href="/tags/Markdown/">#Markdown</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/Github/">#Github</a>
+            <a href="/tags/SVN/">#SVN</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/CSS/">#CSS</a>
+            <a href="/tags/VScode/">#VScode</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/布局/">#布局</a>
+            <a href="/tags/VuePress/">#VuePress</a>
         </div>
         
         
         <div class="cube-box-bg ">
-            <a href="/tags/Git/">#Git</a>
-        </div>
-        
-        
-        <div class="cube-box ">
-            <a href="/tags/面经/">#面经</a>
+            <a href="/tags/Vue事件符/">#Vue事件符</a>
         </div>
         
         
@@ -829,17 +830,117 @@
         
         
         <div class="cube-box ">
+            <a href="/tags/flex/">#flex</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/js/">#js</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/ajax/">#ajax</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/axios/">#axios</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/sessionStorage/">#sessionStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/localStorage/">#localStorage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/cookie/">#cookie</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/跨域/">#跨域</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/共享文件夹/">#共享文件夹</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Git/">#Git</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Github/">#Github</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/Vue-CLI/">#Vue_CLI</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/jQuery/">#jQuery</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/树/">#树</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
             <a href="/tags/webpack/">#webpack</a>
         </div>
         
         
         <div class="cube-box ">
-            <a href="/tags/二叉树/">#二叉树</a>
+            <a href="/tags/swiper/">#swiper</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/fullPage/">#fullPage</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/hammer/">#hammer</a>
         </div>
         
         
         <div class="cube-box ">
             <a href="/tags/排序/">#排序</a>
+        </div>
+        
+        
+        <div class="cube-box-bg ">
+            <a href="/tags/DOM/">#DOM</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/Grid/">#Grid</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/链表/">#链表</a>
+        </div>
+        
+        
+        <div class="cube-box ">
+            <a href="/tags/前后端交互/">#前后端交互</a>
         </div>
         
     </div>
